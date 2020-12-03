@@ -10,7 +10,9 @@ layout_type: landing
 ---
 
 <div class="intro">
-  <h1 class="intro__text">The speed of a single-page web application without having to write any JavaScript.</h1>
+  <h1 class="intro__text">
+    The speed of a single-page web application without having to write any JavaScript.
+  </h1>
 </div>
 
 <p class="version">
@@ -18,7 +20,19 @@ layout_type: landing
   <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%B %d, %Y" }}</span>
 </p>
 
-<p class="lede"><strong>Turbo</strong> accelerates <em>links and form submissions</em> without requiring you to change your server-side generated HTML. It lets you carve up a page into independent <em>frames</em>, which can be lazy-loaded and operate as independent components. And finally, helps you make <em>partial page updates</em> using just HTML and a set of CRUD-like container tags. These three techniques reduce the amount of custom JavaScript that many web applications need to write by an order of magnitude. And for the few dynamic bits that are left, you're invited to finished the job with <a href="https://stimulusjs.org">Stimulus</a>.</p>
+<p class="lede">
+  <strong>Turbo</strong> uses three complimenting techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
+</p>
+
+<ul class="lede">
+  <li><em>Turbo Links</em> (and form submissions) are accelerated to provide smooth navigation without jarring page changes.</li>
+  <li style="margin-top: 20px"><em>Turbo Frames</em> carves the page into independent contexts, which can be lazy-loaded and operate as independent components.
+  <li style="margin-top: 20px"><em>Turbo Updates</em> make partial page changes in response to form responses and WebSocket messages, using just HTML and a set of CRUD-like container tags.</li>
+</ul>
+
+<p class="lede">
+  It's all done by sending plain HTML over the wire. And for those instances when that's not enough, you can reach for the other side of <a href="https://hotwire.dev">Hotwire</a>, and finish the job with <a href="https://stimulusjs.org">Stimulus</a>.
+  </p>
 
 <div class="actions">
   <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
