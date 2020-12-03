@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  color: $color-text;
+  font-family: $serif-stack;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+a {
+  color: $color-text;
+  font-weight: bold;
+  margin: -.2rem;
+  padding: .2rem;
+  text-decoration: underline;
+
+  &:visited { 
+    color: $color-text; 
+  }
+
+  &:hover { 
+    text-decoration: none;
+  }
+
+  &:active { 
+    color: $color-text; 
+  }
+}
+
+h1, h2, h3 {
+  grid-column: 2/5;
+  font-family: $sans-stack;
+  letter-spacing: -.03em;
+  line-height: 1.1em;
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+h1 {
+  margin-top: 2em;
+  font-size: 1.75em;
+  font-weight: bold;
+
+  @include media(medium) {
+    font-size: calc(2em + 1.5vw);
+  }
+}
+
+h2 {
+  font-size: 1.5em;
+  text-align: center;
+
+  @include media(large) {
+    font-size: 2em;
+  }
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+ul,
+ol {
+  grid-column: 3/4;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+ul ul {
+  margin-bottom: 0;
+}
+
+ul li,
+ol li {
+  margin-left: 1em;
+}
+
+p {
+  grid-column: 3/4;
+  font-size: 1em;
+  line-height: 1.6em;
+  margin-bottom: 1.5em;
+}
+
+blockquote {
+  grid-column: 3/4;
+  position: relative;
+  margin-bottom: 1.5em;
+  padding: 0 0 0 2em;
+  border-left: 2px solid $color-text;
+  text-align: left;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background: #fff url(/images/logo.svg) no-repeat left top;
+    background-size: 1em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 2rem;
+    text-align: left;
+  }
+}
+
+hr {
+  grid-column: 2/5;
+  margin: 2em 0 3em 0;
+  border: none;
+  border-top: 1px solid #f7f5f2;
+}
+
+code,
+pre {
+  font-family: $mono-stack;
+  line-height: 1.25;
+  padding:  0 0.1em;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}
+
+thead {
+  background-color: $color-tint;
+  font-family: $sans-stack;
+}
+
+tr {
+  border-bottom: 0.125em solid $color-tint;
+}
+
+th,
+td {
+  vertical-align: middle;
+  padding: 0.5em;
+}
+
+// Fix: iOS Font Sizing —————————————————————— •
+// ——————————————————————————————————————————— •
+
+@media screen and (max-device-width: 480px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+  }
+}

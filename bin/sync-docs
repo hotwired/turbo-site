@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+sync() {
+  local dirname="$1"
+  (
+    rm -rf "$dirname"
+    mkdir -p "$dirname"
+    cd "$dirname"
+    curl --silent "https://api.github.com/repos/stimulusjs/stimulus/contents/$dirname" \
+      | jq ".[] | .download_url" \
+      | xargs -n 1 -P 4 curl --silent -O
+
+    # src="../../assets/…" → src="/assets/…"
+    find . -type f -name "*.md" | xargs -n 1 sed -i '' -E -e  's/[\.\/]+\/assets/\/assets/g'
+  )
+}
+
+echo "Syncing Handbook docs…"
+sync "docs/handbook"
+
+echo "Syncing Reference docs…"
+sync "docs/reference"
+
+echo "Syncing assets…"
+sync "assets"

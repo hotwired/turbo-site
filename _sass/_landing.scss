@@ -1,0 +1,364 @@
+// landing layout /////////////////////////////////////////////////////////////
+
+.landing__content {
+  margin: 0 auto;
+  padding: 0 2em;
+  overflow-x: hidden;
+  max-width: $column-width;
+
+  @include media(medium) {
+    max-width: 90em;
+
+    @supports (display: grid) {
+      max-width: 100%;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 0.25fr 1fr 65vw 1fr 0.25fr;
+    }
+  }
+
+  @include media(large) {
+
+    @supports (display: grid) {
+      grid-template-columns: 1fr 1fr 55vw 1fr 1fr;
+    }
+  }
+
+  @include media(x-large) {
+
+    @supports (display: grid) {
+      grid-template-columns: 1fr 5rem 80rem 5rem 1fr;
+    }
+  }
+}
+
+// intro //////////////////////////////////////////////////////////////////////
+
+.intro {
+  grid-column: 1/6;
+  margin: 0 -2em;
+  padding: 2em 1em;
+  border-top: 0.25em solid $color-accent;
+
+  @include media(medium) {
+    margin: 0;
+    padding: 2em 7em 8.5em 7em;
+    background-color: $color-tint;
+  }
+}
+
+.intro__text {
+  margin: 0.5em 0 0 0;
+  text-align: center;
+  color: $color-text;
+
+  @include media(x-large) {
+    font-size: 3.5em;
+  }
+}
+
+// hero code example //////////////////////////////////////////////////////////
+
+.hero {
+  grid-column: 2/5;
+  position: relative;
+  margin: 1em -2em 2em -2em;
+  padding: 0;
+
+  @include media(medium) {
+    display: flex;
+    justify-content: space-between;
+    margin: -6em 0 2em 0;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 130%;
+      height: 130%;
+      z-index: -1;
+      top: -32%;
+      left: -11%;
+      background: url("../images/pattern.svg") no-repeat center;
+      background-size: 100%;
+    }
+  }
+
+  @include media(x-large) {
+    grid-column: 3/4;
+  }
+}
+
+.hero__step {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2em;
+  background-color: $color-tint;
+
+  @include media(medium) {
+    width: 48%;
+    margin: 0;
+    border: 0.25em solid #fff;
+    box-shadow: 1px 10px 20px $color-accent;
+  }
+
+  pre {
+    padding: 1.5em 0.5em 1.5em 0.5em;
+    overflow: auto;
+
+    @include media(medium) {
+      padding: 1.5em 0.5em 1.5em 1.5em;
+      font-size: 0.875em;
+    }
+
+    @include media(large) {
+      font-size: 0.875em;
+      font-size: 1.4vw;
+    }
+
+    @include media(x-large) {
+      font-size: 1.25em;
+    }
+  }
+}
+
+.hero__step--pointer {
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 3.5em;
+    height: 3.5em;
+    top: 93%;
+    right: 40%;
+    z-index: 1;
+    background: url("../images/arrow.svg") no-repeat center;
+    background-size: 100%;
+    transform: rotate(110deg);
+  }
+
+  @include media(medium) {
+
+    &:before {
+      width: 3.5em;
+      height: 3.5em;
+      top: 30%;
+      right: -3.25em;
+      transform: rotate(10deg);
+    }
+  }
+}
+
+.hero__step-title {
+  margin: 0 0 0.25em 0;
+  padding: 1em;
+  font-family: $sans-stack;
+  font-size: 1.125em;
+  font-weight: bold;
+  text-align: center;
+  color: $color-background;
+  background-color: $color-text;
+
+  @include media(medium) {
+    font-size: 1em;
+  }
+
+  @include media(large) {
+    padding: 1em 2em;
+    font-size: 1.5vw;
+  }
+
+  @include media(x-large) {
+    font-size: 1.5em;
+  }
+}
+
+// hero code output ///////////////////////////////////////////////////////////
+
+.hello {
+  position: relative;
+  grid-column: 2/5;
+  margin-bottom: 2em;
+  padding: 1em;
+  background-color: $color-tint;
+
+  @include media(medium) {
+    grid-column: 3/4;
+    display: flex;
+    align-items: stretch;
+    border: 0.25em solid #fff;
+    box-shadow: 1px 10px 20px $color-accent;
+  }
+
+  @include media(large) {
+    grid-column: 3/4;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 3.5em;
+    height: 3.5em;
+    top: -30%;
+    right: 40%;
+    z-index: 1;
+    background: url("../images/arrow.svg") no-repeat center;
+    background-size: 100%;
+    transform: rotate(110deg);
+
+    @include media(medium) {
+      top: -55%;
+      right: 35%;
+      transform: rotate(130deg);
+    }
+
+    @include media(large) {
+      top: -60%;
+      right: 35%;
+    }
+  }
+}
+
+.hello__input {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  width: 100%;
+  border: 2px solid $color-accent;
+  font-family: $sans-stack;
+  font-size: 1em;
+
+  @include media(medium) {
+    width: 46%;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent !important;
+  }
+}
+
+.hello__button {
+  display: block;
+  width: 100%;
+  padding: 0.5em 1em;
+  background-color: $color-accent;
+  color: $color-text;
+  font-family: $sans-stack;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  line-height: normal;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+
+  @include media(medium) {
+    width: auto;
+  }
+}
+
+.hello__output {
+  display: block;
+  width: 100%;
+  margin: 1em 0 0 0;
+  padding: 1.1em 0.25em;
+  font-size: 1.25em;
+  line-height: 0;
+  color: $color-text;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 0.1em solid $color-text;
+
+  @include media(medium) {
+    margin: 0 0 0 0.5em;
+    width: 50%;
+  }
+
+  &:not(:empty) {
+    &::before {
+      content: "“";
+    }
+
+    &::after {
+      content: "”";
+    }
+  }
+}
+
+// intro text /////////////////////////////////////////////////////////////////
+
+.lede {
+  text-align: center;
+  font-size: 1.25em;
+
+  @include media(medium) {
+    text-align: justify;
+  }
+}
+
+.version {
+  grid-column: 2/5;
+  position: relative;
+  padding: 0;
+  margin: 2em 0 3em 0;
+  font-family: $sans-stack;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+
+  > span {
+    display: inline-block;
+    padding: 0.25em 1em;
+    background-color: $color-tint;
+    -webkit-clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+    clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid $color-tint;
+    z-index: -1;
+  }
+}
+
+// primary actions ////////////////////////////////////////////////////////////
+
+.actions {
+  grid-column: 3/4;
+  margin: 0;
+
+  @include media(medium) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.actions__item {
+  display: block;
+  margin-bottom: 1em;
+  padding: 1em;
+  text-align: center;
+  line-height: 1.25;
+  background-color: $color-tint;
+
+  @include media(medium) {
+    width: 32%;
+    margin-bottom: 0;
+  }
+}
+
+.actions__icon {
+  display: block;
+  max-width: 3.75em;
+  margin: 0 auto 1em auto;
+}

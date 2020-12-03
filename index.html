@@ -1,0 +1,38 @@
+---
+title: The speed of a single-page web application without having to write any JavaScript.
+description: >-
+  Turbo accelerates links and form submissions without requiring you to change your server-side generated HTML.
+  It lets you carve up a page into independent frames, which can be lazy-loaded and operate as independent components.
+  And finally, helps you make partial page updates using just HTML and a set of CRUD-like container tags.
+  These three techniques reduce the amount of custom JavaScript that many web applications need to write by an order of magnitude.
+layout: default
+layout_type: landing
+---
+
+<div class="intro">
+  <h1 class="intro__text">The speed of a single-page web application without having to write any JavaScript.</h1>
+</div>
+
+<p class="version">
+  {%- assign release = site.data.releases | where_exp: "release","release.prerelease == false" | first -%}
+  <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%B %d, %Y" }}</span>
+</p>
+
+<p class="lede"><strong>Turbo</strong> accelerates <em>links and form submissions</em> without requiring you to change your server-side generated HTML. It lets you carve up a page into independent <em>frames</em>, which can be lazy-loaded and operate as independent components. And finally, helps you make <em>partial page updates</em> using just HTML and a set of CRUD-like container tags. These three techniques reduce the amount of custom JavaScript that many web applications need to write by an order of magnitude. And for the few dynamic bits that are left, you're invited to finished the job with <a href="https://stimulusjs.org">Stimulus</a>.</p>
+
+<div class="actions">
+  <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
+    <img class="actions__icon" src="/images/icon-guide.svg" alt="book icon">
+    Handbook
+  </a>
+
+  <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
+    <img class="actions__icon" src="/images/icon-install.svg" alt="install icon">
+    Installation Guide
+  </a>
+
+  <a class="actions__item" href="{{ site.github_url }}">
+    <img class="actions__icon" src="/images/icon-github.svg" alt="GitHub logo">
+    Source Code
+  </a>
+</div>

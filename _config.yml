@@ -1,0 +1,44 @@
+title: Turbo
+url: https://turbo.hotwire.dev
+discourse_url: https://discourse.hotwire.dev
+github_url: https://github.com/hotwired/turbo
+
+theme: false
+
+defaults:
+  - scope:
+      path: "*/handbook/*"
+    values:
+      section: handbook
+      section_title: Handbook
+      layout_type: docs
+  - scope:
+      path: "*/reference/*"
+    values:
+      section: reference
+      section_title: Reference
+      layout_type: docs
+
+optional_front_matter:
+  remove_originals: true
+
+titles_from_headings:
+  enabled:     true
+  strip_title: false
+  collections: true
+
+exclude:
+  - node_modules
+  - bin
+  - .babelrc
+  - Gemfile
+  - Gemfile.lock
+  - now-build.sh
+  - now.json
+  - package.json
+  - webpack.config.js
+  - yarn.lock
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "public": true,
+  "scope": "turbo",
+  "name": "stimulusjs",
+  "alias": "stimulusjs.now.sh",
+  "routes": [
+    { "src": "/", "dest": "index.html" },
+    { "src": "^(.*)$", "dest": "$1.html" }
+  ]
+}
