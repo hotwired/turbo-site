@@ -1,9 +1,0 @@
-.DS_Store
-.babelrc
-.git
-.jekyll-metadata
-.sass-cache
-_site
-node_modules
-webpack.config.js
-yarn.lock

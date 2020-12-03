@@ -30,14 +30,8 @@ titles_from_headings:
 exclude:
   - node_modules
   - bin
-  - .babelrc
   - Gemfile
   - Gemfile.lock
-  - now-build.sh
-  - now.json
-  - package.json
-  - webpack.config.js
-  - yarn.lock
 
 plugins:
   - jekyll-sitemap
