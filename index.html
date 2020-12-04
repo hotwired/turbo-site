@@ -21,18 +21,22 @@ layout_type: landing
 </p>
 
 <p class="lede">
-  <strong>Turbo</strong> uses three complimenting techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
+  <strong>Turbo</strong> uses several complimenting techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
 </p>
 
 <ul class="lede">
-  <li><em>Turbo Links</em> (and form submissions) are accelerated to provide smooth navigation without jarring page changes.</li>
-  <li style="margin-top: 20px"><em>Turbo Frames</em> carves the page into independent contexts, which can be lazy-loaded and operate as independent components.
-  <li style="margin-top: 20px"><em>Turbo Updates</em> make partial page changes in response to form responses and WebSocket messages, using just HTML and a set of CRUD-like container tags.</li>
+  <li><em>Turbo Links</em> accelerate navigation between pages (and after form submissions) by negating the need for full page reloads.</li>
+  <li style="margin-top: 20px"><em>Turbo Frames</em> carves the page into independent contexts, which can be lazy-loaded and run as independent components.
+  <li style="margin-top: 20px"><em>Turbo Updates</em> make partial page updates in response to form submissions and WebSocket messages, using just HTML and a set of CRUD-like container tags.</li>
 </ul>
 
 <p class="lede">
   It's all done by sending plain HTML over the wire. And for those instances when that's not enough, you can reach for the other side of <a href="https://hotwire.dev">Hotwire</a>, and finish the job with <a href="https://stimulusjs.org">Stimulus</a>.
-  </p>
+</p>
+
+<p class="lede">
+  Turbo was built from the ground-up to support <a href="https://m.signalvnoise.com/basecamp-3-for-ios-hybrid-architecture/">native, hybrid applications</a> too. We have excellent native adapters for both iOS and Android. This lets your <a href="https://m.signalvnoise.com/the-majestic-monolith/">majestic monolith</a> serve all platforms, further boosting your productivity and reach.
+</p>
 
 <div class="actions">
   <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
@@ -40,7 +44,7 @@ layout_type: landing
     Handbook
   </a>
 
-  <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
+  <a class="actions__item" href="{% link docs/handbook/07_installing.md %}">
     <img class="actions__icon" src="/images/icon-install.svg" alt="install icon">
     Installation Guide
   </a>
