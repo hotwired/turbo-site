@@ -39,11 +39,11 @@
   grid-column: 1/6;
   margin: 0 -2em;
   padding: 2em 1em;
-  background-color: $color-accent;
 
   @include media(medium) {
     margin: 0;
     padding: 3em 7em;
+    background-color: $color-accent;
   }
 }
 
