@@ -9,6 +9,7 @@
   @include media(medium) {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.25em 1em 1em 1em;
   }
 }
@@ -84,12 +85,14 @@
 }
 
 .nav__links {
+  max-width: 60vw;
   padding: 0 0.25em;
   margin: 0 auto;
   line-height: 1.5;
   font-weight: bold;
 
   @include media(medium) {
+    max-width: 100%;
     margin: 0;
     line-height: 1;
   }
@@ -97,6 +100,7 @@
 
 .nav__links-item {
   display: inline-block;
+  padding: 0.75em 0.2em;
   font-family: $sans-stack;
   font-weight: bold;
   text-transform: none;
@@ -111,6 +115,11 @@
   &.active {
     text-decoration: none;
     pointer-events: none;
+  }
+
+  @include media(medium) {
+    display: inline-block;
+    padding: inherit;
   }
 }
 
