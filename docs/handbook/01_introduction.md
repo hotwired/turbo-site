@@ -11,17 +11,19 @@ With Turbo, you can let the server deliver HTML directly, which means letting al
 
 You can read more about the benefits of this HTML-over-the-wire approach on the <a href="https://hotwire.dev/">Hotwire site</a>, so on to the actual techniques that Turbo brings to make this possible.
 
-## Turbo Links: Navigate within a persistent process
+## Turbo Drive: Navigate within a persistent process
 
 A key attraction to traditional single-page applications, when compared old-school separate pages, is the speed of navigation. SPAs get a lot of that speed by keeping the application running while navigation is happening. It's not constantly tearing down the process, only to reinitialize it on the very next page. 
 
-Turbo Links gives you that same speed by using the same persistent-process model, but without requiring you to do anything special. There's no client-side router to maintain, there's no state to carefully manage. The persistent process is managed by Turbo, and you write your server-side code as though you were living back in the early aughts – blissfully isolated from the complexities of today's SPA monstrosities!
+Turbo Drive gives you that same speed by using the same persistent-process model, but without requiring you to do anything special. There's no client-side router to maintain, there's no state to carefully manage. The persistent process is managed by Turbo, and you write your server-side code as though you were living back in the early aughts – blissfully isolated from the complexities of today's SPA monstrosities!
 
-This happens by intercepting all clicks on `<a href>` links to the same domain. When you click an eligible link, Turbolinks prevents the browser from following it. Instead, Turbolinks changes the browser’s URL using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">History API</a>, requests the new page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">`XMLHttpRequest`</a>, and then renders the HTML response.
+This happens by intercepting all clicks on `<a href>` links to the same domain. When you click an eligible link, Turbo Drive prevents the browser from following it. Instead, Turbo Drive changes the browser’s URL using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">History API</a>, requests the new page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">`XMLHttpRequest`</a>, and then renders the HTML response.
 
-During rendering, Turbolinks replaces the current `<body>` element outright and merges the contents of the `<head>` element. The JavaScript window and document objects, and the HTML <html> element, persist from one rendering to the next.
+Same deal with forms where submissions are turned into `XMLHttpRequest` requests that return a redirect, which Turbo Drive follows, and render the HTML response.
 
-While its possible to interact directly with Turbo Links to control how visits happen or hook into the lifecycle of the request, the majority of the time this is a drop-in replacement where the speed is free.
+During rendering, Turbo Drive replaces the current `<body>` element outright and merges the contents of the `<head>` element. The JavaScript window and document objects, and the HTML <html> element, persist from one rendering to the next.
+
+While its possible to interact directly with Turbo Drive to control how visits happen or hook into the lifecycle of the request, the majority of the time this is a drop-in replacement where the speed is free.
 
 
 ## Turbo Frames: Decompose complex pages
