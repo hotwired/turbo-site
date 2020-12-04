@@ -1,3 +1,5 @@
+// scss-lint:disable VendorPrefix
+
 // landing layout /////////////////////////////////////////////////////////////
 
 .landing__content {
@@ -131,14 +133,17 @@
 }
 
 .actions__icon--guide {
+  -webkit-mask: url('/images/icon-guide.svg') center / 100% no-repeat;
   mask: url('/images/icon-guide.svg') center / 100% no-repeat;
 }
 
 .actions__icon--install {
+  -webkit-mask: url('/images/icon-install.svg') center / 100% no-repeat;
   mask: url('/images/icon-install.svg') center / 100% no-repeat;
 }
 
 .actions__icon--github {
+  -webkit-mask: url('/images/icon-github.svg') center / 100% no-repeat;
   mask: url('/images/icon-github.svg') center / 100% no-repeat;
 }
 
