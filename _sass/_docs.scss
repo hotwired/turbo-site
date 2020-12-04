@@ -106,7 +106,7 @@
   margin: 0 0 0.6em 0;
   font-family: $sans-stack;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: $font-small;
   text-align: center;
   border-bottom: 0.25em solid $color-accent;
 
@@ -130,7 +130,7 @@
   display: block;
   margin: 0;
   padding: 0 1em 1em 1em;
-  font-size: 1.25em;
+  font-size: $font-large;
   font-family: $sans-stack;
   font-weight: 700;
   line-height: 1.25;
@@ -145,7 +145,7 @@
     text-align: left;
     margin: 0 0 0 -0.2rem;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: $font-medium;
     font-style: italic;
     line-height: 1.4;
 

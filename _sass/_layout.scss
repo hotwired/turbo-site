@@ -21,7 +21,7 @@
   padding: 0;
   text-transform: uppercase;
   font-family: $sans-stack;
-  font-size: 1.5em;
+  font-size: $font-x-large;
 
   @include media(medium) {
     margin: 0;
@@ -80,7 +80,7 @@
 
 .nav__subhead {
   margin: 1em 0 2em 0;
-  font-size: 0.9rem;
+  font-size: $font-small;
   font-family: $sans-stack;
 }
 
@@ -104,11 +104,11 @@
   font-family: $sans-stack;
   font-weight: bold;
   text-transform: none;
-  font-size: 1rem;
+  font-size: $font-medium;
 
   &:not(:last-child)::after {
     display: inline-block;
-    margin-left: 0.3rem;
+    margin-left: 0.3em;
     content: "/";
   }
 
@@ -130,14 +130,24 @@
   position: relative;
   margin: 10em 0 0 0;
   text-align: center;
-  font-size: 0.875em;
+  font-size: $font-small;
   padding-bottom: 2em;
   overflow: hidden;
   //background-color: $color-tint;
 }
 
-.foot__icon {
-  display: block;
-  max-width: 50px;
-  margin: 3em auto 0 auto;
+.foot__logos {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin: 0;
+
+  @include media(medium) {
+    flex-direction: row;
+  }
+
+  a {
+    padding: 1em;
+    text-decoration: none;
+  }
 }

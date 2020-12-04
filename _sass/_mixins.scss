@@ -10,6 +10,20 @@ $serif-stack: 'Bitter', serif;
 $sans-stack: 'Jost', sans-serif;
 $mono-stack: 'ubuntu-mono', monospace;
 
+$font-base-small: 1.8em;
+$font-base-medium: calc(1em + 0.75vw);
+$font-base-large: 1.9em;
+
+$font-xxx-small: 0.55em;
+$font-xx-small: 0.65em;
+$font-x-small: 0.75em;
+$font-small: 0.85em;
+$font-medium: 1em;
+$font-large: 1.25em;
+$font-x-large: 1.5em;
+$font-xx-large: 2em;
+$font-xxx-large: 2.5em;
+$font-xxxx-large: 3.25em;
 
 // Colors ———————————————————————————————————— •
 // ——————————————————————————————————————————— •
@@ -74,7 +88,7 @@ $color-brand: #5cd8e5;
   } @else if $query == large {
     @media (min-width: 66em) { @content; } // Tablets - Landscape
   } @else if $query == x-large {
-    @media (min-width: 120em) { @content; } // Desktops
+    @media (min-width: 90em) { @content; } // Desktops
   } @else {
     @media (#{$query}) { @content; } // Custom
   }

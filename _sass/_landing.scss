@@ -29,7 +29,7 @@
   @include media(x-large) {
 
     @supports (display: grid) {
-      grid-template-columns: 1fr 5rem 80rem 5rem 1fr;
+      grid-template-columns: 1fr 5rem 82rem 5rem 1fr;
     }
   }
 }
@@ -59,7 +59,7 @@
   font-weight: 800;
 
   @include media(x-large) {
-    font-size: 3.5em;
+    font-size: $font-xxxx-large;
   }
 }
 
@@ -68,10 +68,10 @@
 
 .lede {
   text-align: center;
-  font-size: 1.25em;
+  font-size: $font-large;
 
   @include media(medium) {
-    text-align: justify;
+    text-align: left;
   }
 }
 
@@ -82,7 +82,7 @@
   margin: -2em 0 5em 0;
   font-family: $sans-stack;
   font-weight: bold;
-  font-size: 0.85em;
+  font-size: $font-small;
   text-align: center;
 
   > span {
