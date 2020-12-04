@@ -1,38 +1,38 @@
 // scss-lint:disable unknownProperties
 
-@font-face {
-  font-family: 'Compressa';
+@font-face{
+  font-family: 'Bitter';
   font-weight: 100 900;
   font-stretch: normal;
   font-named-instance: 'Regular';
-  src: url('/assets/Compressa-MICRO-GX-Rg.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Compressa';
-  font-weight: 100 900;
-  font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/assets/Compressa-MICRO-GX-It.woff2') format('woff2');
+  src: url('/assets/Bitter-Roman.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face{
-  font-family: 'Inter';
+  font-family: 'Bitter';
   font-weight: 100 900;
-  font-stretch: normal;
-  font-named-instance: 'Regular';
-  src: url('/assets/Inter-roman-subset.var.woff2') format('woff2');
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/Bitter-Italic.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face{
-  font-family: 'Inter';
+  font-family: 'Jost';
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/Jost-Roman.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Jost';
   font-weight: 100 900;
   font-style: italic;
   font-named-instance: 'Italic';
-  src: url('/assets/Inter-italic-subset.var.woff2') format('woff2');
+  src: url('/assets/Jost-Italic.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -47,7 +47,7 @@ body {
   padding: 0;
   position: relative;
   color: $color-text;
-  font-family: $sans-stack;
+  font-family: $serif-stack;
   font-size: 1em;
   font-style: normal;
   //font-weight: 600;

@@ -54,7 +54,7 @@
   text-align: center;
   color: $color-text;
   font-variation-settings: "wdth" 140;
-  font-weight: 900;
+  font-weight: 800;
 
   @include media(x-large) {
     font-size: 3.5em;
@@ -79,7 +79,6 @@
   padding: 0;
   margin: -2em 0 5em 0;
   font-family: $sans-stack;
-  font-style: italic;
   font-weight: bold;
   font-size: 0.85em;
   text-align: center;
