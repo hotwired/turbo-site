@@ -1,8 +1,8 @@
 ---
-permalink: /handbook/navigating
+permalink: /handbook/drive
 ---
 
-# Navigating with Turbo Drive
+# Navigate with Turbo Drive
 {:.no_toc}
 
 Turbo Drive models navigation as a *visit* to a *location* (URL) with an *action*.
