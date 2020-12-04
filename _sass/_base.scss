@@ -18,6 +18,24 @@
   font-display: swap;
 }
 
+@font-face{
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/Inter-roman-subset.var.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/Inter-italic-subset.var.woff2') format('woff2');
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,8 +50,8 @@ body {
   font-family: $sans-stack;
   font-size: 1em;
   font-style: normal;
-  font-weight: 600;
-  font-variation-settings: "wdth" 180;
+  //font-weight: 600;
+  //font-variation-settings: "wdth" 180;
   line-height: 1rem;
 }
 
