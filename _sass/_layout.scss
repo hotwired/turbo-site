@@ -31,20 +31,50 @@
 }
 
 .nav__icon {
-  width: 0.9em;
-  height: 0.88em;
+  width: 1.5em;
+  height: auto;
   display: block;
   margin: 0 auto 0.25em auto;
 
   @include media(medium) {
-    width: 1.125em;
+    width: 1.25em;
     margin: 0;
     padding-right: 0.25em;
+  }
+
+  path {
+    fill: $color-brand;
+    transition: fill 0.2s ease;
+  }
+
+  .nav__logo:hover & {
+
+    path {
+      fill: $color-accent;
+    }
   }
 }
 
 .nav__title {
   margin: 0;
+  width: 5em;
+  height: auto;
+
+  @include media(medium) {
+    width: 3.5em;
+  }
+
+  path {
+    fill: $color-text;
+    transition: fill 0.2s ease;
+  }
+
+  .nav__logo:hover & {
+
+    path {
+      fill: $color-accent;
+    }
+  }
 }
 
 .nav__subhead {
@@ -94,31 +124,11 @@
   font-size: 0.875em;
   padding-bottom: 2em;
   overflow: hidden;
-
-  @include media(large) {
-
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      top: 20%;
-      left: 5%;
-      background: url("../images/pattern.svg") no-repeat center bottom;
-      background-size: 100%;
-      transform: rotate(180deg);
-    }
-  }
-}
-
-.foot__text {
-  background-color: $color-background;
+  background-color: $color-tint;
 }
 
 .foot__icon {
   display: block;
   max-width: 50px;
-  margin: 0 auto;
+  margin: 3em auto 0 auto;
 }

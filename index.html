@@ -17,7 +17,7 @@ layout_type: landing
 
 <p class="version">
   {%- assign release = site.data.releases | where_exp: "release","release.prerelease == false" | first -%}
-  <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%B %d, %Y" }}</span>
+  <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
 </p>
 
 <p class="lede">
@@ -36,17 +36,17 @@ layout_type: landing
 
 <div class="actions">
   <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
-    <img class="actions__icon" src="/images/icon-guide.svg" alt="book icon">
+    <div class="actions__icon actions__icon--guide" aria-hidden="true"></div>
     Handbook
   </a>
 
   <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
-    <img class="actions__icon" src="/images/icon-install.svg" alt="install icon">
+    <div class="actions__icon actions__icon--install" aria-hidden="true"></div>
     Installation Guide
   </a>
 
   <a class="actions__item" href="{{ site.github_url }}">
-    <img class="actions__icon" src="/images/icon-github.svg" alt="GitHub logo">
+    <div class="actions__icon actions__icon--github" aria-hidden="true"></div>
     Source Code
   </a>
 </div>

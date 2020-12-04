@@ -1,3 +1,23 @@
+// scss-lint:disable unknownProperties
+
+@font-face {
+  font-family: 'Compressa';
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/Compressa-MICRO-GX-Rg.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Compressa';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/Compressa-MICRO-GX-It.woff2') format('woff2');
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,10 +29,11 @@ body {
   padding: 0;
   position: relative;
   color: $color-text;
-  font-family: $serif-stack;
+  font-family: $sans-stack;
   font-size: 1em;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
+  font-variation-settings: "wdth" 180;
   line-height: 1rem;
 }
 
@@ -22,17 +43,21 @@ a {
   margin: -.2rem;
   padding: .2rem;
   text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-decoration-width: 0.1rem;
 
   &:visited { 
     color: $color-text; 
   }
 
   &:hover { 
-    text-decoration: none;
+    text-decoration-color: $color-accent;
+    text-decoration-thickness: 0.2em;
+    text-decoration-width: 0.2em;
   }
 
   &:active { 
-    color: $color-text; 
+    color: $color-text;
   }
 }
 
@@ -132,6 +157,11 @@ pre {
   font-family: $mono-stack;
   line-height: 1.25;
   padding:  0 0.1em;
+  background-color: $color-tint;
+}
+
+code {
+  padding: 0.25em;
 }
 
 table {

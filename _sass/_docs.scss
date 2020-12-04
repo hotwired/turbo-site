@@ -136,9 +136,9 @@
   line-height: 1.25;
 
   &.active {
-    color: $color-background;
     text-decoration: none;
     pointer-events: none;
+    font-weight: 1000;
   }
 
   @include media(medium) {

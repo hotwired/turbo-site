@@ -9,12 +9,14 @@
   {% endif -%}
   <link rel="canonical" href="{{ page.url | replace: "index.html", "" | prepend: site.url }}">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://use.typekit.net/ted5yzm.css">
   <script src="/js/main.js" type="module"></script>
 </head>
 <body>
   <header class="nav">
-    <a class="nav__logo" href="/"><img  class="nav__icon" src="/images/logo-beige.svg" alt="Turbo Logo">Turbo</a>
+    <a class="nav__logo" href="/" aria-label="Turbo">
+      {% include svg/turbo-icon.svg %}
+      {% include svg/turbo-wordmark.svg %}
+    </a>
     <nav class="nav__links">
       <a class="nav__links-item{% if page.section == "handbook" %} active{% endif %}" href="{% link docs/handbook/01_introduction.md %}">Handbook</a>
       <a class="nav__links-item{% if page.section == "reference" %} active{% endif %}" href="{% link docs/reference/links.md %}">Reference</a>
@@ -38,7 +40,7 @@
   </main>
 
   <footer class="foot">
-    <p><span class="foot__text"><img class="foot__icon" src="/images/basecamp-icon.svg" alt="Basecamp"> <br> Brought to you by the team at <a href="https://basecamp.com/">Basecamp</a> & <a href="https://hey.com/">HEY</a>.</span></p>
+    <p><span class="foot__text"><img class="foot__icon" src="/images/basecamp-clip.svg" alt="Basecamp"> <br> Brought to you by the team at <a href="https://basecamp.com/">Basecamp</a> & <a href="https://hey.com/">HEY</a>.</span></p>
   </footer>
 </body>
 </html>
