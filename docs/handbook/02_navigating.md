@@ -2,15 +2,9 @@
 permalink: /handbook/navigating
 ---
 
-# Navigating with Turbolinks
+# Navigating with Turbo Links
 
-Turbolinks intercepts all clicks on `<a href>` links to the same domain. When you click an eligible link, Turbolinks prevents the browser from following it. Instead, Turbolinks changes the browser’s URL using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History), requests the new page using [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), and then renders the HTML response.
-
-During rendering, Turbolinks replaces the current `<body>` element outright and merges the contents of the `<head>` element. The JavaScript `window` and `document` objects, and the HTML `<html>` element, persist from one rendering to the next.
-
-## Each Navigation is a Visit
-
-Turbolinks models navigation as a *visit* to a *location* (URL) with an *action*.
+Turbo Links models navigation as a *visit* to a *location* (URL) with an *action*.
 
 Visits represent the entire navigation lifecycle from click to render. That includes changing browser history, issuing the network request, restoring a copy of the page from cache, rendering the final response, and updating the scroll position.
 
@@ -18,7 +12,7 @@ There are two types of visit: an _application visit_, which has an action of _ad
 
 ## Application Visits
 
-Application visits are initiated by clicking a Turbolinks-enabled link, or programmatically by calling [`Turbolinks.visit(location)`](#turbolinksvisit).
+Application visits are initiated by clicking a Turbo-enabled link, or programmatically by calling [`Turbolinks.visit(location)`](#turbolinksvisit).
 
 An application visit always issues a network request. When the response arrives, Turbolinks renders its HTML and completes the visit.
 
