@@ -1,34 +1,10 @@
 // docs layout ////////////////////////////////////////////////////////////
 
 .docs {
-  margin: 0 auto;
-  padding: 0 1em;
-
-  @include media(medium) {
-    max-width: 90em;
-
-    @supports (display: grid) {
-      max-width: 100%;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 0.25fr 2.5fr 0.5fr 65vw 0.25fr;
-    }
-  }
-
-  @include media(large) {
-    grid-template-columns: 0.5fr 2.5fr 0.5fr 60vw 1fr;
-  }
+  padding-top: 5em
 }
 
 .docs__content {
-  grid-column: 4/5;
-  max-width: $column-width;
-  margin: 0 auto;
-
-  @include media(medium) {
-    max-width: 100%;
-    margin-top: 6em;
-  }
 
   h1, h2, h3, h4, h5, h6 {
     text-align: left;
@@ -51,15 +27,15 @@
 // docs nav /////////////////////////////////////////////////////////////////////
 
 .docs__index {
-  max-width: $column-width;
-  grid-column: 2/3;
   margin: 0 auto 2em auto;
   padding: 0.5em 0;
   text-align: center;
 
   @include media(medium) {
-    margin: 0 0 2em 0;
-    padding-top: 7em;
+    margin: 0.5em 0 2em 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1em;
   }
 }
 
@@ -94,9 +70,7 @@
     padding: 0;
     height: inherit;
     opacity: 1;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 1em;
+    position: absolute;
     background-color: $color-background;
   }
 }

@@ -12,7 +12,7 @@ $mono-stack: 'ubuntu-mono', monospace;
 
 $font-base-small: 1.8em;
 $font-base-medium: calc(1em + 0.75vw);
-$font-base-large: 1.9em;
+$font-base-large: 2.1em;
 
 $font-xxx-small: 0.55em;
 $font-xx-small: 0.65em;
@@ -82,9 +82,9 @@ $color-brand: #5cd8e5;
 
 @mixin media($query) {
   @if $query == small {
-    @media (max-width: 40.235em) { @content; } // Handhelds - up to portrait tablet
+    @media (max-width: 47.99em) { @content; } // Handhelds - up to portrait tablet
   } @else if $query == medium {
-    @media (min-width: 40.236em) { @content; } // Tablets - Portrait
+    @media (min-width: 48em) { @content; } // Tablets - Portrait
   } @else if $query == large {
     @media (min-width: 66em) { @content; } // Tablets - Landscape
   } @else if $query == x-large {

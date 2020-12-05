@@ -1,54 +1,65 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>{{ site.title }}{% if page.section_title %} {{ page.section_title }}{% endif %}{% if page.title %}: {{ page.title }}{% endif %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% if page.description -%}
-    <meta name="description" content="{{ page.description }}">
-  {% endif -%}
-  <link rel="canonical" href="{{ page.url | replace: "index.html", "" | prepend: site.url }}">
-  <link rel="stylesheet" href="/css/main.css">
-  <script src="/js/main.js" type="module"></script>
-</head>
-<body>
-  <header class="nav">
-    <a class="nav__logo" href="/" aria-label="Turbo">
-      {% include svg/turbo-icon.svg %}
-      {% include svg/turbo-wordmark.svg %}
-    </a>
-    <nav class="nav__links">
-      <a class="nav__links-item{% if page.section == "handbook" %} active{% endif %}" href="{% link docs/handbook/01_introduction.md %}">Handbook</a>
-      <a class="nav__links-item{% if page.section == "reference" %} active{% endif %}" href="{% link docs/reference/links.md %}">Reference</a>
-      <a class="nav__links-item" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Stimulus Discourse community forum.">Community</a>
-      <a class="nav__links-item" href="{{ site.github_url }}" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
-    </nav>
-  </header>
 
-  <main class="{{ page.layout_type }}">
-    {%- if page.layout_type == "docs" -%}
-      {% include docs_navigation.html %}
-    {%- endif -%}
+  <head>
+    <meta charset="utf-8">
+    <title>{{ site.title }}{% if page.section_title %} {{ page.section_title }}{% endif %}{% if page.title %}: {{ page.title }}{% endif %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if page.description -%}
+      <meta name="description" content="{{ page.description }}">
+    {% endif -%}
+    <link rel="canonical" href="{{ page.url | replace: "index.html", "" | prepend: site.url }}">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/main.js" type="module"></script>
+  </head>
 
-    <section class="{% if page.layout_type %}{{ page.layout_type }}__content{% endif %}" data-controller="anchor" data-anchor-selector="h2,h3,h4">
+  <body>
+
+    <header class="nav">
+      <a class="nav__logo" href="/" aria-label="Turbo">
+        {% include svg/turbo-icon.svg %}
+        {% include svg/turbo-wordmark.svg %}
+      </a>
+      <nav class="nav__links">
+        <a class="nav__links-item{% if page.section == "handbook" %} active{% endif %}" href="{% link docs/handbook/01_introduction.md %}">Handbook</a>
+        <a class="nav__links-item{% if page.section == "reference" %} active{% endif %}" href="{% link docs/reference/links.md %}">Reference</a>
+        <a class="nav__links-item" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Stimulus Discourse community forum.">Community</a>
+        <a class="nav__links-item" href="{{ site.github_url }}" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+      </nav>
+    </header>
+
+    <main class="grid {{ page.layout_type }}">
+
+      {%- if page.layout_type == "docs" -%}
+
+        {% include docs_navigation.html %}
+        <section class="docs__content grid__item grid__item--start-auto grid__item--span-8" data-controller="anchor" data-anchor-selector="h2,h3,h4">
+          {{ content }}
+          {%- if next_section_page -%}
+            <p>Next: <a href="{{ next_section_page.url }}">{{ next_section_page.title }}</a></p>
+          {%- endif -%}
+        </section>
+
+      {%- else -%}
+
       {{ content }}
 
-      {% if next_section_page %}
-        <p>Next: <a href="{{ next_section_page.url }}">{{ next_section_page.title }}</a></p>
-      {% endif %}
-    </section>
-  </main>
+      {%- endif -%}
 
-  <footer class="foot">
-    <p class="foot__logos">
-      <a href="https://basecamp.com/" target="_blank" rel="noopener">
-        <img width="253" height="56" src="/images/logo-basecamp.svg" alt="Basecamp">
-      </a>
-      <a href="https://hey.com/" target="_blank" rel="noopener">
-        <img width="122" height="56" src="/images/logo-hey.svg" alt="Basecamp">
-      </a>
-    </p>
-    <p><span class="foot__text">Brought to you by the team at <a href="https://basecamp.com/">Basecamp</a> & <a href="https://hey.com/">HEY</a>.</span></p>
-  </footer>
-</body>
+    </main>
+
+    <footer class="foot">
+      <p class="foot__logos">
+        <a href="https://basecamp.com/" target="_blank" rel="noopener">
+          <img width="253" height="56" src="/images/logo-basecamp.svg" alt="Basecamp">
+        </a>
+        <a href="https://hey.com/" target="_blank" rel="noopener">
+          <img width="122" height="56" src="/images/logo-hey.svg" alt="Basecamp">
+        </a>
+      </p>
+      <p><span class="foot__text">Brought to you by the team at <a href="https://basecamp.com/">Basecamp</a> & <a href="https://hey.com/">HEY</a>.</span></p>
+    </footer>
+
+  </body>
+
 </html>

@@ -90,7 +90,6 @@ a {
 }
 
 h1, h2, h3 {
-  grid-column: 2/5;
   font-family: $sans-stack;
   font-weight: 600;
   letter-spacing: -.03em;
@@ -117,7 +116,6 @@ h3 {
 
 ul,
 ol {
-  grid-column: 3/4;
   line-height: 1.5;
   margin-bottom: 1.5em;
 }
@@ -132,13 +130,11 @@ ol li {
 }
 
 p {
-  grid-column: 3/4;
   line-height: 1.6;
   margin-bottom: 1.5em;
 }
 
 blockquote {
-  grid-column: 3/4;
   position: relative;
   margin-bottom: 1.5em;
   padding: 0 0 0 2em;
@@ -166,7 +162,6 @@ blockquote {
 }
 
 hr {
-  grid-column: 2/5;
   margin: 2em 0 3em 0;
   border: none;
   border-top: 1px solid #f7f5f2;

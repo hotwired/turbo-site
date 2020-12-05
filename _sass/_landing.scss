@@ -1,64 +1,24 @@
 // scss-lint:disable VendorPrefix
 
-// landing layout /////////////////////////////////////////////////////////////
-
-.landing__content {
-  margin: 0 auto;
-  padding: 0 2em;
-  overflow-x: hidden;
-  max-width: $column-width;
-
-  @include media(medium) {
-    max-width: 90em;
-
-    @supports (display: grid) {
-      max-width: 100%;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 0.25fr 1fr 65vw 1fr 0.25fr;
-    }
-  }
-
-  @include media(large) {
-
-    @supports (display: grid) {
-      grid-template-columns: 1fr 1fr 55vw 1fr 1fr;
-    }
-  }
-
-  @include media(x-large) {
-
-    @supports (display: grid) {
-      grid-template-columns: 1fr 5rem 82rem 5rem 1fr;
-    }
-  }
-}
-
 // intro //////////////////////////////////////////////////////////////////////
 
 .intro {
-  position: relative;
-  grid-column: 1/6;
-  margin: 0 -2em;
-  padding: 2em 1em;
-
-  @include media(medium) {
-    margin: 0;
-    padding: 3em 7em;
-    background-color: $color-tint;
-  }
+  margin: 0;
+  padding: 0;
+  background-color: $color-tint;
 }
 
 .intro__text {
   position: relative;
   z-index: 1;
-  margin: 1em 0;
+  margin: 2em 0 2.5em 0;
   text-align: center;
   color: $color-text;
   font-variation-settings: "wdth" 140;
   font-weight: 800;
 
   @include media(x-large) {
+    margin: 1em 0 1.5em 0;
     font-size: $font-xxxx-large;
   }
 }
@@ -67,7 +27,7 @@
 // intro text /////////////////////////////////////////////////////////////////
 
 .lede {
-  text-align: center;
+  text-align: left;
   font-size: $font-large;
 
   @include media(medium) {
