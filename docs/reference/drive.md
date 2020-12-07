@@ -1,9 +1,9 @@
 ---
-permalink: /reference/links
+permalink: /reference/drive
 order: 01
 ---
 
-# Links
+# Drive
 
 ## Turbolinks.visit
 
