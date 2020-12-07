@@ -1,6 +1,6 @@
 ---
 permalink: /reference/events
-order: 02
+order: 04
 ---
 
 # Events
