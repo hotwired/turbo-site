@@ -2,7 +2,7 @@
 permalink: /handbook/building
 ---
 
-# Building Your Turbolinks Application
+# Building Your Turbo Application
 
 Turbolinks is fast because it doesn’t reload the page when you follow a link. Instead, your application becomes a persistent, long-running process in the browser. This requires you to rethink the way you structure your JavaScript.
 
