@@ -90,13 +90,14 @@ a {
 }
 
 h1, h2, h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
   font-family: $sans-stack;
   font-weight: 600;
   letter-spacing: -.03em;
   line-height: 1.1em;
   text-align: center;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
+  word-wrap: break-word;
 }
 
 h1 {
