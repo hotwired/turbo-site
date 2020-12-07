@@ -77,12 +77,16 @@
 
 .docs__nav-title {
   display: none;
-  margin: 0 0 0.6em 0;
+  margin: 0 0 0.75em 0;
+  padding: 0 0.25em;
   font-family: $sans-stack;
-  font-weight: bold;
+  font-weight: 800;
   font-size: $font-small;
+  font-style: italic;
   text-align: center;
-  border-bottom: 0.25em solid $color-accent;
+  background-color: $color-tint;
+  border-radius: 0.25rem;
+  //border-bottom: 0.25em solid $color-accent;
 
   @include media(medium) {
     display: block;
@@ -106,28 +110,27 @@
   padding: 0 1em 1em 1em;
   font-size: $font-large;
   font-family: $sans-stack;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.25;
 
   &.active {
     text-decoration: none;
     pointer-events: none;
-    font-weight: 1000;
+    font-weight: 800;
   }
 
   @include media(medium) {
     text-align: left;
-    margin: 0 0 0 -0.2rem;
-    padding: 0.5em;
-    font-size: $font-medium;
+    margin: 0 0 0.5em 0;
+    padding: 0.25em;
+    font-size: $font-small;
     font-style: italic;
     line-height: 1.4;
 
     &.active {
       color: $color-text;
-      background-color: $color-tint;
-      -webkit-clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 0% 100%);
-      clip-path: polygon(0% 0%, 100% 0%, 96% 100%, 0% 100%);
+      background-color: $color-brand;
+      border-radius: 0.125em;
     }
   }
 }
