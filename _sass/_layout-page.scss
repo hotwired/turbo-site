@@ -1,4 +1,4 @@
-// header /////////////////////////////////////////////////////////////////////
+// default page layout ////////////////////////////////////////////////////////
 
 .page-header {
   padding-bottom: 1em;
@@ -14,29 +14,7 @@
 }
 
 .page-footer {
-  padding: 2em 0 0 0;
-  position: relative;
-  margin: 10em 0 0 0;
+  margin: 6em 0 0 0;
+  padding: 2em 0;
   text-align: center;
-  font-size: $font-small;
-  padding-bottom: 2em;
-  overflow: hidden;
-}
-
-.page-footer__logos {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-
-  a {
-    padding: 1em;
-    text-decoration: none;
-  }
-
-  img {
-    width: auto;
-    max-height: 2em;
-  }
 }
