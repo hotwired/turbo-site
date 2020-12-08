@@ -159,16 +159,6 @@ Include a `<meta name="turbo-drive-root">` element in your pages’ `<head>` to 
 </head>
 ```
 
-## Following Redirects
-
-When you visit location `/one` and the server redirects you to location `/two`, you expect the browser’s address bar to display the redirected URL.
-
-However, Turbo Drive makes requests using `XMLHttpRequest`, which transparently follows redirects. There’s no way for Turbo Drive to tell whether a request resulted in a redirect without additional cooperation from the server.
-
-To work around this problem, send the `Turbo-Drive-Location` header in the final response to a visit that was redirected, and Turbo Drive will replace the browser’s topmost history entry with the value you provide.
-
-The Turbo Drive Rails engine sets `Turbo-Drive-Location` automatically when using `redirect_to` in response to a Turbo Drive visit.
-
 ## Redirecting After a Form Submission
 
 Turbo takes over form submissions just like it does link clicks, as the benefit of avoiding a full page is the same in both cases. The form submission is transparently turned into a XHR request, which the server must respond to by returning a redirect, which Turbo will then follow, and perform it's regular rendering process.
