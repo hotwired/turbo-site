@@ -16,7 +16,7 @@
         {{ content }}
 
         {%- if next_section_page -%}
-          <p>Next: <a href="{{ next_section_page.url }}">{{ next_section_page.title }}</a></p>
+          <p><a class="button" href="{{ next_section_page.url }}">Next: {{ next_section_page.title }}</a></p>
         {%- endif -%}
 
       </section>

@@ -8,7 +8,7 @@
   margin: 0;
 
   .docs__footer & {
-    justify-content: flex-start;
+    display: none;
   }
 
   a {
@@ -22,11 +22,17 @@
 
   img {
     width: auto;
-    max-height: 2em;
+    max-height: 1.75em;
   }
 }
 
 .foot-text {
   font-size: $font-small;
   font-style: italic;
+
+  span {
+    padding: 0.25em;
+    background-color: $color-background;
+    border-radius: 0.5rem;
+  }
 }
