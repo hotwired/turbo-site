@@ -1,0 +1,40 @@
+// header /////////////////////////////////////////////////////////////////////
+
+.page-header {
+  padding-bottom: 1em;
+  background-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25em 1em 1em 1em;
+
+  @include media(medium) {
+    padding: 1em;
+  }
+}
+
+.page-footer {
+  padding: 2em 0 0 0;
+  position: relative;
+  margin: 10em 0 0 0;
+  text-align: center;
+  font-size: $font-small;
+  padding-bottom: 2em;
+  overflow: hidden;
+}
+
+.page-footer__logos {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin: 0;
+
+  @include media(medium) {
+    flex-direction: row;
+  }
+
+  a {
+    padding: 1em;
+    text-decoration: none;
+  }
+}

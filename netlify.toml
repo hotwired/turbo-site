@@ -3,3 +3,9 @@
   publish = "_site/"
   # Default build command.
   command = "bundle exec jekyll build"
+
+# cache fonts forever
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=365000000, immutable"

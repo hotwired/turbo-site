@@ -5,7 +5,7 @@
   font-weight: 100 900;
   font-stretch: normal;
   font-named-instance: 'Regular';
-  src: url('/assets/Bitter-Roman.woff2') format('woff2');
+  src: url('/assets/fonts/Bitter-Roman.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -14,7 +14,7 @@
   font-weight: 100 900;
   font-style: italic;
   font-named-instance: 'Italic';
-  src: url('/assets/Bitter-Italic.woff2') format('woff2');
+  src: url('/assets/fonts/Bitter-Italic.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -23,7 +23,7 @@
   font-weight: 100 900;
   font-stretch: normal;
   font-named-instance: 'Regular';
-  src: url('/assets/Jost-Roman.woff2') format('woff2');
+  src: url('/assets/fonts/Jost-Roman.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -32,7 +32,7 @@
   font-weight: 100 900;
   font-style: italic;
   font-named-instance: 'Italic';
-  src: url('/assets/Jost-Italic.woff2') format('woff2');
+  src: url('/assets/fonts/Jost-Italic.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -67,7 +67,7 @@ body {
 
 a {
   color: $color-text;
-  font-weight: bold;
+  font-weight: 600;
   margin: -.2rem;
   padding: .2rem;
   text-decoration: underline;
@@ -133,6 +133,10 @@ ol li {
 p {
   line-height: 1.6;
   margin-bottom: 1.5em;
+}
+
+strong {
+  font-weight: 600;
 }
 
 blockquote {

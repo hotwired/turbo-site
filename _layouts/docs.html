@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+
+    <main class="grid {{ page.layout_type }}">
+
+      <header class="docs__index grid__item grid__item--start-1 grid__item--span-3">
+        {% include navigation.html %}
+      </header>
+
+      <section class="docs__content grid__item grid__item--start-4 grid__item--span-8" data-controller="anchor" data-anchor-selector="h2,h3,h4">
+
+        {{ content }}
+
+        {%- if next_section_page -%}
+          <p>Next: <a href="{{ next_section_page.url }}">{{ next_section_page.title }}</a></p>
+        {%- endif -%}
+
+      </section>
+
+      <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+        <p>Brought to you by the team at <a href="https://basecamp.com/" rel="noopener">Basecamp</a> & <a href="https://hey.com/" rel="noopener">HEY</a>.</p>
+      </footer>
+
+    </main>
+
+  </body>
+
+</html>
