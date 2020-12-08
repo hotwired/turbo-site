@@ -171,13 +171,7 @@ The Turbo Drive Rails engine sets `Turbo Drive-Location` automatically when usin
 
 ## Redirecting After a Form Submission
 
-Submitting an HTML form to the server and redirecting in response is a common pattern in web applications. Standard form submission is similar to navigation, resulting in a full page load. Using Turbo Drive you can improve the performance of form submission without complicating your server-side code.
-
-Instead of submitting forms normally, submit them with XHR. In response to an XHR submit on the server, return JavaScript that performs a [`Turbo Drive.visit`](#turbolinksvisit) to be evaluated by the browser.
-
-If form submission results in a state change on the server that affects cached pages, consider clearing Turbo Drive’ cache with [`Turbo Drive.clearCache()`](#turbolinksclearcache).
-
-The Turbo Drive Rails engine performs this optimization automatically for non-GET XHR requests that redirect with the `redirect_to` helper.
+Turbo takes over form submissions just like it does link clicks, as the benefit of avoiding a full page is the same in both cases. The form submission is transparently turned into a XHR request, which the server must respond to by returning a redirect, which Turbo will then follow, and perform it's regular rendering process.
 
 ## Setting Custom HTTP Headers
 
