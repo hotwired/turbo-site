@@ -3,7 +3,6 @@ permalink: /handbook/frames
 ---
 
 # Decompose with Turbo Frames
-{:.no_toc}
 
 Frames are created by wrapping a segment of the page in a `<turbo-frame>` tag. Each tag must have a unique id, which is used to match the content being replaced when requesting new pages from the server. A single page can have multiple frames, each establishing their own context:
 
