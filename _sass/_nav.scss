@@ -1,5 +1,44 @@
 // primary nav ////////////////////////////////////////////////////////////
 
+.nav-skip {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  background-color: $color-background;
+
+  &:hover,
+  &:active,
+  &:focus {
+    clip: auto !important;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    z-index: 100000;
+  }
+}
+
+.nav-logo {
+  display: block;
+  width: 8em;
+  margin: 0;
+
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+
+  path {
+    transition: fill 0.2s ease;
+  }
+
+  &:hover path {
+    fill: $color-accent;
+  }
+}
+
 .nav {
 
   @include media(small) {
@@ -30,24 +69,7 @@
   }
 }
 
-.nav__logo {
-  display: block;
-  width: 8em;
-  margin: 0;
 
-  .logo {
-    width: 100%;
-    height: auto;
-  }
-
-  path {
-    transition: fill 0.2s ease;
-  }
-
-  &:hover path {
-    fill: $color-accent;
-  }
-}
 
 .nav__list {
   margin: 1em 0 0 0;
@@ -157,16 +179,16 @@
   }
 }
 
-.nav__checkbox {
+.nav-checkbox {
   display: none;
 }
 
-.nav__checkbox:checked ~ .nav {
+.nav-checkbox:checked ~ .nav {
   @include transform(translate(0, 0));
   opacity: 1;
 }
 
-.nav__mobile-button {
+.nav-mobile-button {
   display: inline-block;
   margin: 0;
   padding: 0.6em 1em;
@@ -211,7 +233,7 @@
   }
 }
 
-.nav__mobile-button--close {
+.nav-mobile-button--close {
   margin: 1.5em auto 1.5em auto;
   padding: 0;
   background-color: $color-brand;
