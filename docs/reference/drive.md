@@ -7,7 +7,6 @@ order: 01
 
 ## TurboDrive.visit
 
-Usage:
 ```js
 TurboDrive.visit(location)
 TurboDrive.visit(location, { action: action })
@@ -23,7 +22,6 @@ Before performing the visit, Turbo Drive fires a `turbo-drive:before-visit` even
 
 ## TurboDrive.clearCache
 
-Usage:
 ```js
 TurboDrive.clearCache()
 ```
@@ -32,7 +30,6 @@ Removes all entries from the Turbo Drive page cache. Call this when state has ch
 
 ## TurboDrive.setProgressBarDelay
 
-Usage:
 ```js
 TurboDrive.setProgressBarDelay(delayInMilliseconds)
 ```
@@ -43,7 +40,6 @@ Note that this method has no effect when used with the iOS or Android adapters.
 
 ## TurboDrive.supported
 
-Usage:
 ```js
 if (TurboDrive.supported) {
   // ...

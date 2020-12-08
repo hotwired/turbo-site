@@ -5,23 +5,24 @@ order: 04
 
 # Events
 
-Turbolinks emits events that allow you to track the navigation lifecycle and respond to page loading. Except where noted, Turbolinks fires events on the `document` object.  
-Note that when using jQuery, the data on the event must be accessed as `$event.originalEvent.data`.
+Turbo emits events that allow you to track the navigation lifecycle and respond to page loading. Except where noted, Turbo fires events on the `document` object.  
 
-* `turbolinks:click` fires when you click a Turbolinks-enabled link. The clicked element is the event target. Access the requested location with `event.data.url`. Cancel this event to let the click fall through to the browser as normal navigation.
+(Note that when using jQuery, the data on the event must be accessed as `$event.originalEvent.data`.)
 
-* `turbolinks:before-visit` fires before visiting a location, except when navigating by history. Access the requested location with `event.data.url`. Cancel this event to prevent navigation.
+* `turbo-drive:click` fires when you click a Turbo Drive-enabled link. The clicked element is the event target. Access the requested location with `event.data.url`. Cancel this event to let the click fall through to the browser as normal navigation.
 
-* `turbolinks:visit` fires immediately after a visit starts.
+* `turbo-drive:before-visit` fires before visiting a location, except when navigating by history. Access the requested location with `event.data.url`. Cancel this event to prevent navigation.
 
-* `turbolinks:request-start` fires before Turbolinks issues a network request to fetch the page. Access the XMLHttpRequest object with `event.data.xhr`.
+* `turbo-drive:visit` fires immediately after a visit starts.
 
-* `turbolinks:request-end` fires after the network request completes. Access the XMLHttpRequest object with `event.data.xhr`.
+* `turbo-drive:request-start` fires before Turbo Drive issues a network request to fetch the page. Access the XMLHttpRequest object with `event.data.xhr`.
 
-* `turbolinks:before-cache` fires before Turbolinks saves the current page to cache.
+* `turbo-drive:request-end` fires after the network request completes. Access the XMLHttpRequest object with `event.data.xhr`.
 
-* `turbolinks:before-render` fires before rendering the page. Access the new `<body>` element with `event.data.newBody`.
+* `turbo-drive:before-cache` fires before Turbo Drive saves the current page to cache.
 
-* `turbolinks:render` fires after Turbolinks renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.
+* `turbo-drive:before-render` fires before rendering the page. Access the new `<body>` element with `event.data.newBody`.
 
-* `turbolinks:load` fires once after the initial page load, and again after every Turbolinks visit. Access visit timing metrics with the `event.data.timing` object.
+* `turbo-drive:render` fires after Turbo Drive renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.
+
+* `turbo-drive:load` fires once after the initial page load, and again after every Turbo Drive visit. Access visit timing metrics with the `event.data.timing` object.
