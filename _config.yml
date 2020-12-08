@@ -2,6 +2,7 @@ title: Turbo
 url: https://turbo.hotwire.dev
 discourse_url: https://discourse.hotwire.dev
 github_url: https://github.com/hotwired/turbo
+description: The speed of a single-page web application without having to write any JavaScript.
 
 theme: false
 
