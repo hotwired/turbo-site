@@ -169,14 +169,15 @@
 .nav__mobile-button {
   display: inline-block;
   margin: 0;
-  padding: 0.5em 1em;
+  padding: 0.6em 1em;
   cursor: pointer;
   z-index: 2000;
   font-family: $sans-stack;
-  font-weight: 600;
+  font-size: $font-large;
+  font-weight: 800;
   text-transform: uppercase;
   background-color: $color-brand;
-  border-radius: 2em;
+  border-radius: 0.2rem;
 
   @include media(medium) {
     display: none;
@@ -186,7 +187,7 @@
     display: inline-block;
     top: -0.25em;
     width: 1.25em;
-    height: 0.125em;
+    height: 0.2rem;
     background-color: $color-background;
     position: relative;
 
@@ -196,7 +197,7 @@
       content: '';
       position: absolute;
       width: 1.25em;
-      height: 0.125em; 
+      height: 0.2rem; 
       background-color: $color-background;
     }
 
@@ -205,7 +206,7 @@
     }
 
     &::after {
-      margin-top: 0.25em;
+      margin-top: 0.28em;
     }
   }
 }

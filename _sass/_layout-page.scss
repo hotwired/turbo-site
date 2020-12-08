@@ -25,16 +25,18 @@
 
 .page-footer__logos {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin: 0;
-
-  @include media(medium) {
-    flex-direction: row;
-  }
 
   a {
     padding: 1em;
     text-decoration: none;
+  }
+
+  img {
+    width: auto;
+    max-height: 2em;
   }
 }

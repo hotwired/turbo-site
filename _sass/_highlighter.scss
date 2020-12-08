@@ -1,8 +1,10 @@
 $color-bg: #fbf7f0;
 
 div.highlighter-rouge {
-  grid-column: 3/4;
   margin: 0 -1em 2em -1em;
+  margin: calc(min(5vw, 4rem)*-1);
+  margin-top: 0;
+  margin-bottom: 2em;
   background: $color-bg;
   position: relative;
 

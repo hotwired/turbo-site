@@ -54,6 +54,7 @@ body {
   font-family: $serif-stack;
   font-size: $font-base-small;
   font-style: normal;
+  font-weight: 450;
   line-height: 1;
 
   @include media(large) {
@@ -117,7 +118,7 @@ h3 {
 
 ul,
 ol {
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1.5em;
 }
 
