@@ -1,0 +1,23 @@
+{%- assign section_pages = site.pages | where: "section",include.section | sort: "order" -%}
+
+<ul class="nav__sublist {% if page.section == include.section %} active{% endif %}">
+  {%- for section_page in section_pages -%}
+    {%- assign is_active = false -%}
+    {%- if page.url == section_page.url -%}
+      {%- assign is_active = true -%}
+      {%- assign next_section_page = section_pages[forloop.index] -%}
+    {%- endif -%}
+    <li>
+      <a class="nav__sublist-link{% if is_active %} active{% endif %}" href="{{ section_page.url }}">
+        {%- assign prefix = section_page.nav_prefix -%}
+        {%- unless prefix -%}
+          {%- assign index = section_page.path | split: "/" | reverse | first | abs -%}
+          {%- if index > 0 -%}
+            {%- assign prefix = forloop.index0 | plus: 1 -%}
+          {%- endif -%}
+        {%- endunless -%}
+        {%- if prefix %}{{ prefix }}: {% endif %}{{ section_page.title }}
+      </a>
+    </li>
+  {%- endfor -%}
+</ul>
