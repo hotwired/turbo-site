@@ -24,14 +24,20 @@ div.highlighter-rouge {
     box-shadow: inset -2em 0 1.8em -1em $color-bg;
   }
 
+  code,
+  pre {
+    background-color: transparent;
+  }
+
   pre {
     padding: 1em;
     overflow: auto;
   }
 }
 
-.highlight .hll { background-color: #ffffcc }
 .highlight  { background: $color-bg; }
+
+.highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #60a0b0; font-style: italic } /* Comment */
 .highlight .k { color: #007020; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
