@@ -15,6 +15,14 @@
   }
 }
 
+.docs__screenshot {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid transparentize($color-brand, 0.6);
+  border-radius: 5px;
+  box-shadow: 2px 2px 22px transparentize($color-brand, 0.6);
+}
+
 .docs__index {
   margin: 0;
   text-align: left;
