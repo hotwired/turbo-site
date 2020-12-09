@@ -120,8 +120,7 @@ blockquote {
     display: block;
     width: 1rem;
     height: 1rem;
-    background: #fff url(/images/logo.svg) no-repeat left top;
-    background-size: 1em;
+    background: url('/images/logo.svg') left top / contain no-repeat;
   }
 
   h1,
