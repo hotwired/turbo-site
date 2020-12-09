@@ -196,9 +196,9 @@
 }
 
 .nav-mobile-button {
-  display: inline-block;
+  display: block;
   margin: 0;
-  padding: 0.6em 1em;
+  padding: 0.5em 1em;
   cursor: pointer;
   z-index: 2000;
   font-family: $sans-stack;
@@ -213,18 +213,18 @@
   }
 
   span {
-    display: inline-block;
-    top: -0.25em;
+    position: relative;
+    display: inline-flex;
+    top: -0.5rem;
     width: 1.25em;
     height: 0.2rem;
     background-color: $color-background;
-    position: relative;
 
     &::after,
     &::before {
-      display: block;
       content: '';
       position: absolute;
+      display: block;
       width: 1.25em;
       height: 0.2rem; 
       background-color: $color-background;
@@ -235,7 +235,7 @@
     }
 
     &::after {
-      margin-top: 0.28em;
+      margin-top: 0.3em;
     }
   }
 }
