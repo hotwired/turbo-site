@@ -9,48 +9,54 @@ layout: default
 layout_type: landing
 ---
 
-<div class="intro grid">
-  <h1 class="intro__text grid__item grid__item--start-2 grid__item--span-10">
+<div class="landing-intro grid">
+  <h1 class="landing-intro__text grid__item grid__item--start-2 grid__item--span-10">
     The speed of a single-page web application without having to write any JavaScript.
   </h1>
 </div>
 
-<p class="version">
+<p class="landing-version">
   {%- assign release = site.data.releases | where_exp: "release","release.prerelease == false" | first -%}
   <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
 </p>
 
-<p class="lede">
-  <strong>Turbo</strong> uses complimenting techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
-</p>
+<section class="landing-summary">
 
-<ul class="lede">
-  <li><em>Turbo Drive</em> accelerates links and form submissions by negating the need for full page reloads.</li>
-  <li><em>Turbo Frames</em> decompose pages into independent contexts, which can be lazy-loaded and scope interaction.
-  <li><em>Turbo Updates</em> turn pages alive with partial updates delivered over WebSocket (or in response to form submissions), using just HTML and a set of CRUD-like container tags.</li>
-</ul>
+  <p>
+    <strong>Turbo</strong> uses complimenting techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
+  </p>
+  
+  <ul>
+    <li><em>Turbo Drive</em> accelerates links and form submissions by negating the need for full page reloads.</li>
+    <li><em>Turbo Frames</em> decompose pages into independent contexts, which can be lazy-loaded and scope interaction.
+    <li><em>Turbo Updates</em> turn pages alive with partial updates delivered over WebSocket (or in response to form submissions), using just HTML and a set of CRUD-like container tags.</li>
+  </ul>
+  
+  <p>
+    It's all done by sending HTML over the wire. And for those instances when that's not enough, you can reach for the other side of <a href="https://hotwire.dev">Hotwire</a>, and finish the job with <a href="https://stimulusjs.org">Stimulus</a>.
+  </p>
+  
+  <p>
+    Turbo was built from the ground-up to support <a href="https://m.signalvnoise.com/basecamp-3-for-ios-hybrid-architecture/">native, hybrid applications</a> too. We have excellent native adapters for both iOS and Android. This lets your <a href="https://m.signalvnoise.com/the-majestic-monolith/">majestic monolith</a> serve all platforms, further boosting your productivity and reach.
+  </p>
 
-<p class="lede">
-  It's all done by sending HTML over the wire. And for those instances when that's not enough, you can reach for the other side of <a href="https://hotwire.dev">Hotwire</a>, and finish the job with <a href="https://stimulusjs.org">Stimulus</a>.
-</p>
+</section>
 
-<p class="lede">
-  Turbo was built from the ground-up to support <a href="https://m.signalvnoise.com/basecamp-3-for-ios-hybrid-architecture/">native, hybrid applications</a> too. We have excellent native adapters for both iOS and Android. This lets your <a href="https://m.signalvnoise.com/the-majestic-monolith/">majestic monolith</a> serve all platforms, further boosting your productivity and reach.
-</p>
 
-<div class="actions">
-  <a class="actions__item" href="{% link docs/handbook/01_introduction.md %}">
-    <div class="actions__icon actions__icon--guide" aria-hidden="true"></div>
+
+<div class="landing-actions">
+  <a class="landing-actions__item" href="{% link docs/handbook/01_introduction.md %}">
+    <div class="landing-actions__icon landing-actions__icon--guide" aria-hidden="true"></div>
     Handbook
   </a>
 
-  <a class="actions__item" href="{% link docs/handbook/06_installing.md %}">
-    <div class="actions__icon actions__icon--install" aria-hidden="true"></div>
+  <a class="landing-actions__item" href="{% link docs/handbook/06_installing.md %}">
+    <div class="landing-actions__icon landing-actions__icon--install" aria-hidden="true"></div>
     Installation
   </a>
 
-  <a class="actions__item" href="{{ site.github_url }}">
-    <div class="actions__icon actions__icon--github" aria-hidden="true"></div>
+  <a class="landing-actions__item" href="{{ site.github_url }}">
+    <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
     Source
   </a>
 </div>

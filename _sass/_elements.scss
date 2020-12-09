@@ -1,41 +1,5 @@
 // scss-lint:disable unknownProperties
 
-@font-face{
-  font-family: 'Bitter';
-  font-weight: 100 900;
-  font-stretch: normal;
-  font-named-instance: 'Regular';
-  src: url('/assets/fonts/Bitter-Roman.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face{
-  font-family: 'Bitter';
-  font-weight: 100 900;
-  font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/assets/fonts/Bitter-Italic.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face{
-  font-family: 'Jost';
-  font-weight: 100 900;
-  font-stretch: normal;
-  font-named-instance: 'Regular';
-  src: url('/assets/fonts/Jost-Roman.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face{
-  font-family: 'Jost';
-  font-weight: 100 900;
-  font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/assets/fonts/Jost-Italic.woff2') format('woff2');
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -169,7 +133,10 @@ blockquote {
 }
 
 hr {
+  display: block;
+  height: 1px;
   margin: 2em 0 3em 0;
+  padding: 0;
   border: none;
   border-top: 1px solid #f7f5f2;
 }
@@ -188,6 +155,8 @@ code {
 
 table {
   width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
   text-align: left;
 }
 
@@ -206,12 +175,7 @@ td {
   padding: 0.5em;
 }
 
-// Fix: iOS Font Sizing —————————————————————— •
-// ——————————————————————————————————————————— •
-
-@media screen and (max-device-width: 480px) {
-  html {
-    -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-  }
+input,
+select{
+  vertical-align: middle;
 }

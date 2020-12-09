@@ -2,7 +2,7 @@
 
 // intro //////////////////////////////////////////////////////////////////////
 
-.intro {
+.landing-intro {
   position: relative;
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@
   border-top: 0.4rem solid $color-brand;
 }
 
-.intro__text {
+.landing-intro__text {
   position: relative;
   z-index: 1;
   margin: 1.75em 0 2em 0;
@@ -27,12 +27,12 @@
 
 // intro text /////////////////////////////////////////////////////////////////
 
-.lede {
+.landing-summary {
   text-align: left;
   font-size: $font-large;
 }
 
-.version {
+.landing-version {
   grid-column: 2/5;
   position: relative;
   padding: 0;
@@ -53,7 +53,7 @@
 
 // primary actions ////////////////////////////////////////////////////////////
 
-.actions {
+.landing-actions {
   grid-column: 3/4;
   margin: 0;
 
@@ -64,7 +64,7 @@
   }
 }
 
-.actions__item {
+.landing-actions__item {
   display: block;
   margin-bottom: 1em;
   padding: 1.5em 1em;
@@ -88,29 +88,29 @@
   }
 }
 
-.actions__icon {
+.landing-actions__icon {
   display: block;
   width: 3.75em;
   height: 3.75em;
   margin: 0 auto 1em auto;
   background-color: $color-brand;
 
-  .actions__item:hover & {
+  .landing-actions__item:hover & {
     background-color: $color-accent;
   }
 }
 
-.actions__icon--guide {
+.landing-actions__icon--guide {
   -webkit-mask: url('/images/icon-guide.svg') center / 100% no-repeat;
   mask: url('/images/icon-guide.svg') center / 100% no-repeat;
 }
 
-.actions__icon--install {
+.landing-actions__icon--install {
   -webkit-mask: url('/images/icon-install.svg') center / 100% no-repeat;
   mask: url('/images/icon-install.svg') center / 100% no-repeat;
 }
 
-.actions__icon--github {
+.landing-actions__icon--github {
   -webkit-mask: url('/images/icon-github.svg') center / 100% no-repeat;
   mask: url('/images/icon-github.svg') center / 100% no-repeat;
 }

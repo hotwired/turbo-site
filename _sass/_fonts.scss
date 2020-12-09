@@ -1,0 +1,37 @@
+// scss-lint:disable unknownProperties
+
+@font-face{
+  font-family: 'Bitter';
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/fonts/Bitter-Roman.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Bitter';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/fonts/Bitter-Italic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Jost';
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/fonts/Jost-Roman.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Jost';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/fonts/Jost-Italic.woff2') format('woff2');
+  font-display: swap;
+}
