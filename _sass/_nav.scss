@@ -130,6 +130,13 @@
       padding: 0;
       margin: 0;
     }
+
+    .nav__list--horizontal li:not(:last-child) &::after {
+      display: inline-block;
+      margin-left: 0.5rem;
+      margin-right: -0.5rem;
+      content: "/";
+    }
   }
 }
 
