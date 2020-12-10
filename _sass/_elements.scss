@@ -89,14 +89,15 @@ ol {
   margin-bottom: 1.5em;
 }
 
-ul ul {
-  margin-bottom: 0;
-}
-
-ul li,
-ol li {
+li {
   margin-left: 1em;
   margin-bottom: 1em;
+
+  ul,
+  ol {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
 }
 
 p {
