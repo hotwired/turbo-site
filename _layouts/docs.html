@@ -7,11 +7,11 @@
 
     <main class="grid {{ page.layout_type }}">
 
-      <header class="docs__index grid__item grid__item--start-1 grid__item--span-3">
+      <header class="docs__index grid__custom-item">
         {% include navigation.html %}
       </header>
 
-      <section id="content" class="docs__content grid__item grid__item--start-4 grid__item--span-8" data-controller="anchor" data-anchor-selector="h2,h3,h4">
+      <section id="content" class="docs__content grid__custom-item" data-controller="anchor" data-anchor-selector="h2,h3,h4">
 
         {{ content }}
 

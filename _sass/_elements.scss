@@ -43,10 +43,13 @@ a {
     color: $color-text; 
   }
 
-  &:hover { 
-    text-decoration-color: $color-accent;
-    text-decoration-thickness: 0.2em;
-    text-decoration-width: 0.2em;
+  @media (hover: hover) {
+
+    &:hover { 
+      text-decoration-color: $color-accent;
+      text-decoration-thickness: 0.2em;
+      text-decoration-width: 0.2em;
+    }
   }
 
   &:active { 
@@ -93,7 +96,7 @@ ul ul {
 ul li,
 ol li {
   margin-left: 1em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 p {
@@ -118,8 +121,8 @@ blockquote {
     top: 0;
     left: 0;
     display: block;
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: url('/images/logo.svg') left top / contain no-repeat;
   }
 
@@ -148,8 +151,13 @@ pre {
   background-color: $color-tint;
 }
 
+pre {
+  text-indent: -0.125em;
+}
+
 code {
-  padding: 0.25em;
+  padding: 0.125em;
+  word-wrap: break-word;
 }
 
 table {

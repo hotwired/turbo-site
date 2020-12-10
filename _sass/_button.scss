@@ -17,11 +17,14 @@
     color: $color-text;
   }
 
-  &:hover {
-    color: $color-text;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 800;
-    clip-path: polygon(5% 10%, 66% 1%, 66% 10%, 100% 0, 95% 90%, 51% 100%, 51% 90%, 0% 100%);
+  @media (hover: hover) {
+
+    &:hover {
+      color: $color-text;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 800;
+      clip-path: polygon(5% 10%, 66% 1%, 66% 10%, 100% 0, 95% 90%, 51% 100%, 51% 90%, 0% 100%);
+    }
   }
 }

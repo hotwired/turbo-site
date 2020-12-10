@@ -21,7 +21,7 @@ $font-small: 0.85em;
 $font-medium: 1em;
 $font-large: 1.125em;
 $font-x-large: 1.25em;
-$font-xx-large: 1.5em;
+$font-xx-large: 1.75em;
 $font-xxx-large: 2.25em;
 $font-xxxx-large: 3em;
 
@@ -82,9 +82,9 @@ $color-brand: #5cd8e5;
 
 @mixin media($query) {
   @if $query == small {
-    @media (max-width: 47.99em) { @content; } // Handhelds - up to portrait tablet
+    @media (max-width: 39.99em) { @content; } // Handhelds - up to portrait tablet
   } @else if $query == medium {
-    @media (min-width: 48em) { @content; } // Tablets - Portrait
+    @media (min-width: 40em) { @content; } // Tablets - Portrait
   } @else if $query == large {
     @media (min-width: 66em) { @content; } // Tablets - Landscape
   } @else if $query == x-large {

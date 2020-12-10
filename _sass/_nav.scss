@@ -23,6 +23,7 @@
 .nav-logo {
   display: block;
   width: 8em;
+  max-width: 100%;
   margin: 0;
 
   .logo {
@@ -34,8 +35,11 @@
     transition: fill 0.2s ease;
   }
 
-  &:hover path {
-    fill: $color-accent;
+  @media (hover: hover) {
+    
+    &:hover path {
+      fill: $color-accent;
+    }
   }
 }
 
@@ -73,9 +77,13 @@
 
 .nav__list {
   margin: 1em 0 0 0;
-  text-align: left;
+  text-align: right;
   list-style-type: none;
   border-top: 0.2rem solid $color-brand;
+
+  @include media(medium) {
+    text-align: left;
+  }
 
   &.active {
     display: block;
@@ -114,7 +122,6 @@
   font-weight: 600;
   font-style: italic;
   line-height: 1.25;
-  text-align: left;
 
   &.active {
     text-decoration: none;
@@ -144,7 +151,12 @@
   display: none;
   list-style-type: none;
   margin: 0;
-  border-left: 0.2rem solid $color-text;
+  border-right: 0.2rem solid $color-text;
+
+  @include media(medium) {
+    border-right: 0;
+    border-left: 0.2rem solid $color-text;
+  }
 
   &.active {
     display: block;
@@ -159,7 +171,7 @@
 .nav__sublist-link {
   display: block;
   margin: 0;
-  padding: 0.5em 0 0.5em 0.5em;
+  padding: 0.5em;
   font-size: $font-large;
   font-family: $sans-stack;
   font-weight: 400;
