@@ -31,6 +31,10 @@
     height: auto;
   }
 
+  .logo__icon {
+    fill: $color-brand;
+  }
+
   path {
     transition: fill 0.2s ease;
   }

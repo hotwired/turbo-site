@@ -60,7 +60,7 @@
 .docs__screenshot {
   max-width: 100%;
   height: auto;
-  border: 1px solid transparentize($color-brand, 0.6);
+  border: 0.2rem solid $color-background;
   border-radius: 5px;
-  box-shadow: 2px 2px 22px transparentize($color-brand, 0.6);
+  box-shadow: 0 0 1em rgba($color-text, 0.1);
 }

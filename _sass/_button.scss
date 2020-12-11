@@ -1,5 +1,5 @@
 .button {
-  transition: font-weight 0.1s ease, clip-path 0.2s ease;
+  transition: font-weight 0.1s ease, clip-path 0.2s ease, background-color 0.2s ease;
   display: inline-block;
   padding: 1em 1.5em;
   color: $color-text;
@@ -8,7 +8,7 @@
   text-align: center;
   line-height: normal;
   -webkit-appearance: none;
-  background-color: $color-accent;
+  background-color: $color-brand;
   border: 0;
   box-shadow: none;
   clip-path: polygon(5% 10%, 46% 1%, 46% 10%, 100% 0, 95% 90%, 31% 100%, 31% 90%, 0% 100%);
@@ -21,6 +21,7 @@
 
     &:hover {
       color: $color-text;
+      background-color: $color-accent;
       cursor: pointer;
       text-decoration: none;
       font-weight: 800;
