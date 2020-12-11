@@ -1,5 +1,6 @@
 ---
 permalink: /handbook/installing
+description: "Learn how to install Turbo in your application."
 ---
 
 # Installing Turbo in Your Application

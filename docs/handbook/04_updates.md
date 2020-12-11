@@ -1,5 +1,6 @@
 ---
 permalink: /handbook/updates
+description: "Turbo Updates brings pages alive with partial updates delivered over WebSocket (or in response to form submissions), using just HTML and a set of CRUD-like container tags."
 ---
 
 # Alive with Turbo Updates

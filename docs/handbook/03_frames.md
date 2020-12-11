@@ -1,5 +1,6 @@
 ---
 permalink: /handbook/frames
+description: "Turbo Frames decompose pages into independent contexts, which can be lazy-loaded and scope interaction."
 ---
 
 # Decompose with Turbo Frames

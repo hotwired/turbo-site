@@ -1,6 +1,7 @@
 ---
 permalink: /reference/events
 order: 04
+description: "A reference of everything you can do with Turbo Events."
 ---
 
 # Events

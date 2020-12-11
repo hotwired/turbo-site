@@ -1,5 +1,6 @@
 ---
 permalink: /handbook/building
+description: "Learn the basics of building an application with Turbo."
 ---
 
 # Building Your Turbo Application

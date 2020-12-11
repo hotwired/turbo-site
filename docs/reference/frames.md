@@ -1,6 +1,7 @@
 ---
 permalink: /reference/frames
 order: 02
+description: "A reference of everything you can do with Turbo Frames."
 ---
 
 # Frames

@@ -1,6 +1,7 @@
 ---
 permalink: /reference/updates
 order: 03
+description: "A reference of everything you can do with Turbo Updates."
 ---
 
 # Updates

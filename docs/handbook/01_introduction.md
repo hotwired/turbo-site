@@ -1,6 +1,7 @@
 ---
 permalink: /handbook/introduction
 redirect_from: /handbook/
+description: "Turbo bundles several techniques for creating fast, modern web applications without having to reach for a client-side JavaScript framework."
 ---
 
 # Introduction
