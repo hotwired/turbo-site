@@ -86,3 +86,16 @@ This is a conceptual continuation of what in the Rails world was first called <a
 1. **Simpler control flow**: It's really clear to follow what happens when messages arrive on the WebSocket or in response to form submissions. There's no routing, event bubbling, or other indirection required. It's just the HTML to be changed, wrapped in a single tag that tells us how.
 
 Now, unlike RJS and SJR, it's not possible to call custom JavaScript functions as part of a Turbo Update. But this is a feature, not a bug. Those techniques easily end up producing a tangled mess because way too much JavaScript was sent along with the response. Turbo focuses squarely on just updating the dom, and then assumes you'll tie any additional behavior onto that using <a href="https://stimulusjs.org">Stimulus</a>.
+
+
+## Turbo Native: Hybrid apps for iOS & Android
+
+Turbo Native is ideal for building hybrid apps for iOS and Android. You can let your existing server-side rendered HTML power all the screens that don't need that last bit of high fidelity. Then do spend all the time you saved on making the few screens that really benefit from native controls even better.
+
+An application like Basecamp has hundreds of screens. Rewriting every single one of those screens would be an enormous task with very little benefit. Better to reserve the native firepower to high-traffic interactions that really demand the highest fidelity UI. That would be something like the New For You inbox in Basecamp, where we use swipe controls that need to feel just right. But a page like the one showing a single message would be no better if it was all native.
+
+Going hybrid doesn't just speed up your development process, it also gives you more freedom to upgrade your app without going through the slow and onerous app store release processes. Anything that's done in HTML can be changed in your web application, and instantly be available to all users. No waiting for Big Tech to approve your changes, no waiting for users to upgrade.
+
+Turbo Native assumes you're using the recommended development practices available for iOS and Android. This is not a framework that abstracts native APIs away or even tries to let your native code be shareable between platforms. The part that's shareable is the HTML that's rendered server side. But the native controls are written in the recommended native APIs.
+
+See the <a href="https://github.com/hotwired/turbo-ios">Turbo Native: iOS</a> and <a href="https://github.com/hotwired/turbo-android">Turbo Native: Android</a> repositories for more documentation. See the native apps for HEY on <a href="https://apps.apple.com/us/app/hey-email/id1506603805">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.basecamp.hey&hl=en_US&gl=US">Android</a> to get a feel for just how good you can make a hybrid app powered by Turbo.
