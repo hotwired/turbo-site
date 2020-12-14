@@ -19,7 +19,7 @@ When you navigate to a new page, Turbolinks looks for any `<script>` elements in
 
 Turbolinks evaluates `<script>` elements in a page’s `<body>` each time it renders the page. You can use inline body scripts to set up per-page JavaScript state or bootstrap client-side models. To install behavior, or to perform more complex operations when the page changes, avoid script elements and use the `turbo-drive:load` event instead.
 
-Annotate `<script>` elements with `data-turbo-drive-eval="false"` if you do not want Turbo to evaluate them after rendering. Note that this annotation will not prevent your browser from evaluating scripts on the initial page load.
+Annotate `<script>` elements with `data-turbo-eval="false"` if you do not want Turbo to evaluate them after rendering. Note that this annotation will not prevent your browser from evaluating scripts on the initial page load.
 
 ### Loading Your Application’s JavaScript Bundle
 
@@ -56,10 +56,10 @@ document.addEventListener("turbo-drive:before-cache", function() {
 
 ### Detecting When a Preview is Visible
 
-Turbo Drive adds a `data-turbo-drive-preview` attribute to the `<html>` element when it displays a preview from cache. You can check for the presence of this attribute to selectively enable or disable behavior when a preview is visible.
+Turbo Drive adds a `data-turbo-preview` attribute to the `<html>` element when it displays a preview from cache. You can check for the presence of this attribute to selectively enable or disable behavior when a preview is visible.
 
 ```js
-if (document.documentElement.hasAttribute("data-turbo-drive-preview")) {
+if (document.documentElement.hasAttribute("data-turbo-preview")) {
   // Turbolinks is displaying a preview
 }
 ```
@@ -161,10 +161,10 @@ Consider a Turbo Drive application with a shopping cart. At the top of each page
 
 Now imagine a user who has navigated to several pages in this application. She adds an item to her cart, then presses the Back button in her browser. Upon navigation, Turbo Drive restores the previous page’s state from cache, and the cart item count erroneously changes from 1 to 0.
 
-You can avoid this problem by marking the counter element as permanent. Designate permanent elements by giving them an HTML `id` and annotating them with `data-turbo-drive-permanent`.
+You can avoid this problem by marking the counter element as permanent. Designate permanent elements by giving them an HTML `id` and annotating them with `data-turbo-permanent`.
 
 ```html
-<div id="cart-counter" data-turbo-drive-permanent>1 item</div>
+<div id="cart-counter" data-turbo-permanent>1 item</div>
 ```
 
 Before each render, Turbo Drive matches all permanent elements by `id` and transfers them from the original page to the new page, preserving their data and event listeners.
