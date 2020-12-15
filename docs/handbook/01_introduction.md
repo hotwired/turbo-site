@@ -60,33 +60,37 @@ In addition to turning your segments into independent contexts, Turbo Frames aff
 1. **Ready for mobile**: In mobile apps, you usually can't have big, complicated composite pages. Each segment needs a dedicated screen. With an application built using Turbo Frames, you've already done this work of turning the composite page into segments. These segments can then appear in native sheets and screens without alteration (since they all have independent URLs).
 
 
-## Turbo Updates: Make live page changes
+## Turbo Streams: Deliver live page changes
 
-Making partial page updates in response to asynchronous actions is how we make the application feel alive. While Turbo Frames gives us such updates in response to direct interactions within a single frame, Turbo Updates let us change any part of the page in response to updates sent over WebSocket (or in response to a form submission). Think an <a href="http://itsnotatypo.com">imbox</a> that automatically updates when a new email arrives. 
+Making partial page changes in response to asynchronous actions is how we make the application feel alive. While Turbo Frames gives us such updates in response to direct interactions within a single frame, Turbo Streams let us change any part of the page in response to updates sent over WebSocket (or in response to a form submission). Think an <a href="http://itsnotatypo.com">imbox</a> that automatically updates when a new email arrives. 
 
-Turbo Updates take the shape of four different commands: `append`, `prepend`, `replace`, and `remove`. With these four simple commands, you can do all the mutations needed to change the page. You can even combine several commands in a single update. You simply wrap the HTML you're interested in inserting or replacing in the command <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template tag</a> and Turbo does the rest:
+Turbo Streams take the shape of four basic actions: `append`, `prepend`, `replace`, and `remove`. With these actions, you can do all the mutations needed to change the page. You can even combine several commands in a single stream. You simply wrap the HTML you're interested in inserting or replacing in the action <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template tag</a> and Turbo does the rest:
 
 ```html
-<template data-turbo-update="append#messages">
-  <div id="message_1">My new message!</div>
-</template>
+<turbo-stream action="append" target="messages">
+  <template>
+    <div id="message_1">My new message!</div>
+  </template>
+</turbo-stream>
 ```
 
 That update will take the `div` with the new message and append it to the container with the id `messages`. It's just as simple to update an existing element:
 
 ```html
-<template data-turbo-update="replace#message_1">
-  <div id="message_1">This changes the existing message!</div>
-</template>
+<turbo-stream action="replace" target="message_1">
+  <template>
+    <div id="message_1">This changes the existing message!</div>
+  </template>
+</turbo-stream>
 ```
 
 This is a conceptual continuation of what in the Rails world was first called <a href="https://weblog.rubyonrails.org/2006/3/28/rails-1-1-rjs-active-record-respond_to-integration-tests-and-500-other-things/">RJS</a> and then called <a href="https://signalvnoise.com/posts/3697-server-generated-javascript-responses">SJR</a>, but realized without any need for JavaScript. The benefits remain the same:
 
-1. **Reuse the server-side templates**: Live page updates are generated using the same server-side templates that were used to create the first-load page.
+1. **Reuse the server-side templates**: Live page changes are generated using the same server-side templates that were used to create the first-load page.
 1. **HTML over the wire**: Since all we're sending is HTML, you don't need any client-side JavaScript (beyond Turbo, of course) to process the update. Yes, the HTML payload might be a tad larger than a comparable JSON, but with gzip, the difference is usually negligible, and you save all the client-side computation it takes to turn JSON into HTML.
 1. **Simpler control flow**: It's really clear to follow what happens when messages arrive on the WebSocket or in response to form submissions. There's no routing, event bubbling, or other indirection required. It's just the HTML to be changed, wrapped in a single tag that tells us how.
 
-Now, unlike RJS and SJR, it's not possible to call custom JavaScript functions as part of a Turbo Update. But this is a feature, not a bug. Those techniques easily end up producing a tangled mess because way too much JavaScript was sent along with the response. Turbo focuses squarely on just updating the dom, and then assumes you'll tie any additional behavior onto that using <a href="https://stimulusjs.org">Stimulus</a>.
+Now, unlike RJS and SJR, it's not possible to call custom JavaScript functions as part of a turbo-stream action. But this is a feature, not a bug. Those techniques easily end up producing a tangled mess because way too much JavaScript was sent along with the response. Turbo focuses squarely on just updating the dom, and then assumes you'll tie any additional behavior onto that using <a href="https://stimulusjs.org">Stimulus</a>.
 
 
 ## Turbo Native: Hybrid apps for iOS & Android
