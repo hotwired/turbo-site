@@ -1,16 +1,10 @@
 // default page layout ////////////////////////////////////////////////////////
 
 .page-header {
-  padding-bottom: 1em;
-  background-size: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25em 1em 1em 1em;
-
-  @include media(medium) {
-    padding: 1em;
-  }
+  padding: 0.75em 1em;
 }
 
 .page-footer {

@@ -1,0 +1,78 @@
+// jump nav ///////////////////////////////////////////////////////////////
+
+.jump {
+  width: 100%;
+  margin: 0;
+  padding: 0 1em;
+  color: $color-background;
+  background-color: $color-text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $sans-stack;
+  text-transform: uppercase;
+  font-style: italic;
+
+  @include media(medium) {
+    justify-content: flex-start;
+  }
+}
+
+.jump__list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    &:nth-child(2)::after,
+    &:nth-child(3)::after {
+      content: "/";
+      display: inline-block;
+      margin: 0 0.25em 0 0.125em;
+    }
+  }
+}
+
+.jump__list-link {
+  display: inline-block;
+  padding: 0.5em 0.25em;
+  color: $color-background;
+  font-weight: 500;
+  text-decoration: none;
+
+  @include media(medium) {
+    padding: 0.25em;
+    font-size: $font-small;
+  }
+
+  &:visited {
+    color: $color-background;
+  }
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.jump__list-link--hotwire {
+  font-weight: 700;
+  margin-right: 0.25em;
+}
+
+.jump__list-link--active {
+  color: $color-brand !important;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.jump__list-link--disabled {
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
