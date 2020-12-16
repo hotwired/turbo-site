@@ -41,13 +41,14 @@
 
 .jump__list-link {
   display: inline-block;
-  padding: 0.5em 0.25em;
+  margin: 0;
+  padding: 0.5em 0.125em;
   color: $color-background;
   font-weight: 500;
   text-decoration: none;
 
   @include media(medium) {
-    padding: 0.25em;
+    padding: 0.125em;
     font-size: $font-small;
   }
 
