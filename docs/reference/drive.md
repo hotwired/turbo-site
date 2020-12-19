@@ -6,43 +6,43 @@ description: "A reference of everything you can do with Turbo Drive."
 
 # Drive
 
-## TurboDrive.visit
+## Turbo.visit
 
 ```js
-TurboDrive.visit(location)
-TurboDrive.visit(location, { action: action })
+Turbo.visit(location)
+Turbo.visit(location, { action: action })
 ```
 
 Performs an [Application Visit](/handbook/drive#application-visits) to the given _location_ (a string containing a URL or path) with the specified _action_ (a string, either `"advance"` or `"replace"`).
 
-If _location_ is a cross-origin URL, or falls outside of the specified root (see [Setting a Root Location](/handbook/drive#setting-a-root-location)), or if the value of [`TurboDrive.supported`](#turbodrivesupported) is `false`, Turbolinks performs a full page load by setting `window.location`.
+If _location_ is a cross-origin URL, or falls outside of the specified root (see [Setting a Root Location](/handbook/drive#setting-a-root-location)), or if the value of [`Turbo.supported`](#turbodrivesupported) is `false`, Turbo performs a full page load by setting `window.location`.
 
 If _action_ is unspecified, Turbo Drive assumes a value of `"advance"`.
 
 Before performing the visit, Turbo Drive fires a `turbo-drive:before-visit` event on `document`. Your application can listen for this event and cancel the visit with `event.preventDefault()` (see [Canceling Visits Before They Start](/handbook/drive#canceling-visits-before-they-start)).
 
-## TurboDrive.clearCache
+## Turbo.clearCache
 
 ```js
-TurboDrive.clearCache()
+Turbo.clearCache()
 ```
 
 Removes all entries from the Turbo Drive page cache. Call this when state has changed on the server that may affect cached pages.
 
-## TurboDrive.setProgressBarDelay
+## Turbo.setProgressBarDelay
 
 ```js
-TurboDrive.setProgressBarDelay(delayInMilliseconds)
+Turbo.setProgressBarDelay(delayInMilliseconds)
 ```
 
 Sets the delay after which the [progress bar](/handbook/drive#displaying-progress) will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.
 
 Note that this method has no effect when used with the iOS or Android adapters.
 
-## TurboDrive.supported
+## Turbo.supported
 
 ```js
-if (TurboDrive.supported) {
+if (Turbo.supported) {
   // ...
 }
 ```
