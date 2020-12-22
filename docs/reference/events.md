@@ -6,9 +6,9 @@ description: "A reference of everything you can do with Turbo Events."
 
 # Events
 
-Turbo emits events that allow you to track the navigation lifecycle and respond to page loading. Except where noted, Turbo fires events on the `document` object.
+Turbo emits events that allow you to track the navigation lifecycle and respond to page loading. Except where noted, Turbo fires events on the `document.documentElement` object (i.e., the `<html>` element).
 
-(Note that when using jQuery, the data on the event must be accessed as `$event.originalEvent.data`.)
+(Note that when using jQuery, the data on the event must be accessed as `$event.originalEvent.detail`.)
 
 * `turbo:click` fires when you click a Turbo-enabled link. The clicked element is the event target. Access the requested location with `event.detail.url`. Cancel this event to let the click fall through to the browser as normal navigation.
 

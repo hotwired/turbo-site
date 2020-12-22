@@ -38,13 +38,3 @@ Turbo.setProgressBarDelay(delayInMilliseconds)
 Sets the delay after which the [progress bar](/handbook/drive#displaying-progress) will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.
 
 Note that this method has no effect when used with the iOS or Android adapters.
-
-## Turbo.supported
-
-```js
-if (Turbo.supported) {
-  // ...
-}
-```
-
-Detects whether Turbo Drive is supported in the current browser. Turbo Drive works in all modern desktop and mobile browsers. It depends on the <a href="http://caniuse.com/#search=pushState">HTML5 History API</a> and <a href="http://caniuse.com/#search=requestAnimationFrame">Window.requestAnimationFrame</a>. In unsupported browsers, Turbo Drive gracefully degrades to standard navigation.

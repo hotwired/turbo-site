@@ -15,7 +15,7 @@ Confines all navigation within the frame by expecting any followed link or form 
   <a href="/messages/expanded">
     Show all expanded messages in this frame.
   </a>
-  
+
   <form action="/messages">
     Show response from this form within this frame.
   </form>
@@ -35,11 +35,11 @@ Works like the basic frame, but the content is loaded from a remote `src` first.
 ## Frame that drives navigation to replace whole page
 
 ```html
-<turbo-frame id="messages" drive-target="top">
+<turbo-frame id="messages" target="_top">
   <a href="/messages/1">
     Following link will replace the whole page, not this frame.
   </a>
-  
+
   <form action="/messages">
     Submitting form will replace the whole page, not this frame.
   </form>
@@ -54,11 +54,11 @@ Works like the basic frame, but the content is loaded from a remote `src` first.
     Following link will replace this frame.
   </a>
 
-  <a href="/messages/1" drive-target="top">
+  <a href="/messages/1" data-turbo-frame="_top">
     Following link will replace the whole page, not this frame.
   </a>
-  
-  <form action="/messages" drive-target="navigation">
+
+  <form action="/messages" data-turbo-frame="navigation">
     Submitting form will replace the navigation frame.
   </form>
 </turbo-frame>

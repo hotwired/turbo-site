@@ -15,8 +15,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="append" target="messages">
   <template>
     <div id="message_1">
-      This div will be appended to the element with the
-      DOM ID "messages".
+      This div will be appended to the element with the DOM ID "messages".
     </div>
   </template>
 </turbo-stream>
@@ -24,8 +23,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="prepend" target="messages">
   <template>
     <div id="message_1">
-      This div will be prepended to the element with the
-      DOM ID "messages".
+      This div will be prepended to the element with the DOM ID "messages".
     </div>
   </template>
 </turbo-stream>
@@ -33,8 +31,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="replace" target="message_1">
   <template>
     <div id="message_1">
-      This div will replace the existing element with the
-      DOM ID "message_1".
+      This div will replace the existing element with the DOM ID "message_1".
     </div>
   </template>
 </turbo-stream>
