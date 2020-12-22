@@ -2,5 +2,4 @@
 set -eo pipefail
 
 echo "Syncing release data…"
-# FIXME: Change to https://github.com/hotwired/turbo
-curl --silent "https://api.github.com/repos/turbolinks/turbolinks/releases" > _data/releases.json
+curl --silent "https://api.github.com/repos/hotwired/turbo/releases" > _data/releases.json
