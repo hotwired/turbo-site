@@ -1,11 +1,11 @@
 ---
 permalink: /handbook/building
-description: "Learn the basics of building an application with Turbo."
+description: "Learn more about building an application with Turbo."
 ---
 
 # Building Your Turbo Application
 
-Turbo is fast because it prevents the whole page from reloading when you follow a link, submit a form, or receive partial updates asynchronously. Instead, your application becomes a persistent, long-running process in the browser. This requires you to rethink the way you structure your JavaScript.
+Turbo is fast because it prevents the whole page from reloading when you follow a link or submit a form. Your application becomes a persistent, long-running process in the browser. This requires you to rethink the way you structure your JavaScript.
 
 In particular, you can no longer depend on a full page load to reset your environment every time you navigate. The JavaScript `window` and `document` objects retain their state across page changes, and any other objects you leave in memory will stay in memory.
 
@@ -17,7 +17,7 @@ Your browser automatically loads and evaluates any `<script>` elements present o
 
 When you navigate to a new page, Turbolinks looks for any `<script>` elements in the new page’s `<head>` which aren’t present on the current page. Then it appends them to the current `<head>` where they’re loaded and evaluated by the browser. You can use this to load additional JavaScript files on-demand.
 
-Turbolinks evaluates `<script>` elements in a page’s `<body>` each time it renders the page. You can use inline body scripts to set up per-page JavaScript state or bootstrap client-side models. To install behavior, or to perform more complex operations when the page changes, avoid script elements and use the `turbo-drive:load` event instead.
+Turbolinks evaluates `<script>` elements in a page’s `<body>` each time it renders the page. You can use inline body scripts to set up per-page JavaScript state or bootstrap client-side models. To install behavior, or to perform more complex operations when the page changes, avoid script elements and use the `turbo:load` event instead.
 
 Annotate `<script>` elements with `data-turbo-eval="false"` if you do not want Turbo to evaluate them after rendering. Note that this annotation will not prevent your browser from evaluating scripts on the initial page load.
 
@@ -32,7 +32,7 @@ Always make sure to load your application’s JavaScript bundle using `<script>`
 </head>
 ```
 
-You should also consider configuring your asset packaging system to fingerprint each script so it has a new URL when its contents change. Then you can use the `data-turbolinks-track` attribute to force a full page reload when you deploy a new JavaScript bundle. See [Reloading When Assets Change](/handbook/drive#reloading-when-assets-change) for information.
+You should also consider configuring your asset packaging system to fingerprint each script so it has a new URL when its contents change. Then you can use the `data-turbo-track` attribute to force a full page reload when you deploy a new JavaScript bundle. See [Reloading When Assets Change](/handbook/drive#reloading-when-assets-change) for information.
 
 ## Understanding Caching
 
@@ -46,10 +46,10 @@ Turbo Drive saves a copy of the current page to its cache just before rendering 
 
 ### Preparing the Page to be Cached
 
-Listen for the `turbo-drive:before-cache` event if you need to prepare the document before Turbo Drive caches it. You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.
+Listen for the `turbo:before-cache` event if you need to prepare the document before Turbo Drive caches it. You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.
 
 ```js
-document.addEventListener("turbo-drive:before-cache", function() {
+document.addEventListener("turbo:before-cache", function() {
   // ...
 })
 ```
@@ -60,13 +60,13 @@ Turbo Drive adds a `data-turbo-preview` attribute to the `<html>` element when i
 
 ```js
 if (document.documentElement.hasAttribute("data-turbo-preview")) {
-  // Turbolinks is displaying a preview
+  // Turbo Drive is displaying a preview
 }
 ```
 
 ### Opting Out of Caching
 
-You can control caching behavior on a per-page basis by including a `<meta name="turbo-drive-cache-control">` element in your page’s `<head>` and declaring a caching directive.
+You can control caching behavior on a per-page basis by including a `<meta name="turbo-cache-control">` element in your page’s `<head>` and declaring a caching directive.
 
 Use the `no-preview` directive to specify that a cached version of the page should not be shown as a preview during an application visit. Pages marked no-preview will only be used for restoration visits.
 
@@ -75,7 +75,7 @@ To specify that a page should not be cached at all, use the `no-cache` directive
 ```html
 <head>
   ...
-  <meta name="turbo-drive-cache-control" content="no-cache">
+  <meta name="turbo-cache-control" content="no-cache">
 </head>
 ```
 
@@ -87,29 +87,29 @@ You may be used to installing JavaScript behavior in response to the `window.onl
 
 ### Observing Navigation Events
 
-Turbo Drive triggers a series of events during navigation. The most significant of these is the `turbo-drive:load` event, which fires once on the initial page load, and again after every Turbo Drive visit.
+Turbo Drive triggers a series of events during navigation. The most significant of these is the `turbo:load` event, which fires once on the initial page load, and again after every Turbo Drive visit.
 
-You can observe the `turbo-drive:load` event in place of `DOMContentLoaded` to set up JavaScript behavior after every page change:
+You can observe the `turbo:load` event in place of `DOMContentLoaded` to set up JavaScript behavior after every page change:
 
 ```js
-document.addEventListener("turbo-drive:load", function() {
+document.addEventListener("turbo:load", function() {
   // ...
 })
 ```
 
 Keep in mind that your application will not always be in a pristine state when this event is fired, and you may need to clean up behavior installed for the previous page.
 
-Also note that Turbo Drive navigation may not be the only source of page updates in your application, so you may wish to move your initialization code into a separate function which you can call from `turbo-drive:load` and anywhere else you may change the DOM.
+Also note that Turbo Drive navigation may not be the only source of page updates in your application, so you may wish to move your initialization code into a separate function which you can call from `turbo:load` and anywhere else you may change the DOM.
 
-When possible, avoid using the `turbo-drive:load` event to add other event listeners directly to elements on the page body. Instead, consider using [event delegation](https://learn.jquery.com/events/event-delegation/) to register event listeners once on `document` or `window`.
+When possible, avoid using the `turbo:load` event to add other event listeners directly to elements on the page body. Instead, consider using [event delegation](https://learn.jquery.com/events/event-delegation/) to register event listeners once on `document` or `window`.
 
 See the [Full List of Events](/reference/events) for more information.
 
 ### Attaching Behavior With Stimulus
 
-New DOM elements can appear on the page at any time by way of Ajax request handlers, WebSocket handlers, or client-side rendering operations, and these elements often need to be initialized as if they came from a fresh page load.
+New DOM elements can appear on the page at any time by way of frame navigation, stream messages, or client-side rendering operations, and these elements often need to be initialized as if they came from a fresh page load.
 
-You can handle all of these updates, including updates from Turbo Drive page loads, in a single place with the conventions and lifecycle callbacks provided by Turbolinks’ sister framework, [Stimulus](https://stimulusjs.org).
+You can handle all of these updates, including updates from Turbo Drive page loads, in a single place with the conventions and lifecycle callbacks provided by Turbo's sister framework, [Stimulus](https://stimulus.hotwire.dev).
 
 Stimulus lets you annotate your HTML with controller, action, and target attributes:
 
@@ -137,7 +137,7 @@ export default class extends Controller {
 }
 ```
 
-Stimulus connects and disconnects these controllers and their associated event handlers whenever the document changes using the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API. As a result, it handles Turbo Drive page changes the same way it handles any other type of DOM update.
+Stimulus connects and disconnects these controllers and their associated event handlers whenever the document changes using the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) API. As a result, it handles Turbo Drive page changes, Turbo Frames navigation, and Turbo Streams messages the same way it handles any other type of DOM update.
 
 ## Making Transformations Idempotent
 
@@ -145,7 +145,7 @@ Often you’ll want to perform client-side transformations to HTML received from
 
 Suppose you have annotated a set of elements with `data-timestamp` attributes indicating the elements’ creation times in UTC. You have a JavaScript function that queries the document for all such elements, converts the timestamps to local time, and inserts date headers before each element that occurs on a new day.
 
-Consider what happens if you’ve configured this function to run on `turbo-drive:load`. When you navigate to the page, your function inserts date headers. Navigate away, and Turbo Drive saves a copy of the transformed page to its cache. Now press the Back button—Turbo Drive restores the page, fires `turbo-drive:load` again, and your function inserts a second set of date headers.
+Consider what happens if you’ve configured this function to run on `turbo:load`. When you navigate to the page, your function inserts date headers. Navigate away, and Turbo Drive saves a copy of the transformed page to its cache. Now press the Back button—Turbo Drive restores the page, fires `turbo:load` again, and your function inserts a second set of date headers.
 
 To avoid this problem, make your transformation function _idempotent_. An idempotent transformation is safe to apply multiple times without changing the result beyond its initial application.
 
@@ -167,4 +167,4 @@ You can avoid this problem by marking the counter element as permanent. Designat
 <div id="cart-counter" data-turbo-permanent>1 item</div>
 ```
 
-Before each render, Turbo Drive matches all permanent elements by `id` and transfers them from the original page to the new page, preserving their data and event listeners.
+Before each render, Turbo Drive matches all permanent elements by ID and transfers them from the original page to the new page, preserving their data and event listeners.

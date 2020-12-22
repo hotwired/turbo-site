@@ -6,14 +6,18 @@ description: "Turbo Drive accelerates links and form submissions by negating the
 # Navigate with Turbo Drive
 {:.no_toc}
 
-Turbo Drive models navigation as a *visit* to a *location* (URL) with an *action*.
+Turbo Drive is the part of Turbo that enhances page-level navigation. It watches for link clicks and form submissions, performs them in the background, and udpates the page without doing a full reload. It's the evolution of a library previously known as [Turbolinks](https://github.com/turbolinks/turbolinks).
+
+* TOC
+{:toc}
+
+## Page Navigation Basics
+
+Turbo Drive models page navigation as a *visit* to a *location* (URL) with an *action*.
 
 Visits represent the entire navigation lifecycle from click to render. That includes changing browser history, issuing the network request, restoring a copy of the page from cache, rendering the final response, and updating the scroll position.
 
 There are two types of visit: an _application visit_, which has an action of _advance_ or _replace_, and a _restoration visit_, which has an action of _restore_.
-
-* TOC
-{:toc}
 
 ## Application Visits
 
@@ -65,11 +69,11 @@ Restoration visits have an action of _restore_ and Turbo Drive reserves them for
 
 ## Canceling Visits Before They Start
 
-Application visits can be canceled before they start, regardless of whether they were initiated by a link click or a call to [`Turbo.visit`](/reference/drive#turbodrivevisit).
+Application visits can be canceled before they start, regardless of whether they were initiated by a link click or a call to [`Turbo.visit`](/reference/drive#turbovisit).
 
-Listen for the `turbo-drive:before-visit` event to be notified when a visit is about to start, and use `event.data.url` (or `$event.originalEvent.data.url`, when using jQuery) to check the visit’s location. Then cancel the visit by calling `event.preventDefault()`.
+Listen for the `turbo:before-visit` event to be notified when a visit is about to start, and use `event.detail.url` (or `$event.originalEvent.detail.url`, when using jQuery) to check the visit’s location. Then cancel the visit by calling `event.preventDefault()`.
 
-Restoration visits cannot be canceled and do not fire `turbo-drive:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
+Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
 
 ## Disabling Turbo Drive on Specific Links
 
@@ -99,12 +103,12 @@ During Turbo Drive navigation, the browser will not display its native progress 
 
 The progress bar is enabled by default. It appears automatically for any page that takes longer than 500ms to load. (You can change this delay with the [`Turbo.setProgressBarDelay`](/reference/drive#turbodrivesetprogressbardelay) method.)
 
-The progress bar is a `<div>` element with the class name `turbo-drive-progress-bar`. Its default styles appear first in the document and can be overridden by rules that come later.
+The progress bar is a `<div>` element with the class name `turbo-progress-bar`. Its default styles appear first in the document and can be overridden by rules that come later.
 
 For example, the following CSS will result in a thick green progress bar:
 
 ```css
-.turbo-drive-progress-bar {
+.turbo-progress-bar {
   height: 5px;
   background-color: green;
 }
@@ -113,7 +117,7 @@ For example, the following CSS will result in a thick green progress bar:
 To disable the progress bar entirely, set its `visibility` style to `hidden`:
 
 ```css
-.turbo-drive-progress-bar {
+.turbo-progress-bar {
   visibility: hidden;
 }
 ```
@@ -134,12 +138,12 @@ Annotate asset elements with `data-turbo-track="reload"` and include a version i
 
 ## Ensuring Specific Pages Trigger a Full Reload
 
-You can ensure visits to a certain page will always trigger a full reload by including a `<meta name="turbo-drive-visit-control">` element in the page’s `<head>`.
+You can ensure visits to a certain page will always trigger a full reload by including a `<meta name="turbo-visit-control">` element in the page’s `<head>`.
 
 ```html
 <head>
   ...
-  <meta name="turbo-drive-visit-control" content="reload">
+  <meta name="turbo-visit-control" content="reload">
 </head>
 ```
 
@@ -151,28 +155,22 @@ By default, Turbo Drive only loads URLs with the same origin—i.e. the same pro
 
 In some cases, you may want to further scope Turbo Drive to a path on the same origin. For example, if your Turbo Drive application lives at `/app`, and the non-Turbo Drive help site lives at `/help`, links from the app to the help site shouldn’t use Turbo Drive.
 
-Include a `<meta name="turbo-drive-root">` element in your pages’ `<head>` to scope Turbo Drive to a particular root location. Turbo Drive will only load same-origin URLs that are prefixed with this path.
+Include a `<meta name="turbo-root">` element in your pages’ `<head>` to scope Turbo Drive to a particular root location. Turbo Drive will only load same-origin URLs that are prefixed with this path.
 
 ```html
 <head>
   ...
-  <meta name="turbo-drive-root" content="/app">
+  <meta name="turbo-root" content="/app">
 </head>
 ```
 
 ## Redirecting After a Form Submission
 
-Turbo takes over form submissions just like it does link clicks, as the benefit of avoiding a full page is the same in both cases. The form submission is transparently turned into a XHR request, which the server must respond to by returning a redirect, which Turbo will then follow, and perform it's regular rendering process.
+Turbo Drive handles form submissions in a manner similar to link clicks. The key difference is that form submissions can issue stateful requests using the HTTP POST method, while link clicks only ever issue stateless HTTP GET requests.
 
-## Setting Custom HTTP Headers
+After a stateful request from a form submission, Turbo Drive expects the server to return an [HTTP 303 redirect response](https://en.wikipedia.org/wiki/HTTP_303), which it will then follow and use to navigate and update the page without reloading.
 
-You can observe the `turbo-drive:request-start` event to set custom headers on Turbo Drive requests. Access the request’s XMLHttpRequest object via `event.data.xhr`, then call the [`setRequestHeader`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method as many times as you wish.
+## Streaming After a Form Submission
 
-For example, you might want to include a request ID with every Turbo Drive link click and programmatic visit.
-
-```javascript
-document.addEventListener("turbo-drive:request-start", function(event) {
-  var xhr = event.data.xhr
-  xhr.setRequestHeader("X-Request-Id", "123...")
-})
-```
+Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/html; turbo-stream` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
+<br><br>
