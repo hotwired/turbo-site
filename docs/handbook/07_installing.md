@@ -18,3 +18,7 @@ You can install Turbo from npm via the `npm` or `yarn` packaging tools. Then req
 ```javascript
 import Turbo from "@hotwired/turbo"
 ```
+
+## In a Ruby on Rails application
+
+The Turbo JavaScript framework is included with [the turbo-rails gem](https://github.com/hotwired/turbo-rails) for direct use with the asset pipeline.
