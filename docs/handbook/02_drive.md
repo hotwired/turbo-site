@@ -6,7 +6,7 @@ description: "Turbo Drive accelerates links and form submissions by negating the
 # Navigate with Turbo Drive
 {:.no_toc}
 
-Turbo Drive is the part of Turbo that enhances page-level navigation. It watches for link clicks and form submissions, performs them in the background, and udpates the page without doing a full reload. It's the evolution of a library previously known as [Turbolinks](https://github.com/turbolinks/turbolinks).
+Turbo Drive is the part of Turbo that enhances page-level navigation. It watches for link clicks and form submissions, performs them in the background, and updates the page without doing a full reload. It's the evolution of a library previously known as [Turbolinks](https://github.com/turbolinks/turbolinks).
 
 * TOC
 {:toc}
