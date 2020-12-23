@@ -74,11 +74,11 @@ In the example above, the trays start empty, but it's also possible to populate 
 
 ```html
 <turbo-frame id="set_aside_tray" src="/emails/set_aside">
-  <img src="/icons/spinner.gif">
+  <a href="/emails/set_aside">Set aside emails</a>
 </turbo-frame>
 ```
 
-Upon loading the imbox page, the set-aside tray is loaded from `/emails/set_aside`, and the response must contain a corresponding `<turbo-frame id="set_aside_tray">` element as in the original example:
+With some JavaScript, you could replace the link with a spinner when the content starts loading. Upon loading the imbox page, the set-aside tray is loaded from `/emails/set_aside`, and the response must contain a corresponding `<turbo-frame id="set_aside_tray">` element as in the original example:
 
 ```html
 <body>
