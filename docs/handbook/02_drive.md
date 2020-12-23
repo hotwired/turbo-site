@@ -172,5 +172,5 @@ After a stateful request from a form submission, Turbo Drive expects the server 
 
 ## Streaming After a Form Submission
 
-Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/html; turbo-stream` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
+Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/html; turbo-stream=*` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
 <br><br>

@@ -114,7 +114,7 @@ end
 When the form to create a new message submits to the `MessagesController#create` action, the very same partial template that was used to render the list of messages in `MessagesController#index` is used to render the turbo-stream action. This will come across as a response that looks like this:
 
 ```html
-Content-Type: text/html; turbo-stream; charset=utf-8
+Content-Type: text/html; turbo-stream=*; charset=utf-8
 
 <turbo-stream action="append" target="messages">
   <template>
