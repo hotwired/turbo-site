@@ -5,7 +5,7 @@ description: "Learn how to install Turbo in your application."
 
 # Installing Turbo in Your Application
 
-Turbo can either be installed in compiled form by simply referencing the Turbo distributable script directly in the `<head>` of your application or through npm via a bundler like Webpack.
+Turbo can either be installed in compiled form by referencing the Turbo distributable script directly in the `<head>` of your application or through npm via a bundler like Webpack.
 
 ## In Compiled Form
 
