@@ -125,6 +125,33 @@ Content-Type: text/html; turbo-stream; charset=utf-8
 </turbo-stream>
 ```
 
+Like `html` and `json` response formats, applications can declare `turbo_stream`
+format response templates, which can be useful for responses that require
+multiple Stream updates.
+
+First, declare instance variables to ensure that response data will be available
+from the action's template:
+
+```ruby
+def create
+  @message = Message.create!(params.require(:message).permit(:content))
+
+  respond_to do |format|
+    format.turbo_stream
+    format.html { redirect_to messages_url }
+  end
+end
+```
+
+Next, declare a view template with the `.turbo_stream.erb` file extension that
+corresponds to the request's controller name and action name:
+
+```erb
+<%# app/views/messages/_message.turbo_stream.erb %>
+<%= turbo_stream.append(:messages, partial: "messages/message",
+      locals: { message: @message }) %>
+```
+
 This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
 
 
