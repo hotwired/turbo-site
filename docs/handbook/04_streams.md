@@ -102,7 +102,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.append(:messages, partial: "messages/message",
-          locals: { message: message }, formats: :html)
+          locals: { message: message })
       end
 
       format.html { redirect_to messages_url }
