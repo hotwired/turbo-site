@@ -1,11 +1,11 @@
 ---
 permalink: /handbook/streams
-description: "Turbo Streams deliver page changes over WebSocket or in response to form submissions using just HTML and a set of CRUD-like actions."
+description: "Turbo Streams deliver page changes over WebSocket, SSE or in response to form submissions using just HTML and a set of CRUD-like actions."
 ---
 
 # Come Alive with Turbo Streams
 
-Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="https://itsnotatypo.com">imbox</a> is a great example.
+Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket, SSE or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="https://itsnotatypo.com">imbox</a> is a great example.
 
 ## Stream Messages and Actions
 
@@ -52,7 +52,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 Note that every `<turbo-stream>` element must wrap its included HTML inside a `<template>` element.
 
-You can render any number of stream elements in a single stream message from a WebSocket or in response to a form submission.
+You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
 ## Streaming From HTTP Responses
 
@@ -125,7 +125,7 @@ Content-Type: text/html; turbo-stream; charset=utf-8
 </turbo-stream>
 ```
 
-This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
+This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket or a SSE connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
 
 
 ## Progressively Enhance When Necessary
@@ -149,3 +149,69 @@ Of all the techniques that are included with Turbo, it's with Turbo Streams you'
 Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb">Broadcastable</a> concern mixed into Active Record, you can trigger WebSocket updates directly from your domain model. And using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/turbo/streams/tag_builder.rb">Turbo::Streams::TagBuilder</a>, you can render `<turbo-stream>` elements in inline controller responses or dedicated templates, invoking the five actions with associated rendering through a simple DSL.
 
 Turbo itself is completely backend-agnostic, though. So we encourage other frameworks in other ecosystems to look at the reference implementation provided for Rails to create their own tight integration.
+
+## Triggering Updates Using SSE and Mercure
+
+[The Mercure protocol](https://mercure.rocks) is a convenient way to trigger updates from any server application, even if it isn't able to maintain persistent WebSocket connections (ex: PHP).
+
+Mercure defines a simple interface to publish updates to a *hub*.
+When the *hub* receives an update, it broadcasts it using [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to every connected client. Several Open Source and commercial hubs are [available](https://mercure.rocks/spec#implementation-status).
+
+Connecting Turbo to a Mercure stream (or any other SSE stream) is straightforward, and doesn't require any external dependency:
+
+```javascript
+import { connectStreamSource } from "@hotwired/turbo";
+
+// The "topic" parameter can be any string or URI
+const es = new EventSource("https://example.com/.well-known/mercure?topic=my-stream");
+connectStreamSource(es);
+```
+
+To broadcast a Turbo Streams message, simply send a `POST` HTTP request to the Mercure hub:
+
+    curl \
+      -H 'Authorization: Bearer <snip>'
+      -d 'topic=my-stream' \
+      -d 'data=<turbo-stream action=...'
+      -X POST \
+      https://example.com/.well-known/mercure
+
+`topic` must be the same topic you subscribed in JavaScript, and `data` contains the Turbo Streams message.
+
+Most Mercure *hubs* require the subscriber to be [authorized](https://mercure.rocks/spec#authorization). Refer to the documentation of your hub to learn how to generate a proper JSON Web Token.
+
+In this example, we use `curl` but any HTTP client will work.
+
+To disconnect the stream source, use the `disconnectStreamSource()` function:
+
+```javascript
+import { disconnectStreamSource } from "@hotwired/turbo";
+
+disconnectStreamSource(es);
+```
+
+In the following example, we use a Stimulus controller to connect to an SSE stream when an HTML element is created, and to disconnect when it is destroyed:
+
+```javascript
+// stream_controller.js
+import { Controller } from "stimulus";
+import { connectStreamSource, disconnectStreamSource } from "@hotwired/turbo";
+
+export default class extends Controller {
+  connect() {
+    this.es = new EventSource(this.element.getAttribute("data-url"));
+    connectStreamSource(this.es);
+  }
+
+  disconnect() {
+    this.es.close();
+    disconnectStreamSource(this.es);
+  }
+}
+```
+
+```html
+<div data-controller="stream" data-url="https://example.com/.well-known/mercure?topic=my-stream">
+  <!-- ... -->
+</div>
+```
