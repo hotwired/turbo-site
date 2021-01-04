@@ -155,7 +155,7 @@ Turbo itself is completely backend-agnostic, though. So we encourage other frame
 [The Mercure protocol](https://mercure.rocks) is a convenient way to trigger updates from any server application, even if it isn't able to maintain persistent WebSocket connections (ex: PHP).
 
 Mercure defines a simple interface to publish updates to a *hub*.
-When the *hub* receives an update, it broadcasts it using [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to every connected client. Several Open Source and commercial hubs are [available](https://mercure.rocks/spec#implementation-status).
+When the *hub* receives an update, it broadcasts it using [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to every connected client. Several Open Source and commercial hubs [are available](https://mercure.rocks/spec#implementation-status).
 
 Connecting Turbo to a Mercure stream (or any other SSE stream) is straightforward, and doesn't require any external dependency:
 
@@ -177,6 +177,8 @@ To broadcast a Turbo Streams message, simply send a `POST` HTTP request to the M
       https://example.com/.well-known/mercure
 
 `topic` must be the same topic you subscribed in JavaScript, and `data` contains the Turbo Streams message.
+It's also possible to use [the other features supported by Mercure](https://mercure.rocks/spec#publication),
+including broadcasting private updates to authorized subscribers.
 
 Most Mercure *hubs* require the subscriber to be [authorized](https://mercure.rocks/spec#authorization). Refer to the documentation of your hub to learn how to generate a proper JSON Web Token.
 
