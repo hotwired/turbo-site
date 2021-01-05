@@ -16,7 +16,7 @@ layout_type: landing
 </div>
 
 <p class="landing-version">
-  {%- assign release = site.data.releases | where_exp: "release","release.prerelease == false" | first -%}
+  {%- assign release = site.data.latest_release -%}
   <span>Current version: <a href="{{ release.html_url }}">{{ release.tag_name | remove_first: "v" }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
 </p>
 

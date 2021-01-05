@@ -1,0 +1,41 @@
+{
+  "url": "https://api.github.com/repos/hotwired/turbo/releases/35968230",
+  "assets_url": "https://api.github.com/repos/hotwired/turbo/releases/35968230/assets",
+  "upload_url": "https://uploads.github.com/repos/hotwired/turbo/releases/35968230/assets{?name,label}",
+  "html_url": "https://github.com/hotwired/turbo/releases/tag/v7.0.0-beta.2",
+  "id": 35968230,
+  "author": {
+    "login": "sstephenson",
+    "id": 2603,
+    "node_id": "MDQ6VXNlcjI2MDM=",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/2603?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/sstephenson",
+    "html_url": "https://github.com/sstephenson",
+    "followers_url": "https://api.github.com/users/sstephenson/followers",
+    "following_url": "https://api.github.com/users/sstephenson/following{/other_user}",
+    "gists_url": "https://api.github.com/users/sstephenson/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/sstephenson/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/sstephenson/subscriptions",
+    "organizations_url": "https://api.github.com/users/sstephenson/orgs",
+    "repos_url": "https://api.github.com/users/sstephenson/repos",
+    "events_url": "https://api.github.com/users/sstephenson/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/sstephenson/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "node_id": "MDc6UmVsZWFzZTM1OTY4MjMw",
+  "tag_name": "v7.0.0-beta.2",
+  "target_commitish": "main",
+  "name": "v7.0.0-beta.2",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2021-01-04T20:14:17Z",
+  "published_at": "2021-01-04T20:51:47Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/hotwired/turbo/tarball/v7.0.0-beta.2",
+  "zipball_url": "https://api.github.com/repos/hotwired/turbo/zipball/v7.0.0-beta.2",
+  "body": "* **CHANGED:** Turbo now renders 4xx and 5xx HTML error responses to form submissions for both Turbo Drive and Turbo Frames. We suggest serving form validation errors with a [HTTP 422](https://tools.ietf.org/html/rfc4918#section-11.2) status. [#39]\r\n* **CHANGED:** Turbo ignores form submissions where the form or triggering button has a `data-turbo=\"false\"` annotation. [#3]\r\n* **CHANGED:** Updated a handful of documentation links to point to the new Stimulus site. [#17, #27]\r\n* **INTERNAL:** Set up CI and configured the test suite to run on Firefox. [#60]\r\n"
+}

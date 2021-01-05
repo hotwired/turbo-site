@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-echo "--- Syncing…"
-bin/sync-releases
+echo "Updating latest release…"
+curl --silent "https://api.github.com/repos/hotwired/turbo/releases/latest" > _data/latest_release.json
 echo
 echo "Done!"
