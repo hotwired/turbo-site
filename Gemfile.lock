@@ -1,3 +1,10 @@
+GIT
+  remote: https://gist.github.com/e78eda1c9a7d25f22268b9f44a81c35a.git
+  revision: 824e9e3e2990091f685e24f82f859ba26788d422
+  specs:
+    jekyll-anchors (0.1.0)
+      nokogumbo
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,9 +57,16 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
+    mini_portile2 (2.5.0)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    nokogumbo (2.0.4)
+      nokogiri (~> 1.8, >= 1.8.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
+    racc (1.5.2)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -70,6 +84,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 3.9.0)
+  jekyll-anchors!
   jekyll-optional-front-matter
   jekyll-redirect-from
   jekyll-relative-links

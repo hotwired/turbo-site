@@ -1,23 +1,20 @@
 .anchor {
-  position: relative;
-
-  &:hover {
-    .anchor__link {
-      opacity: 0.7;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.anchor__link {
-  position: absolute;
+  float: left;
   margin: 0 0 0 -1em;
-  padding: 0.05em 0 0 0;
+  padding: 0;
   font-size: $font-x-small;
   text-decoration: none;
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .anchor {
+    opacity: 0;
+    transition: opacity 60ms ease-in-out;
+  }
+
+  [id]:hover > .anchor {
+    opacity: 0.7;
+    &:hover { opacity: 1; }
+  }
 }
