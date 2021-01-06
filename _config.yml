@@ -4,8 +4,6 @@ discourse_url: https://discuss.hotwire.dev
 github_url: https://github.com/hotwired/turbo
 description: The speed of a single-page web application without having to write any JavaScript.
 
-theme: false
-
 defaults:
   - scope:
       path: "*/handbook/*"
@@ -35,7 +33,5 @@ exclude:
   - bin
   - Gemfile
   - Gemfile.lock
-
-plugins:
-  - jekyll-sitemap
-  - jekyll-redirect-from
+  - README.md
+  - netlify.toml
