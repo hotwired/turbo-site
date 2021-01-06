@@ -33,3 +33,5 @@ exclude:
   - bin
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - netlify.toml
