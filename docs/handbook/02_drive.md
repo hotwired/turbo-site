@@ -75,15 +75,22 @@ Listen for the `turbo:before-visit` event to be notified when a visit is about t
 
 Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
 
-## Disabling Turbo Drive on Specific Links
+## Disabling Turbo Drive on Specific Links or Forms
 
-Turbo Drive can be disabled on a per-link basis by annotating a link or any of its ancestors with `data-turbo="false"`.
+Turbo Drive can be disabled on a per-element basis by annotating the element or any of its ancestors with `data-turbo="false"`.
 
 ```html
 <a href="/" data-turbo="false">Disabled</a>
 
+<form action="/messages" method="post" data-turbo="false">
+  ...
+</form>
+
 <div data-turbo="false">
   <a href="/">Disabled</a>
+  <form action="/messages" method="post">
+    ...
+  </form>
 </div>
 ```
 
@@ -95,7 +102,7 @@ To reenable when an ancestor has opted out, use `data-turbo="true"`:
 </div>
 ```
 
-Links with Turbo Drive disabled will be handled normally by the browser.
+Links or forms with Turbo Drive disabled will be handled normally by the browser.
 
 ## Displaying Progress
 
