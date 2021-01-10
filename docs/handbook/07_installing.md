@@ -16,7 +16,7 @@ You can download the latest distributable script from the GitHub releases page, 
 You can install Turbo from npm via the `npm` or `yarn` packaging tools. Then require or import that in your code:
 
 ```javascript
-import Turbo from "@hotwired/turbo"
+import * as Turbo from "@hotwired/turbo"
 ```
 
 ## In a Ruby on Rails application
