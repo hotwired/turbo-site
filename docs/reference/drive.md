@@ -15,7 +15,7 @@ Turbo.visit(location, { action: action })
 
 Performs an [Application Visit](/handbook/drive#application-visits) to the given _location_ (a string containing a URL or path) with the specified _action_ (a string, either `"advance"` or `"replace"`).
 
-If _location_ is a cross-origin URL, or falls outside of the specified root (see [Setting a Root Location](/handbook/drive#setting-a-root-location)), or if the value of [`Turbo.supported`](#turbodrivesupported) is `false`, Turbo performs a full page load by setting `window.location`.
+If _location_ is a cross-origin URL, or falls outside of the specified root (see [Setting a Root Location](/handbook/drive#setting-a-root-location)), Turbo performs a full page load by setting `window.location`.
 
 If _action_ is unspecified, Turbo Drive assumes a value of `"advance"`.
 
