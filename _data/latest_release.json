@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/hotwired/turbo/releases/35968230",
-  "assets_url": "https://api.github.com/repos/hotwired/turbo/releases/35968230/assets",
-  "upload_url": "https://uploads.github.com/repos/hotwired/turbo/releases/35968230/assets{?name,label}",
-  "html_url": "https://github.com/hotwired/turbo/releases/tag/v7.0.0-beta.2",
-  "id": 35968230,
+  "url": "https://api.github.com/repos/hotwired/turbo/releases/36297894",
+  "assets_url": "https://api.github.com/repos/hotwired/turbo/releases/36297894/assets",
+  "upload_url": "https://uploads.github.com/repos/hotwired/turbo/releases/36297894/assets{?name,label}",
+  "html_url": "https://github.com/hotwired/turbo/releases/tag/v7.0.0-beta.3",
+  "id": 36297894,
   "author": {
     "login": "sstephenson",
     "id": 2603,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "MDc6UmVsZWFzZTM1OTY4MjMw",
-  "tag_name": "v7.0.0-beta.2",
+  "node_id": "MDc6UmVsZWFzZTM2Mjk3ODk0",
+  "tag_name": "v7.0.0-beta.3",
   "target_commitish": "main",
-  "name": "v7.0.0-beta.2",
+  "name": "v7.0.0-beta.3",
   "draft": false,
   "prerelease": false,
-  "created_at": "2021-01-04T20:14:17Z",
-  "published_at": "2021-01-04T20:51:47Z",
+  "created_at": "2021-01-12T19:12:09Z",
+  "published_at": "2021-01-12T19:28:04Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/hotwired/turbo/tarball/v7.0.0-beta.2",
-  "zipball_url": "https://api.github.com/repos/hotwired/turbo/zipball/v7.0.0-beta.2",
-  "body": "* **CHANGED:** Turbo now renders 4xx and 5xx HTML error responses to form submissions for both Turbo Drive and Turbo Frames. We suggest serving form validation errors with a [HTTP 422](https://tools.ietf.org/html/rfc4918#section-11.2) status. [#39]\r\n* **CHANGED:** Turbo ignores form submissions where the form or triggering button has a `data-turbo=\"false\"` annotation. [#3]\r\n* **CHANGED:** Updated a handful of documentation links to point to the new Stimulus site. [#17, #27]\r\n* **INTERNAL:** Set up CI and configured the test suite to run on Firefox. [#60]\r\n"
+  "tarball_url": "https://api.github.com/repos/hotwired/turbo/tarball/v7.0.0-beta.3",
+  "zipball_url": "https://api.github.com/repos/hotwired/turbo/zipball/v7.0.0-beta.3",
+  "body": "* **NEW:** You can use `<turbo-frame loading=\"lazy\" src=\"...\">` to defer loading the source URL until the frame appears in the viewport. [#53]\r\n* **CHANGED:** The Turbo Streams MIME type has changed from `text/html; turbo-stream` to `text/vnd.turbo-stream.html`. Server-side framework integrations will need to update accordingly. [#24, #91, #93]\r\n* **CHANGED:** Form submissions may now return empty HTTP 201 or 204 responses.\r\n* **CHANGED:** Turbo empties the frame and logs an error to the console when a matching `<turbo-frame>` is missing in the response. [#31]\r\n* **FIXED:** Turbo waits until the initial page load has completed before enabling manual scroll restoration to avoid losing the initial scroll offset on locations with anchors. [#63]"
 }
