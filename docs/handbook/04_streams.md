@@ -56,7 +56,7 @@ You can render any number of stream elements in a single stream message from a W
 
 ## Streaming From HTTP Responses
 
-Turbo knows to automatically load stream elements when they arrive in response to form submissions with a MIME type of `text/html; turbo-stream`. Turbo itself adds this type to the `Accept` header to let the server know that these responses are possible. It's therefore easily possible to tailor your server responses to deal with both Turbo Streams and regular redirects or other responses for clients that don't want the streams (such as native applications).
+Turbo knows to automatically load stream elements when they arrive in response to form submissions with a MIME type of `text/vnd.turbo-stream.html`. Turbo itself adds this type to the `Accept` header to let the server know that these responses are possible. It's therefore easily possible to tailor your server responses to deal with both Turbo Streams and regular redirects or other responses for clients that don't want the streams (such as native applications).
 
 In a Rails controller, this would look like:
 
@@ -114,7 +114,7 @@ end
 When the form to create a new message submits to the `MessagesController#create` action, the very same partial template that was used to render the list of messages in `MessagesController#index` is used to render the turbo-stream action. This will come across as a response that looks like this:
 
 ```html
-Content-Type: text/html; turbo-stream; charset=utf-8
+Content-Type: text/vnd.turbo-stream.html; charset=utf-8
 
 <turbo-stream action="append" target="messages">
   <template>
