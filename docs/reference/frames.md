@@ -63,3 +63,54 @@ Works like the basic frame, but the content is loaded from a remote `src` first.
   </form>
 </turbo-frame>
 ```
+
+# Attributes and properties
+
+The `<turbo-frame>` element is a [custom element][] with its own set of HTML
+attributes and JavaScript properties.
+
+[custom element]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements
+
+## HTML Attributes
+
+* `src` accepts a URL or path value that controls navigation
+  of the element
+
+* `loading` has two valid [enumerated][] values: "eager" and "lazy". When
+  `loading="eager"`, changes to the `src` attribute will immediately navigate
+  the element. When `loading="lazy"`, changes to the `src` attribute will defer
+  navigation until the element is visible in the viewport.
+
+* `busy` is a [boolean attribute][] toggled to be present when a
+  `<turbo-frame>`-initiated request starts, and toggled false when the request
+  ends
+
+* `disabled` is a [boolean attribute][] that prevents any navigation when
+  present
+
+* `target` refers to another `<turbo-frame>` element by ID to be navigated when
+  a descendant `<a>` is clicked. When `target="_top"`, navigate the window.
+
+* `recurse`
+
+* `autoscroll`
+
+* `data-autoscroll-block`
+
+[boolean]: https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes
+[enumerated]: https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes
+
+# Properties
+
+All `<turbo-frame>` elements can be controlled in JavaScript environments
+through instances of the `FrameElement` class.
+
+* `FrameElement.loaded` references a [Promise][] instance that resolves once the
+  `FrameElement`'s current navigation has completed.
+
+* `FrameElement.completed` is a boolean property set to `true` when the
+  `FrameElement` has finished navigating and `false` otherwise.
+
+[Promise]:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
