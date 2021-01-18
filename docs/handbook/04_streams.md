@@ -1,11 +1,11 @@
 ---
 permalink: /handbook/streams
-description: "Turbo Streams deliver page changes over WebSocket or in response to form submissions using just HTML and a set of CRUD-like actions."
+description: "Turbo Streams deliver page changes over WebSocket, SSE or in response to form submissions using just HTML and a set of CRUD-like actions."
 ---
 
 # Come Alive with Turbo Streams
 
-Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="https://itsnotatypo.com">imbox</a> is a great example.
+Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket, SSE or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="https://itsnotatypo.com">imbox</a> is a great example.
 
 ## Stream Messages and Actions
 
@@ -52,7 +52,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 Note that every `<turbo-stream>` element must wrap its included HTML inside a `<template>` element.
 
-You can render any number of stream elements in a single stream message from a WebSocket or in response to a form submission.
+You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
 ## Streaming From HTTP Responses
 
@@ -125,7 +125,7 @@ Content-Type: text/vnd.turbo-stream.html; charset=utf-8
 </turbo-stream>
 ```
 
-This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
+This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket or a SSE connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
 
 
 ## Progressively Enhance When Necessary
@@ -149,3 +149,5 @@ Of all the techniques that are included with Turbo, it's with Turbo Streams you'
 Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb">Broadcastable</a> concern mixed into Active Record, you can trigger WebSocket updates directly from your domain model. And using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/turbo/streams/tag_builder.rb">Turbo::Streams::TagBuilder</a>, you can render `<turbo-stream>` elements in inline controller responses or dedicated templates, invoking the five actions with associated rendering through a simple DSL.
 
 Turbo itself is completely backend-agnostic, though. So we encourage other frameworks in other ecosystems to look at the reference implementation provided for Rails to create their own tight integration.
+
+Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on [the Mercure protocol](https://mercure.rocks). Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events). [Learn how to use Mercure with Turbo Streams](https://mercure.rocks/docs/ecosystem/hotwire).
