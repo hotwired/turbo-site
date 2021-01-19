@@ -91,26 +91,47 @@ attributes and JavaScript properties.
 * `target` refers to another `<turbo-frame>` element by ID to be navigated when
   a descendant `<a>` is clicked. When `target="_top"`, navigate the window.
 
+* `autoscroll` is a [boolean attribute][] that controls whether or not to scroll
+  a `<turbo-frame>` element (and its descendant `<turbo-frame>` elements) into
+  view when after loading. Control the scroll's vertical alignment by setting the
+  `data-autoscroll-block` attribute to a valid [Element.scrollIntoView({ block:
+  "..." })][Element.scrollIntoView] value: one of `"end"`, `"start"`, `"center"`,
+  or `"nearest"`. When `data-autoscroll-block` is absent, the default value is
+  `"end"`.
+
 * `recurse`
 
-* `autoscroll`
-
-* `data-autoscroll-block`
-
-[boolean]: https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes
+[boolean attribute]: https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes
 [enumerated]: https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes
+[Element.scrollIntoView]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters
 
 # Properties
 
 All `<turbo-frame>` elements can be controlled in JavaScript environments
 through instances of the `FrameElement` class.
 
+* `FrameElement.src` controls the pathname or URL to be loaded
+
+* `FrameElement.disabled` is a boolean property that controls whether or not the
+  element will load
+
+* `FrameElement.loading` controls the style (either `"eager"` or `"lazy"`) that
+  the frame will loading its content.
+
 * `FrameElement.loaded` references a [Promise][] instance that resolves once the
   `FrameElement`'s current navigation has completed.
 
-* `FrameElement.completed` is a boolean property set to `true` when the
+* `FrameElement.complete` is a read-only boolean property set to `true` when the
   `FrameElement` has finished navigating and `false` otherwise.
 
-[Promise]:
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+* `FrameElement.autoscroll` controls whether or not to scroll the element into
+  view once loaded
 
+* `FrameElement.isActive` is a read-only boolean property that indicates whether
+  or not the frame is loaded and ready to be interacted with
+
+* `FrameElement.isPreview` is a read-only boolean property that returns `true`
+  when the `document` that contains the element is a [preview][].
+
+[Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[preview]: https://turbo.hotwire.dev/handbook/building#detecting-when-a-preview-is-visible
