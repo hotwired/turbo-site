@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
 
@@ -76,4 +77,15 @@
   opacity: 0.5;
   text-decoration: none;
   pointer-events: none;
+}
+
+.jump__list-info {
+
+  @include media(small) {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
 }
