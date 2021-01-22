@@ -42,6 +42,18 @@ Replaces the element designated by the target dom id.
 </turbo-stream>
 ```
 
+## Update
+
+Updates the content within the template tag to the container designated by the target dom id.
+
+```html
+<turbo-stream action="update" target="dom_id">
+  <template>
+    Content to update to container designated with the dom_id.
+  </template>
+</turbo-stream>
+```
+
 ## Remove
 
 Removes the element designated by the target dom id.
