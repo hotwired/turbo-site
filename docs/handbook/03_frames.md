@@ -70,7 +70,7 @@ Frames don't have to be populated when the page that contains them is loaded. If
 </body>
 ```
 
-This page lists all the emails available in your <a href="http://itsnotatypo.com">imbox</a> immediately upon loading the page, but then makes two subsequent requests to present small trays at the bottom of the page for emails that have been set aside or a waiting for a later reply. These trays are created out of separate HTTP requests made to the URLs referenced in the `src`.
+This page lists all the emails available in your <a href="http://itsnotatypo.com">imbox</a> immediately upon loading the page, but then makes two subsequent requests to present small trays at the bottom of the page for emails that have been set aside or are waiting for a later reply. These trays are created out of separate HTTP requests made to the URLs referenced in the `src`.
 
 In the example above, the trays start empty, but it's also possible to populate the lazy-loading frames with initial content, which is then overwritten when the content is fetched from the `src`:
 
