@@ -99,8 +99,6 @@ attributes and JavaScript properties.
   or `"nearest"`. When `data-autoscroll-block` is absent, the default value is
   `"end"`.
 
-* `recurse`
-
 [boolean attribute]: https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes
 [enumerated]: https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes
 [Element.scrollIntoView]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters
