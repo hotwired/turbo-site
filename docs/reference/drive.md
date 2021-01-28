@@ -19,7 +19,7 @@ If _location_ is a cross-origin URL, or falls outside of the specified root (see
 
 If _action_ is unspecified, Turbo Drive assumes a value of `"advance"`.
 
-Before performing the visit, Turbo Drive fires a `turbo-drive:before-visit` event on `document`. Your application can listen for this event and cancel the visit with `event.preventDefault()` (see [Canceling Visits Before They Start](/handbook/drive#canceling-visits-before-they-start)).
+Before performing the visit, Turbo Drive fires a `turbo:before-visit` event on `document`. Your application can listen for this event and cancel the visit with `event.preventDefault()` (see [Canceling Visits Before They Start](/handbook/drive#canceling-visits-before-they-start)).
 
 ## Turbo.clearCache
 
