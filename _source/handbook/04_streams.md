@@ -56,7 +56,7 @@ You can render any number of stream elements in a single stream message from a W
 
 ## Streaming From HTTP Responses
 
-Turbo knows to automatically load stream elements when they arrive in response to form submissions with a MIME type of `text/vnd.turbo-stream.html`. Turbo itself adds this type to the `Accept` header to let the server know that these responses are possible. It's therefore easily possible to tailor your server responses to deal with both Turbo Streams and regular redirects or other responses for clients that don't want the streams (such as native applications).
+Turbo knows to automatically load stream elements when they arrive in response to form submissions with a MIME type of `text/vnd.turbo-stream.html`. Turbo itself adds this type to the [Accept][] header requests initiated by non-GET form submissions to let the server know that these responses are possible. Ensuring that the value is present in the [Accept][] header enables servers to tailor their responses to deal with both Turbo Streams and regular redirects or other responses for clients that don't want the streams (such as native applications).
 
 In a Rails controller, this would look like:
 
@@ -127,13 +127,31 @@ Content-Type: text/vnd.turbo-stream.html; charset=utf-8
 
 This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket or a SSE connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
 
-
 ## Progressively Enhance When Necessary
 
 It's good practice to start your interaction design without Turbo Streams. Make the entire application work as it would if Turbo Streams were not available, then layer them on as a level-up. This means you won't come to rely on the updates for flows that need to work in native applications or elsewhere without them.
 
 The same is especially true for WebSocket updates. On poor connections, or if there are server issues, your WebSocket may well get disconnected. If the application is designed to work without it, it'll be more resilient.
 
+If a Turbo Drive visit needs to integrate with Turbo Streams, you can overwrite its [Accept][] header within a `turbo:before-fetch-request` event listener:
+
+```js
+let specialCaseRequest = false
+
+addEventListener("turbo:click", ({ target }) => {
+  specialCaseRequest = target.hasAttribute("data-special-request")
+})
+
+addEventListener("turbo:before-fetch-request", ({ detail }) => {
+  if (specialCaseRequest) {
+    detail.headers.Accept = "text/vnd.turbo-stream.html"
+  }
+
+  specialCaseRequest = false
+})
+```
+
+[Accept]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept
 
 ## But What About Running JavaScript?
 
