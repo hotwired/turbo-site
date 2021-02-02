@@ -136,19 +136,31 @@ The same is especially true for WebSocket updates. On poor connections, or if th
 If a Turbo Drive visit needs to integrate with Turbo Streams, you can overwrite its [Accept][] header within a `turbo:before-fetch-request` event listener:
 
 ```js
-let specialCaseRequest = false
+// turbo_streams_controller.js
+import { Controller } from "stimulus"
 
-addEventListener("turbo:click", ({ target }) => {
-  specialCaseRequest = target.hasAttribute("data-special-request")
-})
+export default class extends Controller {
+  injectHeadersIntoNextRequest() {
+    const injectHeaders = (event) => {
+      const { headers } = event.detail.fetchOptions || {}
 
-addEventListener("turbo:before-fetch-request", ({ detail }) => {
-  if (specialCaseRequest) {
-    detail.headers.Accept = "text/vnd.turbo-stream.html"
+      if (headers) {
+        headers.Accept = `text/vnd.turbo-stream.html, ${headers.Accept}`
+      }
+    }
+
+    addEventListener("turbo:before-fetch-request", injectHeaders, { once: true })
   }
+}
+```
 
-  specialCaseRequest = false
-})
+Then, attach the controller to your page's `<body>` element and route `turbo:click` events on `<a>` elements to the `turbo-streams#injectHeadersIntoNextRequest` action:
+
+```html
+<body data-controller="turbo-streams">
+  <!-- ... -->
+  <a href="/streams-request" data-action="turbo:click->turbo-streams#injectHeadersIntoNextRequest">Load content via Turbo Streams</a>
+</body>
 ```
 
 [Accept]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept
