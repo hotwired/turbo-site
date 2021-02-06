@@ -33,3 +33,12 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 * `turbo:render` fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.
 
 * `turbo:load` fires once after the initial page load, and again after every Turbo visit. Access visit timing metrics with the `event.detail.timing` object.
+
+## Turbo Frame Events
+
+Turbo Frame elements emit events that allow you to track their navigation lifecycle and respond to content loading. The events [bubble up] through the `<turbo-frame>` element's ancestors, with the element as the target.
+
+* `turbo:frame-load` fires after the `<turbo-frame>` element completes its
+  navigation.
+
+[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Bubbling_and_capturing_explained
