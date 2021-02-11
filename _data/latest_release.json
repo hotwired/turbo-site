@@ -1,14 +1,14 @@
 {
-  "url": "https://api.github.com/repos/hotwired/turbo/releases/36297894",
-  "assets_url": "https://api.github.com/repos/hotwired/turbo/releases/36297894/assets",
-  "upload_url": "https://uploads.github.com/repos/hotwired/turbo/releases/36297894/assets{?name,label}",
-  "html_url": "https://github.com/hotwired/turbo/releases/tag/v7.0.0-beta.3",
-  "id": 36297894,
+  "url": "https://api.github.com/repos/hotwired/turbo/releases/37109504",
+  "assets_url": "https://api.github.com/repos/hotwired/turbo/releases/37109504/assets",
+  "upload_url": "https://uploads.github.com/repos/hotwired/turbo/releases/37109504/assets{?name,label}",
+  "html_url": "https://github.com/hotwired/turbo/releases/tag/v7.0.0-beta.4",
+  "id": 37109504,
   "author": {
     "login": "sstephenson",
     "id": 2603,
     "node_id": "MDQ6VXNlcjI2MDM=",
-    "avatar_url": "https://avatars2.githubusercontent.com/u/2603?v=4",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2603?v=4",
     "gravatar_id": "",
     "url": "https://api.github.com/users/sstephenson",
     "html_url": "https://github.com/sstephenson",
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "MDc6UmVsZWFzZTM2Mjk3ODk0",
-  "tag_name": "v7.0.0-beta.3",
+  "node_id": "MDc6UmVsZWFzZTM3MTA5NTA0",
+  "tag_name": "v7.0.0-beta.4",
   "target_commitish": "main",
-  "name": "v7.0.0-beta.3",
+  "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2021-01-12T19:12:09Z",
-  "published_at": "2021-01-12T19:28:04Z",
+  "created_at": "2021-01-29T22:14:59Z",
+  "published_at": "2021-01-29T23:12:33Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/hotwired/turbo/tarball/v7.0.0-beta.3",
-  "zipball_url": "https://api.github.com/repos/hotwired/turbo/zipball/v7.0.0-beta.3",
-  "body": "* **NEW:** You can use `<turbo-frame loading=\"lazy\" src=\"...\">` to defer loading the source URL until the frame appears in the viewport. [#53]\r\n* **CHANGED:** The Turbo Streams MIME type has changed from `text/html; turbo-stream` to `text/vnd.turbo-stream.html`. Server-side framework integrations will need to update accordingly. [#24, #91, #93]\r\n* **CHANGED:** Form submissions may now return empty HTTP 201 or 204 responses.\r\n* **CHANGED:** Turbo empties the frame and logs an error to the console when a matching `<turbo-frame>` is missing in the response. [#31]\r\n* **FIXED:** Turbo waits until the initial page load has completed before enabling manual scroll restoration to avoid losing the initial scroll offset on locations with anchors. [#63]"
+  "tarball_url": "https://api.github.com/repos/hotwired/turbo/tarball/v7.0.0-beta.4",
+  "zipball_url": "https://api.github.com/repos/hotwired/turbo/zipball/v7.0.0-beta.4",
+  "body": "* **NEW:** Support for persistent `data-turbo-permanent` elements during Turbo Frames navigation. [#64, #71]\r\n* **NEW:** Support for `<form enctype>` and URL-encoded form submissions. [#76, #128]\r\n* **CHANGED:** Top-level `<form action=\"get\">` submissions now become Turbo Drive visits. That means they'll dispatch [visit events](https://turbo.hotwire.dev/reference/events) like `turbo:before-visit` and `turbo:visit`, but _not_ the `turbo:submit-start` or `turbo:submit-end` events.  [#126, #127]\r\n* **FIXED:** Successive `<form action=\"get\">` submissions to the current location no longer accumulate redundant query parameters. [#107, #108]\r\n* **FIXED:** The Turbo Streams `Accept:` header is only present for non-idempotent form submissions. [#52, #139]\r\n* **INTERNAL:** Development builds have moved to the new [hotwired/dev-builds](https://github.com/hotwired/dev-builds/releases) repository shared with Stimulus.\r\n* **INTERNAL:** The `Location` class has been replaced by the DOM URL API. [#90]\r\n* **INTERNAL:** The page and frame rendering systems have been unified, and rendering is now asynchronous. [#133]\r\n"
 }
