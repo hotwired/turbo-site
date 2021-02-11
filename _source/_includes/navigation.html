@@ -1,0 +1,31 @@
+<a class="nav-logo" href="/" aria-label="Turbo">
+  {% include svg/turbo-logo.svg %}
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list {% if type == "horizontal" %} nav__list--horizontal{% endif %}">
+    <li>
+      <a class="nav__list-link{% if section_title == "Handbook" %} active{% endif %}" href="/handbook/introduction">Handbook</a>
+
+      {% include section-nav.html, section: "handbook" %}
+    </li>
+    <li>
+      <a class="nav__list-link{% if section_title == "Reference" %} active{% endif %}" href="/reference/drive">Reference</a>
+
+      {% include section-nav.html, section: "reference" %}
+    </li>
+    <li>
+      <a class="nav__list-link" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Stimulus Discourse community forum.">Community</a>
+    </li>
+    <li>
+      <a class="nav__list-link" href="{{ site.github_url }}" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+    </li>
+  </ul>
+
+</nav>

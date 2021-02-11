@@ -1,5 +1,6 @@
 .sass-cache
 .jekyll-metadata
 _site
+_public
 node_modules
 tmp

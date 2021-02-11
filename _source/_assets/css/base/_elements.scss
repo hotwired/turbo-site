@@ -1,0 +1,236 @@
+// scss-lint:disable unknownProperties
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+  color: $color-text;
+  font-family: $serif-stack;
+  font-size: $font-base-small;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+
+  @include media(large) {
+    font-size: $font-base-medium;
+  }
+
+  @include media(x-large) {
+    font-size: $font-base-large;
+  }
+}
+
+a {
+  color: $color-text;
+  font-weight: 550;
+  margin: -.2rem;
+  padding: .2rem;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-decoration-width: 0.1rem;
+
+  &:visited { 
+    color: $color-text; 
+  }
+
+  @media (hover: hover) {
+
+    &:hover { 
+      text-decoration-color: $color-accent;
+      text-decoration-thickness: 0.2em;
+      text-decoration-width: 0.2em;
+    }
+  }
+
+  &:active { 
+    color: $color-text;
+  }
+}
+
+h1, h2, h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-family: $sans-stack;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.1em;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+h1 {
+  margin-top: 2em;
+  font-size: $font-xxx-large;
+  font-weight: 700;
+}
+
+h2 {
+  margin-top: 2.5em;
+  font-size: $font-xx-large;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 2.5em;
+  font-size: $font-x-large;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+ul,
+ol {
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+li {
+  margin-left: 1em;
+  margin-bottom: 1em;
+
+  ul,
+  ol {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+strong {
+  font-weight: 600;
+}
+
+blockquote {
+  position: relative;
+  margin-bottom: 1.5em;
+  padding: 0 0 0 2em;
+  border-left: 2px solid $color-text;
+  text-align: left;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url('/assets/logo.svg') left top / contain no-repeat;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 2rem;
+    text-align: left;
+  }
+}
+
+hr {
+  display: block;
+  height: 1px;
+  margin: 2em 0 3em 0;
+  padding: 0;
+  border: none;
+  border-top: 1px solid #f7f5f2;
+}
+
+code,
+pre {
+  font-family: $mono-stack;
+  line-height: 1.25;
+  padding:  0 0.1em;
+  background-color: $color-tint;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre {
+  position: relative;
+  overflow: auto;
+  margin: 0 -1em 2em -1em;
+  margin: calc(min(5vw, 4rem)*-1);
+  margin-top: 0;
+  margin-bottom: 2em;
+  font-weight: 400;
+  background: $color-tint;
+
+  @include media(medium) {
+    margin: 0 0 2em 0;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 2em;
+    box-shadow: inset -2em 0 1.8em -1em $color-tint;
+  }
+}
+
+code {
+  padding: 0.125em;
+  word-wrap: break-word;
+}
+
+pre > code {
+  display: block;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+}
+
+thead {
+  background-color: $color-tint;
+  font-family: $sans-stack;
+}
+
+tr {
+  border-bottom: 0.125em solid $color-tint;
+}
+
+th,
+td {
+  vertical-align: middle;
+  padding: 0.5em;
+}
+
+input,
+select{
+  vertical-align: middle;
+}
