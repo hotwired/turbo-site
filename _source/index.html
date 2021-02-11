@@ -15,7 +15,7 @@ layout: default
 </div>
 
 <p class="landing-version">
-  <span>Current version: <a href="{{ release.html_url }}">{{ latest_release.tag_name | remove_first: "v" }}</a> &mdash; released {{ latest_release.created_at | date: "%b %d, %Y" }}</span>
+  <span>Current version: <a href="{{ release.url }}">{{ release.tag_name }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
 </p>
 
 <section class="landing-summary">
