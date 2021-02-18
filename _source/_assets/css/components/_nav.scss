@@ -1,0 +1,281 @@
+// primary nav ////////////////////////////////////////////////////////////
+
+.nav-skip {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  background-color: $color-background;
+
+  &:hover,
+  &:active,
+  &:focus {
+    clip: auto !important;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    z-index: 100000;
+  }
+}
+
+.nav-logo {
+  display: block;
+  width: 8em;
+  max-width: 100%;
+  margin: 0;
+
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .logo__icon {
+    fill: $color-brand;
+  }
+
+  path {
+    transition: fill 0.2s ease;
+  }
+
+  @media (hover: hover) {
+
+    &:hover path {
+      fill: $color-accent;
+    }
+  }
+}
+
+.nav {
+
+  @include media(small) {
+    @include transform(translate(-100%, 0));
+    @include transition(transform 0.3s ease-in-out);
+    opacity: 0;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: 0;
+    padding: 0 1.5em;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    text-align: right;
+    background-color: $color-brand;
+  }
+
+  @include media(medium) {
+    @include transform(translate(0, 0));
+    @include transition(transform 0s ease-in-out);
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    background-color: $color-background;
+  }
+}
+
+
+
+.nav__list {
+  margin: 1em 0 0 0;
+  text-align: right;
+  list-style-type: none;
+  border-top: 0.2rem solid $color-brand;
+
+  @include media(medium) {
+    text-align: left;
+  }
+
+  &.active {
+    display: block;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nav__list--horizontal {
+
+  @include media(small) {
+    font-size: $font-x-large;
+  }
+
+  @include media(medium) {
+    display: flex;
+    margin: 0;
+    border: none;
+
+    li {
+      margin: 0 0.25em;
+    }
+  }
+
+}
+
+.nav__list-link {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.25em 0;
+  font-size: $font-x-large;
+  font-family: $sans-stack;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+
+  &.active {
+    text-decoration: none;
+    pointer-events: none;
+    font-weight: 800;
+  }
+
+  @include media(medium) {
+    line-height: 1.4;
+    font-size: $font-medium;
+
+    .nav__list--horizontal & {
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav__list--horizontal li:not(:last-child) &::after {
+      display: inline-block;
+      margin-left: 0.5rem;
+      margin-right: -0.5rem;
+      content: "/";
+    }
+  }
+}
+
+.nav__sublist {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  border-right: 0.2rem solid $color-text;
+
+  @include media(medium) {
+    border-right: 0;
+    border-left: 0.2rem solid $color-text;
+  }
+
+  &.active {
+    display: block;
+  }
+
+  li {
+    margin: 0;
+    padding: 0 0.25em;
+  }
+}
+
+.nav__sublist-link {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  font-size: $font-large;
+  font-family: $sans-stack;
+  font-weight: 400;
+  line-height: 1.25;
+
+  &.active {
+    text-decoration: none;
+    pointer-events: none;
+    font-weight: 800;
+  }
+
+  @include media(medium) {
+    text-align: left;
+    margin-bottom: 0.5em;
+    padding: 0.25em;
+    font-size: $font-small;
+    line-height: 1.4;
+
+    &.active {
+      color: $color-text;
+      background-color: $color-tint;
+      border-radius: 0.125em;
+    }
+  }
+}
+
+.nav-checkbox {
+  display: none;
+}
+
+.nav-checkbox:checked ~ .nav {
+  @include transform(translate(0, 0));
+  opacity: 1;
+}
+
+.nav-mobile-button {
+  display: block;
+  margin: 0;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  z-index: 2000;
+  font-family: $sans-stack;
+  font-size: $font-large;
+  font-weight: 800;
+  text-transform: uppercase;
+  background-color: $color-brand;
+  border-radius: 0.2rem;
+
+  @include media(medium) {
+    display: none;
+  }
+
+  span {
+    position: relative;
+    display: inline-flex;
+    top: -0.5rem;
+    width: 1.25em;
+    height: 0.2rem;
+    background-color: $color-background;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 1.25em;
+      height: 0.2rem; 
+      background-color: $color-background;
+    }
+
+    &::before {
+      margin-top: -0.3em;
+    }
+
+    &::after {
+      margin-top: 0.3em;
+    }
+  }
+}
+
+.nav-mobile-button--close {
+  margin: 1.5em auto 1.5em auto;
+  padding: 0;
+  background-color: $color-brand;
+
+  span {
+    background-color: rgba(0, 0, 0, 0);
+
+    &::before,
+    &::after {
+      background-color: $color-text;
+      margin-top: 0;
+    }
+
+    &::before {
+      @include transform(rotate(45deg));
+    }
+
+    &::after {
+      @include transform(rotate(-45deg));
+    }
+  }
+}

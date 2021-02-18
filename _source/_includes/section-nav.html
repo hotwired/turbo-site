@@ -1,0 +1,11 @@
+<ul class="nav__sublist {% if tags[0] == section %} active{% endif %}">
+  {%- assign sortedEntries = collections[section]  -%}
+  {%- for entry in sortedEntries -%}
+    <li>
+      <a class="nav__sublist-link{% if page.url == entry.url %} active{% endif %}" href="{{ entry.url | remove: ".html" }}">
+        {%- assign autoPrefix = entry.filePathStem | navPrefix  -%}
+        {%- if entry.data.nav_prefix %}{{ entry.data.nav_prefix }}: {% elsif autoPrefix %}{{ autoPrefix }}: {% endif %}{% if entry.data.title %}{{ entry.data.title }}{% else %}{{ entry.data.content | titleFromHeading }}{% endif %}
+      </a>
+    </li>
+  {%- endfor -%}
+</ul>

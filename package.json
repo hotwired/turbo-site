@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "dependencies": {
+    "@hotwired/turbo": "^7.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-cache-assets": "^2.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "del-cli": "^3.0.1",
+    "esbuild": "^0.8.39",
+    "markdown-it-anchor": "^7.0.1",
+    "markdown-it-toc-done-right": "^4.2.0",
+    "node-sass": "^5.0.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "serve": "npm-run-all -s clean build:js build:css -p watch:** --silent",
+    "publish": "run-s build:**",
+    "clean": "del-cli \"_public/**\"",
+    "build:11ty": "eleventy",
+    "watch:11ty": "eleventy --serve --quiet",
+    "build:css": "node-sass --output-style compressed _source/_assets/css/main.scss _public/assets/main.css",
+    "watch:css": "npm run build:css -- --watch",
+    "build:js": "esbuild _source/_assets/js/main.js --bundle --minify --sourcemap --outdir=_public/assets",
+    "watch:js": "npm run build:js -- --watch"
+  }
+}

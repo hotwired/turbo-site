@@ -1,0 +1,114 @@
+// scss-lint:disable VendorPrefix
+// intro //////////////////////////////////////////////////////////////////////
+
+.landing-intro {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: $color-tint;
+  border-top: 0.4rem solid $color-brand;
+}
+
+.landing-intro__text {
+  position: relative;
+  z-index: 1;
+  margin: 1.75em 0 2em 0;
+  text-align: center;
+  color: $color-text;
+  font-weight: 800;
+  line-height: 1.3;
+
+  @include media(medium) {
+    font-size: $font-xxxx-large;
+  }
+}
+
+// intro text /////////////////////////////////////////////////////////////////
+
+.landing-summary {
+  text-align: left;
+  font-size: $font-large;
+}
+
+.landing-version {
+  grid-column: 2/5;
+  position: relative;
+  padding: 0;
+  margin: -2em 0 5em 0;
+  font-family: $sans-stack;
+  font-weight: 600;
+  font-style: italic;
+  font-size: $font-small;
+  text-align: center;
+
+  > span {
+    display: inline-block;
+    padding: 1em 2em;
+    background-color: $color-brand;
+    clip-path: polygon(5% 10%, 46% 1%, 46% 10%, 100% 0, 95% 90%, 31% 100%, 31% 90%, 0% 100%);
+  }
+}
+
+// primary actions ////////////////////////////////////////////////////////////
+
+.landing-actions {
+  grid-column: 3/4;
+  margin: 0;
+
+  @include media(medium) {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
+
+.landing-actions__item {
+  display: block;
+  margin-bottom: 1em;
+  padding: 1.5em 1em;
+  font-family: $sans-stack;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.25;
+  background-color: $color-background;
+  box-shadow: 0 0 2em rgba($color-text, 0.075);
+  border-radius: 0.5em;
+
+  @include media(small) {
+    max-width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include media(medium) {
+    width: 32%;
+    margin-bottom: 0;
+  }
+}
+
+.landing-actions__icon {
+  display: block;
+  width: 3.75em;
+  height: 3.75em;
+  margin: 0 auto 1em auto;
+  background-color: $color-brand;
+
+  .landing-actions__item:hover & {
+    background-color: $color-accent;
+  }
+}
+
+.landing-actions__icon--guide {
+  -webkit-mask: url('/assets/icon-guide.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-guide.svg') center / 100% no-repeat;
+}
+
+.landing-actions__icon--install {
+  -webkit-mask: url('/assets/icon-install.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-install.svg') center / 100% no-repeat;
+}
+
+.landing-actions__icon--github {
+  -webkit-mask: url('/assets/icon-github.svg') center / 100% no-repeat;
+  mask: url('/assets/icon-github.svg') center / 100% no-repeat;
+}

@@ -1,0 +1,11 @@
+name: Trigger Netlify Build
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    name: Request Netlify Webhook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl request
+        run: curl -X POST -d {} '${{ secrets.NETLIFY_BUILD_URL }}'

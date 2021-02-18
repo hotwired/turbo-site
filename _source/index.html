@@ -1,0 +1,57 @@
+---
+title: The speed of a single-page web application without having to write any JavaScript.
+description: >-
+  Turbo accelerates links and form submissions without requiring you to change your server-side generated HTML.
+  It lets you carve up a page into independent frames, which can be lazy-loaded and operate as independent components.
+  And finally, helps you make partial page updates using just HTML and a set of CRUD-like container tags.
+  These three techniques reduce the amount of custom JavaScript that many web applications need to write by an order of magnitude.
+layout: default
+---
+
+<div class="landing-intro grid">
+  <h1 class="landing-intro__text grid__item grid__item--start-2 grid__item--span-10">
+    The speed of a single-page web application without having to write any JavaScript.
+  </h1>
+</div>
+
+<p class="landing-version">
+  <span>Current version: <a href="{{ release.url }}">{{ release.tag_name }}</a> &mdash; released {{ release.created_at | date: "%b %d, %Y" }}</span>
+</p>
+
+<section class="landing-summary">
+  <p>
+    <strong>Turbo</strong> uses complementary techniques to dramatically reduce the amount of custom JavaScript that most web applications will need to write:
+  </p>
+
+  <ul>
+    <li><em>Turbo Drive</em> accelerates links and form submissions by negating the need for full page reloads.</li>
+    <li><em>Turbo Frames</em> decompose pages into independent contexts, which scope navigation and can be lazily loaded.</li>
+    <li><em>Turbo Streams</em> deliver page changes over WebSocket, SSE or in response to form submissions using just HTML and a set of CRUD-like actions.</li>
+    <li><em>Turbo Native</em> lets your <a href="https://m.signalvnoise.com/the-majestic-monolith/">majestic monolith</a> form the center of your native iOS and Android apps, with seamless transitions between web and native sections.</li>
+  </ul>
+
+  <p>
+    It's all done by sending HTML over the wire. And for those instances when that's not enough, you can reach for the other side of <a href="https://hotwire.dev">Hotwire</a>, and finish the job with <a href="https://stimulus.hotwire.dev">Stimulus</a>.
+  </p>
+
+  <p style="text-align: center">
+    <a href="https://hotwire.dev/#screencast">See it all in action on the Hotwire screencast</a>.
+  </p>
+</section>
+
+<div class="landing-actions">
+  <a class="landing-actions__item" href="/handbook/introduction">
+    <div class="landing-actions__icon landing-actions__icon--guide" aria-hidden="true"></div>
+    Handbook
+  </a>
+
+  <a class="landing-actions__item" href="handbook/installing">
+    <div class="landing-actions__icon landing-actions__icon--install" aria-hidden="true"></div>
+    Installation
+  </a>
+
+  <a class="landing-actions__item" href="{{ site.github_url }}">
+    <div class="landing-actions__icon landing-actions__icon--github" aria-hidden="true"></div>
+    Source
+  </a>
+</div>
