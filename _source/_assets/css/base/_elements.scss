@@ -192,7 +192,7 @@ pre {
     bottom: 0;
     right: 0;
     width: 2em;
-    box-shadow: inset -2em 0 1.8em -1em $color-tint;
+    background: linear-gradient(to right, rgba($color-tint, 0), $color-tint);
   }
 }
 
@@ -206,6 +206,7 @@ pre > code {
   max-width: 100%;
   overflow: auto;
   padding: 1em;
+  word-wrap: normal;
 }
 
 table {
