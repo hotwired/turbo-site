@@ -56,7 +56,7 @@ You can render any number of stream elements in a single stream message from a W
 
 ## Streaming From HTTP Responses
 
-Turbo knows to automatically load stream elements when they arrive in response to form submissions with a MIME type of `text/vnd.turbo-stream.html`. Turbo itself adds this type to the [Accept][] header requests initiated by non-GET form submissions to let the server know that these responses are possible. Ensuring that the value is present in the [Accept][] header enables servers to tailor their responses to deal with both Turbo Streams and regular redirects or other responses for clients that don't want the streams (such as native applications).
+Turbo knows to automatically attach `<turbo-stream>` elements when they arrive in response to `<form>` submissions that declare a [MIME type][] of `text/vnd.turbo-stream.html`. When a submitting a `<form>` element whose [method][] attribute is set to `POST`, `PUT`, `PATCH`, or `DELETE`, Turbo injects `text/vnd.turbo-stream.html` into the set of response formats in the request's [Accept][] header. When responding to requests containing that value in its [Accept][] header, servers can tailor their responses to deal with Turbo Streams, HTTP redirects, or other types of clients that don't support streams (such as native applications).
 
 In a Rails controller, this would look like:
 
@@ -71,6 +71,10 @@ def destroy
   end
 end
 ```
+
+[MIME type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+[method]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method
+[Accept]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept
 
 ## Reusing Server-Side Templates
 
@@ -132,38 +136,6 @@ This `messages/message` template partial can then also be used to re-render the 
 It's good practice to start your interaction design without Turbo Streams. Make the entire application work as it would if Turbo Streams were not available, then layer them on as a level-up. This means you won't come to rely on the updates for flows that need to work in native applications or elsewhere without them.
 
 The same is especially true for WebSocket updates. On poor connections, or if there are server issues, your WebSocket may well get disconnected. If the application is designed to work without it, it'll be more resilient.
-
-If a Turbo Drive visit needs to integrate with Turbo Streams, you can overwrite its [Accept][] header within a `turbo:before-fetch-request` event listener:
-
-```js
-// turbo_streams_controller.js
-import { Controller } from "stimulus"
-
-export default class extends Controller {
-  injectHeadersIntoNextRequest() {
-    const injectHeaders = (event) => {
-      const { headers } = event.detail.fetchOptions || {}
-
-      if (headers) {
-        headers.Accept = `text/vnd.turbo-stream.html, ${headers.Accept}`
-      }
-    }
-
-    addEventListener("turbo:before-fetch-request", injectHeaders, { once: true })
-  }
-}
-```
-
-Then, attach the controller to your page's `<body>` element and route `turbo:click` events on `<a>` elements to the `turbo-streams#injectHeadersIntoNextRequest` action:
-
-```html
-<body data-controller="turbo-streams">
-  <!-- ... -->
-  <a href="/streams-request" data-action="turbo:click->turbo-streams#injectHeadersIntoNextRequest">Load content via Turbo Streams</a>
-</body>
-```
-
-[Accept]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept
 
 ## But What About Running JavaScript?
 
