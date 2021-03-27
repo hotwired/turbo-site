@@ -9,8 +9,6 @@ On top of accelerating page-level navigation, Turbo Drive also enhances `<form>`
 
 As users interact with the Turbo Drive-powered applications, Turbo submits the page's `<form>` elements in order to fetch and render server-generated HTML seamlessly through a combination of HTTP redirects and [Turbo Stream](streams) responses.
 
-${toc}
-
 ## Redirecting After a Form Submission
 
 Turbo Drive handles form submissions in a manner similar to link clicks. The key difference is that form submissions can issue stateful requests using the HTTP POST method, while link clicks only ever issue stateless HTTP GET requests.
