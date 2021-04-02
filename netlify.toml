@@ -4,9 +4,6 @@
   # Default build command.
   command = "npm run publish"
 
-[build.environment]
-  NODE_VERSION = "15"
-
 # cache fonts forever
 [[headers]]
   for = "/assets/fonts/*"
