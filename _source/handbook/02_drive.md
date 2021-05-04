@@ -37,7 +37,7 @@ Applications using the Turbo Drive [iOS adapter](https://github.com/hotwired/tur
 
 ![Replace visit action](https://s3.amazonaws.com/turbolinks-docs/images/replace.svg)
 
-You may wish to visit a location without pushing a new history entry onto the stack. The _replace_ visit action uses [`history.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) to discard the topmost history entry and replace it with the new location.
+You may wish to visit a location without pushing a new history entry onto the stack. The _replace_ visit action uses [`history.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState) to discard the topmost history entry and replace it with the new location.
 
 To specify that following a link should trigger a replace visit, annotate the link with `data-turbo-action="replace"`:
 
