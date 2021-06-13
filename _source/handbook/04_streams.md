@@ -9,7 +9,7 @@ Turbo Streams deliver page changes as fragments of HTML wrapped in self-executin
 
 ## Stream Messages and Actions
 
-A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the five possible stream actions:
+A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the seven possible stream actions:
 
 ```html
 <turbo-stream action="append" target="messages">
@@ -47,6 +47,22 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="remove" target="message_1">
   <!-- The element with DOM ID "message_1" will be removed.
   The contents of this stream element are ignored. -->
+</turbo-stream>
+
+<turbo-stream action="before" target="current_step">
+  <template>
+    <!-- The contents of this template will be added before the
+    the element with ID "current_step". -->
+    <li>New item</li>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="after" target="current_step">
+  <template>
+    <!-- The contents of this template will be added after the
+    the element with ID "current_step". -->
+    <li>New item</li>
+  </template>
 </turbo-stream>
 ```
 
