@@ -38,3 +38,22 @@ Turbo.setProgressBarDelay(delayInMilliseconds)
 Sets the delay after which the [progress bar](/handbook/drive#displaying-progress) will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.
 
 Note that this method has no effect when used with the iOS or Android adapters.
+
+## Turbo.setRequestInterceptor
+
+Sets the interceptor for HTTP requests. It will be called before every visit and form submission. This may be useful for fetching and setting JWT token in headers for every request to the server.
+
+```js
+Turbo.setRequestInterceptor(async (request) => {
+  const token = await getSessionToken(window.app)
+  request.addHeader('Authorization', `Bearer ${token}`)
+})
+```
+
+## Turbo.clearRequestInterceptor
+
+```js
+Turbo.clearRequestInterceptor()
+```
+
+Removes request interceptor.
