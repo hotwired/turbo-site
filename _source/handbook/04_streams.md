@@ -155,7 +155,7 @@ The same is especially true for WebSocket updates. On poor connections, or if th
 
 ## But What About Running JavaScript?
 
-Turbo Streams consciously restricts the types of actions you can perform to just five: append, prepend, replace, update, and remove. If you want to trigger additional behavior when these actions are carried out, you should attach behavior using <a href="https://stimulus.hotwire.dev">Stimulus</a> controllers. This restriction allows Turbo Streams to focus on the essential task of delivering HTML over the wire, leaving additional logic to live in dedicated JavaScript files.
+Turbo Streams consciously restricts you to seven actions: append, prepend, (insert) before, (insert) after, replace, update, and remove. If you want to trigger additional behavior when these actions are carried out, you should attach behavior using <a href="https://stimulus.hotwire.dev">Stimulus</a> controllers. This restriction allows Turbo Streams to focus on the essential task of delivering HTML over the wire, leaving additional logic to live in dedicated JavaScript files.
 
 Embracing these constraints will keep you from turning individual responses in a jumble of behaviors that cannot be reused and which make the app hard to follow. The key benefit from Turbo Streams is the ability to reuse templates for initial rendering of a page through all subsequent updates.
 
