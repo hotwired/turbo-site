@@ -70,13 +70,9 @@ Note that every `<turbo-stream>` element must wrap its included HTML inside a `<
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
-## Applying an Action on Multiple Targets
+## Actions With Multiple Targets
 
-Usually, a `<turbo-stream>` is meant to target a single element on your page. This is done with the `target` attribute. Under the hood, Turbo uses `getElementById` to select the target element and apply the action.
-
-For cases when you want to have a single `<turbo-stream>` apply to multiple elements at once, you may include a `targets` attribute instead of `target`. The value should be a CSS query selector. Turbo will call `querySelectorAll` and apply the action to all matching elements.
-
-Here are some examples of selecting multiple targets:
+Actions can be applied against multiple targets using the `targets` attribute with a CSS query selector, instead of the regular `target` attribute that uses a dom ID reference. Examples:
 
 ```html
 <turbo-stream action="remove" targets=".old_records">
