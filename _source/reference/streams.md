@@ -89,16 +89,15 @@ Inserts the content within the template tag after the element designated by the 
 
 ## Targeting Multiple Elements
 
-For all actions, the `target` attribute is a dom id. To target multiple elements at once for a single `<turbo-stream>`
-tag, use a `targets` attribute instead with a CSS query selector.
+To target multiple elements with a single action, use the `targets` attribute with a CSS query selector instead of the `target` attribute.
 
 ```html
-<turbo-stream action="remove" targets="css_query">
+<turbo-stream action="remove" targets=".elementsWithClass">
 </turbo-stream>
 
-<turbo-stream action="after" targets="css_query">
+<turbo-stream action="after" targets=".elementsWithClass">
   <template>
-    Content to place after the elements designated with the css_query.
+    Content to place after the elements designated with the css query.
   </template>
 </turbo-stream>
 ```
