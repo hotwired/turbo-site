@@ -70,6 +70,29 @@ Note that every `<turbo-stream>` element must wrap its included HTML inside a `<
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
+## Applying an Action on Multiple Targets
+
+Usually, a `<turbo-stream>` is meant to target a single element on your page. This is done with the `target` attribute. Under the hood, Turbo uses `getElementById` to select the target element and apply the action.
+
+For cases when you want to have a single `<turbo-stream>` apply to multiple elements at once, you may include a `targets` attribute instead of `target`. The value should be a CSS query selector. Turbo will call `querySelectorAll` and apply the action to all matching elements.
+
+Here are some examples of selecting multiple targets:
+
+```html
+<turbo-stream action="remove" targets=".old_records">
+  <!-- The element with the class "old_records" will be removed.
+  The contents of this stream element are ignored. -->
+</turbo-stream>
+
+<turbo-stream action="after" targets="input.invalid_field">
+  <template>
+    <!-- The contents of this template will be added after the
+    all elements that match "inputs.invalid_field". -->
+    <span>Incorrect</span>
+  </template>
+</turbo-stream>
+```
+
 ## Streaming From HTTP Responses
 
 Turbo knows to automatically attach `<turbo-stream>` elements when they arrive in response to `<form>` submissions that declare a [MIME type][] of `text/vnd.turbo-stream.html`. When submitting a `<form>` element whose [method][] attribute is set to `POST`, `PUT`, `PATCH`, or `DELETE`, Turbo injects `text/vnd.turbo-stream.html` into the set of response formats in the request's [Accept][] header. When responding to requests containing that value in its [Accept][] header, servers can tailor their responses to deal with Turbo Streams, HTTP redirects, or other types of clients that don't support streams (such as native applications).
