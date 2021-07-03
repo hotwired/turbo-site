@@ -26,6 +26,6 @@
 
 [[redirects]]
   from = "/*"
-  to = "https://turbo.hotwired.dev"
+  to = "https://turbo.hotwired.dev/:splat"
   status = 301
   force = true # COMMENT: ensure that we always redirect
