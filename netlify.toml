@@ -25,7 +25,7 @@
     followSourceMaps = false
 
 [[redirects]]
-  from = "/test"
+  from = "/*"
   to = "https://turbo.hotwired.dev"
-  status = 302
+  status = 301
   force = true # COMMENT: ensure that we always redirect
