@@ -23,3 +23,9 @@
     todoPatterns = []
     checkExternal = false
     followSourceMaps = false
+
+[[redirects]]
+  from = "/test"
+  to = "https://turbo.hotwired.dev"
+  status = 302
+  force = true # COMMENT: ensure that we always redirect
