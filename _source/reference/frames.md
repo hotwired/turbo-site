@@ -132,4 +132,4 @@ through instances of the `FrameElement` class.
   when the `document` that contains the element is a [preview][].
 
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[preview]: https://turbo.hotwire.dev/handbook/building#detecting-when-a-preview-is-visible
+[preview]: https://turbo.hotwired.dev/handbook/building#detecting-when-a-preview-is-visible

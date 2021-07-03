@@ -109,7 +109,7 @@ See the [Full List of Events](/reference/events) for more information.
 
 New DOM elements can appear on the page at any time by way of frame navigation, stream messages, or client-side rendering operations, and these elements often need to be initialized as if they came from a fresh page load.
 
-You can handle all of these updates, including updates from Turbo Drive page loads, in a single place with the conventions and lifecycle callbacks provided by Turbo's sister framework, [Stimulus](https://stimulus.hotwire.dev).
+You can handle all of these updates, including updates from Turbo Drive page loads, in a single place with the conventions and lifecycle callbacks provided by Turbo's sister framework, [Stimulus](https://stimulus.hotwired.dev).
 
 Stimulus lets you annotate your HTML with controller, action, and target attributes:
 
