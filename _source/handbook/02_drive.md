@@ -73,6 +73,41 @@ Listen for the `turbo:before-visit` event to be notified when a visit is about t
 
 Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
 
+## Pausing Rendering
+
+Application can pause rendering and make additional preparation before it will be executed.
+
+Listen for the `turbo:before-render` event to be notified when rendering is about to start, and pause it using `event.preventDefault()`. Once the preparation is done continue rendering by calling `event.detail.resume()`.
+
+An example use case is adding exit animation for visits:
+```javascript
+addEventListener('turbo:before-render', async function(event) {
+  event.preventDefault()
+
+  await animateOut()
+
+  event.detail.resume()
+})
+```
+
+## Pausing Requests
+
+Application can pause request and make additional preparation before it will be executed.
+
+Listen for the `turbo:before-fetch-request` event to be notified when a request is about to start, and pause it using `event.preventDefault()`. Once the preparation is done continue request by calling `event.detail.resume()`.
+
+An example use case is setting `Authorization` header for the request:
+```javascript
+addEventListener('turbo:before-fetch-request', async function(event) {
+  event.preventDefault()
+
+  const token = await getSessionToken(window.app)
+  event.detail.fetchOptions.headers['Authorization'] = `Bearer ${token}`
+
+  event.detail.resume()
+})
+```
+
 ## Disabling Turbo Drive on Specific Links or Forms
 
 Turbo Drive can be disabled on a per-element basis by annotating the element or any of its ancestors with `data-turbo="false"`.
