@@ -1,6 +1,6 @@
 # The Turbo website
 
-This repository backs the website living at https://turbo.hotwire.dev.
+This repository backs the website living at https://turbo.hotwired.dev.
 
 To work on it locally:
 

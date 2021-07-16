@@ -82,7 +82,22 @@ Inserts the content within the template tag after the element designated by the 
 ```html
 <turbo-stream action="after" target="dom_id">
   <template>
-    Content to place before the element designated with the dom_id.
+    Content to place after the element designated with the dom_id.
+  </template>
+</turbo-stream>
+```
+
+## Targeting Multiple Elements
+
+To target multiple elements with a single action, use the `targets` attribute with a CSS query selector instead of the `target` attribute.
+
+```html
+<turbo-stream action="remove" targets=".elementsWithClass">
+</turbo-stream>
+
+<turbo-stream action="after" targets=".elementsWithClass">
+  <template>
+    Content to place after the elements designated with the css query.
   </template>
 </turbo-stream>
 ```
