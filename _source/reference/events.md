@@ -18,7 +18,7 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:submit-start` fires during a form submission. Access the `FormSubmission` object with `event.detail.formSubmission`.
 
-* `turbo:before-fetch-request` fires before Turbo issues a network request to fetch the page. Access the fetch options object with `event.detail`.
+* `turbo:before-fetch-request` fires before Turbo issues a network request to fetch the page. Access the fetch options object with `event.detail`. Request can be canceled and continued with `event.detail.resume` (see [Pausing Requests](/handbook/drive#pausing-requests)).
 
 * `turbo:before-fetch-response` fires after the network request completes. Access the fetch options object with `event.detail`.
 
@@ -26,7 +26,7 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:before-cache` fires before Turbo saves the current page to cache.
 
-* `turbo:before-render` fires before rendering the page. Access the new `<body>` element with `event.detail.newBody`.
+* `turbo:before-render` fires before rendering the page. Access the new `<body>` element with `event.detail.newBody`. Rendering can be canceled and continued with `event.detail.resume` (see [Pausing Rendering](/handbook/drive#pausing-rendering)).
 
 * `turbo:before-stream-render` fires before rendering a Turbo Stream page update.
 
