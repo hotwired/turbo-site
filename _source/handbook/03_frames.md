@@ -39,7 +39,7 @@ When the link to edit the message is clicked, the response provided by `/message
   <turbo-frame id="message_1">
     <form action="/messages/1">
       <input name="message[name]" type="text" value="My message title">
-      <textarea name="message[name]">My message content</textarea>
+      <textarea name="message[content]">My message content</textarea>
       <input type="submit">
     </form>
   </turbo-frame>
