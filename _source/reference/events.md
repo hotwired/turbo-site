@@ -14,11 +14,11 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:before-visit` fires before visiting a location, except when navigating by history. Access the requested location with `event.detail.url`. Cancel this event to prevent navigation.
 
-* `turbo:visit` fires immediately after a visit starts.
+* `turbo:visit` fires immediately after a visit starts. Access the requested location with `event.detail.url` and action with `event.detail.action`.
 
 * `turbo:submit-start` fires during a form submission. Access the `FormSubmission` object with `event.detail.formSubmission`.
 
-* `turbo:before-fetch-request` fires before Turbo issues a network request to fetch the page. Access the fetch options object with `event.detail`. Request can be canceled and continued with `event.detail.resume` (see [Pausing Requests](/handbook/drive#pausing-requests)).
+* `turbo:before-fetch-request` fires before Turbo issues a network request to fetch the page. Access the requested location with `event.detail.url` and the fetch options object with `event.detail.fetchOptions`. Request can be canceled and continued with `event.detail.resume` (see [Pausing Requests](/handbook/drive#pausing-requests)).
 
 * `turbo:before-fetch-response` fires after the network request completes. Access the fetch options object with `event.detail`.
 
