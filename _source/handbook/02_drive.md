@@ -81,7 +81,7 @@ Listen for the `turbo:before-render` event to be notified when rendering is abou
 
 An example use case is adding exit animation for visits:
 ```javascript
-addEventListener('turbo:before-render', async function(event) {
+document.addEventListener('turbo:before-render', async (event) => {
   event.preventDefault()
 
   await animateOut()
@@ -98,7 +98,7 @@ Listen for the `turbo:before-fetch-request` event to be notified when a request 
 
 An example use case is setting `Authorization` header for the request:
 ```javascript
-addEventListener('turbo:before-fetch-request', async function(event) {
+document.addEventListener('turbo:before-fetch-request', async (event) => {
   event.preventDefault()
 
   const token = await getSessionToken(window.app)
@@ -210,7 +210,7 @@ Turbo Drive handles form submissions in a manner similar to link clicks. The key
 
 After a stateful request from a form submission, Turbo Drive expects the server to return an [HTTP 303 redirect response](https://en.wikipedia.org/wiki/HTTP_303), which it will then follow and use to navigate and update the page without reloading.
 
-The exception to this rule is when the response is rendered with either a 4xx or 5xx status code. This allows form validation errors to be rendered by having the server respond with `422 Unprocessable Entity` and a broken server to display a "Something Went Wrong" screen on a `500 Internal Server Error`. 
+The exception to this rule is when the response is rendered with either a 4xx or 5xx status code. This allows form validation errors to be rendered by having the server respond with `422 Unprocessable Entity` and a broken server to display a "Something Went Wrong" screen on a `500 Internal Server Error`.
 
 The reason Turbo doesn't allow regular rendering on 200 is that browsers have built-in behavior for dealing with reloads on POST visits where they present a "Are you sure you want to submit this form again?" dialogue that Turbo can't replicate. Instead, Turbo will stay on the current URL upon a form submission that tries to render, rather than change it to the form action, since a reload would then issue a GET against that action URL, which may not even exist.
 
