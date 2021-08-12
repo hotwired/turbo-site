@@ -39,7 +39,13 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="update" target="unread_count">
   <template>
     <!-- The contents of this template will replace the
-    contents of the element with ID "unread_count". -->
+    contents of the element with ID "unread_count" by 
+    setting innerHtml to "" and then switching in the 
+    template contents. Any handlers bound to the element 
+    "unread_count" would be retained. This is to be 
+    contrasted with the "replace" action above, where 
+    that action would necessitate the rebuilding of  
+    handlers. -->
     1
   </template>
 </turbo-stream>
