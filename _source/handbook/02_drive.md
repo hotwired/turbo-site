@@ -137,6 +137,13 @@ To reenable when an ancestor has opted out, use `data-turbo="true"`:
 
 Links or forms with Turbo Drive disabled will be handled normally by the browser.
 
+If you want Drive to be opt-in rather than opt-out, then you can set `Turbo.session.drive = false`; then, `data-turbo="true"` is used to enable Drive on a per-element basis. If you're importing Turbo in a JavaScript pack, you can do this globally:
+
+```js
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.session.drive = false
+```
+
 ## Displaying Progress
 
 During Turbo Drive navigation, the browser will not display its native progress indicator. Turbo Drive installs a CSS-based progress bar to provide feedback while issuing a request.
