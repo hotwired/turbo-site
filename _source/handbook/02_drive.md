@@ -19,7 +19,13 @@ There are two types of visit: an _application visit_, which has an action of _ad
 
 ## Application Visits
 
-Application visits are initiated by clicking a Turbo Drive-enabled link, or programmatically by calling [`Turbo.visit(location)`](/reference/drive#turbodrivevisit).
+Application visits are initiated by clicking a Turbo Drive-enabled link, annotated with `data-turbo-action="advance"`:
+
+```html
+<a href="/messages" data-turbo-action="advance">Messages</a>
+```
+
+You may also initiate the action programmatically by calling [`Turbo.visit(location)`](/reference/drive#turbodrivevisit).
 
 An application visit always issues a network request. When the response arrives, Turbo Drive renders its HTML and completes the visit.
 
