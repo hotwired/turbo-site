@@ -38,3 +38,11 @@ Turbo.setProgressBarDelay(delayInMilliseconds)
 Sets the delay after which the [progress bar](/handbook/drive#displaying-progress) will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.
 
 Note that this method has no effect when used with the iOS or Android adapters.
+
+## Turbo.session.drive
+
+```js
+Turbo.session.drive = false
+```
+
+Turns Turbo Drive off by default. You must now opt-in to Turbo Drive on a per-link and per-form basis using `data-turbo="true"`.

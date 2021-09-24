@@ -22,7 +22,7 @@ Confines all navigation within the frame by expecting any followed link or form 
 </turbo-frame>
 ```
 
-## Lazy-loaded frame
+## Eager-loaded frame
 
 Works like the basic frame, but the content is loaded from a remote `src` first.
 
@@ -32,12 +32,26 @@ Works like the basic frame, but the content is loaded from a remote `src` first.
 </turbo-frame>
 ```
 
-## Frame that drives navigation to replace whole page
+## Lazy-loaded frame
+
+Like an eager-loaded frame, but the content is not loaded from `src` until the frame is visible.
+
+```html
+<turbo-frame id="messages" src="/messages" loading="lazy">
+  Content will be replaced when the frame becomes visible and /messages has been loaded.
+</turbo-frame>
+```
+
+## Frame targeting the whole page by default
 
 ```html
 <turbo-frame id="messages" target="_top">
   <a href="/messages/1">
     Following link will replace the whole page, not this frame.
+  </a>
+
+  <a href="/messages/1" data-turbo-frame="_self">
+    Following link will replace just this frame.
   </a>
 
   <form action="/messages">
@@ -64,7 +78,7 @@ Works like the basic frame, but the content is loaded from a remote `src` first.
 </turbo-frame>
 ```
 
-# Attributes and properties
+# Attributes, properties, and functions
 
 The `<turbo-frame>` element is a [custom element][] with its own set of HTML
 attributes and JavaScript properties.
@@ -103,7 +117,7 @@ attributes and JavaScript properties.
 [enumerated]: https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes
 [Element.scrollIntoView]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters
 
-# Properties
+## Properties
 
 All `<turbo-frame>` elements can be controlled in JavaScript environments
 through instances of the `FrameElement` class.
@@ -130,6 +144,10 @@ through instances of the `FrameElement` class.
 
 * `FrameElement.isPreview` is a read-only boolean property that returns `true`
   when the `document` that contains the element is a [preview][].
+
+## Functions
+
+* `FrameElement.reload()` is a function that reloads the frame element from its `src`.
 
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [preview]: https://turbo.hotwired.dev/handbook/building#detecting-when-a-preview-is-visible

@@ -6,7 +6,9 @@ description: "A reference of everything you can do with Turbo Streams."
 
 # Streams
 
-## Append
+## The seven actions
+
+### Append
 
 Appends the content within the template tag to the container designated by the target dom id.
 
@@ -18,7 +20,7 @@ Appends the content within the template tag to the container designated by the t
 </turbo-stream>
 ```
 
-## Prepend
+### Prepend
 
 Prepends the content within the template tag to the container designated by the target dom id.
 
@@ -30,7 +32,7 @@ Prepends the content within the template tag to the container designated by the 
 </turbo-stream>
 ```
 
-## Replace
+### Replace
 
 Replaces the element designated by the target dom id.
 
@@ -42,7 +44,7 @@ Replaces the element designated by the target dom id.
 </turbo-stream>
 ```
 
-## Update
+### Update
 
 Updates the content within the template tag to the container designated by the target dom id.
 
@@ -54,7 +56,7 @@ Updates the content within the template tag to the container designated by the t
 </turbo-stream>
 ```
 
-## Remove
+### Remove
 
 Removes the element designated by the target dom id.
 
@@ -63,7 +65,7 @@ Removes the element designated by the target dom id.
 </turbo-stream>
 ```
 
-## Before
+### Before
 
 Inserts the content within the template tag before the element designated by the target dom id.
 
@@ -75,7 +77,7 @@ Inserts the content within the template tag before the element designated by the
 </turbo-stream>
 ```
 
-## After
+### After
 
 Inserts the content within the template tag after the element designated by the target dom id.
 
@@ -101,3 +103,9 @@ To target multiple elements with a single action, use the `targets` attribute wi
   </template>
 </turbo-stream>
 ```
+
+## Processing Stream Elements
+
+Turbo can connected to any form of stream to receive and process stream actions. A stream source must dispatch [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent) messages that contain the stream action HTML in the `data` attribute of that event. It's then connected by `Turbo.session.connectStreamSource(source)` and disconnected via `Turbo.session.disconnectStreamSource(source)`. If you need to process stream actions from different source than something producing `MessageEvent`s, you can use `Turbo.session.receiveMessageHTML(streamActionHTML)` to do so.
+
+A good way to wrap all this together is by using a custom element, like turbo-rails does with [TurboCableStreamSourceElement](https://github.com/hotwired/turbo-rails/blob/main/app/javascript/turbo/cable_stream_source_element.js).

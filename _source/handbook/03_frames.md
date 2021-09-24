@@ -50,7 +50,7 @@ Notice how the `<h1>` isn't inside the `<turbo-frame>`. This means it'll be igno
 
 Thus your page can easily play dual purposes: Make edits in place within a frame or edits outside of a frame where the entire page is dedicated to the action.
 
-## Lazily Loading Frames
+## Eager-Loading Frames
 
 Frames don't have to be populated when the page that contains them is loaded. If a `src` attribute is present on the `turbo-frame` tag, the referenced URL will automatically be loaded as soon as the tag appears on the page:
 
@@ -72,7 +72,7 @@ Frames don't have to be populated when the page that contains them is loaded. If
 
 This page lists all the emails available in your <a href="http://itsnotatypo.com">imbox</a> immediately upon loading the page, but then makes two subsequent requests to present small trays at the bottom of the page for emails that have been set aside or are waiting for a later reply. These trays are created out of separate HTTP requests made to the URLs referenced in the `src`.
 
-In the example above, the trays start empty, but it's also possible to populate the lazy-loading frames with initial content, which is then overwritten when the content is fetched from the `src`:
+In the example above, the trays start empty, but it's also possible to populate the eager-loading frames with initial content, which is then overwritten when the content is fetched from the `src`:
 
 ```html
 <turbo-frame id="set_aside_tray" src="/emails/set_aside">
@@ -103,13 +103,18 @@ This page now works in both its minimized form, where only the `div` with the in
 Note that the `<turbo-frame>` on `/emails/set_aside` does not contain a `src` attribute. That attribute is only added to the frame that needs to lazily load the content, not to the rendered frame that provides the content.
 
 
-## Cache Benefits to Lazily Loading Frames
+## Lazy-Loading Frames
+
+Frames that aren't visible when the page is first loaded can be marked with `loading="lazy"` such that they don't start loading until they become visible. This works exactly like the `lazy=true` attribute on `img`. It's a great way to delay loading of frames that sit inside `summary`/`detail` pairs or modals or anything else that starts out hidden and is then revealed.
+
+
+## Cache Benefits to Loading Frames
 
 Turning page segments into frames can help make the page simpler to implement, but an equally important reason for doing this is to improve cache dynamics. Complex pages with many segments are hard to cache efficiently, especially if they mix content shared by many with content specialized for an individual user. The more segments, the more dependent keys required for the cache look-up, the more frequently the cache will churn.
 
 Frames are ideal for separating segments that change on different timescales and for different audiences. Sometimes it makes sense to turn the per-user element of a page into a frame, if the bulk of the rest of the page is then easily shared across all users. Other times, it makes sense to do the opposite, where a heavily personalized page turns the one shared segment into a frame to serve it from a shared cache.
 
-While the overhead of fetching lazy-loaded frames is generally very low, you should still be judicious in just how many you load, especially if these frames would create load-in jitter on the page. Frames are, however, essentially free if the content isn't immediately visible upon loading the page. Either because they're hidden behind modals or below the fold.
+While the overhead of fetching loading frames is generally very low, you should still be judicious in just how many you load, especially if these frames would create load-in jitter on the page. Frames are, however, essentially free if the content isn't immediately visible upon loading the page. Either because they're hidden behind modals or below the fold.
 
 
 ## Targeting Navigation Into or Out of a Frame
@@ -151,6 +156,10 @@ Sometimes you want most links to operate within the frame context, but not other
   </turbo-frame>
 
   <form action="/messages/1/delete" data-turbo-frame="message_1">
+    <a href="/messages/1/warning" data-turbo-frame="_self">
+      Load warning within current frame
+    </a>
+
     <input type="submit" value="Delete this message">
     (with a confirmation shown in a specific frame)
   </form>
