@@ -201,7 +201,7 @@ This setting may be useful as a workaround for third-party JavaScript libraries 
 By default, link clicks send a `GET` request to your server. But you can change this, by decorating links with `data-turbo-method`.
 
 ```html
-<a href="/" data-turbo-method="delete">Send a DELETE request!</a>
+<a href="/articles/54" data-turbo-method="delete">Delete the article</a>
 ```
 
 ## Setting a Root Location
