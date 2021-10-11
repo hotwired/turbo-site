@@ -196,6 +196,14 @@ You can ensure visits to a certain page will always trigger a full reload by inc
 
 This setting may be useful as a workaround for third-party JavaScript libraries that don’t interact well with Turbo Drive page changes.
 
+## Performing Visits With a Different Method
+
+By default, link clicks send a `GET` request to your server. But you can change this, by decorating links with `data-turbo-method`.
+
+```html
+<a href="/" data-turbo-method="delete">Send a DELETE request!</a>
+```
+
 ## Setting a Root Location
 
 By default, Turbo Drive only loads URLs with the same origin—i.e. the same protocol, domain name, and port—as the current document. A visit to any other URL falls back to a full page load.
