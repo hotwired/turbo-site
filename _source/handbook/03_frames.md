@@ -165,3 +165,40 @@ Sometimes you want most links to operate within the frame context, but not other
   </form>
 </body>
 ```
+
+## Promoting a Frame Navigation to a Page Visit
+
+Navigating Frames provides applications with an opportunity to change part of
+the page's contents while preserving the rest of the document's state (for
+example, its current scroll position or focused element). There are times when
+we want changes to a Frame to also affect the browser's [history][].
+
+To promote a Frame navigation to a Visit, render the element with the
+`[data-turbo-action]` attribute. The attribute supports all [Visit][] values,
+and can be declared on:
+
+* the `<turbo-frame>` element
+* any `<a>` elements that navigate the `<turbo-frame>`
+* any `<form>` elements that navigate the `<turbo-frame>`
+* any `<input type="submit">` or `<button>` elements contained within `<form>`
+  elements that navigate the `<turbo-frame>`
+
+For example, consider a Frame that renders a paginated list of articles and
+transforms navigations into ["advance" Actions][advance]:
+
+```html
+<turbo-frame data-turbo-action="advance">
+  <a href="/articles?page=2" rel="next">Next page</a>
+</turbo-frame>
+```
+
+Clicking the `<a rel="next">` element will set _both_ the `<turbo-frame>`
+element's `[src]` attribute _and_ the browser's path to `/articles?page=2`.
+
+**Note:** when render the page after refreshing the browser, it is _the
+application's_ responsibility to render the _second_ page of articles along with
+any other state derived from the URL path and search parameters.
+
+[history]: https://developer.mozilla.org/en-US/docs/Web/API/History
+[Visit]: /handbook/drive#page-navigation-basics
+[advance]: /handbook/drive#application-visits
