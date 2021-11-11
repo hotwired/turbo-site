@@ -54,6 +54,8 @@ document.addEventListener("turbo:before-cache", function() {
 })
 ```
 
+Annotate elements with `data-turbo-cache="false"` if you do not want Turbo to cache specific elements.
+
 ### Detecting When a Preview is Visible
 
 Turbo Drive adds a `data-turbo-preview` attribute to the `<html>` element when it displays a preview from cache. You can check for the presence of this attribute to selectively enable or disable behavior when a preview is visible.
