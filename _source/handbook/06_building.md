@@ -54,7 +54,7 @@ document.addEventListener("turbo:before-cache", function() {
 })
 ```
 
-Annotate elements with `data-turbo-cache="false"` if you do not want Turbo to cache specific elements.
+Annotate elements with `data-turbo-cache="false"` if you do not want Turbo to cache them. This is helpful for temporary elements, like flash notices.
 
 ### Detecting When a Preview is Visible
 
