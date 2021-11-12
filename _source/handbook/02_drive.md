@@ -182,6 +182,10 @@ To disable the progress bar entirely, set its `visibility` style to `hidden`:
 }
 ```
 
+In tandem with the progress bar, Turbo Drive will also toggle the [`[aria-busy]` attribute][aria-busy] on the page's `<html>` element during page navigations started from Visits or Form Submissions. Turbo Drive will set `[aria-busy="true"]` when the navigation begins, and will remove the `[aria-busy]` attribute when the navigation completes.
+
+[aria-busy]: https://www.w3.org/TR/wai-aria/#aria-busy
+
 ## Reloading When Assets Change
 
 Turbo Drive can track the URLs of asset elements in `<head>` from one page to the next and automatically issue a full reload if they change. This ensures that users always have the latest versions of your application’s scripts and styles.
