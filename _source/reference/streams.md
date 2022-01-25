@@ -19,6 +19,7 @@ Appends the content within the template tag to the container designated by the t
   </template>
 </turbo-stream>
 ```
+If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of appended. 
 
 ### Prepend
 
@@ -31,6 +32,7 @@ Prepends the content within the template tag to the container designated by the 
   </template>
 </turbo-stream>
 ```
+If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of prepended. 
 
 ### Replace
 
