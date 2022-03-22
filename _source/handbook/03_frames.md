@@ -202,3 +202,13 @@ any other state derived from the URL path and search parameters.
 [history]: https://developer.mozilla.org/en-US/docs/Web/API/History
 [Visit]: /handbook/drive#page-navigation-basics
 [advance]: /handbook/drive#application-visits
+
+## Anti-Forgery Support (CSRF)
+
+Turbo provides [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) protection by checking the DOM for the existence of a `<meta>` tag with a `name` value of either `csrf-param` or `csrf-token`. For example:
+
+```html
+<meta name="csrf-token" content="[your-token]">
+```
+
+Upon form submissions, the token will be automatically added to the request's headers as `X-CSRF-TOKEN`. Requests made with `data-turbo="false"` will skip adding the token to headers.
