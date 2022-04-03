@@ -195,7 +195,7 @@ transforms navigations into ["advance" Actions][advance]:
 Clicking the `<a rel="next">` element will set _both_ the `<turbo-frame>`
 element's `[src]` attribute _and_ the browser's path to `/articles?page=2`.
 
-**Note:** when render the page after refreshing the browser, it is _the
+**Note:** when rendering the page after refreshing the browser, it is _the
 application's_ responsibility to render the _second_ page of articles along with
 any other state derived from the URL path and search parameters.
 
