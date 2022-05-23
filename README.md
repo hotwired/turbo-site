@@ -4,8 +4,8 @@ This repository backs the website living at https://turbo.hotwired.dev.
 
 To work on it locally:
 
-1. `npm install`
-1. `npm run serve`
+1. `yarn install`
+1. `yarn serve`
 
 ## Copyright
 

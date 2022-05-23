@@ -6,3 +6,4 @@ _public
 _site
 node_modules
 tmp
+package-lock.json

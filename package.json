@@ -22,8 +22,8 @@
     "build:11ty": "eleventy",
     "watch:11ty": "eleventy --serve --quiet",
     "build:css": "node-sass --output-style compressed _source/_assets/css/main.scss _public/assets/main.css",
-    "watch:css": "npm run build:css -- --watch",
+    "watch:css": "yarn run build:css -- --watch",
     "build:js": "esbuild _source/_assets/js/main.js --bundle --minify --sourcemap --outdir=_public/assets",
-    "watch:js": "npm run build:js -- --watch"
+    "watch:js": "yarn run build:js -- --watch"
   }
 }
