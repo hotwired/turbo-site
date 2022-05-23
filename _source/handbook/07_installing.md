@@ -21,4 +21,4 @@ import * as Turbo from "@hotwired/turbo"
 
 ## In a Ruby on Rails application
 
-The Turbo JavaScript framework is included with [the turbo-rails gem](https://github.com/hotwired/turbo-rails) for direct use with the asset pipeline.
+The Turbo JavaScript framework is included with [the turbo-rails gem](https://github.com/hotwired/turbo-rails) for direct use with the asset pipeline and [importmap-rails](https://github.com/rails/importmap-rails).

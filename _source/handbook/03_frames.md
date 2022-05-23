@@ -5,7 +5,7 @@ description: "Turbo Frames decompose pages into independent contexts, which can 
 
 # Decompose with Turbo Frames
 
-Turbo Frames allow predefined parts of a page to be updated on request. Any links and forms inside a frame are captured, and the frame contents automatically updated after receiving a response. Regardless of whether the server provides a full document, or just a fragment containing an updated version of the requested frame, only that particular frame will be extracted from the response to replace the existing content.
+Turbo Frames allow predefined parts of a page to be updated on request. **Any links and forms inside a frame are captured, and the frame contents automatically updated after receiving a response**. Regardless of whether the server provides a full document, or just a fragment containing an updated version of the requested frame, **only that particular frame will be extracted from the response to replace the existing content**.
 
 Frames are created by wrapping a segment of the page in a `<turbo-frame>` element. Each element must have a unique ID, which is used to match the content being replaced when requesting new pages from the server. A single page can have multiple frames, each establishing their own context:
 
@@ -105,8 +105,15 @@ Note that the `<turbo-frame>` on `/emails/set_aside` does not contain a `src` at
 
 ## Lazy-Loading Frames
 
-Frames that aren't visible when the page is first loaded can be marked with `loading="lazy"` such that they don't start loading until they become visible. This works exactly like the `lazy=true` attribute on `img`. It's a great way to delay loading of frames that sit inside `summary`/`detail` pairs or modals or anything else that starts out hidden and is then revealed.
+Frames that aren't visible when the page is first loaded can be marked with `loading="lazy"` such that they don't start loading until they become visible thanks to [IntersectionObservers](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 
+This works exactly like the `loading="lazy"` attribute on `img`. It's a great way to delay loading of frames that sit inside `summary`/`detail` pairs or modals or anything else that starts out hidden and is then revealed.
+
+```html
+<turbo-frame id="set_aside_tray" src="/emails/set_aside" loading="lazy">
+  <img src="/icons/spinner.gif">
+</turbo-frame>
+```
 
 ## Cache Benefits to Loading Frames
 
