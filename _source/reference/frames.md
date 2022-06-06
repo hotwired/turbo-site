@@ -78,6 +78,15 @@ Like an eager-loaded frame, but the content is not loaded from `src` until the f
 </turbo-frame>
 ```
 
+## Frame that promotes navigations to Visits
+
+```html
+<turbo-frame id="messages" data-turbo-action="advance">
+  <a href="/messages?page=2">Advance history to next page</a>
+  <a href="/messages?page=2" data-turbo-action="replace">Replace history with next page</a>
+</turbo-frame>
+```
+
 # Attributes, properties, and functions
 
 The `<turbo-frame>` element is a [custom element][] with its own set of HTML

@@ -224,9 +224,40 @@ Include a `<meta name="turbo-root">` element in your pages’ `<head>` to scope 
 </head>
 ```
 
-## Redirecting After a Form Submission
+## Form Submissions
 
 Turbo Drive handles form submissions in a manner similar to link clicks. The key difference is that form submissions can issue stateful requests using the HTTP POST method, while link clicks only ever issue stateless HTTP GET requests.
+
+Throughout a submission, Turbo Drive will dispatch a series of [events][] that
+target the `<form>` element and [bubble up][] through the document:
+
+1. `turbo:submit-start`
+2. `turbo:before-fetch-request`
+3. `turbo:before-fetch-response`
+4. `turbo:submit-end`
+
+During a submission, Turbo Drive will set the "submitter" element's [disabled][] attribute when the submission begins, then remove the attribute after the submission ends. When submitting a `<form>` element, browser's will treat the `<input type="submit">` or `<button>` element that initiated the submission as the [submitter][]. To submit a `<form>` element programmatically, invoke the [HTMLFormElement.requestSubmit()][] method and pass an `<input type="submit">` or `<button>` element as an optional parameter.
+
+If there are other changes you'd like to make during a `<form>` submission (for
+example, disabling _all_ [fields within a submitted `<form>`][elements]), you
+can declare your own event listeners:
+
+```js
+addEventListener("turbo:submit-start", ({ target }) => {
+  for (const field of target.elements) {
+    field.disabled = true
+  }
+})
+```
+
+[events]: /reference/events
+[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture
+[elements]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
+[disabled]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
+[submitter]: https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter
+[HTMLFormElement.requestSubmit()]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
+
+## Redirecting After a Form Submission
 
 After a stateful request from a form submission, Turbo Drive expects the server to return an [HTTP 303 redirect response](https://en.wikipedia.org/wiki/HTTP_303), which it will then follow and use to navigate and update the page without reloading.
 
