@@ -102,6 +102,9 @@ This page now works in both its minimized form, where only the `div` with the in
 
 Note that the `<turbo-frame>` on `/emails/set_aside` does not contain a `src` attribute. That attribute is only added to the frame that needs to lazily load the content, not to the rendered frame that provides the content.
 
+During navigation, a Frame will set `[aria-busy="true"]` on the `<turbo-frame>` element when fetching the new contents. When the navigation completes, the Frame will remove the `[aria-busy]` attribute. When navigating the `<turbo-frame>` through a `<form>` submission, Turbo will toggle the `[aria-busy="true"]` attribute in tandem with the Frame's.
+
+[aria-busy]: https://www.w3.org/TR/wai-aria/#aria-busy
 
 ## Lazy-Loading Frames
 
