@@ -5,69 +5,24 @@ description: "Turbo Streams deliver page changes over WebSocket, SSE or in respo
 
 # Come Alive with Turbo Streams
 
-Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket, SSE or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="http://itsnotatypo.com">imbox</a> is a great example.
+Turbo Streams deliver page changes as fragments of HTML wrapped **in self-executing** `<turbo-stream>` elements.
+
+**Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it.**
+
+These elements are delivered by the server over a **WebSocket**, **SSE** or **other transport** to bring the application alive with updates made by other users or processes. A new email arriving in your [imbox](https://www.hey.com/features/the-imbox/) is a great example.
 
 ## Stream Messages and Actions
 
-A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the seven possible stream actions:
+A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates [the seven possible stream actions](/reference/streams).
+
+For instance, with the action `replace`:
 
 ```html
-<turbo-stream action="append" target="messages">
-  <template>
-    <div id="message_1">
-      This div will be appended to the element with the DOM ID "messages".
-    </div>
-  </template>
-</turbo-stream>
-
-<turbo-stream action="prepend" target="messages">
-  <template>
-    <div id="message_1">
-      This div will be prepended to the element with the DOM ID "messages".
-    </div>
-  </template>
-</turbo-stream>
-
 <turbo-stream action="replace" target="message_1">
   <template>
     <div id="message_1">
       This div will replace the existing element with the DOM ID "message_1".
     </div>
-  </template>
-</turbo-stream>
-
-<turbo-stream action="update" target="unread_count">
-  <template>
-    <!-- The contents of this template will replace the
-    contents of the element with ID "unread_count" by 
-    setting innerHtml to "" and then switching in the 
-    template contents. Any handlers bound to the element 
-    "unread_count" would be retained. This is to be 
-    contrasted with the "replace" action above, where 
-    that action would necessitate the rebuilding of  
-    handlers. -->
-    1
-  </template>
-</turbo-stream>
-
-<turbo-stream action="remove" target="message_1">
-  <!-- The element with DOM ID "message_1" will be removed.
-  The contents of this stream element are ignored. -->
-</turbo-stream>
-
-<turbo-stream action="before" target="current_step">
-  <template>
-    <!-- The contents of this template will be added before the
-    the element with ID "current_step". -->
-    <li>New item</li>
-  </template>
-</turbo-stream>
-
-<turbo-stream action="after" target="current_step">
-  <template>
-    <!-- The contents of this template will be added after the
-    the element with ID "current_step". -->
-    <li>New item</li>
   </template>
 </turbo-stream>
 ```
@@ -76,30 +31,15 @@ Note that every `<turbo-stream>` element must wrap its included HTML inside a `<
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
-## Actions With Multiple Targets
-
-Actions can be applied against multiple targets using the `targets` attribute with a CSS query selector, instead of the regular `target` attribute that uses a dom ID reference. Examples:
-
-```html
-<turbo-stream action="remove" targets=".old_records">
-  <!-- The element with the class "old_records" will be removed.
-  The contents of this stream element are ignored. -->
-</turbo-stream>
-
-<turbo-stream action="after" targets="input.invalid_field">
-  <template>
-    <!-- The contents of this template will be added after the
-    all elements that match "inputs.invalid_field". -->
-    <span>Incorrect</span>
-  </template>
-</turbo-stream>
-```
-
 ## Streaming From HTTP Responses
 
-Turbo knows to automatically attach `<turbo-stream>` elements when they arrive in response to `<form>` submissions that declare a [MIME type][] of `text/vnd.turbo-stream.html`. When submitting a `<form>` element whose [method][] attribute is set to `POST`, `PUT`, `PATCH`, or `DELETE`, Turbo injects `text/vnd.turbo-stream.html` into the set of response formats in the request's [Accept][] header. When responding to requests containing that value in its [Accept][] header, servers can tailor their responses to deal with Turbo Streams, HTTP redirects, or other types of clients that don't support streams (such as native applications).
+Turbo knows to automatically attach `<turbo-stream>` elements when they arrive in response to `<form>` submissions that declare a [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) of `text/vnd.turbo-stream.html`.
 
-In a Rails controller, this would look like:
+When submitting a `<form>` element whose [method](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method) attribute is set to `POST`, `PUT`, `PATCH`, or `DELETE`, Turbo injects `text/vnd.turbo-stream.html` into the set of response formats in the request's [Accept][] header.
+
+When responding to requests containing that value in its [Accept](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept) header, servers can tailor their responses to deal with Turbo Streams, HTTP redirects, or other types of clients that don't support streams (such as native applications).
+
+Thanks to the [turbo-rails](https://github.com/hotwired/turbo-rails) gem, in a Rails controller, this would look like:
 
 ```ruby
 def destroy
@@ -113,13 +53,46 @@ def destroy
 end
 ```
 
-[MIME type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-[method]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method
-[Accept]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept
+Or you can use a file with the `.turbo_stream.erb` extension to define one or more `<turbo-stream>`.
+```ruby
+def destroy
+  @message = Message.find(params[:id])
+  @message.destroy
+
+  respond_to do |format|
+    format.turbo_stream
+    format.html         { redirect_to messages_url }
+  end
+end
+
+# messages/destroy.turbo_stream.erb
+<%= turbo_stream.remove(@message) %>
+```
+
+### Rendering multiple stream elements
+
+In Rails, we can use an array to render multiple `<turbo-stream>` elements
+```ruby
+render turbo_stream: [
+  turbo_stream.remove(@message),
+  turbo_stream.update(:messages_count, Message.count)
+]
+```
+
+Or in `messages/destroy.turbo_stream.erb`:
+```html
+# messages/destroy.turbo_stream.erb
+<%= turbo_stream.remove(@message) %>
+<%= turbo_stream.update(:messages_count, Message.count) %>
+```
+
+It is very convenient if you want to make actions on multiple `<turbo-frame>` on the page in a single response. In this case, we will remove the div that contains the message and update the counter.
 
 ## Reusing Server-Side Templates
 
-The key to Turbo Streams is the ability to reuse your existing server-side templates to perform live, partial page changes. The HTML template used to render each message in a list of such on the first page load is the same template that'll be used to add one new message to the list dynamically later. This is at the essence of the HTML-over-the-wire approach: You don't need to serialize the new message as JSON, receive it in JavaScript, render a client-side template. It's just the standard server-side templates reused.
+The key to Turbo Streams is the ability to reuse your existing server-side templates to perform live, partial page changes.
+
+The HTML template used to render each message in a list of such on the first page load is the same template that'll be used to add one new message to the list dynamically later. This is at the essence of the HTML-over-the-wire approach: You don't need to serialize the new message as JSON, receive it in JavaScript, render a client-side template. It's just the standard server-side templates reused.
 
 Another example from how this would look in Rails:
 
@@ -131,7 +104,9 @@ Another example from how this would look in Rails:
 
 <!-- app/views/messages/index.html.erb -->
 <h1>All the messages</h1>
-<%= render partial: "messages/message", collection: @messages %>
+<div id="messages">
+  <%= render partial: "messages/message", collection: @messages %>
+</div>
 ```
 
 ```ruby
@@ -171,6 +146,25 @@ Content-Type: text/vnd.turbo-stream.html; charset=utf-8
 ```
 
 This `messages/message` template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket or a SSE connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.
+
+## Actions With Multiple Targets
+
+Actions can be applied against multiple targets using the `targets` attribute with a CSS query selector, instead of the regular `target` attribute that uses a dom ID reference. Examples:
+
+```html
+<turbo-stream action="remove" targets=".old_records">
+  <!-- The element with the class "old_records" will be removed.
+  The contents of this stream element are ignored. -->
+</turbo-stream>
+
+<turbo-stream action="after" targets="input.invalid_field">
+  <template>
+    <!-- The contents of this template will be added after the
+    all elements that match "inputs.invalid_field". -->
+    <span>Incorrect</span>
+  </template>
+</turbo-stream>
+```
 
 ## Progressively Enhance When Necessary
 
