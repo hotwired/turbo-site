@@ -118,7 +118,7 @@ By default, link clicks send a `GET` request to your server. But you can change 
 
 The link will get converted into a hidden form next to the `a` element in the DOM. This means that the link can't appear inside another form, as you can't have nested forms.
 
-You should also consider that for accessibility reasons, it's better if use actual forms and buttons for anything that's not a GET.
+You should also consider that for accessibility reasons, it's better to use actual forms and buttons for anything that's not a GET.
 
 
 ## Disabling Turbo Drive on Specific Links or Forms
