@@ -5,7 +5,8 @@ This repository backs the website living at https://turbo.hotwired.dev.
 To work on it locally:
 
 1. `npm install`
-1. `npm run serve`
+2. `npm run serve`
+3.  (If you need it: `npm install markdown-it` and rerun step #2).
 
 ## Copyright
 
