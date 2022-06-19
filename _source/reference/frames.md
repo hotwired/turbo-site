@@ -114,6 +114,9 @@ attributes and JavaScript properties.
 * `target` refers to another `<turbo-frame>` element by ID to be navigated when
   a descendant `<a>` is clicked. When `target="_top"`, navigate the window.
 
+* `complete` is a boolean attribute whose presence or absence indicates whether
+  or not the `<turbo-frame>` element has finished navigating.
+
 * `autoscroll` is a [boolean attribute][] that controls whether or not to scroll
   a `<turbo-frame>` element (and its descendant `<turbo-frame>` elements) into
   view when after loading. Control the scroll's vertical alignment by setting the

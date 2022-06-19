@@ -104,6 +104,9 @@ Note that the `<turbo-frame>` on `/emails/set_aside` does not contain a `src` at
 
 During navigation, a Frame will set `[aria-busy="true"]` on the `<turbo-frame>` element when fetching the new contents. When the navigation completes, the Frame will remove the `[aria-busy]` attribute. When navigating the `<turbo-frame>` through a `<form>` submission, Turbo will toggle the `[aria-busy="true"]` attribute in tandem with the Frame's.
 
+After navigation finishes, a Frame will set the `[complete]` attribute on the
+`<turbo-frame>` element.
+
 [aria-busy]: https://www.w3.org/TR/wai-aria/#aria-busy
 
 ## Lazy-Loading Frames
