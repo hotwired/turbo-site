@@ -39,12 +39,12 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 <turbo-stream action="update" target="unread_count">
   <template>
     <!-- The contents of this template will replace the
-    contents of the element with ID "unread_count" by 
-    setting innerHtml to "" and then switching in the 
-    template contents. Any handlers bound to the element 
-    "unread_count" would be retained. This is to be 
-    contrasted with the "replace" action above, where 
-    that action would necessitate the rebuilding of  
+    contents of the element with ID "unread_count" by
+    setting innerHtml to "" and then switching in the
+    template contents. Any handlers bound to the element
+    "unread_count" would be retained. This is to be
+    contrasted with the "replace" action above, where
+    that action would necessitate the rebuilding of
     handlers. -->
     1
   </template>
@@ -193,4 +193,24 @@ Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/
 
 Turbo itself is completely backend-agnostic, though. So we encourage other frameworks in other ecosystems to look at the reference implementation provided for Rails to create their own tight integration.
 
+Turbo's `<turbo-stream-source>` custom element connects to a stream source
+through its `[src]` attribute. When declared with an `ws://` or `wss://` URL,
+the underlying stream source will be a [WebSocket][] instance. Otherwise, the
+connection is through an [EventSource][].
+
+When the element is connected to the document, the stream source is
+connected. When the element is disconnected, the stream is disconnected.
+
+Since the document's `<head>` is persistent across Turbo navigations, it's
+important to mount the `<turbo-stream-source>` as a descendant of the document's
+`<body>` element.
+
+Typical full page navigations driven by Turbo will result in the `<body>` being
+discarded and replaced with the resulting document. It's the server's
+responsibility to ensure that the element is present on any page that requires
+streaming.
+
 Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on [the Mercure protocol](https://mercure.rocks). Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events). [Learn how to use Mercure with Turbo Streams](https://mercure.rocks/docs/ecosystem/hotwire).
+
+[WebSocket]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+[EventSource]: https://developer.mozilla.org/en-US/docs/Web/API/EventSource
