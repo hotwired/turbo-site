@@ -83,6 +83,26 @@ To specify that a page should not be cached at all, use the `no-cache` directive
 
 To completely disable caching in your application, ensure every page contains a no-cache directive.
 
+### Opting Out of Caching from the client-side
+
+The value of the `<meta name="turbo-cache-control">` element can also be controlled by a client-side API exposed via `Turbo.cache`.
+
+```js
+// Set cache control of current page to `no-cache`
+Turbo.cache.exemptPageFromCache()
+
+// Set cache control of current page to `no-preview`
+Turbo.cache.exemptPageFromPreview()
+```
+
+Both functions will create a `<meta name="turbo-cache-control">` element in the `<head>` if the element is not already present.
+
+A previously set cache control value can be reset via:
+
+```js
+Turbo.cache.resetCacheControl()
+```
+
 ## Installing JavaScript Behavior
 
 You may be used to installing JavaScript behavior in response to the `window.onload`, `DOMContentLoaded`, or jQuery `ready` events. With Turbo, these events will fire only in response to the initial page load, not after any subsequent page changes. We compare two strategies for connecting JavaScript behavior to the DOM below.
