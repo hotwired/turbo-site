@@ -133,7 +133,7 @@ Turbo.StreamActions = { ...Turbo.StreamActions, ...customActions }
 This would allow you to have a turbo stream element to perform this custom action.
 
 ```html
-<turbo-stream action="updateAttribute" targets=".elementsWithClass"
+<turbo-stream action="updateAttribute" target="loading-ui"
               name="data-processing-percent" value="60%">
 </turbo-stream>
 ```
