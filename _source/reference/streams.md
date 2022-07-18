@@ -111,3 +111,29 @@ To target multiple elements with a single action, use the `targets` attribute wi
 Turbo can connect to any form of stream to receive and process stream actions. A stream source must dispatch [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent) messages that contain the stream action HTML in the `data` attribute of that event. It's then connected by `Turbo.session.connectStreamSource(source)` and disconnected via `Turbo.session.disconnectStreamSource(source)`. If you need to process stream actions from different source than something producing `MessageEvent`s, you can use `Turbo.renderStreamMessage(streamActionHTML)` to do so.
 
 A good way to wrap all this together is by using a custom element, like turbo-rails does with [TurboCableStreamSourceElement](https://github.com/hotwired/turbo-rails/blob/main/app/javascript/turbo/cable_stream_source_element.js).
+
+## Custom Stream Actions
+
+You can add custom stream actions by extending the StreamActions class and defining a new action. You might want to do this instead of using a stimulus controller connected to an empty element. Be warned you can easily override the default stream actions and break them so proceed with care.
+
+```js
+import { Turbo } from "@hotwired/turbo"
+
+const customActions = {
+  updateAttribute() {
+    let attributeName = this.getAttribute("name")
+    let value = this.getAttribute("value")
+    this.targetElements.forEach(e => e.setAttribute(attributeName, value))
+  }
+}
+
+Turbo.StreamActions = { ...Turbo.StreamActions, ...customActions }
+```
+
+This would allow you to have a turbo stream element to perform this custom action.
+
+```html
+<turbo-stream action="updateAttribute" targets=".elementsWithClass"
+              name="data-processing-percent" value="60%">
+</turbo-stream>
+```
