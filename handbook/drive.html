@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turbo Handbook</title>
+  <meta name="description" content="Turbo Drive accelerates links and form submissions by negating the need for full page reloads.">
+  <link rel="canonical" href="https://turbo.hotwire.dev/handbook/drive">
+
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="mask-icon" href="/assets/favicon.svg" color="#000000">
+  <link rel="apple-touch-icon" href="/assets/favicon-196x196.png">
+
+  <link rel="preload" href="/assets/fonts/Bitter-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Bitter-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/main.js" type="module"></script>
+  <script async defer data-domain="turbo.hotwired.dev" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+
+  <body>
+
+    <a class="nav-skip" href="#content">Skip to content</a>
+
+<nav class="jump">
+  <ul class="jump__list">
+    <li><a class="jump__list-link jump__list-link--hotwire" href="https://hotwired.dev">Hotwire:</a></li>
+    <li><a class="jump__list-link jump__list-link--active" href="https://turbo.hotwired.dev">Turbo</a></li>
+    <li><a class="jump__list-link" href="https://stimulus.hotwired.dev">Stimulus</a></li>
+    <li><span class="jump__list-link jump__list-link--disabled">Strada <span class="jump__list-info">(Coming Soon!)</span></span></li>
+  </ul>
+</nav>
+
+
+    
+<div class="nav__github-corner">
+  <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
+	style="fill:#000000; color:#FFFFFF;"
+	aria-hidden="true">
+	<a href="https://github.com/hotwired/turbo-site/blob/main/./_source/handbook/02_drive.md" target="_blank" class="github-corner">
+		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
+		</path>
+		<path
+			d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#FFFFFF" class="octo-body">
+		</path>
+	</a>
+</svg>
+
+</div>
+
+<main class="grid docs">
+
+  <header class="docs__index grid__custom-item">
+    <a class="nav-logo" href="/" aria-label="Turbo">
+  <svg class="logo" width="271" height="60" viewBox="0 0 271.24 60.26" xmlns="http://www.w3.org/2000/svg">
+  <g class="logo__icon" fill="#5cd8e5">
+    <path d="m58.42 0h-56.57a1.85 1.85 0 0 0 -1.85 1.85v7.76h30.13a20.53 20.53 0 0 1 17.08 31.9h13v-39.66a1.84 1.84 0 0 0 -1.79-1.85z"/>
+    <path d="m9.61 30.13a20.47 20.47 0 0 1 3.44-11.38h-13.05v39.67a1.84 1.84 0 0 0 1.85 1.84h56.57a1.84 1.84 0 0 0 1.84-1.84v-7.77h-30.13a20.52 20.52 0 0 1 -20.52-20.52z"/>
+    <path d="m45.05 29.61a23.13 23.13 0 0 1 -5.73 1.39 10 10 0 0 0 -.06-2.31 24.46 24.46 0 0 0 4.93-5.81 2.21 2.21 0 0 0 -3.74-2.37 22 22 0 0 1 -3.05 3.89 9.07 9.07 0 0 0 -1.9-1.81 18.24 18.24 0 0 0 -.31-3.88 31.22 31.22 0 0 0 -1.41-5.05 2.21 2.21 0 0 0 -2.84-1.32 2.11 2.11 0 0 0 -.81.51 2.23 2.23 0 0 0 -.52 2.33c.2.53.37 1 .52 1.53.22.71.4 1.38.55 2a18.89 18.89 0 0 1 .32 2.29 8.62 8.62 0 0 0 -2.3.06 24.52 24.52 0 0 0 -5.82-4.94 2.22 2.22 0 0 0 -2.37 3.75 22.07 22.07 0 0 1 3.9 3 9.35 9.35 0 0 0 -1.82 1.9 23.85 23.85 0 0 0 -8.93 1.73 2.21 2.21 0 0 0 1.52 4.16 23.28 23.28 0 0 1 5.82-1.43c0 .3-.05.6-.05.9a9.23 9.23 0 0 0 .11 1.4 24.26 24.26 0 0 0 -4.94 5.81 2.21 2.21 0 0 0 1.87 3.4 2.2 2.2 0 0 0 1.88-1 21.6 21.6 0 0 1 3-3.89 9.93 9.93 0 0 0 1.9 1.82 17.62 17.62 0 0 0 .32 3.87 30.22 30.22 0 0 0 1.41 5.05 2.2 2.2 0 0 0 2.07 1.41 2.25 2.25 0 0 0 .76-.13 2.31 2.31 0 0 0 .8-.52 2.2 2.2 0 0 0 .52-2.32c-.19-.54-.37-1-.52-1.54-.22-.71-.4-1.37-.54-2a16.58 16.58 0 0 1 -.36-2.19h.9a9.36 9.36 0 0 0 1.41-.1 24.39 24.39 0 0 0 5.8 4.93 2.21 2.21 0 1 0 2.37-3.74 22.34 22.34 0 0 1 -3.89-3.05 9.38 9.38 0 0 0 1.82-1.9h.51a25 25 0 0 0 8.41-1.73 2.22 2.22 0 0 0 -1.51-4.17zm-10 .52v.4a4.9 4.9 0 0 1 -1.74 3.39 4.51 4.51 0 0 1 -.61.44 5 5 0 0 1 -2.59.73h-.4a4.9 4.9 0 0 1 -3.38-1.73 5.79 5.79 0 0 1 -.45-.62 5 5 0 0 1 -.73-2.59c0-.13 0-.27 0-.4a4.69 4.69 0 0 1 .12-.75 5 5 0 0 1 1.61-2.63 7 7 0 0 1 .62-.45 5 5 0 0 1 2.59-.73h.4a4.81 4.81 0 0 1 .76.12 5 5 0 0 1 2.63 1.62 4.51 4.51 0 0 1 .44.61 5 5 0 0 1 .77 2.59z"/>
+  </g>
+  <g class="logo__wordmark" fill="#000">
+    <path d="m107.37 6.37h-35.25l-2.1 12.05h10.73l-6.18 35.48h13.78l6.18-35.48h10.73z"/>
+    <path d="m133 6.36-6.25 35.89h-8.15l6.25-35.89h-13.78l-6.52 37.52a13.37 13.37 0 0 0 -.09 5.33 5.78 5.78 0 0 0 1.94 3.25 8.16 8.16 0 0 0 3.73 1.59 29.13 29.13 0 0 0 5.22.43h10.28a32.06 32.06 0 0 0 5.43-.43 11.56 11.56 0 0 0 4.3-1.59 9.66 9.66 0 0 0 3.09-3.25 15.69 15.69 0 0 0 1.82-5.33l6.52-37.52z"/>
+    <path d="m187 11.78a6.09 6.09 0 0 0 -2-3.26 8.42 8.42 0 0 0 -3.71-1.68 25.36 25.36 0 0 0 -5.2-.48h-22.85l-8.24 47.54h13.79l2.81-16.26h1.91l5.26 16.26h15.11l-6.89-18.3h.4a16.45 16.45 0 0 0 2.89-1.21 8.52 8.52 0 0 0 2.36-1.85 10.24 10.24 0 0 0 1.7-2.68 16.21 16.21 0 0 0 1.07-3.56l1.59-9.24a12.89 12.89 0 0 0 0-5.28zm-14.12 8.06-.94 5.16a5.75 5.75 0 0 1 -.33.94 1.92 1.92 0 0 1 -.57.69 2.42 2.42 0 0 1 -.81.43 3.35 3.35 0 0 1 -1 .15h-5.8l1.66-9.54h5.81a2.84 2.84 0 0 1 1 .15 1.72 1.72 0 0 1 .65.43 1.48 1.48 0 0 1 .32.68 2.73 2.73 0 0 1 -.04.91z"/>
+    <path d="m228.87 12.05a6.27 6.27 0 0 0 -1.79-3.33 8 8 0 0 0 -3.46-1.8 19.51 19.51 0 0 0 -4.89-.56h-24l-8.25 47.54h24.52a21.59 21.59 0 0 0 5.08-.56 12.06 12.06 0 0 0 4.09-1.83 10.2 10.2 0 0 0 3-3.38 16.13 16.13 0 0 0 1.71-5.13l.51-3.13a19.84 19.84 0 0 0 .32-3.56 8.55 8.55 0 0 0 -.51-3 5.73 5.73 0 0 0 -1.49-2.23 7.58 7.58 0 0 0 -2.64-1.49 11 11 0 0 0 2.81-1.48 9.81 9.81 0 0 0 2.12-2.11 11.22 11.22 0 0 0 1.45-2.64 17.28 17.28 0 0 0 .86-3.23l.55-3a14 14 0 0 0 .01-5.08zm-16.87 25.35-.64 3.6a4.79 4.79 0 0 1 -.32 1.16 2.32 2.32 0 0 1 -.59.83 2.61 2.61 0 0 1 -.92.49 4.43 4.43 0 0 1 -1.29.17h-6.18l1.56-8.93h6.18a2.46 2.46 0 0 1 2 .61 2.67 2.67 0 0 1 .2 2.07zm2.89-18.17-.48 3a5.48 5.48 0 0 1 -.37 1.27 2.29 2.29 0 0 1 -.59.83 2.5 2.5 0 0 1 -.92.48 4.63 4.63 0 0 1 -1.31.17h-5.87l1.43-8.36h5.87a4.13 4.13 0 0 1 1.26.17 1.63 1.63 0 0 1 .76.5 1.55 1.55 0 0 1 .31.81 4.15 4.15 0 0 1 -.12 1.13z"/>
+    <path d="m270.93 10.9a5.91 5.91 0 0 0 -2.07-3.13 8.58 8.58 0 0 0 -3.77-1.56 28.77 28.77 0 0 0 -5.17-.42h-11.48a31.05 31.05 0 0 0 -5.28.42 12.05 12.05 0 0 0 -4.29 1.56 9.31 9.31 0 0 0 -3.11 3.13 14.71 14.71 0 0 0 -1.82 5.1l-4.85 27.77a13.49 13.49 0 0 0 -.05 5.3 5.85 5.85 0 0 0 1.9 3.26 8.16 8.16 0 0 0 3.7 1.65 27.78 27.78 0 0 0 5.31.46h11.48a30.24 30.24 0 0 0 5.46-.46 12.31 12.31 0 0 0 4.32-1.65 9.62 9.62 0 0 0 3.1-3.26 15.25 15.25 0 0 0 1.79-5.3l4.9-27.77a11.11 11.11 0 0 0 -.07-5.1zm-18.42 31.35h-9.37l4.28-24.25h9.37z"/>
+  </g>
+</svg>
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list ">
+    <li>
+      <a class="nav__list-link active" href="/handbook/introduction">Handbook</a>
+
+      <ul class="nav__sublist  active"><li>
+      <a class="nav__sublist-link" href="/handbook/introduction">1: Introduction
+      </a>
+    </li><li>
+      <a class="nav__sublist-link active" href="/handbook/drive">2: Navigate with Turbo Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/streams">4: Come Alive with Turbo Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/building">6: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/reference/drive">Reference</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/reference/drive">Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/frames">Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/streams">Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/events">Events
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/attributes">Attributes
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://discuss.hotwire.dev" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://github.com/hotwired/turbo" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+    </li>
+  </ul>
+
+</nav>
+
+  </header>
+
+  <section id="content" class="docs__content grid__custom-item">
+
+    <h1>Navigate with Turbo Drive</h1>
+<p>Turbo Drive is the part of Turbo that enhances page-level navigation. It watches for link clicks and form submissions, performs them in the background, and updates the page without doing a full reload. It’s the evolution of a library previously known as <a href="https://github.com/turbolinks/turbolinks">Turbolinks</a>.</p>
+<nav class="table-of-contents"><ul><li><a href="#page-navigation-basics"> Page Navigation Basics</a></li><li><a href="#application-visits"> Application Visits</a></li><li><a href="#restoration-visits"> Restoration Visits</a></li><li><a href="#canceling-visits-before-they-start"> Canceling Visits Before They Start</a></li><li><a href="#pausing-rendering"> Pausing Rendering</a></li><li><a href="#pausing-requests"> Pausing Requests</a></li><li><a href="#performing-visits-with-a-different-method"> Performing Visits With a Different Method</a></li><li><a href="#disabling-turbo-drive-on-specific-links-or-forms"> Disabling Turbo Drive on Specific Links or Forms</a></li><li><a href="#displaying-progress"> Displaying Progress</a></li><li><a href="#reloading-when-assets-change"> Reloading When Assets Change</a></li><li><a href="#ensuring-specific-pages-trigger-a-full-reload"> Ensuring Specific Pages Trigger a Full Reload</a></li><li><a href="#setting-a-root-location"> Setting a Root Location</a></li><li><a href="#form-submissions"> Form Submissions</a></li><li><a href="#redirecting-after-a-form-submission"> Redirecting After a Form Submission</a></li><li><a href="#streaming-after-a-form-submission"> Streaming After a Form Submission</a></li></ul></nav><h2 id="page-navigation-basics"><a class="anchor" href="#page-navigation-basics">﹟</a> Page Navigation Basics</h2>
+<p>Turbo Drive models page navigation as a <em>visit</em> to a <em>location</em> (URL) with an <em>action</em>.</p>
+<p>Visits represent the entire navigation lifecycle from click to render. That includes changing browser history, issuing the network request, restoring a copy of the page from cache, rendering the final response, and updating the scroll position.</p>
+<p>There are two types of visit: an <em>application visit</em>, which has an action of <em>advance</em> or <em>replace</em>, and a <em>restoration visit</em>, which has an action of <em>restore</em>.</p>
+<h2 id="application-visits"><a class="anchor" href="#application-visits">﹟</a> Application Visits</h2>
+<p>Application visits are initiated by clicking a Turbo Drive-enabled link, or programmatically by calling <a href="/reference/drive#turbodrivevisit"><code>Turbo.visit(location)</code></a>.</p>
+<p>An application visit always issues a network request. When the response arrives, Turbo Drive renders its HTML and completes the visit.</p>
+<p>If possible, Turbo Drive will render a preview of the page from cache immediately after the visit starts. This improves the perceived speed of frequent navigation between the same pages.</p>
+<p>If the visit’s location includes an anchor, Turbo Drive will attempt to scroll to the anchored element. Otherwise, it will scroll to the top of the page.</p>
+<p>Application visits result in a change to the browser’s history; the visit’s <em>action</em> determines how.</p>
+<p><img src="https://s3.amazonaws.com/turbolinks-docs/images/advance.svg" alt="Advance visit action"></p>
+<p>The default visit action is <em>advance</em>. During an advance visit, Turbo Drives pushes a new entry onto the browser’s history stack using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState"><code>history.pushState</code></a>.</p>
+<p>Applications using the Turbo Drive <a href="https://github.com/hotwired/turbo-ios">iOS adapter</a> typically handle advance visits by pushing a new view controller onto the navigation stack. Similarly, applications using the <a href="https://github.com/hotwired/turbo-android">Android adapter</a> typically push a new activity onto the back stack.</p>
+<p><img src="https://s3.amazonaws.com/turbolinks-docs/images/replace.svg" alt="Replace visit action"></p>
+<p>You may wish to visit a location without pushing a new history entry onto the stack. The <em>replace</em> visit action uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState"><code>history.replaceState</code></a> to discard the topmost history entry and replace it with the new location.</p>
+<p>To specify that following a link should trigger a replace visit, annotate the link with <code>data-turbo-action=&quot;replace&quot;</code>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/edit<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo-action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>replace<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Edit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>To programmatically visit a location with the replace action, pass the <code>action: &quot;replace&quot;</code> option to <code>Turbo.visit</code>:</p>
+<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token string">"/edit"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> action<span class="token operator">:</span> <span class="token string">"replace"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Applications using the Turbo Drive <a href="https://github.com/hotwired/turbo-ios">iOS adapter</a> typically handle replace visits by dismissing the topmost view controller and pushing a new view controller onto the navigation stack without animation.</p>
+<h2 id="restoration-visits"><a class="anchor" href="#restoration-visits">﹟</a> Restoration Visits</h2>
+<p>Turbo Drive automatically initiates a restoration visit when you navigate with the browser’s Back or Forward buttons. Applications using the <a href="https://github.com/hotwired/turbo-ios">iOS</a> or <a href="https://github.com/hotwired/turbo-android">Android</a> adapters initiate a restoration visit when moving backward in the navigation stack.</p>
+<p><img src="https://s3.amazonaws.com/turbolinks-docs/images/restore.svg" alt="Restore visit action"></p>
+<p>If possible, Turbo Drive will render a copy of the page from cache without making a request. Otherwise, it will retrieve a fresh copy of the page over the network. See <a href="/handbook/building#understanding-caching">Understanding Caching</a> for more details.</p>
+<p>Turbo Drive saves the scroll position of each page before navigating away and automatically returns to this saved position on restoration visits.</p>
+<p>Restoration visits have an action of <em>restore</em> and Turbo Drive reserves them for internal use. You should not attempt to annotate links or invoke <code>Turbo.visit</code> with an action of <code>restore</code>.</p>
+<h2 id="canceling-visits-before-they-start"><a class="anchor" href="#canceling-visits-before-they-start">﹟</a> Canceling Visits Before They Start</h2>
+<p>Application visits can be canceled before they start, regardless of whether they were initiated by a link click or a call to <a href="/reference/drive#turbovisit"><code>Turbo.visit</code></a>.</p>
+<p>Listen for the <code>turbo:before-visit</code> event to be notified when a visit is about to start, and use <code>event.detail.url</code> (or <code>$event.originalEvent.detail.url</code>, when using jQuery) to check the visit’s location. Then cancel the visit by calling <code>event.preventDefault()</code>.</p>
+<p>Restoration visits cannot be canceled and do not fire <code>turbo:before-visit</code>. Turbo Drive issues restoration visits in response to history navigation that has <em>already taken place</em>, typically via the browser’s Back or Forward buttons.</p>
+<h2 id="pausing-rendering"><a class="anchor" href="#pausing-rendering">﹟</a> Pausing Rendering</h2>
+<p>Application can pause rendering and make additional preparation before it will be executed.</p>
+<p>Listen for the <code>turbo:before-render</code> event to be notified when rendering is about to start, and pause it using <code>event.preventDefault()</code>. Once the preparation is done continue rendering by calling <code>event.detail.resume()</code>.</p>
+<p>An example use case is adding exit animation for visits:</p>
+<pre class="language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'turbo:before-render'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br>  <span class="token keyword">await</span> <span class="token function">animateOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br>  event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2 id="pausing-requests"><a class="anchor" href="#pausing-requests">﹟</a> Pausing Requests</h2>
+<p>Application can pause request and make additional preparation before it will be executed.</p>
+<p>Listen for the <code>turbo:before-fetch-request</code> event to be notified when a request is about to start, and pause it using <code>event.preventDefault()</code>. Once the preparation is done continue request by calling <code>event.detail.resume()</code>.</p>
+<p>An example use case is setting <code>Authorization</code> header for the request:</p>
+<pre class="language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'turbo:before-fetch-request'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><br>  <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getSessionToken</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>app<span class="token punctuation">)</span><br>  event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>fetchOptions<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'Authorization'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Bearer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>token<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><br><br>  event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span><span class="token function">resume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2 id="performing-visits-with-a-different-method"><a class="anchor" href="#performing-visits-with-a-different-method">﹟</a> Performing Visits With a Different Method</h2>
+<p>By default, link clicks send a <code>GET</code> request to your server. But you can change this with <code>data-turbo-method</code>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/articles/54<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo-method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>delete<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Delete the article<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>The link will get converted into a hidden form next to the <code>a</code> element in the DOM. This means that the link can’t appear inside another form, as you can’t have nested forms.</p>
+<p>You should also consider that for accessibility reasons, it’s better to use actual forms and buttons for anything that’s not a GET.</p>
+<h2 id="disabling-turbo-drive-on-specific-links-or-forms"><a class="anchor" href="#disabling-turbo-drive-on-specific-links-or-forms">﹟</a> Disabling Turbo Drive on Specific Links or Forms</h2>
+<p>Turbo Drive can be disabled on a per-element basis by annotating the element or any of its ancestors with <code>data-turbo=&quot;false&quot;</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Disabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/messages<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-turbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Disabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/messages<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>To reenable when an ancestor has opted out, use <code>data-turbo=&quot;true&quot;</code>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-turbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Links or forms with Turbo Drive disabled will be handled normally by the browser.</p>
+<p>If you want Drive to be opt-in rather than opt-out, then you can set <code>Turbo.session.drive = false</code>; then, <code>data-turbo=&quot;true&quot;</code> is used to enable Drive on a per-element basis. If you’re importing Turbo in a JavaScript pack, you can do this globally:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Turbo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@hotwired/turbo-rails"</span><br>Turbo<span class="token punctuation">.</span>session<span class="token punctuation">.</span>drive <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
+<h2 id="displaying-progress"><a class="anchor" href="#displaying-progress">﹟</a> Displaying Progress</h2>
+<p>During Turbo Drive navigation, the browser will not display its native progress indicator. Turbo Drive installs a CSS-based progress bar to provide feedback while issuing a request.</p>
+<p>The progress bar is enabled by default. It appears automatically for any page that takes longer than 500ms to load. (You can change this delay with the <a href="/reference/drive#turbodrivesetprogressbardelay"><code>Turbo.setProgressBarDelay</code></a> method.)</p>
+<p>The progress bar is a <code>&lt;div&gt;</code> element with the class name <code>turbo-progress-bar</code>. Its default styles appear first in the document and can be overridden by rules that come later.</p>
+<p>For example, the following CSS will result in a thick green progress bar:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.turbo-progress-bar</span> <span class="token punctuation">{</span><br>  <span class="token property">height</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>To disable the progress bar entirely, set its <code>visibility</code> style to <code>hidden</code>:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.turbo-progress-bar</span> <span class="token punctuation">{</span><br>  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>In tandem with the progress bar, Turbo Drive will also toggle the <a href="https://www.w3.org/TR/wai-aria/#aria-busy"><code>[aria-busy]</code> attribute</a> on the page’s <code>&lt;html&gt;</code> element during page navigations started from Visits or Form Submissions. Turbo Drive will set <code>[aria-busy=&quot;true&quot;]</code> when the navigation begins, and will remove the <code>[aria-busy]</code> attribute when the navigation completes.</p>
+<h2 id="reloading-when-assets-change"><a class="anchor" href="#reloading-when-assets-change">﹟</a> Reloading When Assets Change</h2>
+<p>Turbo Drive can track the URLs of asset elements in <code>&lt;head&gt;</code> from one page to the next and automatically issue a full reload if they change. This ensures that users always have the latest versions of your application’s scripts and styles.</p>
+<p>Annotate asset elements with <code>data-turbo-track=&quot;reload&quot;</code> and include a version identifier in your asset URLs. The identifier could be a number, a last-modified timestamp, or better, a digest of the asset’s contents, as in the following example.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/application-258e88d.css<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo-track</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reload<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/application-cbd3cd4.js<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo-track</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reload<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="ensuring-specific-pages-trigger-a-full-reload"><a class="anchor" href="#ensuring-specific-pages-trigger-a-full-reload">﹟</a> Ensuring Specific Pages Trigger a Full Reload</h2>
+<p>You can ensure visits to a certain page will always trigger a full reload by including a <code>&lt;meta name=&quot;turbo-visit-control&quot;&gt;</code> element in the page’s <code>&lt;head&gt;</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turbo-visit-control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reload<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<p>This setting may be useful as a workaround for third-party JavaScript libraries that don’t interact well with Turbo Drive page changes.</p>
+<h2 id="setting-a-root-location"><a class="anchor" href="#setting-a-root-location">﹟</a> Setting a Root Location</h2>
+<p>By default, Turbo Drive only loads URLs with the same origin—i.e. the same protocol, domain name, and port—as the current document. A visit to any other URL falls back to a full page load.</p>
+<p>In some cases, you may want to further scope Turbo Drive to a path on the same origin. For example, if your Turbo Drive application lives at <code>/app</code>, and the non-Turbo Drive help site lives at <code>/help</code>, links from the app to the help site shouldn’t use Turbo Drive.</p>
+<p>Include a <code>&lt;meta name=&quot;turbo-root&quot;&gt;</code> element in your pages’ <code>&lt;head&gt;</code> to scope Turbo Drive to a particular root location. Turbo Drive will only load same-origin URLs that are prefixed with this path.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turbo-root<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="form-submissions"><a class="anchor" href="#form-submissions">﹟</a> Form Submissions</h2>
+<p>Turbo Drive handles form submissions in a manner similar to link clicks. The key difference is that form submissions can issue stateful requests using the HTTP POST method, while link clicks only ever issue stateless HTTP GET requests.</p>
+<p>Throughout a submission, Turbo Drive will dispatch a series of <a href="/reference/events">events</a> that
+target the <code>&lt;form&gt;</code> element and <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture">bubble up</a> through the document:</p>
+<ol>
+<li><code>turbo:submit-start</code></li>
+<li><code>turbo:before-fetch-request</code></li>
+<li><code>turbo:before-fetch-response</code></li>
+<li><code>turbo:submit-end</code></li>
+</ol>
+<p>During a submission, Turbo Drive will set the “submitter” element’s <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled</a> attribute when the submission begins, then remove the attribute after the submission ends. When submitting a <code>&lt;form&gt;</code> element, browser’s will treat the <code>&lt;input type=&quot;submit&quot;&gt;</code> or <code>&lt;button&gt;</code> element that initiated the submission as the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter">submitter</a>. To submit a <code>&lt;form&gt;</code> element programmatically, invoke the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit">HTMLFormElement.requestSubmit()</a> method and pass an <code>&lt;input type=&quot;submit&quot;&gt;</code> or <code>&lt;button&gt;</code> element as an optional parameter.</p>
+<p>If there are other changes you’d like to make during a <code>&lt;form&gt;</code> submission (for
+example, disabling <em>all</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements">fields within a submitted <code>&lt;form&gt;</code></a>), you
+can declare your own event listeners:</p>
+<pre class="language-js"><code class="language-js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"turbo:submit-start"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> target <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> field <span class="token keyword">of</span> target<span class="token punctuation">.</span>elements<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    field<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2 id="redirecting-after-a-form-submission"><a class="anchor" href="#redirecting-after-a-form-submission">﹟</a> Redirecting After a Form Submission</h2>
+<p>After a stateful request from a form submission, Turbo Drive expects the server to return an <a href="https://en.wikipedia.org/wiki/HTTP_303">HTTP 303 redirect response</a>, which it will then follow and use to navigate and update the page without reloading.</p>
+<p>The exception to this rule is when the response is rendered with either a 4xx or 5xx status code. This allows form validation errors to be rendered by having the server respond with <code>422 Unprocessable Entity</code> and a broken server to display a “Something Went Wrong” screen on a <code>500 Internal Server Error</code>.</p>
+<p>The reason Turbo doesn’t allow regular rendering on 200’s from POST requests is that browsers have built-in behavior for dealing with reloads on POST visits where they present a “Are you sure you want to submit this form again?” dialogue that Turbo can’t replicate. Instead, Turbo will stay on the current URL upon a form submission that tries to render, rather than change it to the form action, since a reload would then issue a GET against that action URL, which may not even exist.</p>
+<p>If the form submission is a GET request, you may render the directly rendered response by giving the form a <code>data-turbo-frame</code> target. If you’d like the URL to update as part of the rendering also pass a <code>data-turbo-action</code> attribute.</p>
+<h2 id="streaming-after-a-form-submission"><a class="anchor" href="#streaming-after-a-form-submission">﹟</a> Streaming After a Form Submission</h2>
+<p>Servers may also respond to form submissions with a <a href="streams">Turbo Streams</a> message by sending the header <code>Content-Type: text/vnd.turbo-stream.html</code> followed by one or more <code>&lt;turbo-stream&gt;</code> elements in the response body. This lets you update multiple parts of the page without navigating.
+<br><br></p>
+<p><a class="button" href="/handbook/frames">Next: Decompose with Turbo Frames</a></p></section>
+
+  <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+
+    <p class="foot-logos">
+  <a href="https://basecamp.com/" target="_blank" rel="noopener">
+    <img width="253" height="56" src="/assets/logo-basecamp.svg" alt="Basecamp">
+  </a>
+  <a href="https://hey.com/" target="_blank" rel="noopener">
+    <img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY">
+  </a>
+</p>
+<p class="foot-text">
+  <span>Brought to you by the team at <a href="https://basecamp.com/" target="_blank" rel="noopener">Basecamp</a> & <a href="https://hey.com/" target="_blank" rel="noopener">HEY</a>.</span>
+</p>
+
+
+  </footer>
+
+</main>
+
+
+  </body>
+
+</html>

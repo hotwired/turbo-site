@@ -1,8 +1,0 @@
-.cache
-.netlify
-.jekyll-metadata
-.sass-cache
-_public
-_site
-node_modules
-tmp

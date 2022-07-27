@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turbo Handbook</title>
+  <meta name="description" content="Turbo Streams deliver page changes over WebSocket, SSE or in response to form submissions using just HTML and a set of CRUD-like actions.">
+  <link rel="canonical" href="https://turbo.hotwire.dev/handbook/streams">
+
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="mask-icon" href="/assets/favicon.svg" color="#000000">
+  <link rel="apple-touch-icon" href="/assets/favicon-196x196.png">
+
+  <link rel="preload" href="/assets/fonts/Bitter-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Bitter-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/main.js" type="module"></script>
+  <script async defer data-domain="turbo.hotwired.dev" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+
+  <body>
+
+    <a class="nav-skip" href="#content">Skip to content</a>
+
+<nav class="jump">
+  <ul class="jump__list">
+    <li><a class="jump__list-link jump__list-link--hotwire" href="https://hotwired.dev">Hotwire:</a></li>
+    <li><a class="jump__list-link jump__list-link--active" href="https://turbo.hotwired.dev">Turbo</a></li>
+    <li><a class="jump__list-link" href="https://stimulus.hotwired.dev">Stimulus</a></li>
+    <li><span class="jump__list-link jump__list-link--disabled">Strada <span class="jump__list-info">(Coming Soon!)</span></span></li>
+  </ul>
+</nav>
+
+
+    
+<div class="nav__github-corner">
+  <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
+	style="fill:#000000; color:#FFFFFF;"
+	aria-hidden="true">
+	<a href="https://github.com/hotwired/turbo-site/blob/main/./_source/handbook/04_streams.md" target="_blank" class="github-corner">
+		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
+		</path>
+		<path
+			d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#FFFFFF" class="octo-body">
+		</path>
+	</a>
+</svg>
+
+</div>
+
+<main class="grid docs">
+
+  <header class="docs__index grid__custom-item">
+    <a class="nav-logo" href="/" aria-label="Turbo">
+  <svg class="logo" width="271" height="60" viewBox="0 0 271.24 60.26" xmlns="http://www.w3.org/2000/svg">
+  <g class="logo__icon" fill="#5cd8e5">
+    <path d="m58.42 0h-56.57a1.85 1.85 0 0 0 -1.85 1.85v7.76h30.13a20.53 20.53 0 0 1 17.08 31.9h13v-39.66a1.84 1.84 0 0 0 -1.79-1.85z"/>
+    <path d="m9.61 30.13a20.47 20.47 0 0 1 3.44-11.38h-13.05v39.67a1.84 1.84 0 0 0 1.85 1.84h56.57a1.84 1.84 0 0 0 1.84-1.84v-7.77h-30.13a20.52 20.52 0 0 1 -20.52-20.52z"/>
+    <path d="m45.05 29.61a23.13 23.13 0 0 1 -5.73 1.39 10 10 0 0 0 -.06-2.31 24.46 24.46 0 0 0 4.93-5.81 2.21 2.21 0 0 0 -3.74-2.37 22 22 0 0 1 -3.05 3.89 9.07 9.07 0 0 0 -1.9-1.81 18.24 18.24 0 0 0 -.31-3.88 31.22 31.22 0 0 0 -1.41-5.05 2.21 2.21 0 0 0 -2.84-1.32 2.11 2.11 0 0 0 -.81.51 2.23 2.23 0 0 0 -.52 2.33c.2.53.37 1 .52 1.53.22.71.4 1.38.55 2a18.89 18.89 0 0 1 .32 2.29 8.62 8.62 0 0 0 -2.3.06 24.52 24.52 0 0 0 -5.82-4.94 2.22 2.22 0 0 0 -2.37 3.75 22.07 22.07 0 0 1 3.9 3 9.35 9.35 0 0 0 -1.82 1.9 23.85 23.85 0 0 0 -8.93 1.73 2.21 2.21 0 0 0 1.52 4.16 23.28 23.28 0 0 1 5.82-1.43c0 .3-.05.6-.05.9a9.23 9.23 0 0 0 .11 1.4 24.26 24.26 0 0 0 -4.94 5.81 2.21 2.21 0 0 0 1.87 3.4 2.2 2.2 0 0 0 1.88-1 21.6 21.6 0 0 1 3-3.89 9.93 9.93 0 0 0 1.9 1.82 17.62 17.62 0 0 0 .32 3.87 30.22 30.22 0 0 0 1.41 5.05 2.2 2.2 0 0 0 2.07 1.41 2.25 2.25 0 0 0 .76-.13 2.31 2.31 0 0 0 .8-.52 2.2 2.2 0 0 0 .52-2.32c-.19-.54-.37-1-.52-1.54-.22-.71-.4-1.37-.54-2a16.58 16.58 0 0 1 -.36-2.19h.9a9.36 9.36 0 0 0 1.41-.1 24.39 24.39 0 0 0 5.8 4.93 2.21 2.21 0 1 0 2.37-3.74 22.34 22.34 0 0 1 -3.89-3.05 9.38 9.38 0 0 0 1.82-1.9h.51a25 25 0 0 0 8.41-1.73 2.22 2.22 0 0 0 -1.51-4.17zm-10 .52v.4a4.9 4.9 0 0 1 -1.74 3.39 4.51 4.51 0 0 1 -.61.44 5 5 0 0 1 -2.59.73h-.4a4.9 4.9 0 0 1 -3.38-1.73 5.79 5.79 0 0 1 -.45-.62 5 5 0 0 1 -.73-2.59c0-.13 0-.27 0-.4a4.69 4.69 0 0 1 .12-.75 5 5 0 0 1 1.61-2.63 7 7 0 0 1 .62-.45 5 5 0 0 1 2.59-.73h.4a4.81 4.81 0 0 1 .76.12 5 5 0 0 1 2.63 1.62 4.51 4.51 0 0 1 .44.61 5 5 0 0 1 .77 2.59z"/>
+  </g>
+  <g class="logo__wordmark" fill="#000">
+    <path d="m107.37 6.37h-35.25l-2.1 12.05h10.73l-6.18 35.48h13.78l6.18-35.48h10.73z"/>
+    <path d="m133 6.36-6.25 35.89h-8.15l6.25-35.89h-13.78l-6.52 37.52a13.37 13.37 0 0 0 -.09 5.33 5.78 5.78 0 0 0 1.94 3.25 8.16 8.16 0 0 0 3.73 1.59 29.13 29.13 0 0 0 5.22.43h10.28a32.06 32.06 0 0 0 5.43-.43 11.56 11.56 0 0 0 4.3-1.59 9.66 9.66 0 0 0 3.09-3.25 15.69 15.69 0 0 0 1.82-5.33l6.52-37.52z"/>
+    <path d="m187 11.78a6.09 6.09 0 0 0 -2-3.26 8.42 8.42 0 0 0 -3.71-1.68 25.36 25.36 0 0 0 -5.2-.48h-22.85l-8.24 47.54h13.79l2.81-16.26h1.91l5.26 16.26h15.11l-6.89-18.3h.4a16.45 16.45 0 0 0 2.89-1.21 8.52 8.52 0 0 0 2.36-1.85 10.24 10.24 0 0 0 1.7-2.68 16.21 16.21 0 0 0 1.07-3.56l1.59-9.24a12.89 12.89 0 0 0 0-5.28zm-14.12 8.06-.94 5.16a5.75 5.75 0 0 1 -.33.94 1.92 1.92 0 0 1 -.57.69 2.42 2.42 0 0 1 -.81.43 3.35 3.35 0 0 1 -1 .15h-5.8l1.66-9.54h5.81a2.84 2.84 0 0 1 1 .15 1.72 1.72 0 0 1 .65.43 1.48 1.48 0 0 1 .32.68 2.73 2.73 0 0 1 -.04.91z"/>
+    <path d="m228.87 12.05a6.27 6.27 0 0 0 -1.79-3.33 8 8 0 0 0 -3.46-1.8 19.51 19.51 0 0 0 -4.89-.56h-24l-8.25 47.54h24.52a21.59 21.59 0 0 0 5.08-.56 12.06 12.06 0 0 0 4.09-1.83 10.2 10.2 0 0 0 3-3.38 16.13 16.13 0 0 0 1.71-5.13l.51-3.13a19.84 19.84 0 0 0 .32-3.56 8.55 8.55 0 0 0 -.51-3 5.73 5.73 0 0 0 -1.49-2.23 7.58 7.58 0 0 0 -2.64-1.49 11 11 0 0 0 2.81-1.48 9.81 9.81 0 0 0 2.12-2.11 11.22 11.22 0 0 0 1.45-2.64 17.28 17.28 0 0 0 .86-3.23l.55-3a14 14 0 0 0 .01-5.08zm-16.87 25.35-.64 3.6a4.79 4.79 0 0 1 -.32 1.16 2.32 2.32 0 0 1 -.59.83 2.61 2.61 0 0 1 -.92.49 4.43 4.43 0 0 1 -1.29.17h-6.18l1.56-8.93h6.18a2.46 2.46 0 0 1 2 .61 2.67 2.67 0 0 1 .2 2.07zm2.89-18.17-.48 3a5.48 5.48 0 0 1 -.37 1.27 2.29 2.29 0 0 1 -.59.83 2.5 2.5 0 0 1 -.92.48 4.63 4.63 0 0 1 -1.31.17h-5.87l1.43-8.36h5.87a4.13 4.13 0 0 1 1.26.17 1.63 1.63 0 0 1 .76.5 1.55 1.55 0 0 1 .31.81 4.15 4.15 0 0 1 -.12 1.13z"/>
+    <path d="m270.93 10.9a5.91 5.91 0 0 0 -2.07-3.13 8.58 8.58 0 0 0 -3.77-1.56 28.77 28.77 0 0 0 -5.17-.42h-11.48a31.05 31.05 0 0 0 -5.28.42 12.05 12.05 0 0 0 -4.29 1.56 9.31 9.31 0 0 0 -3.11 3.13 14.71 14.71 0 0 0 -1.82 5.1l-4.85 27.77a13.49 13.49 0 0 0 -.05 5.3 5.85 5.85 0 0 0 1.9 3.26 8.16 8.16 0 0 0 3.7 1.65 27.78 27.78 0 0 0 5.31.46h11.48a30.24 30.24 0 0 0 5.46-.46 12.31 12.31 0 0 0 4.32-1.65 9.62 9.62 0 0 0 3.1-3.26 15.25 15.25 0 0 0 1.79-5.3l4.9-27.77a11.11 11.11 0 0 0 -.07-5.1zm-18.42 31.35h-9.37l4.28-24.25h9.37z"/>
+  </g>
+</svg>
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list ">
+    <li>
+      <a class="nav__list-link active" href="/handbook/introduction">Handbook</a>
+
+      <ul class="nav__sublist  active"><li>
+      <a class="nav__sublist-link" href="/handbook/introduction">1: Introduction
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/drive">2: Navigate with Turbo Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link active" href="/handbook/streams">4: Come Alive with Turbo Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/building">6: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/reference/drive">Reference</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/reference/drive">Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/frames">Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/streams">Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/events">Events
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/attributes">Attributes
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://discuss.hotwire.dev" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://github.com/hotwired/turbo" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+    </li>
+  </ul>
+
+</nav>
+
+  </header>
+
+  <section id="content" class="docs__content grid__custom-item">
+
+    <h1>Come Alive with Turbo Streams</h1>
+<p>Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing <code>&lt;turbo-stream&gt;</code> elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket, SSE or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="http://itsnotatypo.com">imbox</a> is a great example.</p>
+<h2 id="stream-messages-and-actions"><a class="anchor" href="#stream-messages-and-actions">﹟</a> Stream Messages and Actions</h2>
+<p>A Turbo Streams message is a fragment of HTML consisting of <code>&lt;turbo-stream&gt;</code> elements. The stream message below demonstrates the seven possible stream actions:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>append<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      This div will be appended to the element with the DOM ID "messages".<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prepend<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      This div will be prepended to the element with the DOM ID "messages".<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>replace<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      This div will replace the existing element with the DOM ID "message_1".<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>update<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>unread_count<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- The contents of this template will replace the<br>    contents of the element with ID "unread_count" by <br>    setting innerHtml to "" and then switching in the <br>    template contents. Any handlers bound to the element <br>    "unread_count" would be retained. This is to be <br>    contrasted with the "replace" action above, where <br>    that action would necessitate the rebuilding of  <br>    handlers. --></span><br>    1<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>remove<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token comment">&lt;!-- The element with DOM ID "message_1" will be removed.<br>  The contents of this stream element are ignored. --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>before<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>current_step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- The contents of this template will be added before the<br>    the element with ID "current_step". --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>New item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>after<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>current_step<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- The contents of this template will be added after the<br>    the element with ID "current_step". --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>New item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span></code></pre>
+<p>Note that every <code>&lt;turbo-stream&gt;</code> element must wrap its included HTML inside a <code>&lt;template&gt;</code> element.</p>
+<p>You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.</p>
+<h2 id="actions-with-multiple-targets"><a class="anchor" href="#actions-with-multiple-targets">﹟</a> Actions With Multiple Targets</h2>
+<p>Actions can be applied against multiple targets using the <code>targets</code> attribute with a CSS query selector, instead of the regular <code>target</code> attribute that uses a dom ID reference. Examples:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>remove<span class="token punctuation">"</span></span> <span class="token attr-name">targets</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>.old_records<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token comment">&lt;!-- The element with the class "old_records" will be removed.<br>  The contents of this stream element are ignored. --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>after<span class="token punctuation">"</span></span> <span class="token attr-name">targets</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>input.invalid_field<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- The contents of this template will be added after the<br>    all elements that match "inputs.invalid_field". --></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Incorrect<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="streaming-from-http-responses"><a class="anchor" href="#streaming-from-http-responses">﹟</a> Streaming From HTTP Responses</h2>
+<p>Turbo knows to automatically attach <code>&lt;turbo-stream&gt;</code> elements when they arrive in response to <code>&lt;form&gt;</code> submissions that declare a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">MIME type</a> of <code>text/vnd.turbo-stream.html</code>. When submitting a <code>&lt;form&gt;</code> element whose <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method">method</a> attribute is set to <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, or <code>DELETE</code>, Turbo injects <code>text/vnd.turbo-stream.html</code> into the set of response formats in the request’s <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept">Accept</a> header. When responding to requests containing that value in its <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept">Accept</a> header, servers can tailor their responses to deal with Turbo Streams, HTTP redirects, or other types of clients that don’t support streams (such as native applications).</p>
+<p>In a Rails controller, this would look like:</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="token keyword">def</span> <span class="token method-definition"><span class="token function">destroy</span></span><br>  <span class="token variable">@message</span> <span class="token operator">=</span> <span class="token constant">Message</span><span class="token punctuation">.</span>find<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:id</span><span class="token punctuation">]</span><span class="token punctuation">)</span><br>  <span class="token variable">@message</span><span class="token punctuation">.</span>destroy<br><br>  respond_to <span class="token keyword">do</span> <span class="token operator">|</span>format<span class="token operator">|</span><br>    format<span class="token punctuation">.</span>turbo_stream <span class="token punctuation">{</span> render turbo_stream<span class="token punctuation">:</span> turbo_stream<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token variable">@message</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><br>    format<span class="token punctuation">.</span>html         <span class="token punctuation">{</span> redirect_to messages_url <span class="token punctuation">}</span><br>  <span class="token keyword">end</span><br><span class="token keyword">end</span></code></pre>
+<h2 id="reusing-server-side-templates"><a class="anchor" href="#reusing-server-side-templates">﹟</a> Reusing Server-Side Templates</h2>
+<p>The key to Turbo Streams is the ability to reuse your existing server-side templates to perform live, partial page changes. The HTML template used to render each message in a list of such on the first page load is the same template that’ll be used to add one new message to the list dynamically later. This is at the essence of the HTML-over-the-wire approach: You don’t need to serialize the new message as JSON, receive it in JavaScript, render a client-side template. It’s just the standard server-side templates reused.</p>
+<p>Another example from how this would look in Rails:</p>
+<pre class="language-erb"><code class="language-erb"><span class="token comment">&lt;!-- app/views/messages/_message.html.erb --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token erb language-erb"><span class="token delimiter punctuation">&lt;%=</span> dom_id message <span class="token delimiter punctuation">%></span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token erb language-erb"><span class="token delimiter punctuation">&lt;%=</span> message<span class="token punctuation">.</span>content <span class="token delimiter punctuation">%></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- app/views/messages/index.html.erb --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>All the messages<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><span class="token erb language-erb"><span class="token delimiter punctuation">&lt;%=</span> render partial<span class="token punctuation">:</span> <span class="token string">"messages/message"</span><span class="token punctuation">,</span> collection<span class="token punctuation">:</span> <span class="token variable">@messages</span> <span class="token delimiter punctuation">%></span></span></code></pre>
+<pre class="language-ruby"><code class="language-ruby"><span class="token comment"># app/controllers/messages_controller.rb</span><br><span class="token keyword">class</span> <span class="token class-name">MessagesController</span> <span class="token operator">&lt;</span> <span class="token constant">ApplicationController</span><br>  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">index</span></span><br>    <span class="token variable">@messages</span> <span class="token operator">=</span> <span class="token constant">Message</span><span class="token punctuation">.</span>all<br>  <span class="token keyword">end</span><br><br>  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">create</span></span><br>    message <span class="token operator">=</span> <span class="token constant">Message</span><span class="token punctuation">.</span>create<span class="token operator">!</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token keyword">require</span><span class="token punctuation">(</span><span class="token symbol">:message</span><span class="token punctuation">)</span><span class="token punctuation">.</span>permit<span class="token punctuation">(</span><span class="token symbol">:content</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br><br>    respond_to <span class="token keyword">do</span> <span class="token operator">|</span>format<span class="token operator">|</span><br>      format<span class="token punctuation">.</span>turbo_stream <span class="token keyword">do</span><br>        render turbo_stream<span class="token punctuation">:</span> turbo_stream<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token symbol">:messages</span><span class="token punctuation">,</span> partial<span class="token punctuation">:</span> <span class="token string">"messages/message"</span><span class="token punctuation">,</span><br>          locals<span class="token punctuation">:</span> <span class="token punctuation">{</span> message<span class="token punctuation">:</span> message <span class="token punctuation">}</span><span class="token punctuation">)</span><br>      <span class="token keyword">end</span><br><br>      format<span class="token punctuation">.</span>html <span class="token punctuation">{</span> redirect_to messages_url <span class="token punctuation">}</span><br>    <span class="token keyword">end</span><br>  <span class="token keyword">end</span><br><span class="token keyword">end</span></code></pre>
+<p>When the form to create a new message submits to the <code>MessagesController#create</code> action, the very same partial template that was used to render the list of messages in <code>MessagesController#index</code> is used to render the turbo-stream action. This will come across as a response that looks like this:</p>
+<pre class="language-html"><code class="language-html">Content-Type: text/vnd.turbo-stream.html; charset=utf-8<br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>append<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      The content of the message.<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span></code></pre>
+<p>This <code>messages/message</code> template partial can then also be used to re-render the message following an edit/update operation. Or to supply new messages created by other users over a WebSocket or a SSE connection. Being able to reuse the same templates across the whole spectrum of use is incredibly powerful, and key to reducing the amount of work it takes to create these modern, fast applications.</p>
+<h2 id="progressively-enhance-when-necessary"><a class="anchor" href="#progressively-enhance-when-necessary">﹟</a> Progressively Enhance When Necessary</h2>
+<p>It’s good practice to start your interaction design without Turbo Streams. Make the entire application work as it would if Turbo Streams were not available, then layer them on as a level-up. This means you won’t come to rely on the updates for flows that need to work in native applications or elsewhere without them.</p>
+<p>The same is especially true for WebSocket updates. On poor connections, or if there are server issues, your WebSocket may well get disconnected. If the application is designed to work without it, it’ll be more resilient.</p>
+<h2 id="but-what-about-running-javascript%3F"><a class="anchor" href="#but-what-about-running-javascript%3F">﹟</a> But What About Running JavaScript?</h2>
+<p>Turbo Streams consciously restricts you to seven actions: append, prepend, (insert) before, (insert) after, replace, update, and remove. If you want to trigger additional behavior when these actions are carried out, you should attach behavior using <a href="https://stimulus.hotwired.dev">Stimulus</a> controllers. This restriction allows Turbo Streams to focus on the essential task of delivering HTML over the wire, leaving additional logic to live in dedicated JavaScript files.</p>
+<p>Embracing these constraints will keep you from turning individual responses in a jumble of behaviors that cannot be reused and which make the app hard to follow. The key benefit from Turbo Streams is the ability to reuse templates for initial rendering of a page through all subsequent updates.</p>
+<h2 id="integration-with-server-side-frameworks"><a class="anchor" href="#integration-with-server-side-frameworks">﹟</a> Integration with Server-Side Frameworks</h2>
+<p>Of all the techniques that are included with Turbo, it’s with Turbo Streams you’ll see the biggest advantage from close integration with your backend framework. As part of the official Hotwire suite, we’ve created a reference implementation for what such an integration can look like in the <a href="https://github.com/hotwired/turbo-rails">turbo-rails gem</a>. This gem relies on the built-in support for both WebSockets and asynchronous rendering present in Rails through the Action Cable and Active Job frameworks, respectively.</p>
+<p>Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb">Broadcastable</a> concern mixed into Active Record, you can trigger WebSocket updates directly from your domain model. And using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/turbo/streams/tag_builder.rb">Turbo::Streams::TagBuilder</a>, you can render <code>&lt;turbo-stream&gt;</code> elements in inline controller responses or dedicated templates, invoking the five actions with associated rendering through a simple DSL.</p>
+<p>Turbo itself is completely backend-agnostic, though. So we encourage other frameworks in other ecosystems to look at the reference implementation provided for Rails to create their own tight integration.</p>
+<p>Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on <a href="https://mercure.rocks">the Mercure protocol</a>. Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events (SSE)</a>. <a href="https://mercure.rocks/docs/ecosystem/hotwire">Learn how to use Mercure with Turbo Streams</a>.</p>
+<p><a class="button" href="/handbook/native">Next: Go Native on iOS &amp; Android</a></p></section>
+
+  <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+
+    <p class="foot-logos">
+  <a href="https://basecamp.com/" target="_blank" rel="noopener">
+    <img width="253" height="56" src="/assets/logo-basecamp.svg" alt="Basecamp">
+  </a>
+  <a href="https://hey.com/" target="_blank" rel="noopener">
+    <img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY">
+  </a>
+</p>
+<p class="foot-text">
+  <span>Brought to you by the team at <a href="https://basecamp.com/" target="_blank" rel="noopener">Basecamp</a> & <a href="https://hey.com/" target="_blank" rel="noopener">HEY</a>.</span>
+</p>
+
+
+  </footer>
+
+</main>
+
+
+  </body>
+
+</html>

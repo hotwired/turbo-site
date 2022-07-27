@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turbo Handbook</title>
+  <meta name="description" content="Turbo bundles several techniques for creating fast, modern web applications without having to reach for a client-side JavaScript framework.">
+  <link rel="canonical" href="https://turbo.hotwire.dev/handbook/introduction">
+
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="mask-icon" href="/assets/favicon.svg" color="#000000">
+  <link rel="apple-touch-icon" href="/assets/favicon-196x196.png">
+
+  <link rel="preload" href="/assets/fonts/Bitter-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Bitter-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/main.js" type="module"></script>
+  <script async defer data-domain="turbo.hotwired.dev" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+
+  <body>
+
+    <a class="nav-skip" href="#content">Skip to content</a>
+
+<nav class="jump">
+  <ul class="jump__list">
+    <li><a class="jump__list-link jump__list-link--hotwire" href="https://hotwired.dev">Hotwire:</a></li>
+    <li><a class="jump__list-link jump__list-link--active" href="https://turbo.hotwired.dev">Turbo</a></li>
+    <li><a class="jump__list-link" href="https://stimulus.hotwired.dev">Stimulus</a></li>
+    <li><span class="jump__list-link jump__list-link--disabled">Strada <span class="jump__list-info">(Coming Soon!)</span></span></li>
+  </ul>
+</nav>
+
+
+    
+<div class="nav__github-corner">
+  <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
+	style="fill:#000000; color:#FFFFFF;"
+	aria-hidden="true">
+	<a href="https://github.com/hotwired/turbo-site/blob/main/./_source/handbook/01_introduction.md" target="_blank" class="github-corner">
+		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
+		</path>
+		<path
+			d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#FFFFFF" class="octo-body">
+		</path>
+	</a>
+</svg>
+
+</div>
+
+<main class="grid docs">
+
+  <header class="docs__index grid__custom-item">
+    <a class="nav-logo" href="/" aria-label="Turbo">
+  <svg class="logo" width="271" height="60" viewBox="0 0 271.24 60.26" xmlns="http://www.w3.org/2000/svg">
+  <g class="logo__icon" fill="#5cd8e5">
+    <path d="m58.42 0h-56.57a1.85 1.85 0 0 0 -1.85 1.85v7.76h30.13a20.53 20.53 0 0 1 17.08 31.9h13v-39.66a1.84 1.84 0 0 0 -1.79-1.85z"/>
+    <path d="m9.61 30.13a20.47 20.47 0 0 1 3.44-11.38h-13.05v39.67a1.84 1.84 0 0 0 1.85 1.84h56.57a1.84 1.84 0 0 0 1.84-1.84v-7.77h-30.13a20.52 20.52 0 0 1 -20.52-20.52z"/>
+    <path d="m45.05 29.61a23.13 23.13 0 0 1 -5.73 1.39 10 10 0 0 0 -.06-2.31 24.46 24.46 0 0 0 4.93-5.81 2.21 2.21 0 0 0 -3.74-2.37 22 22 0 0 1 -3.05 3.89 9.07 9.07 0 0 0 -1.9-1.81 18.24 18.24 0 0 0 -.31-3.88 31.22 31.22 0 0 0 -1.41-5.05 2.21 2.21 0 0 0 -2.84-1.32 2.11 2.11 0 0 0 -.81.51 2.23 2.23 0 0 0 -.52 2.33c.2.53.37 1 .52 1.53.22.71.4 1.38.55 2a18.89 18.89 0 0 1 .32 2.29 8.62 8.62 0 0 0 -2.3.06 24.52 24.52 0 0 0 -5.82-4.94 2.22 2.22 0 0 0 -2.37 3.75 22.07 22.07 0 0 1 3.9 3 9.35 9.35 0 0 0 -1.82 1.9 23.85 23.85 0 0 0 -8.93 1.73 2.21 2.21 0 0 0 1.52 4.16 23.28 23.28 0 0 1 5.82-1.43c0 .3-.05.6-.05.9a9.23 9.23 0 0 0 .11 1.4 24.26 24.26 0 0 0 -4.94 5.81 2.21 2.21 0 0 0 1.87 3.4 2.2 2.2 0 0 0 1.88-1 21.6 21.6 0 0 1 3-3.89 9.93 9.93 0 0 0 1.9 1.82 17.62 17.62 0 0 0 .32 3.87 30.22 30.22 0 0 0 1.41 5.05 2.2 2.2 0 0 0 2.07 1.41 2.25 2.25 0 0 0 .76-.13 2.31 2.31 0 0 0 .8-.52 2.2 2.2 0 0 0 .52-2.32c-.19-.54-.37-1-.52-1.54-.22-.71-.4-1.37-.54-2a16.58 16.58 0 0 1 -.36-2.19h.9a9.36 9.36 0 0 0 1.41-.1 24.39 24.39 0 0 0 5.8 4.93 2.21 2.21 0 1 0 2.37-3.74 22.34 22.34 0 0 1 -3.89-3.05 9.38 9.38 0 0 0 1.82-1.9h.51a25 25 0 0 0 8.41-1.73 2.22 2.22 0 0 0 -1.51-4.17zm-10 .52v.4a4.9 4.9 0 0 1 -1.74 3.39 4.51 4.51 0 0 1 -.61.44 5 5 0 0 1 -2.59.73h-.4a4.9 4.9 0 0 1 -3.38-1.73 5.79 5.79 0 0 1 -.45-.62 5 5 0 0 1 -.73-2.59c0-.13 0-.27 0-.4a4.69 4.69 0 0 1 .12-.75 5 5 0 0 1 1.61-2.63 7 7 0 0 1 .62-.45 5 5 0 0 1 2.59-.73h.4a4.81 4.81 0 0 1 .76.12 5 5 0 0 1 2.63 1.62 4.51 4.51 0 0 1 .44.61 5 5 0 0 1 .77 2.59z"/>
+  </g>
+  <g class="logo__wordmark" fill="#000">
+    <path d="m107.37 6.37h-35.25l-2.1 12.05h10.73l-6.18 35.48h13.78l6.18-35.48h10.73z"/>
+    <path d="m133 6.36-6.25 35.89h-8.15l6.25-35.89h-13.78l-6.52 37.52a13.37 13.37 0 0 0 -.09 5.33 5.78 5.78 0 0 0 1.94 3.25 8.16 8.16 0 0 0 3.73 1.59 29.13 29.13 0 0 0 5.22.43h10.28a32.06 32.06 0 0 0 5.43-.43 11.56 11.56 0 0 0 4.3-1.59 9.66 9.66 0 0 0 3.09-3.25 15.69 15.69 0 0 0 1.82-5.33l6.52-37.52z"/>
+    <path d="m187 11.78a6.09 6.09 0 0 0 -2-3.26 8.42 8.42 0 0 0 -3.71-1.68 25.36 25.36 0 0 0 -5.2-.48h-22.85l-8.24 47.54h13.79l2.81-16.26h1.91l5.26 16.26h15.11l-6.89-18.3h.4a16.45 16.45 0 0 0 2.89-1.21 8.52 8.52 0 0 0 2.36-1.85 10.24 10.24 0 0 0 1.7-2.68 16.21 16.21 0 0 0 1.07-3.56l1.59-9.24a12.89 12.89 0 0 0 0-5.28zm-14.12 8.06-.94 5.16a5.75 5.75 0 0 1 -.33.94 1.92 1.92 0 0 1 -.57.69 2.42 2.42 0 0 1 -.81.43 3.35 3.35 0 0 1 -1 .15h-5.8l1.66-9.54h5.81a2.84 2.84 0 0 1 1 .15 1.72 1.72 0 0 1 .65.43 1.48 1.48 0 0 1 .32.68 2.73 2.73 0 0 1 -.04.91z"/>
+    <path d="m228.87 12.05a6.27 6.27 0 0 0 -1.79-3.33 8 8 0 0 0 -3.46-1.8 19.51 19.51 0 0 0 -4.89-.56h-24l-8.25 47.54h24.52a21.59 21.59 0 0 0 5.08-.56 12.06 12.06 0 0 0 4.09-1.83 10.2 10.2 0 0 0 3-3.38 16.13 16.13 0 0 0 1.71-5.13l.51-3.13a19.84 19.84 0 0 0 .32-3.56 8.55 8.55 0 0 0 -.51-3 5.73 5.73 0 0 0 -1.49-2.23 7.58 7.58 0 0 0 -2.64-1.49 11 11 0 0 0 2.81-1.48 9.81 9.81 0 0 0 2.12-2.11 11.22 11.22 0 0 0 1.45-2.64 17.28 17.28 0 0 0 .86-3.23l.55-3a14 14 0 0 0 .01-5.08zm-16.87 25.35-.64 3.6a4.79 4.79 0 0 1 -.32 1.16 2.32 2.32 0 0 1 -.59.83 2.61 2.61 0 0 1 -.92.49 4.43 4.43 0 0 1 -1.29.17h-6.18l1.56-8.93h6.18a2.46 2.46 0 0 1 2 .61 2.67 2.67 0 0 1 .2 2.07zm2.89-18.17-.48 3a5.48 5.48 0 0 1 -.37 1.27 2.29 2.29 0 0 1 -.59.83 2.5 2.5 0 0 1 -.92.48 4.63 4.63 0 0 1 -1.31.17h-5.87l1.43-8.36h5.87a4.13 4.13 0 0 1 1.26.17 1.63 1.63 0 0 1 .76.5 1.55 1.55 0 0 1 .31.81 4.15 4.15 0 0 1 -.12 1.13z"/>
+    <path d="m270.93 10.9a5.91 5.91 0 0 0 -2.07-3.13 8.58 8.58 0 0 0 -3.77-1.56 28.77 28.77 0 0 0 -5.17-.42h-11.48a31.05 31.05 0 0 0 -5.28.42 12.05 12.05 0 0 0 -4.29 1.56 9.31 9.31 0 0 0 -3.11 3.13 14.71 14.71 0 0 0 -1.82 5.1l-4.85 27.77a13.49 13.49 0 0 0 -.05 5.3 5.85 5.85 0 0 0 1.9 3.26 8.16 8.16 0 0 0 3.7 1.65 27.78 27.78 0 0 0 5.31.46h11.48a30.24 30.24 0 0 0 5.46-.46 12.31 12.31 0 0 0 4.32-1.65 9.62 9.62 0 0 0 3.1-3.26 15.25 15.25 0 0 0 1.79-5.3l4.9-27.77a11.11 11.11 0 0 0 -.07-5.1zm-18.42 31.35h-9.37l4.28-24.25h9.37z"/>
+  </g>
+</svg>
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list ">
+    <li>
+      <a class="nav__list-link active" href="/handbook/introduction">Handbook</a>
+
+      <ul class="nav__sublist  active"><li>
+      <a class="nav__sublist-link active" href="/handbook/introduction">1: Introduction
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/drive">2: Navigate with Turbo Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/streams">4: Come Alive with Turbo Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/building">6: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/reference/drive">Reference</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/reference/drive">Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/frames">Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/streams">Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/events">Events
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/attributes">Attributes
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://discuss.hotwire.dev" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://github.com/hotwired/turbo" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+    </li>
+  </ul>
+
+</nav>
+
+  </header>
+
+  <section id="content" class="docs__content grid__custom-item">
+
+    <h1>Introduction</h1>
+<p>Turbo bundles several techniques for creating fast, modern, progressively enhanced web applications without using much JavaScript. It offers a simpler alternative to the prevailing client-side frameworks which put all the logic in the front-end and confine the server side of your app to being little more than a JSON API.</p>
+<p>With Turbo, you let the server deliver HTML directly, which means all the logic for checking permissions, interacting directly with your domain model, and everything else that goes into programming an application can happen more or less exclusively within your favorite programming language. You’re no longer mirroring logic on both sides of a JSON divide. All the logic lives on the server, and the browser deals just with the final HTML.</p>
+<p>You can read more about the benefits of this HTML-over-the-wire approach on the <a href="https://hotwired.dev/">Hotwire site</a>. What follows are the techniques that Turbo brings to make this possible.</p>
+<h2 id="turbo-drive%3A-navigate-within-a-persistent-process"><a class="anchor" href="#turbo-drive%3A-navigate-within-a-persistent-process">﹟</a> Turbo Drive: Navigate within a persistent process</h2>
+<p>A key attraction with traditional single-page applications, when compared with the old-school, separate-pages approach, is the speed of navigation. SPAs get a lot of that speed from not constantly tearing down the application process, only to reinitialize it on the very next page.</p>
+<p>Turbo Drive gives you that same speed by using the same persistent-process model, but without requiring you to craft your entire application around the paradigm. There’s no client-side router to maintain, there’s no state to carefully manage. The persistent process is managed by Turbo, and you write your server-side code as though you were living back in the early aughts – blissfully isolated from the complexities of today’s SPA monstrosities!</p>
+<p>This happens by intercepting all clicks on <code>&lt;a href&gt;</code> links to the same domain. When you click an eligible link, Turbo Drive prevents the browser from following it, changes the browser’s URL using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">History API</a>, requests the new page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch"><code>fetch</code></a>, and then renders the HTML response.</p>
+<p>Same deal with forms. Their submissions are turned into <code>fetch</code> requests from which Turbo Drive will follow the redirect and render the HTML response.</p>
+<p>During rendering, Turbo Drive replaces the current <code>&lt;body&gt;</code> element outright and merges the contents of the <code>&lt;head&gt;</code> element. The JavaScript window and document objects, and the <code>&lt;html&gt;</code> element, persist from one rendering to the next.</p>
+<p>While it’s possible to interact directly with Turbo Drive to control how visits happen or hook into the lifecycle of the request, the majority of the time this is a drop-in replacement where the speed is free just by adopting a few conventions.</p>
+<h2 id="turbo-frames%3A-decompose-complex-pages"><a class="anchor" href="#turbo-frames%3A-decompose-complex-pages">﹟</a> Turbo Frames: Decompose complex pages</h2>
+<p>Most web applications present pages that contain several independent segments. For a discussion page, you might have a navigation bar on the top, a list of messages in the center, a form at the bottom to add a new message, and a sidebar with related topics. Generating this discussion page normally means generating each segment in a serialized manner, piecing them all together, then delivering the result as a single HTML response to the browser.</p>
+<p>With Turbo Frames, you can place those independent segments inside frame elements that can scope their navigation and be lazily loaded. Scoped navigation means all interaction within a frame, like clicking links or submitting forms, happens within that frame, keeping the rest of the page from changing or reloading.</p>
+<p>To wrap an independent segment in its own navigation context, enclose it in a <code>&lt;turbo-frame&gt;</code> tag. For example:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-frame</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new_message<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/messages<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-frame</span><span class="token punctuation">></span></span></code></pre>
+<p>When you submit the form above, Turbo extracts the matching <code>&lt;turbo-frame id=&quot;new_message&quot;&gt;</code> element from the redirected HTML response and swaps its content into the existing <code>new_message</code> frame element. The rest of the page stays just as it was.</p>
+<p>Frames can also defer loading their contents in addition to scoping navigation. To defer loading a frame, add a <code>src</code> attribute whose value is the URL to be automatically loaded. As with scoped navigation, Turbo finds and extracts the matching frame from the resulting response and swaps its content into place:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-frame</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This message will be replaced by the response from /messages.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-frame</span><span class="token punctuation">></span></span></code></pre>
+<p>This may sound a lot like old-school frames, or even <code>&lt;iframe&gt;</code>s, but Turbo Frames are part of the same DOM, so there’s none of the weirdness or compromises associated with “real” frames. Turbo Frames are styled by the same CSS, part of the same JavaScript context, and are not placed under any additional content security restrictions.</p>
+<p>In addition to turning your segments into independent contexts, Turbo Frames affords you:</p>
+<ol>
+<li><strong>Efficient caching.</strong> In the discussion page example above, the related topics sidebar needs to expire whenever a new related topic appears, but the list of messages in the center does not. When everything is just one page, the whole cache expires as soon as any of the individual segments do. With frames, each segment is cached independently, so you get longer-lived caches with fewer dependent keys.</li>
+<li><strong>Parallelized execution.</strong> Each defer-loaded frame is generated by its own HTTP request/response, which means it can be handled by a separate process. This allows for parallelized execution without having to manually manage the process. A complicated composite page that takes 400ms to complete end-to-end can be broken up with frames where the initial request might only take 50ms, and each of three defer-loaded frames each take 50ms. Now the whole page is done in 100ms because the three frames each taking 50ms run concurrently rather than sequentially.</li>
+<li><strong>Ready for mobile.</strong> In mobile apps, you usually can’t have big, complicated composite pages. Each segment needs a dedicated screen. With an application built using Turbo Frames, you’ve already done this work of turning the composite page into segments. These segments can then appear in native sheets and screens without alteration (since they all have independent URLs).</li>
+</ol>
+<h2 id="turbo-streams%3A-deliver-live-page-changes"><a class="anchor" href="#turbo-streams%3A-deliver-live-page-changes">﹟</a> Turbo Streams: Deliver live page changes</h2>
+<p>Making partial page changes in response to asynchronous actions is how we make the application feel alive. While Turbo Frames give us such updates in response to direct interactions within a single frame, Turbo Streams let us change any part of the page in response to updates sent over a WebSocket connection, SSE or other transport. (Think an <a href="http://itsnotatypo.com">imbox</a> that automatically updates when a new email arrives.)</p>
+<p>Turbo Streams introduces a <code>&lt;turbo-stream&gt;</code> element with seven basic actions: <code>append</code>, <code>prepend</code>, <code>replace</code>, <code>update</code>, <code>remove</code>, <code>before</code>, and <code>after</code>. With these actions, along with the <code>target</code> attribute specifying the ID of the element you want to operate on, you can encode all the mutations needed to refresh the page. You can even combine several stream elements in a single stream message. Simply include the HTML you’re interested in inserting or replacing in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template tag</a> and Turbo does the rest:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>append<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>My new message!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span></code></pre>
+<p>This stream element will take the <code>div</code> with the new message and append it to the container with the ID <code>messages</code>. It’s just as simple to replace an existing element:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-stream</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>replace<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message_1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This changes the existing message!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-stream</span><span class="token punctuation">></span></span></code></pre>
+<p>This is a conceptual continuation of what in the Rails world was first called <a href="https://weblog.rubyonrails.org/2006/3/28/rails-1-1-rjs-active-record-respond_to-integration-tests-and-500-other-things/">RJS</a> and then called <a href="https://signalvnoise.com/posts/3697-server-generated-javascript-responses">SJR</a>, but realized without any need for JavaScript. The benefits remain the same:</p>
+<ol>
+<li><strong>Reuse the server-side templates</strong>: Live page changes are generated using the same server-side templates that were used to create the first-load page.</li>
+<li><strong>HTML over the wire</strong>: Since all we’re sending is HTML, you don’t need any client-side JavaScript (beyond Turbo, of course) to process the update. Yes, the HTML payload might be a tad larger than a comparable JSON, but with gzip, the difference is usually negligible, and you save all the client-side effort it takes to fetch JSON and turn it into HTML.</li>
+<li><strong>Simpler control flow</strong>: It’s really clear to follow what happens when messages arrive on the WebSocket, SSE or in response to form submissions. There’s no routing, event bubbling, or other indirection required. It’s just the HTML to be changed, wrapped in a single tag that tells us how.</li>
+</ol>
+<p>Now, unlike RJS and SJR, it’s not possible to call custom JavaScript functions as part of a Turbo Streams action. But this is a feature, not a bug. Those techniques can easily end up producing a tangled mess when way too much JavaScript is sent along with the response. Turbo focuses squarely on just updating the DOM, and then assumes you’ll connect any additional behavior using <a href="https://stimulus.hotwired.dev">Stimulus</a> actions and lifecycle callbacks.</p>
+<h2 id="turbo-native%3A-hybrid-apps-for-ios-%26-android"><a class="anchor" href="#turbo-native%3A-hybrid-apps-for-ios-%26-android">﹟</a> Turbo Native: Hybrid apps for iOS &amp; Android</h2>
+<p>Turbo Native is ideal for building hybrid apps for iOS and Android. You can use your existing server-rendered HTML to get baseline coverage of your app’s functionality in a native wrapper. Then you can spend all the time you saved on making the few screens that really benefit from high-fidelity native controls even better.</p>
+<p>An application like Basecamp has hundreds of screens. Rewriting every single one of those screens would be an enormous task with very little benefit. Better to reserve the native firepower for high-touch interactions that really demand the highest fidelity. Something like the “New For You” inbox in Basecamp, for example, where we use swipe controls that need to feel just right. But most pages, like the one showing a single message, wouldn’t really be any better if they were completely native.</p>
+<p>Going hybrid doesn’t just speed up your development process, it also gives you more freedom to upgrade your app without going through the slow and onerous app store release processes. Anything that’s done in HTML can be changed in your web application, and instantly be available to all users. No waiting for Big Tech to approve your changes, no waiting for users to upgrade.</p>
+<p>Turbo Native assumes you’re using the recommended development practices available for iOS and Android. This is not a framework that abstracts native APIs away or even tries to let your native code be shareable between platforms. The part that’s shareable is the HTML that’s rendered server-side. But the native controls are written in the recommended native APIs.</p>
+<p>See the <a href="https://github.com/hotwired/turbo-ios">Turbo Native: iOS</a> and <a href="https://github.com/hotwired/turbo-android">Turbo Native: Android</a> repositories for more documentation. See the native apps for HEY on <a href="https://apps.apple.com/us/app/hey-email/id1506603805">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.basecamp.hey&hl=en_US&gl=US">Android</a> to get a feel for just how good you can make a hybrid app powered by Turbo.</p>
+<h2 id="integrate-with-backend-frameworks"><a class="anchor" href="#integrate-with-backend-frameworks">﹟</a> Integrate with backend frameworks</h2>
+<p>You don’t need any backend framework to use Turbo. All the features are built to be used directly, without further abstractions. But if you have the opportunity to use a backend framework that’s integrated with Turbo, you’ll find life a lot simpler. <a href="https://github.com/hotwired/turbo-rails">We’ve created a reference implementation for such an integration for Ruby on Rails</a>.</p>
+<p><a class="button" href="/handbook/drive">Next: Navigate with Turbo Drive</a></p></section>
+
+  <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+
+    <p class="foot-logos">
+  <a href="https://basecamp.com/" target="_blank" rel="noopener">
+    <img width="253" height="56" src="/assets/logo-basecamp.svg" alt="Basecamp">
+  </a>
+  <a href="https://hey.com/" target="_blank" rel="noopener">
+    <img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY">
+  </a>
+</p>
+<p class="foot-text">
+  <span>Brought to you by the team at <a href="https://basecamp.com/" target="_blank" rel="noopener">Basecamp</a> & <a href="https://hey.com/" target="_blank" rel="noopener">HEY</a>.</span>
+</p>
+
+
+  </footer>
+
+</main>
+
+
+  </body>
+
+</html>

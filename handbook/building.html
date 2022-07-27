@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turbo Handbook</title>
+  <meta name="description" content="Learn more about building an application with Turbo.">
+  <link rel="canonical" href="https://turbo.hotwire.dev/handbook/building">
+
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="mask-icon" href="/assets/favicon.svg" color="#000000">
+  <link rel="apple-touch-icon" href="/assets/favicon-196x196.png">
+
+  <link rel="preload" href="/assets/fonts/Bitter-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Bitter-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/RobotoMono-Italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/main.js" type="module"></script>
+  <script async defer data-domain="turbo.hotwired.dev" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+
+  <body>
+
+    <a class="nav-skip" href="#content">Skip to content</a>
+
+<nav class="jump">
+  <ul class="jump__list">
+    <li><a class="jump__list-link jump__list-link--hotwire" href="https://hotwired.dev">Hotwire:</a></li>
+    <li><a class="jump__list-link jump__list-link--active" href="https://turbo.hotwired.dev">Turbo</a></li>
+    <li><a class="jump__list-link" href="https://stimulus.hotwired.dev">Stimulus</a></li>
+    <li><span class="jump__list-link jump__list-link--disabled">Strada <span class="jump__list-info">(Coming Soon!)</span></span></li>
+  </ul>
+</nav>
+
+
+    
+<div class="nav__github-corner">
+  <svg width="60" height="60" viewBox="0 0 250 250" version="1.1" xmlns="github-corner"
+	style="fill:#000000; color:#FFFFFF;"
+	aria-hidden="true">
+	<a href="https://github.com/hotwired/turbo-site/blob/main/./_source/handbook/06_building.md" target="_blank" class="github-corner">
+		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+		<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+			fill="#FFFFFF" style="transform-origin: 130px 106px;" class="octo-arm">
+		</path>
+		<path
+			d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#FFFFFF" class="octo-body">
+		</path>
+	</a>
+</svg>
+
+</div>
+
+<main class="grid docs">
+
+  <header class="docs__index grid__custom-item">
+    <a class="nav-logo" href="/" aria-label="Turbo">
+  <svg class="logo" width="271" height="60" viewBox="0 0 271.24 60.26" xmlns="http://www.w3.org/2000/svg">
+  <g class="logo__icon" fill="#5cd8e5">
+    <path d="m58.42 0h-56.57a1.85 1.85 0 0 0 -1.85 1.85v7.76h30.13a20.53 20.53 0 0 1 17.08 31.9h13v-39.66a1.84 1.84 0 0 0 -1.79-1.85z"/>
+    <path d="m9.61 30.13a20.47 20.47 0 0 1 3.44-11.38h-13.05v39.67a1.84 1.84 0 0 0 1.85 1.84h56.57a1.84 1.84 0 0 0 1.84-1.84v-7.77h-30.13a20.52 20.52 0 0 1 -20.52-20.52z"/>
+    <path d="m45.05 29.61a23.13 23.13 0 0 1 -5.73 1.39 10 10 0 0 0 -.06-2.31 24.46 24.46 0 0 0 4.93-5.81 2.21 2.21 0 0 0 -3.74-2.37 22 22 0 0 1 -3.05 3.89 9.07 9.07 0 0 0 -1.9-1.81 18.24 18.24 0 0 0 -.31-3.88 31.22 31.22 0 0 0 -1.41-5.05 2.21 2.21 0 0 0 -2.84-1.32 2.11 2.11 0 0 0 -.81.51 2.23 2.23 0 0 0 -.52 2.33c.2.53.37 1 .52 1.53.22.71.4 1.38.55 2a18.89 18.89 0 0 1 .32 2.29 8.62 8.62 0 0 0 -2.3.06 24.52 24.52 0 0 0 -5.82-4.94 2.22 2.22 0 0 0 -2.37 3.75 22.07 22.07 0 0 1 3.9 3 9.35 9.35 0 0 0 -1.82 1.9 23.85 23.85 0 0 0 -8.93 1.73 2.21 2.21 0 0 0 1.52 4.16 23.28 23.28 0 0 1 5.82-1.43c0 .3-.05.6-.05.9a9.23 9.23 0 0 0 .11 1.4 24.26 24.26 0 0 0 -4.94 5.81 2.21 2.21 0 0 0 1.87 3.4 2.2 2.2 0 0 0 1.88-1 21.6 21.6 0 0 1 3-3.89 9.93 9.93 0 0 0 1.9 1.82 17.62 17.62 0 0 0 .32 3.87 30.22 30.22 0 0 0 1.41 5.05 2.2 2.2 0 0 0 2.07 1.41 2.25 2.25 0 0 0 .76-.13 2.31 2.31 0 0 0 .8-.52 2.2 2.2 0 0 0 .52-2.32c-.19-.54-.37-1-.52-1.54-.22-.71-.4-1.37-.54-2a16.58 16.58 0 0 1 -.36-2.19h.9a9.36 9.36 0 0 0 1.41-.1 24.39 24.39 0 0 0 5.8 4.93 2.21 2.21 0 1 0 2.37-3.74 22.34 22.34 0 0 1 -3.89-3.05 9.38 9.38 0 0 0 1.82-1.9h.51a25 25 0 0 0 8.41-1.73 2.22 2.22 0 0 0 -1.51-4.17zm-10 .52v.4a4.9 4.9 0 0 1 -1.74 3.39 4.51 4.51 0 0 1 -.61.44 5 5 0 0 1 -2.59.73h-.4a4.9 4.9 0 0 1 -3.38-1.73 5.79 5.79 0 0 1 -.45-.62 5 5 0 0 1 -.73-2.59c0-.13 0-.27 0-.4a4.69 4.69 0 0 1 .12-.75 5 5 0 0 1 1.61-2.63 7 7 0 0 1 .62-.45 5 5 0 0 1 2.59-.73h.4a4.81 4.81 0 0 1 .76.12 5 5 0 0 1 2.63 1.62 4.51 4.51 0 0 1 .44.61 5 5 0 0 1 .77 2.59z"/>
+  </g>
+  <g class="logo__wordmark" fill="#000">
+    <path d="m107.37 6.37h-35.25l-2.1 12.05h10.73l-6.18 35.48h13.78l6.18-35.48h10.73z"/>
+    <path d="m133 6.36-6.25 35.89h-8.15l6.25-35.89h-13.78l-6.52 37.52a13.37 13.37 0 0 0 -.09 5.33 5.78 5.78 0 0 0 1.94 3.25 8.16 8.16 0 0 0 3.73 1.59 29.13 29.13 0 0 0 5.22.43h10.28a32.06 32.06 0 0 0 5.43-.43 11.56 11.56 0 0 0 4.3-1.59 9.66 9.66 0 0 0 3.09-3.25 15.69 15.69 0 0 0 1.82-5.33l6.52-37.52z"/>
+    <path d="m187 11.78a6.09 6.09 0 0 0 -2-3.26 8.42 8.42 0 0 0 -3.71-1.68 25.36 25.36 0 0 0 -5.2-.48h-22.85l-8.24 47.54h13.79l2.81-16.26h1.91l5.26 16.26h15.11l-6.89-18.3h.4a16.45 16.45 0 0 0 2.89-1.21 8.52 8.52 0 0 0 2.36-1.85 10.24 10.24 0 0 0 1.7-2.68 16.21 16.21 0 0 0 1.07-3.56l1.59-9.24a12.89 12.89 0 0 0 0-5.28zm-14.12 8.06-.94 5.16a5.75 5.75 0 0 1 -.33.94 1.92 1.92 0 0 1 -.57.69 2.42 2.42 0 0 1 -.81.43 3.35 3.35 0 0 1 -1 .15h-5.8l1.66-9.54h5.81a2.84 2.84 0 0 1 1 .15 1.72 1.72 0 0 1 .65.43 1.48 1.48 0 0 1 .32.68 2.73 2.73 0 0 1 -.04.91z"/>
+    <path d="m228.87 12.05a6.27 6.27 0 0 0 -1.79-3.33 8 8 0 0 0 -3.46-1.8 19.51 19.51 0 0 0 -4.89-.56h-24l-8.25 47.54h24.52a21.59 21.59 0 0 0 5.08-.56 12.06 12.06 0 0 0 4.09-1.83 10.2 10.2 0 0 0 3-3.38 16.13 16.13 0 0 0 1.71-5.13l.51-3.13a19.84 19.84 0 0 0 .32-3.56 8.55 8.55 0 0 0 -.51-3 5.73 5.73 0 0 0 -1.49-2.23 7.58 7.58 0 0 0 -2.64-1.49 11 11 0 0 0 2.81-1.48 9.81 9.81 0 0 0 2.12-2.11 11.22 11.22 0 0 0 1.45-2.64 17.28 17.28 0 0 0 .86-3.23l.55-3a14 14 0 0 0 .01-5.08zm-16.87 25.35-.64 3.6a4.79 4.79 0 0 1 -.32 1.16 2.32 2.32 0 0 1 -.59.83 2.61 2.61 0 0 1 -.92.49 4.43 4.43 0 0 1 -1.29.17h-6.18l1.56-8.93h6.18a2.46 2.46 0 0 1 2 .61 2.67 2.67 0 0 1 .2 2.07zm2.89-18.17-.48 3a5.48 5.48 0 0 1 -.37 1.27 2.29 2.29 0 0 1 -.59.83 2.5 2.5 0 0 1 -.92.48 4.63 4.63 0 0 1 -1.31.17h-5.87l1.43-8.36h5.87a4.13 4.13 0 0 1 1.26.17 1.63 1.63 0 0 1 .76.5 1.55 1.55 0 0 1 .31.81 4.15 4.15 0 0 1 -.12 1.13z"/>
+    <path d="m270.93 10.9a5.91 5.91 0 0 0 -2.07-3.13 8.58 8.58 0 0 0 -3.77-1.56 28.77 28.77 0 0 0 -5.17-.42h-11.48a31.05 31.05 0 0 0 -5.28.42 12.05 12.05 0 0 0 -4.29 1.56 9.31 9.31 0 0 0 -3.11 3.13 14.71 14.71 0 0 0 -1.82 5.1l-4.85 27.77a13.49 13.49 0 0 0 -.05 5.3 5.85 5.85 0 0 0 1.9 3.26 8.16 8.16 0 0 0 3.7 1.65 27.78 27.78 0 0 0 5.31.46h11.48a30.24 30.24 0 0 0 5.46-.46 12.31 12.31 0 0 0 4.32-1.65 9.62 9.62 0 0 0 3.1-3.26 15.25 15.25 0 0 0 1.79-5.3l4.9-27.77a11.11 11.11 0 0 0 -.07-5.1zm-18.42 31.35h-9.37l4.28-24.25h9.37z"/>
+  </g>
+</svg>
+</a>
+
+<input type="checkbox" id="hamburger" class="nav-checkbox"/>
+<label class="nav-mobile-button" for="hamburger"><span></span> Menu</label>
+
+<nav class="nav">
+
+  <label class="nav-mobile-button nav-mobile-button--close" for="hamburger"><span></span> close</label>
+
+  <ul class="nav__list ">
+    <li>
+      <a class="nav__list-link active" href="/handbook/introduction">Handbook</a>
+
+      <ul class="nav__sublist  active"><li>
+      <a class="nav__sublist-link" href="/handbook/introduction">1: Introduction
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/drive">2: Navigate with Turbo Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/streams">4: Come Alive with Turbo Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      </a>
+    </li><li>
+      <a class="nav__sublist-link active" href="/handbook/building">6: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="/reference/drive">Reference</a>
+
+      <ul class="nav__sublist "><li>
+      <a class="nav__sublist-link" href="/reference/drive">Drive
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/frames">Frames
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/streams">Streams
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/events">Events
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/reference/attributes">Attributes
+      </a>
+    </li></ul>
+
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://discuss.hotwire.dev" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
+    </li>
+    <li>
+      <a class="nav__list-link" href="https://github.com/hotwired/turbo" title="Head over to GitHub for code, bug reports, and pull requests.">Source Code</a>
+    </li>
+  </ul>
+
+</nav>
+
+  </header>
+
+  <section id="content" class="docs__content grid__custom-item">
+
+    <h1>Building Your Turbo Application</h1>
+<p>Turbo is fast because it prevents the whole page from reloading when you follow a link or submit a form. Your application becomes a persistent, long-running process in the browser. This requires you to rethink the way you structure your JavaScript.</p>
+<p>In particular, you can no longer depend on a full page load to reset your environment every time you navigate. The JavaScript <code>window</code> and <code>document</code> objects retain their state across page changes, and any other objects you leave in memory will stay in memory.</p>
+<p>With awareness and a little extra care, you can design your application to gracefully handle this constraint without tightly coupling it to Turbo.</p>
+<h2 id="working-with-script-elements"><a class="anchor" href="#working-with-script-elements">﹟</a> Working with Script Elements</h2>
+<p>Your browser automatically loads and evaluates any <code>&lt;script&gt;</code> elements present on the initial page load.</p>
+<p>When you navigate to a new page, Turbo Drive looks for any <code>&lt;script&gt;</code> elements in the new page’s <code>&lt;head&gt;</code> which aren’t present on the current page. Then it appends them to the current <code>&lt;head&gt;</code> where they’re loaded and evaluated by the browser. You can use this to load additional JavaScript files on-demand.</p>
+<p>Turbo Drive evaluates <code>&lt;script&gt;</code> elements in a page’s <code>&lt;body&gt;</code> each time it renders the page. You can use inline body scripts to set up per-page JavaScript state or bootstrap client-side models. To install behavior, or to perform more complex operations when the page changes, avoid script elements and use the <code>turbo:load</code> event instead.</p>
+<p>Annotate <code>&lt;script&gt;</code> elements with <code>data-turbo-eval=&quot;false&quot;</code> if you do not want Turbo to evaluate them after rendering. Note that this annotation will not prevent your browser from evaluating scripts on the initial page load.</p>
+<h3 id="loading-your-application%E2%80%99s-javascript-bundle"><a class="anchor" href="#loading-your-application%E2%80%99s-javascript-bundle">﹟</a> Loading Your Application’s JavaScript Bundle</h3>
+<p>Always make sure to load your application’s JavaScript bundle using <code>&lt;script&gt;</code> elements in the <code>&lt;head&gt;</code> of your document. Otherwise, Turbo Drive will reload the bundle with every page change.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/application-cbd3cd4.js<span class="token punctuation">"</span></span> <span class="token attr-name">defer</span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<p>You should also consider configuring your asset packaging system to fingerprint each script so it has a new URL when its contents change. Then you can use the <code>data-turbo-track</code> attribute to force a full page reload when you deploy a new JavaScript bundle. See <a href="/handbook/drive#reloading-when-assets-change">Reloading When Assets Change</a> for information.</p>
+<h2 id="understanding-caching"><a class="anchor" href="#understanding-caching">﹟</a> Understanding Caching</h2>
+<p>Turbo Drive maintains a cache of recently visited pages. This cache serves two purposes: to display pages without accessing the network during restoration visits, and to improve perceived performance by showing temporary previews during application visits.</p>
+<p>When navigating by history (via <a href="/handbook/drive#restoration-visits">Restoration Visits</a>), Turbo Drive will restore the page from cache without loading a fresh copy from the network, if possible.</p>
+<p>Otherwise, during standard navigation (via <a href="/handbook/drive#application-visits">Application Visits</a>), Turbo Drive will immediately restore the page from cache and display it as a preview while simultaneously loading a fresh copy from the network. This gives the illusion of instantaneous page loads for frequently accessed locations.</p>
+<p>Turbo Drive saves a copy of the current page to its cache just before rendering a new page. Note that Turbo Drive copies the page using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode"><code>cloneNode(true)</code></a>, which means any attached event listeners and associated data are discarded.</p>
+<h3 id="preparing-the-page-to-be-cached"><a class="anchor" href="#preparing-the-page-to-be-cached">﹟</a> Preparing the Page to be Cached</h3>
+<p>Listen for the <code>turbo:before-cache</code> event if you need to prepare the document before Turbo Drive caches it. You can use this event to reset forms, collapse expanded UI elements, or tear down any third-party widgets so the page is ready to be displayed again.</p>
+<pre class="language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"turbo:before-cache"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// ...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Annotate elements with <code>data-turbo-cache=&quot;false&quot;</code> if you do not want Turbo to cache them. This is helpful for temporary elements, like flash notices.</p>
+<h3 id="detecting-when-a-preview-is-visible"><a class="anchor" href="#detecting-when-a-preview-is-visible">﹟</a> Detecting When a Preview is Visible</h3>
+<p>Turbo Drive adds a <code>data-turbo-preview</code> attribute to the <code>&lt;html&gt;</code> element when it displays a preview from cache. You can check for the presence of this attribute to selectively enable or disable behavior when a preview is visible.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">"data-turbo-preview"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// Turbo Drive is displaying a preview</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="opting-out-of-caching"><a class="anchor" href="#opting-out-of-caching">﹟</a> Opting Out of Caching</h3>
+<p>You can control caching behavior on a per-page basis by including a <code>&lt;meta name=&quot;turbo-cache-control&quot;&gt;</code> element in your page’s <code>&lt;head&gt;</code> and declaring a caching directive.</p>
+<p>Use the <code>no-preview</code> directive to specify that a cached version of the page should not be shown as a preview during an application visit. Pages marked no-preview will only be used for restoration visits.</p>
+<p>To specify that a page should not be cached at all, use the <code>no-cache</code> directive. Pages marked no-cache will always be fetched over the network, including during restoration visits.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>turbo-cache-control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<p>To completely disable caching in your application, ensure every page contains a no-cache directive.</p>
+<h2 id="installing-javascript-behavior"><a class="anchor" href="#installing-javascript-behavior">﹟</a> Installing JavaScript Behavior</h2>
+<p>You may be used to installing JavaScript behavior in response to the <code>window.onload</code>, <code>DOMContentLoaded</code>, or jQuery <code>ready</code> events. With Turbo, these events will fire only in response to the initial page load, not after any subsequent page changes. We compare two strategies for connecting JavaScript behavior to the DOM below.</p>
+<h3 id="observing-navigation-events"><a class="anchor" href="#observing-navigation-events">﹟</a> Observing Navigation Events</h3>
+<p>Turbo Drive triggers a series of events during navigation. The most significant of these is the <code>turbo:load</code> event, which fires once on the initial page load, and again after every Turbo Drive visit.</p>
+<p>You can observe the <code>turbo:load</code> event in place of <code>DOMContentLoaded</code> to set up JavaScript behavior after every page change:</p>
+<pre class="language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"turbo:load"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// ...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Keep in mind that your application will not always be in a pristine state when this event is fired, and you may need to clean up behavior installed for the previous page.</p>
+<p>Also note that Turbo Drive navigation may not be the only source of page updates in your application, so you may wish to move your initialization code into a separate function which you can call from <code>turbo:load</code> and anywhere else you may change the DOM.</p>
+<p>When possible, avoid using the <code>turbo:load</code> event to add other event listeners directly to elements on the page body. Instead, consider using <a href="https://learn.jquery.com/events/event-delegation/">event delegation</a> to register event listeners once on <code>document</code> or <code>window</code>.</p>
+<p>See the <a href="/reference/events">Full List of Events</a> for more information.</p>
+<h3 id="attaching-behavior-with-stimulus"><a class="anchor" href="#attaching-behavior-with-stimulus">﹟</a> Attaching Behavior With Stimulus</h3>
+<p>New DOM elements can appear on the page at any time by way of frame navigation, stream messages, or client-side rendering operations, and these elements often need to be initialized as if they came from a fresh page load.</p>
+<p>You can handle all of these updates, including updates from Turbo Drive page loads, in a single place with the conventions and lifecycle callbacks provided by Turbo’s sister framework, <a href="https://stimulus.hotwired.dev">Stimulus</a>.</p>
+<p>Stimulus lets you annotate your HTML with controller, action, and target attributes:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-controller</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hello<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">data-hello-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>click->hello#greet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Greet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Implement a compatible controller and Stimulus connects it automatically:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// hello_controller.js</span><br><span class="token keyword">import</span> <span class="token punctuation">{</span> Controller <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"stimulus"</span><br><br><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">extends</span> Controller <span class="token punctuation">{</span><br>  <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token keyword">get</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>targets<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Stimulus connects and disconnects these controllers and their associated event handlers whenever the document changes using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> API. As a result, it handles Turbo Drive page changes, Turbo Frames navigation, and Turbo Streams messages the same way it handles any other type of DOM update.</p>
+<h2 id="making-transformations-idempotent"><a class="anchor" href="#making-transformations-idempotent">﹟</a> Making Transformations Idempotent</h2>
+<p>Often you’ll want to perform client-side transformations to HTML received from the server. For example, you might want to use the browser’s knowledge of the user’s current time zone to group a collection of elements by date.</p>
+<p>Suppose you have annotated a set of elements with <code>data-timestamp</code> attributes indicating the elements’ creation times in UTC. You have a JavaScript function that queries the document for all such elements, converts the timestamps to local time, and inserts date headers before each element that occurs on a new day.</p>
+<p>Consider what happens if you’ve configured this function to run on <code>turbo:load</code>. When you navigate to the page, your function inserts date headers. Navigate away, and Turbo Drive saves a copy of the transformed page to its cache. Now press the Back button—Turbo Drive restores the page, fires <code>turbo:load</code> again, and your function inserts a second set of date headers.</p>
+<p>To avoid this problem, make your transformation function <em>idempotent</em>. An idempotent transformation is safe to apply multiple times without changing the result beyond its initial application.</p>
+<p>One technique for making a transformation idempotent is to keep track of whether you’ve already performed it by setting a <code>data</code> attribute on each processed element. When Turbo Drive restores your page from cache, these attributes will still be present. Detect these attributes in your transformation function to determine which elements have already been processed.</p>
+<p>A more robust technique is simply to detect the transformation itself. In the date grouping example above, that means checking for the presence of a date divider before inserting a new one. This approach gracefully handles newly inserted elements that weren’t processed by the original transformation.</p>
+<h2 id="persisting-elements-across-page-loads"><a class="anchor" href="#persisting-elements-across-page-loads">﹟</a> Persisting Elements Across Page Loads</h2>
+<p>Turbo Drive allows you to mark certain elements as <em>permanent</em>. Permanent elements persist across page loads, so that any changes you make to those elements do not need to be reapplied after navigation.</p>
+<p>Consider a Turbo Drive application with a shopping cart. At the top of each page is an icon with the number of items currently in the cart. This counter is updated dynamically with JavaScript as items are added and removed.</p>
+<p>Now imagine a user who has navigated to several pages in this application. She adds an item to her cart, then presses the Back button in her browser. Upon navigation, Turbo Drive restores the previous page’s state from cache, and the cart item count erroneously changes from 1 to 0.</p>
+<p>You can avoid this problem by marking the counter element as permanent. Designate permanent elements by giving them an HTML <code>id</code> and annotating them with <code>data-turbo-permanent</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cart-counter<span class="token punctuation">"</span></span> <span class="token attr-name">data-turbo-permanent</span><span class="token punctuation">></span></span>1 item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Before each render, Turbo Drive matches all permanent elements by ID and transfers them from the original page to the new page, preserving their data and event listeners.</p>
+<p><a class="button" href="/handbook/installing">Next: Installing Turbo in Your Application</a></p></section>
+
+  <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
+
+    <p class="foot-logos">
+  <a href="https://basecamp.com/" target="_blank" rel="noopener">
+    <img width="253" height="56" src="/assets/logo-basecamp.svg" alt="Basecamp">
+  </a>
+  <a href="https://hey.com/" target="_blank" rel="noopener">
+    <img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY">
+  </a>
+</p>
+<p class="foot-text">
+  <span>Brought to you by the team at <a href="https://basecamp.com/" target="_blank" rel="noopener">Basecamp</a> & <a href="https://hey.com/" target="_blank" rel="noopener">HEY</a>.</span>
+</p>
+
+
+  </footer>
+
+</main>
+
+
+  </body>
+
+</html>
