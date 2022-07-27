@@ -1,5 +1,5 @@
 name: Eleventy Publish
-'on':
+on:
   push:
     branches:
       - main
