@@ -1,0 +1,21 @@
+name: Eleventy Publish
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.7.0
+      - run: npm ci
+      - run: npm run publish
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: '${{ secrets.ACTIONS_DEPLOY_KEY }}'
+          publish_dir: ./_public
