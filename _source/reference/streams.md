@@ -127,7 +127,7 @@ const customActions = {
   }
 }
 
-Turbo.StreamActions = { ...Turbo.StreamActions, ...customActions }
+Object.assign(Turbo.StreamActions, customActions)
 ```
 
 This would allow you to have a turbo stream element to perform this custom action.
