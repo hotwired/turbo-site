@@ -21,13 +21,15 @@ If _action_ is unspecified, Turbo Drive assumes a value of `"advance"`.
 
 Before performing the visit, Turbo Drive fires a `turbo:before-visit` event on `document`. Your application can listen for this event and cancel the visit with `event.preventDefault()` (see [Canceling Visits Before They Start](/handbook/drive#canceling-visits-before-they-start)).
 
-## Turbo.clearCache
+## Turbo.cache.clear
 
 ```js
-Turbo.clearCache()
+Turbo.cache.clear()
 ```
 
 Removes all entries from the Turbo Drive page cache. Call this when state has changed on the server that may affect cached pages.
+
+**Note:** This function was previously exposed as `Turbo.clearCache()`. The top-level function was deprecated in favor of the new `Turbo.cache.clear()` function.
 
 ## Turbo.setProgressBarDelay
 
