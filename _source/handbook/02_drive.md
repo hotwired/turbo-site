@@ -274,4 +274,12 @@ If the form submission is a GET request, you may render the directly rendered re
 ## Streaming After a Form Submission
 
 Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/vnd.turbo-stream.html` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
+
+## Preload Links Into the Cache
+
+Preload links into Turbo Drive's cache using `<a href="/" data-turbo-preload>Home</a>`.
+
+This will make page transitions feel lightning fast by providing a preview of a page even before the first visit. Use it to preload the most important pages in your application. Avoid over usage, as it will lead to loading content that is not needed.
+
+It also dovetails nicely with pages that leverage [Eager-Loading Frames](/reference/frames#eager-loaded-frame) or [Lazy-Loading Frames](/reference/frames#lazy-loaded-frame). As you can preload the structure of the page and show the user a meaningful loading state while the interesting content loads.
 <br><br>
