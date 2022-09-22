@@ -200,7 +200,11 @@ view when after loading. Control the scroll’s vertical alignment by setting th
 <code>data-autoscroll-block</code> attribute to a valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters">Element.scrollIntoView({ block:
 “…” })</a> value: one of <code>&quot;end&quot;</code>, <code>&quot;start&quot;</code>, <code>&quot;center&quot;</code>,
 or <code>&quot;nearest&quot;</code>. When <code>data-autoscroll-block</code> is absent, the default value is
-<code>&quot;end&quot;</code>.</p>
+<code>&quot;end&quot;</code>. Control the scroll’s behavior by setting the
+<code>data-autoscroll-behavior</code> attribute to a valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters">Element.scrollIntoView({
+behavior:
+“…” })</a> value: one of <code>&quot;auto&quot;</code>, or <code>&quot;smooth&quot;</code>.
+When <code>data-autoscroll-behavior</code> is absent, the default value is <code>&quot;auto&quot;</code>.</p>
 </li>
 </ul>
 <h2 id="properties"><a class="anchor" href="#properties">﹟</a> Properties</h2>
