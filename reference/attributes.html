@@ -161,6 +161,7 @@
 <li><code>data-turbo-cache=&quot;false&quot;</code> removes the element before the document is cached, preventing it from reappearing on restoration Visits.</li>
 <li><code>data-turbo-eval=&quot;false&quot;</code> prevents inline <code>script</code> elements from being re-evaluated on Visits.</li>
 <li><code>data-turbo-method</code> changes the link request type from the default <code>GET</code>. Ideally, non-<code>GET</code> requests should be triggered with forms, but <code>data-turbo-method</code> might be useful where a form is not possible.</li>
+<li><code>data-turbo-stream</code> specifies that a link or form can accept a Turbo Streams response. Turbo <a href="/handbook/streams#streaming-from-http-responses">automatically requests stream responses</a> for form submissions with non-<code>GET</code> methods; <code>data-turbo-stream</code> allows Turbo Streams to be used with <code>GET</code> requests as well.</li>
 <li><code>data-turbo-confirm</code> presents a confirm dialog with the given value. Can be used on <code>form</code> elements or links with <code>data-turbo-method</code>.</li>
 </ul>
 <h2 id="automatically-added-attributes"><a class="anchor" href="#automatically-added-attributes">﹟</a> Automatically Added Attributes</h2>
