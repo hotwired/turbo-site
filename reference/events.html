@@ -195,6 +195,9 @@
 <li>
 <p><code>turbo:frame-load</code> fires when <code>&lt;turbo-frame&gt;</code> element is navigated and finishes loading (fires after <code>turbo:frame-render</code>). The specific <code>&lt;turbo-frame&gt;</code> element is the event target.</p>
 </li>
+<li>
+<p><code>turbo:fetch-request-error</code> fires when a form or frame fetch request fails due to network errors. This event fires on the respective element (turbo-frame or form element) which triggers it and can be accessed with <code>event.target</code> property. This event can be canceled.</p>
+</li>
 </ul>
 <p><a class="button" href="/reference/attributes">Next: Attributes</a></p></section>
 
