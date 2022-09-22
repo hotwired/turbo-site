@@ -120,7 +120,12 @@ attributes and JavaScript properties.
   `data-autoscroll-block` attribute to a valid [Element.scrollIntoView({ block:
   "..." })][Element.scrollIntoView] value: one of `"end"`, `"start"`, `"center"`,
   or `"nearest"`. When `data-autoscroll-block` is absent, the default value is
-  `"end"`.
+  `"end"`. Control the scroll's behavior by setting the
+  `data-autoscroll-behavior` attribute to a valid [Element.scrollIntoView({
+    behavior:
+  "..." })][Element.scrollIntoView] value: one of `"auto"`, or `"smooth"`.
+  When `data-autoscroll-behavior` is absent, the default value is `"auto"`.
+
 
 [boolean attribute]: https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes
 [enumerated]: https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes
