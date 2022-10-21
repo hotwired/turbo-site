@@ -4,7 +4,7 @@
     "@hotwired/turbo": "^7.2.4"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.2",
     "@11ty/eleventy-cache-assets": "^2.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
     "del-cli": "^3.0.1",
