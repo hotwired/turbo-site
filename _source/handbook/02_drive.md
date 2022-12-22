@@ -120,6 +120,17 @@ The link will get converted into a hidden form next to the `a` element in the DO
 
 You should also consider that for accessibility reasons, it's better to use actual forms and buttons for anything that's not a GET.
 
+## Requiring Confirmation for a Visit
+
+Decorate links with `data-turbo-confirm`, and confirmation will be required for a visit to proceed.
+
+```html
+<a href="/articles" data-turbo-confirm="Do you want to leave this page?">Back to articles</a>
+<a href="/articles/54" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete the article?">Delete the article</a>
+```
+
+Use `Turbo.setConfirmMethod` to change the method that gets called for confirmation. The default is the browser's built in `confirm`.
+
 
 ## Disabling Turbo Drive on Specific Links or Forms
 
