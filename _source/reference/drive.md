@@ -41,6 +41,14 @@ Sets the delay after which the [progress bar](/handbook/drive#displaying-progres
 
 Note that this method has no effect when used with the iOS or Android adapters.
 
+## Turbo.setProgressBarDelay
+
+```js
+Turbo.setConfirmMethod(confirmMethod)
+```
+
+Sets the method that is called by links decorated with [`data-turbo-confirm`](/handbook/drive#requiring-confirmation-for-a-visit). The default is the browser's built in `confirm`. The method should return `true` if the visit can proceed.
+
 ## Turbo.session.drive
 
 ```js
