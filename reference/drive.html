@@ -164,6 +164,9 @@
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">setProgressBarDelay</span><span class="token punctuation">(</span>delayInMilliseconds<span class="token punctuation">)</span></code></pre>
 <p>Sets the delay after which the <a href="/handbook/drive#displaying-progress">progress bar</a> will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.</p>
 <p>Note that this method has no effect when used with the iOS or Android adapters.</p>
+<h2 id="turbo.setprogressbardelay-1"><a class="anchor" href="#turbo.setprogressbardelay-1">﹟</a> Turbo.setProgressBarDelay</h2>
+<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">setConfirmMethod</span><span class="token punctuation">(</span>confirmMethod<span class="token punctuation">)</span></code></pre>
+<p>Sets the method that is called by links decorated with <a href="/handbook/drive#requiring-confirmation-for-a-visit"><code>data-turbo-confirm</code></a>. The default is the browser’s built in <code>confirm</code>. The method should return <code>true</code> if the visit can proceed.</p>
 <h2 id="turbo.session.drive"><a class="anchor" href="#turbo.session.drive">﹟</a> Turbo.session.drive</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>session<span class="token punctuation">.</span>drive <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
 <p>Turns Turbo Drive off by default. You must now opt-in to Turbo Drive on a per-link and per-form basis using <code>data-turbo=&quot;true&quot;</code>.</p>
