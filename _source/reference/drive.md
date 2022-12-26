@@ -41,7 +41,7 @@ Sets the delay after which the [progress bar](/handbook/drive#displaying-progres
 
 Note that this method has no effect when used with the iOS or Android adapters.
 
-## Turbo.setProgressBarDelay
+## Turbo.setConfirmMethod
 
 ```js
 Turbo.setConfirmMethod(confirmMethod)
