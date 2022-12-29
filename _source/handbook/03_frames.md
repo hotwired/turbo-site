@@ -218,3 +218,41 @@ Turbo provides [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) 
 ```
 
 Upon form submissions, the token will be automatically added to the request's headers as `X-CSRF-TOKEN`. Requests made with `data-turbo="false"` will skip adding the token to headers.
+
+## Custom Rendering
+
+Turbo's default `<turbo-frame>` rendering process replaces the contents of the requesting `<turbo-frame>` element with the contents of a matching `<turbo-frame>` element in the response. In practice, a `<turbo-frame>` element's contents are rendered as if they operated on by [`<turbo-stream action="update">`](/reference/streams#update) element. The underlying renderer extracts the contents of the `<turbo-frame>` in the response and uses them to replace the requesting `<turbo-frame>` element's contents. The `<turbo-frame>` element itself remains unchanged, save for the [`[src]`, `[busy]`, and `[complete]` attributes that Turbo Drive manages](/reference/frames#html-attributes) throughout the stages of the element's request-response lifecycle.
+
+Applications can customize the `<turbo-frame>` rendering process by adding a `turbo:before-frame-render` event listener and overriding the `event.detail.render` property.
+
+For example, you could merge the response `<turbo-frame>` element into the requesting `<turbo-frame>` element with [morphdom](https://github.com/patrick-steele-idem/morphdom):
+
+```javascript
+import morphdom from "morphdom"
+
+addEventListener("turbo:before-frame-render", (event) => {
+  event.detail.render = (currentElement, newElement) => {
+    morphdom(currentElement, newElement)
+  }
+})
+```
+
+Since `turbo:before-frame-render` events bubble up the document, you can override one `<turbo-frame>` element's rendering by attaching the event listener directly to the element, or override all `<turbo-frame>` elements' rendering by attaching the listener to the `document`.
+
+## Pausing Rendering
+
+Applications can pause rendering and make additional preparations before continuing.
+
+Listen for the `turbo:before-frame-render` event to be notified when rendering is about to start, and pause it using `event.preventDefault()`. Once the preparation is done continue rendering by calling `event.detail.resume()`.
+
+An example use case is adding exit animation:
+
+```javascript
+document.addEventListener("turbo:before-frame-render", async (event) => {
+  event.preventDefault()
+
+  await animateOut()
+
+  event.detail.resume()
+})
+```
