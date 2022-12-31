@@ -73,15 +73,33 @@ Listen for the `turbo:before-visit` event to be notified when a visit is about t
 
 Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
 
+## Custom Rendering
+
+Turbo Drive's default rendering replaces the contents of the requesting document's `<body>` element with the contents of the response document's `<body>` element.
+
+Applications can customize the rendering process by adding a document-wide `turbo:before-render` event listener and overriding the `event.detail.render` property.
+
+For example, you could merge the response document's `<body>` element into the requesting document's `<body>` element with [morphdom](https://github.com/patrick-steele-idem/morphdom):
+
+```javascript
+import morphdom from "morphdom"
+
+addEventListener("turbo:before-render", (event) => {
+  event.detail.render = (currentElement, newElement) => {
+    morphdom(currentElement, newElement)
+  }
+})
+```
+
 ## Pausing Rendering
 
-Application can pause rendering and make additional preparation before it will be executed.
+Applications can pause rendering and make additional preparations before continuing.
 
 Listen for the `turbo:before-render` event to be notified when rendering is about to start, and pause it using `event.preventDefault()`. Once the preparation is done continue rendering by calling `event.detail.resume()`.
 
 An example use case is adding exit animation for visits:
 ```javascript
-document.addEventListener('turbo:before-render', async (event) => {
+document.addEventListener("turbo:before-render", async (event) => {
   event.preventDefault()
 
   await animateOut()
@@ -98,11 +116,11 @@ Listen for the `turbo:before-fetch-request` event to be notified when a request 
 
 An example use case is setting `Authorization` header for the request:
 ```javascript
-document.addEventListener('turbo:before-fetch-request', async (event) => {
+document.addEventListener("turbo:before-fetch-request", async (event) => {
   event.preventDefault()
 
   const token = await getSessionToken(window.app)
-  event.detail.fetchOptions.headers['Authorization'] = `Bearer ${token}`
+  event.detail.fetchOptions.headers["Authorization"] = `Bearer ${token}`
 
   event.detail.resume()
 })

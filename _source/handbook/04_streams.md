@@ -186,6 +186,40 @@ Turbo Streams consciously restricts you to seven actions: append, prepend, (inse
 
 Embracing these constraints will keep you from turning individual responses in a jumble of behaviors that cannot be reused and which make the app hard to follow. The key benefit from Turbo Streams is the ability to reuse templates for initial rendering of a page through all subsequent updates.
 
+## Custom Actions
+
+By default, Turbo Streams support [seven values for its `action` attribute](/reference/streams#the-seven-actions). If your application needs to support other behaviors, you can override the `event.detail.render` function.
+
+For example, if you'd like to expand upon the seven actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
+
+```javascript
+addEventListener("turbo:before-stream-render", ((event) => {
+  const fallbackToDefaultActions = event.detail.render
+
+  event.detail.render = function (streamElement) {
+    if (streamElement.action == "alert") {
+      // ...
+    } else if (streamElement.action == "log") {
+      // ...
+    } else {
+      fallbackToDefaultActions(streamElement)
+    }
+  }
+}))
+```
+
+In addition to listening for `turbo:before-stream-render` events, applications
+can also declare actions as properties directly on `TurboStreamAction`:
+
+```javascript
+import { TurboStreamActions } from "@hotwired/turbo"
+
+// <turbo-stream action="log" message="Hello, world"></turbo-stream>
+//
+TurboStreamActions.log = function (streamElement) {
+  console.log(streamElement.getAttribute("message"))
+}
+```
 
 ## Integration with Server-Side Frameworks
 
