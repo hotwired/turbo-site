@@ -193,10 +193,13 @@
 <p><code>turbo:before-frame-render</code> fires before rendering the <code>&lt;turbo-frame&gt;</code> element. Access the new <code>&lt;turbo-frame&gt;</code> element with <code>event.detail.newFrame</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/frame#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/frames#custom-rendering">Custom Rendering</a>).</p>
 </li>
 <li>
-<p><code>turbo:frame-render</code> fires right after <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the event target. Access the <code>FetchResponse</code> object with <code>event.detail.fetchResponse</code> property.</p>
+<p><code>turbo:frame-render</code> fires right after a <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the event target. Access the <code>FetchResponse</code> object with <code>event.detail.fetchResponse</code> property.</p>
 </li>
 <li>
-<p><code>turbo:frame-load</code> fires when <code>&lt;turbo-frame&gt;</code> element is navigated and finishes loading (fires after <code>turbo:frame-render</code>). The specific <code>&lt;turbo-frame&gt;</code> element is the event target.</p>
+<p><code>turbo:frame-load</code> fires when a <code>&lt;turbo-frame&gt;</code> element is navigated and finishes loading (fires after <code>turbo:frame-render</code>). The specific <code>&lt;turbo-frame&gt;</code> element is the event target.</p>
+</li>
+<li>
+<p><code>turbo:frame-missing</code> fires when a navigated <code>&lt;turbo-frame&gt;</code> element is unable to update its contents from a <code>&lt;turbo-frame&gt;</code> element in the response with a matching <code>[id]</code> attribute. After dispatching the event, Turbo transforms the response into a Visit and navigates the page. Cancel the event to prevent navigation. Access the request’s <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> instance with <code>event.detail.response</code>.</p>
 </li>
 <li>
 <p><code>turbo:fetch-request-error</code> fires when a form or frame fetch request fails due to network errors. This event fires on the respective element (turbo-frame or form element) which triggers it and can be accessed with <code>event.target</code> property. This event can be canceled.</p>
