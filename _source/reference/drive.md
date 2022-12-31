@@ -11,15 +11,20 @@ description: "A reference of everything you can do with Turbo Drive."
 ```js
 Turbo.visit(location)
 Turbo.visit(location, { action: action })
+Turbo.visit(location, { frame: frame })
 ```
 
-Performs an [Application Visit](/handbook/drive#application-visits) to the given _location_ (a string containing a URL or path) with the specified _action_ (a string, either `"advance"` or `"replace"`).
+Performs an [Application Visit][] to the given _location_ (a string containing a URL or path) with the specified _action_ (a string, either `"advance"` or `"replace"`).
 
 If _location_ is a cross-origin URL, or falls outside of the specified root (see [Setting a Root Location](/handbook/drive#setting-a-root-location)), Turbo performs a full page load by setting `window.location`.
 
 If _action_ is unspecified, Turbo Drive assumes a value of `"advance"`.
 
 Before performing the visit, Turbo Drive fires a `turbo:before-visit` event on `document`. Your application can listen for this event and cancel the visit with `event.preventDefault()` (see [Canceling Visits Before They Start](/handbook/drive#canceling-visits-before-they-start)).
+
+If _frame_ is specified, find a `<turbo-frame>` element with an `[id]` attribute that matches the provided value, and navigate it to the provided _location_. If the `<turbo-frame>` cannot be found, perform a page-level [Application Visit][].
+
+[Application Visit]: /handbook/drive#application-visits
 
 ## Turbo.cache.clear
 
