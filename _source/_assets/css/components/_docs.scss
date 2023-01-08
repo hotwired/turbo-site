@@ -14,7 +14,6 @@
   @include media(large) {
     grid-column: 5 / span 8;
   }
-  
 
   h1, h2, h3, h4, h5, h6 {
     text-align: left;
@@ -58,8 +57,7 @@
 }
 
 .docs__footer {
-  margin: 4em 0 1em 0;
-  text-align: left;
+  margin: 4em 0 3em 0;
 }
 
 .docs__screenshot {

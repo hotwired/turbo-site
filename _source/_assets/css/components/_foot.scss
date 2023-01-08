@@ -1,38 +1,53 @@
-// footer content /////////////////////////////////////////////////////////
+.footer {
 
-.foot-logos {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
 
-  .docs__footer & {
-    display: none;
+  &__headline {
+    font-size: 85%;
+    font-style: italic;
+    margin: 0 0 0.6em 0;
   }
 
-  a {
-    text-decoration: none;
-    overflow: visible;
+  &__links {
+
+    align-items: center;
+    display: flex;
+    gap: 0.4em;
+    justify-content: center;
+    margin: 0;
+
+    li {
+
+      display: flex;
+      margin: 0;
+
+      a {
+
+        display: flex;
+
+        img {
+          height: 1.7em;
+          width: auto;
+        }
+
+      }
+
+      span {
+        display: flex;
+        font-size: 65%;
+        font-style: italic;
+        margin-top: 0.5em;
+      }
+
+    }
+
   }
 
-  a:first-child {
-    padding-right: 1em;
+  &__copyright {
+    font-size: 85%;
+    margin: 2.5em 0 0 0;
   }
 
-  img {
-    width: auto;
-    max-height: 1.75em;
-  }
-}
-
-.foot-text {
-  font-size: $font-small;
-  font-style: italic;
-
-  span {
-    padding: 0.25em;
-    background-color: $color-background;
-    border-radius: 0.5rem;
-  }
 }
