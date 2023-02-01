@@ -1,7 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "@hotwired/turbo": "^7.2.4"
+    "@hotwired/turbo": "^7.2.5"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
