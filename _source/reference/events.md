@@ -40,6 +40,6 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:frame-load` fires when a `<turbo-frame>` element is navigated and finishes loading (fires after `turbo:frame-render`). The specific `<turbo-frame>` element is the event target.
 
-* `turbo:frame-missing` fires when a navigated `<turbo-frame>` element is unable to update its contents from a `<turbo-frame>` element in the response with a matching `[id]` attribute. After dispatching the event, Turbo transforms the response into a Visit and navigates the page. Cancel the event to prevent navigation. Access the request's [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) instance with `event.detail.response`.
+* `turbo:frame-missing` fires when the response to a `<turbo-frame>` element request does not contain a matching `<turbo-frame>` element. By default, Turbo writes an informational message into the frame and throws an exception. Cancel this event to override this handling. You can access the [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) instance with `event.detail.response`, and perform a visit by calling `event.detail.visit(...)`.
 
 * `turbo:fetch-request-error` fires when a form or frame fetch request fails due to network errors. This event fires on the respective element (turbo-frame or form element) which triggers it and can be accessed with `event.target` property. This event can be canceled.
