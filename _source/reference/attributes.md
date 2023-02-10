@@ -35,5 +35,5 @@ The following attributes are automatically added by Turbo and are useful to dete
 The following `meta` elements, added to the `head`, can be used to customize caching and Visit behavior.
 
 * `<meta name="turbo-cache-control">` to [opt out of caching](/handbook/building#opting-out-of-caching).
-* `<meta name="turbo-visit-control" content="reload">` will perform a full page reload.
+* `<meta name="turbo-visit-control" content="reload">` will perform a full page reload whenever Turbo navigates to the page, including when the request originates from a `<turbo-frame>`.
 * `<meta name="turbo-root">` to [scope Turbo Drive to a particular root location](/handbook/drive#setting-a-root-location).
