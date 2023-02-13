@@ -218,7 +218,7 @@ element that Turbo expects, it's considered an error; when it happens Turbo will
 frame, and throw an exception.
 
 In certain, specific cases, you might want the response to a `<turbo-frame>` request to be treated as a new, full-page
-navigation instead, effectively "breaking out" of the frame. The classic example of this is where a lost or expired
+navigation instead, effectively "breaking out" of the frame. The classic example of this is when a lost or expired
 session causes an application to redirect to a login page. In this case, it's better for Turbo to display that login
 page rather than treat it as an error.
 
