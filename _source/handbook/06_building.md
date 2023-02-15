@@ -54,7 +54,16 @@ document.addEventListener("turbo:before-cache", function() {
 })
 ```
 
-Annotate elements with `data-turbo-cache="false"` if you do not want Turbo to cache them. This is helpful for temporary elements, like flash notices.
+Certain page elements are inherently _temporary_, like flash messages or alerts. If they’re cached with the document they’ll be redisplayed when it’s restored, which is rarely desirable. You can annotate such elements with `data-turbo-temporary` to have Turbo Drive automatically remove them from the page before it’s cached.
+
+```html
+<body>
+  <div class="flash" data-turbo-temporary>
+    Your cart was updated!
+  </div>
+  ...
+</body>
+```
 
 ### Detecting When a Preview is Visible
 
