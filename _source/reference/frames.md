@@ -102,7 +102,7 @@ attributes and JavaScript properties.
 * `loading` has two valid [enumerated][] values: "eager" and "lazy". When
   `loading="eager"`, changes to the `src` attribute will immediately navigate
   the element. When `loading="lazy"`, changes to the `src` attribute will defer
-  navigation until the element is visible in the viewport.
+  navigation until the element is visible in the viewport. The default value is `eager`.
 
 * `busy` is a [boolean attribute][] toggled to be present when a
   `<turbo-frame>`-initiated request starts, and toggled false when the request
@@ -139,7 +139,10 @@ attributes and JavaScript properties.
 All `<turbo-frame>` elements can be controlled in JavaScript environments
 through instances of the `FrameElement` class.
 
-* `FrameElement.src` controls the pathname or URL to be loaded
+* `FrameElement.src` controls the pathname or URL to be loaded. Setting the `src` 
+   property will immediately navigate the element. When `FrameElement.loaded` is 
+   set to `"lazy"`, changes to the `src` property will defer navigation until the 
+   element is visible in the viewport.
 
 * `FrameElement.disabled` is a boolean property that controls whether or not the
   element will load
