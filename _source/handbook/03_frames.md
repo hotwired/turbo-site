@@ -102,7 +102,7 @@ This page now works in both its minimized form, where only the `div` with the in
 
 Note that the `<turbo-frame>` on `/emails/set_aside` does not contain a `src` attribute. That attribute is only added to the frame that needs to lazily load the content, not to the rendered frame that provides the content.
 
-During navigation, a Frame will set `[aria-busy="true"]` on the `<turbo-frame>` element when fetching the new contents. When the navigation completes, the Frame will remove the `[aria-busy]` attribute. When navigating the `<turbo-frame>` through a `<form>` submission, Turbo will toggle the `[aria-busy="true"]` attribute in tandem with the Frame's.
+During navigation, a Frame will set `[aria-busy="true"]` on the `<turbo-frame>` element when fetching the new contents. When the navigation completes, the Frame will remove the `[aria-busy]` attribute. When navigating the `<turbo-frame>` through a `<form>` submission, Turbo will toggle the Form's `[aria-busy="true"]` attribute in tandem with the Frame's.
 
 After navigation finishes, a Frame will set the `[complete]` attribute on the
 `<turbo-frame>` element.
@@ -208,6 +208,40 @@ any other state derived from the URL path and search parameters.
 [history]: https://developer.mozilla.org/en-US/docs/Web/API/History
 [Visit]: /handbook/drive#page-navigation-basics
 [advance]: /handbook/drive#application-visits
+
+## "Breaking out" from a Frame
+
+In most cases, requests that originate from a `<turbo-frame>` are expected to fetch content for that frame (or for
+another part of the page, depending on the use of the `target` or `data-turbo-frame` attributes). This means the
+response should always contain the expected `<turbo-frame>` element. If a response is missing the `<turbo-frame>`
+element that Turbo expects, it's considered an error; when it happens Turbo will write an informational message into the
+frame, and throw an exception.
+
+In certain, specific cases, you might want the response to a `<turbo-frame>` request to be treated as a new, full-page
+navigation instead, effectively "breaking out" of the frame. The classic example of this is when a lost or expired
+session causes an application to redirect to a login page. In this case, it's better for Turbo to display that login
+page rather than treat it as an error.
+
+The simplest way to achieve this is to specify that the login page requires a full-page reload, by including the
+[`turbo-visit-control`][meta] meta tag:
+
+```html
+<head>
+  <meta name="turbo-visit-control" content="reload">
+  ...
+</head>
+```
+
+If you're using Turbo Rails, you can use the `turbo_page_requires_reload` helper to accomplish the same thing.
+
+Pages that specify `turbo-visit=control` `reload` will always result in a full-page navigation, even if the request
+originated from inside a frame.
+
+If your application needs to handle missing frames in some other way, you can intercept the
+[`turbo:frame-missing`][events] event to, for example, transform the response or perform a visit to another location.
+
+[meta]: /reference/attributes#meta-tags
+[events]: /reference/events
 
 ## Anti-Forgery Support (CSRF)
 
