@@ -209,15 +209,15 @@ addEventListener("turbo:before-stream-render", ((event) => {
 ```
 
 In addition to listening for `turbo:before-stream-render` events, applications
-can also declare actions as properties directly on `TurboStreamAction`:
+can also declare actions as properties directly on `StreamActions`:
 
 ```javascript
-import { TurboStreamActions } from "@hotwired/turbo"
+import { StreamActions } from "@hotwired/turbo"
 
 // <turbo-stream action="log" message="Hello, world"></turbo-stream>
 //
-TurboStreamActions.log = function (streamElement) {
-  console.log(streamElement.getAttribute("message"))
+StreamActions.log = function () {
+  console.log(this.getAttribute("message"))
 }
 ```
 
