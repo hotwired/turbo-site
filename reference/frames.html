@@ -178,7 +178,7 @@ of the element</p>
 <p><code>loading</code> has two valid <a href="https://www.w3.org/TR/html52/infrastructure.html#keywords-and-enumerated-attributes">enumerated</a> values: “eager” and “lazy”. When
 <code>loading=&quot;eager&quot;</code>, changes to the <code>src</code> attribute will immediately navigate
 the element. When <code>loading=&quot;lazy&quot;</code>, changes to the <code>src</code> attribute will defer
-navigation until the element is visible in the viewport.</p>
+navigation until the element is visible in the viewport. The default value is <code>eager</code>.</p>
 </li>
 <li>
 <p><code>busy</code> is a <a href="https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes">boolean attribute</a> toggled to be present when a
@@ -216,7 +216,10 @@ When <code>data-autoscroll-behavior</code> is absent, the default value is <code
 through instances of the <code>FrameElement</code> class.</p>
 <ul>
 <li>
-<p><code>FrameElement.src</code> controls the pathname or URL to be loaded</p>
+<p><code>FrameElement.src</code> controls the pathname or URL to be loaded. Setting the <code>src</code>
+property will immediately navigate the element. When <code>FrameElement.loaded</code> is
+set to <code>&quot;lazy&quot;</code>, changes to the <code>src</code> property will defer navigation until the
+element is visible in the viewport.</p>
 </li>
 <li>
 <p><code>FrameElement.disabled</code> is a boolean property that controls whether or not the
