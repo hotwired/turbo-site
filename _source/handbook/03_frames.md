@@ -266,7 +266,7 @@ import morphdom from "morphdom"
 
 addEventListener("turbo:before-frame-render", (event) => {
   event.detail.render = (currentElement, newElement) => {
-    morphdom(currentElement, newElement)
+    morphdom(currentElement, newElement, { childrenOnly: true })
   }
 })
 ```
