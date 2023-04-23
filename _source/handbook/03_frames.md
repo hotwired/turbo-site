@@ -46,9 +46,11 @@ When the link to edit the message is clicked, the response provided by `/message
 </body>
 ```
 
-Notice how the `<h1>` isn't inside the `<turbo-frame>`. This means it'll be ignored when the form replaces the display of the message upon editing. Only content inside a matching `<turbo-frame>` is used when the frame is updated.
+Notice how the `<h1>` isn't inside the `<turbo-frame>`. This means it will remain unchanged when the form replaces the display of the message upon editing. Only content inside a matching `<turbo-frame>` is used when the frame is updated.
 
 Thus your page can easily play dual purposes: Make edits in place within a frame or edits outside of a frame where the entire page is dedicated to the action.
+
+Frames serve a specific purpose: to compartmentalize the content and navigation for a fragment of the document. Their presence has ramification on any `<a>` elements or `<form>` elements contained by their child content, and shouldn't be introduced unnecessarily. Turbo Frames do not contribute support to the usage of [Turbo Stream](/handbook/streams). If your application utilizes `<turbo-frame>` elements for the sake of a `<turbo-stream>` element, change the `<turbo-frame>` into another [built-in element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
 ## Eager-Loading Frames
 
