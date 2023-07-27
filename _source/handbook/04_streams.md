@@ -252,5 +252,7 @@ streaming.
 
 Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on [the Mercure protocol](https://mercure.rocks). Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events). [Learn how to use Mercure with Turbo Streams](https://mercure.rocks/docs/ecosystem/hotwire).
 
+Another backend-agnostic option to power-up Turbo Streams is [AnyCable](https://anycable.io). AnyCable is real-time server that supports Action Cable protocol and communication via WebSockets and other transports. AnyCable can verify and register Turbo Streams subscriptions following the Rails signing schema, thus, allowing you use official client-side libraries, such as `@hotwired/turbo-rails` with any backend. [Learn how to use AnyCable with Turbo Streams](https://docs.anycable.io/guides/hotwire).
+
 [WebSocket]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 [EventSource]: https://developer.mozilla.org/en-US/docs/Web/API/EventSource
