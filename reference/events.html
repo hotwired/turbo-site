@@ -185,7 +185,7 @@
 <p><code>turbo:load</code> fires once after the initial page load, and again after every Turbo visit. Access visit timing metrics with the <code>event.detail.timing</code> object.</p>
 </li>
 <li>
-<p><code>turbo:before-frame-render</code> fires before rendering the <code>&lt;turbo-frame&gt;</code> element. Access the new <code>&lt;turbo-frame&gt;</code> element with <code>event.detail.newFrame</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/frame#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/frames#custom-rendering">Custom Rendering</a>).</p>
+<p><code>turbo:before-frame-render</code> fires before rendering the <code>&lt;turbo-frame&gt;</code> element. Access the new <code>&lt;turbo-frame&gt;</code> element with <code>event.detail.newFrame</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/frames#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/frames#custom-rendering">Custom Rendering</a>).</p>
 </li>
 <li>
 <p><code>turbo:frame-render</code> fires right after a <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the event target. Access the <code>FetchResponse</code> object with <code>event.detail.fetchResponse</code> property.</p>
