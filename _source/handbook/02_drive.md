@@ -311,4 +311,22 @@ Preload links into Turbo Drive's cache using `<a href="/" data-turbo-preload>Hom
 This will make page transitions feel lightning fast by providing a preview of a page even before the first visit. Use it to preload the most important pages in your application. Avoid over usage, as it will lead to loading content that is not needed.
 
 It also dovetails nicely with pages that leverage [Eager-Loading Frames](/reference/frames#eager-loaded-frame) or [Lazy-Loading Frames](/reference/frames#lazy-loaded-frame). As you can preload the structure of the page and show the user a meaningful loading state while the interesting content loads.
+
+## Ignored Paths
+
+Paths with a `.` in the URL will not be handled by Turbo. Turbo will ignore forms and links that target these paths. For example, the following forms would be ignored:
+
+```html
+<form action="/messages.67" method="post">
+  <!-- ignored -->
+</form>
+
+
+<form action="/messages.php" method="post" data-turbo="true">
+  <!-- also ignored -->
+</form>
+```
+
+Setting any `data-turbo` methods (including `data-turbo="true"`) will not override or force Turbo to handle a path if it has a `.` in the URL. Paths with a `.` should be reworked on the backend to not include one. Note that some backend frameworks (i.e. Rails) may automatically append parameters/IDs with a `.` such as `/my_path.67`.
+
 <br><br>
