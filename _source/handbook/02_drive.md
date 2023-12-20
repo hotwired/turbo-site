@@ -314,19 +314,51 @@ It also dovetails nicely with pages that leverage [Eager-Loading Frames](/refere
 
 ## Ignored Paths
 
-Paths with a `.` in the URL will not be handled by Turbo. Turbo will ignore forms and links that target these paths. For example, the following forms would be ignored:
+Paths with a `.` in the last level of a path/URL will not be handled by Turbo unless they end in a file extension `.htm`, `.html`, `.xhtml`, or `.php`. Turbo will ignore forms and links that target these paths. For example, the following forms would be ignored:
 
 ```html
 <form action="/messages.67" method="post">
   <!-- ignored -->
 </form>
 
+<form action="/somepath/messages.67" method="post">
+  <!-- also ignored -->
+</form>
 
-<form action="/messages.php" method="post" data-turbo="true">
+<form action="/messages.php.1" method="post" data-turbo="true">
+  <!-- also ignored -->
+</form>
+
+<form action="/messages.json" method="post" data-turbo="true">
   <!-- also ignored -->
 </form>
 ```
 
-Setting any `data-turbo` methods (including `data-turbo="true"`) will not override or force Turbo to handle a path if it has a `.` in the URL. Paths with a `.` should be reworked on the backend to not include one. Note that some backend frameworks (i.e. Rails) may automatically append parameters/IDs with a `.` such as `/my_path.67`.
+The following forms would be handled:
+
+```html
+<form action="/messages/67" method="post">
+  <!-- handled -->
+</form>
+
+<form action="/messages.67/action" method="post">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.php" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.json/" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.json/123" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+```
+
+
+Setting any `data-turbo` methods (including `data-turbo="true"`) will not override or force Turbo to handle a path if it has a `.` that causes it to be ignored. Paths with a `.` in the top level that do not end in `.htm`, `.html`, `.xhtml`, or `.php` should be reworked on the backend to not include one. Note that some backend frameworks (i.e. Rails) may automatically append parameters/IDs with a `.` such as `/my_path.67`.
 
 <br><br>
