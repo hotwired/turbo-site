@@ -236,7 +236,7 @@ The simplest way to achieve this is to specify that the login page requires a fu
 
 If you're using Turbo Rails, you can use the `turbo_page_requires_reload` helper to accomplish the same thing.
 
-Pages that specify `turbo-visit=control` `reload` will always result in a full-page navigation, even if the request
+Pages that specify `turbo-visit-control` `reload` will always result in a full-page navigation, even if the request
 originated from inside a frame.
 
 If your application needs to handle missing frames in some other way, you can intercept the
