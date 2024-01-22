@@ -195,7 +195,7 @@ For example, consider a Frame that renders a paginated list of articles and
 transforms navigations into ["advance" Actions][advance]:
 
 ```html
-<turbo-frame data-turbo-action="advance">
+<turbo-frame id="articles" data-turbo-action="advance">
   <a href="/articles?page=2" rel="next">Next page</a>
 </turbo-frame>
 ```
