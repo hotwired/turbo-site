@@ -186,6 +186,30 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 ```
 
+## View transitions
+
+In [browsers that support](https://caniuse.com/?search=View%20Transition%20API) the [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API) Turbo can trigger view transitions when navigating between pages.
+
+Turbo triggers a view transition when both the current and the next page have this meta tag:
+
+```
+<meta name="view-transition" content="same-origin" />
+```
+
+Turbo also adds a `data-turbo-visit-direction` attribute to the `<html>` element to indicate the direction of the transition. The attribute can have one of the following values:
+
+- `forward` in advance visits.
+- `back` in restoration visits.
+- `none` in replace visits.
+
+You can use this attribute to animate the transition between pages:
+
+```css
+html[data-turbo-visit-direction="forward"] #sidebar {
+  animation: fade-in 0.5s ease-out;
+}
+```
+
 ## Displaying Progress
 
 During Turbo Drive navigation, the browser will not display its native progress indicator. Turbo Drive installs a CSS-based progress bar to provide feedback while issuing a request.
