@@ -205,8 +205,8 @@ Turbo also adds a `data-turbo-visit-direction` attribute to the `<html>` element
 You can use this attribute to animate the transition between pages:
 
 ```css
-html[data-turbo-visit-direction="forward"] #sidebar {
-  animation: fade-in 0.5s ease-out;
+html[data-turbo-visit-direction="forward"]::view-transition-old(sidebar):only-child {
+  animation: slide-to-right 0.5s ease-out;
 }
 ```
 
