@@ -176,13 +176,25 @@
 <p><code>turbo:before-cache</code> fires before Turbo saves the current page to cache.</p>
 </li>
 <li>
-<p><code>turbo:before-render</code> fires before rendering the page. Access the new <code>&lt;body&gt;</code> element with <code>event.detail.newBody</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/drive#custom-rendering">Custom Rendering</a>).</p>
+<p><code>turbo:before-render</code> fires before rendering the page. Access the new <code>&lt;body&gt;</code> element with <code>event.detail.newBody</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/drive#custom-rendering">Custom Rendering</a>). The <code>event.detail.renderMethod</code> will equal either <code>&quot;replace&quot;</code> or <code>&quot;morph&quot;</code>.</p>
 </li>
 <li>
 <p><code>turbo:before-stream-render</code> fires before rendering a Turbo Stream page update. Access the new <code>&lt;turbo-stream&gt;</code> element with <code>event.detail.newStream</code>. Customize the element’s behavior by overriding the <code>event.detail.render</code> function (see <a href="/handbook/streams#custom-actions">Custom Actions</a>).</p>
 </li>
 <li>
-<p><code>turbo:render</code> fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.</p>
+<p><code>turbo:render</code> fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version. The <code>event.detail.renderMethod</code> will equal either <code>&quot;replace&quot;</code> or <code>&quot;morph&quot;</code>.</p>
+</li>
+<li>
+<p><code>turbo:morph</code> fires after Turbo morphs the page. The <code>event.detail.currentElement</code> references the original element that remains connected to the document, and <code>event.detail.newElement</code> references the element with the new attributes and children that will not be connected to the document.</p>
+</li>
+<li>
+<p><code>turbo:before-morph-element</code> fires before Turbo morphs an element. The <code>event.target</code> references the original element that will remain connected to the document, and <code>event.detail.newElement</code> references the element with the new attributes and children that will not be connected to the document. Cancel this event by calling <code>event.preventDefault()</code> to skip morphing and preserve the original element, its attributes, and its children.</p>
+</li>
+<li>
+<p><code>turbo:before-morph-attribute</code> fires before Turbo morphs an element’s attributes. The <code>event.target</code> references the original element that will remain connected to the document, <code>event.detail.attributeName</code> references the attribute to be mutated, and <code>event.detail.mutationType</code> references how the attribute with be mutated: either <code>&quot;updated&quot;</code> or <code>&quot;removed&quot;</code>. Cancel this event by calling <code>event.preventDefault()</code> to skip morphing and preserve the original attribute value.</p>
+</li>
+<li>
+<p><code>turbo:morph-element</code> fires after Turbo morphs an element. The <code>event.target</code> references the morphed element while <code>event.detail.newElement</code> references the element with the new attributes and children.</p>
 </li>
 <li>
 <p><code>turbo:load</code> fires once after the initial page load, and again after every Turbo visit. Access visit timing metrics with the <code>event.detail.timing</code> object.</p>
