@@ -202,7 +202,7 @@ Turbo also adds a `data-turbo-visit-direction` attribute to the `<html>` element
 - `back` in restoration visits.
 - `none` in replace visits.
 
-You can use this attribute to animate the transition between pages:
+You can use this attribute to customize the animations that are performed during a transition:
 
 ```css
 html[data-turbo-visit-direction="forward"]::view-transition-old(sidebar):only-child {
