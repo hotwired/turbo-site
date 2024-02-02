@@ -250,7 +250,11 @@ discarded and replaced with the resulting document. It's the server's
 responsibility to ensure that the element is present on any page that requires
 streaming.
 
-Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on [the Mercure protocol](https://mercure.rocks). Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events). [Learn how to use Mercure with Turbo Streams](https://mercure.rocks/docs/ecosystem/hotwire).
+## Third-Party Real-Time Servers
+
+A straightforward way to integrate any backend application with Turbo Streams is to rely on [the Mercure protocol](https://mercure.rocks). Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events). [Learn how to use Mercure with Turbo Streams](https://mercure.rocks/docs/ecosystem/hotwire).
+
+Another backend-agnostic option to power-up Turbo Streams is [AnyCable](https://anycable.io). AnyCable is a real-time server that provides reliable communication for Turbo Streams over WebSockets, Server-Sent Events and other transports. [Learn how to use AnyCable with Turbo Streams](https://docs.anycable.io/guides/hotwire).
 
 [WebSocket]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 [EventSource]: https://developer.mozilla.org/en-US/docs/Web/API/EventSource
