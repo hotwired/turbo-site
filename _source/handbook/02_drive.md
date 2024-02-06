@@ -308,10 +308,10 @@ Servers may also respond to form submissions with a [Turbo Streams](streams) mes
 
 Turbo can also speed up perceived link navigation latency by automatically loading links on `mouseenter` or `touchstart` events, and before the user clicks the link. This usually leads to a speed bump of 500-800ms per click navigation.
 
-To enable this behavior add this meta tag to your page:
+InstaClick is enabled by default since Turbo v8, but you can disable it by adding this meta tag to your page:
 
 ```html
-<meta name="turbo-prefetch" content="true">
+<meta name="turbo-prefetch" content="false">
 ```
 
 To avoid prefetching links that the user is briefly hovering, Turbo waits 100ms after the user hovers over the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
@@ -331,6 +331,32 @@ You can disable the behavior on a per-element basis by annotating the element or
     </div>
   </body>
 </html>
+```
+
+You can also disable the behaviour programatically by intercepting the `turbo:before-prefetch` event and calling `event.preventDefault()`.
+
+```javascript
+document.addEventListener("turbo:before-prefetch", (event) => {
+  if (isUJS(event.target) || isSavingData() || hasSlowInternet()) {
+    event.preventDefault()
+  }
+})
+
+function isUJS(link) {
+  return link.hasAttribute("data-remote")   ||
+         link.hasAttribute("data-behavior") ||
+         link.hasAttribute("data-method")   ||
+         link.hasAttribute("data-confirm")
+}
+
+function isSavingData() {
+  return navigator.connection?.saveData
+}
+
+function hasSlowInternet() {
+  return navigator.connection?.effectiveType === "slow-2g" ||
+         navigator.connection?.effectiveType === "2g"
+}
 ```
 
 ## Preload Links Into the Cache
