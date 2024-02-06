@@ -304,11 +304,11 @@ If the form submission is a GET request, you may render the directly rendered re
 
 Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/vnd.turbo-stream.html` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
 
-## InstaClick
+## InstantClick
 
 Turbo can also speed up perceived link navigation latency by automatically loading links on `mouseenter` or `touchstart` events, and before the user clicks the link. This usually leads to a speed bump of 500-800ms per click navigation.
 
-InstaClick is enabled by default since Turbo v8, but you can disable it by adding this meta tag to your page:
+InstantClick is enabled by default since Turbo v8, but you can disable it by adding this meta tag to your page:
 
 ```html
 <meta name="turbo-prefetch" content="false">
