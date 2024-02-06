@@ -304,9 +304,9 @@ If the form submission is a GET request, you may render the directly rendered re
 
 Servers may also respond to form submissions with a [Turbo Streams](streams) message by sending the header `Content-Type: text/vnd.turbo-stream.html` followed by one or more `<turbo-stream>` elements in the response body. This lets you update multiple parts of the page without navigating.
 
-## Instaclick
+## InstaClick
 
-Turbo can also speed up network requests by automatically loading links on `mouseenter` or `touchstart` events, and before the user clicks the link. This usually leads to a speed bump of 500-800ms per click navigation.
+Turbo can also speed up perceived link navigation latency by automatically loading links on `mouseenter` or `touchstart` events, and before the user clicks the link. This usually leads to a speed bump of 500-800ms per click navigation.
 
 To enable this behavior add this meta tag to your page:
 
@@ -314,7 +314,7 @@ To enable this behavior add this meta tag to your page:
 <meta name="turbo-prefetch" content="true">
 ```
 
-To avoid prefetching links that the user is briefly hovering Turbo waits 100ms after the user enters the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
+To avoid prefetching links that the user is briefly hovering, Turbo waits 100ms after the user hovers over the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
 
 You can disable the behavior on a per-element basis by annotating the element or any of its ancestors with `data-turbo-prefetch="false"`.
 
