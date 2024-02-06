@@ -28,11 +28,19 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:before-prefetch` fires before Turbo prefetches a link. Cancel this event to prevent prefetching.
 
-* `turbo:before-render` fires before rendering the page. Access the new `<body>` element with `event.detail.newBody`. Rendering can be canceled and continued with `event.detail.resume` (see [Pausing Rendering](/handbook/drive#pausing-rendering)). Customize how Turbo Drive renders the response by overriding the `event.detail.render` function (see [Custom Rendering](/handbook/drive#custom-rendering)).
+* `turbo:before-render` fires before rendering the page. Access the new `<body>` element with `event.detail.newBody`. Rendering can be canceled and continued with `event.detail.resume` (see [Pausing Rendering](/handbook/drive#pausing-rendering)). Customize how Turbo Drive renders the response by overriding the `event.detail.render` function (see [Custom Rendering](/handbook/drive#custom-rendering)). The `event.detail.renderMethod` will equal either `"replace"` or `"morph"`.
 
 * `turbo:before-stream-render` fires before rendering a Turbo Stream page update. Access the new `<turbo-stream>` element with `event.detail.newStream`. Customize the element's behavior by overriding the `event.detail.render` function (see [Custom Actions](/handbook/streams#custom-actions)).
 
-* `turbo:render` fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.
+* `turbo:render` fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version. The `event.detail.renderMethod` will equal either `"replace"` or `"morph"`.
+
+* `turbo:morph` fires after Turbo morphs the page. The `event.detail.currentElement` references the original element that remains connected to the document, and `event.detail.newElement` references the element with the new attributes and children that will not be connected to the document.
+
+* `turbo:before-morph-element` fires before Turbo morphs an element. The `event.target` references the original element that will remain connected to the document, and `event.detail.newElement` references the element with the new attributes and children that will not be connected to the document. Cancel this event by calling `event.preventDefault()` to skip morphing and preserve the original element, its attributes, and its children.
+
+* `turbo:before-morph-attribute` fires before Turbo morphs an element's attributes. The `event.target` references the original element that will remain connected to the document, `event.detail.attributeName` references the attribute to be mutated, and `event.detail.mutationType` references how the attribute with be mutated: either `"updated"` or `"removed"`. Cancel this event by calling `event.preventDefault()` to skip morphing and preserve the original attribute value.
+
+* `turbo:morph-element` fires after Turbo morphs an element. The `event.target` references the morphed element while `event.detail.newElement` references the element with the new attributes and children.
 
 * `turbo:load` fires once after the initial page load, and again after every Turbo visit. Access visit timing metrics with the `event.detail.timing` object.
 
