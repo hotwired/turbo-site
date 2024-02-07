@@ -26,6 +26,8 @@ Turbo emits events that allow you to track the navigation lifecycle and respond 
 
 * `turbo:before-cache` fires before Turbo saves the current page to cache.
 
+* `turbo:before-prefetch` fires before Turbo prefetches a link. Cancel this event to prevent prefetching.
+
 * `turbo:before-render` fires before rendering the page. Access the new `<body>` element with `event.detail.newBody`. Rendering can be canceled and continued with `event.detail.resume` (see [Pausing Rendering](/handbook/drive#pausing-rendering)). Customize how Turbo Drive renders the response by overriding the `event.detail.render` function (see [Custom Rendering](/handbook/drive#custom-rendering)). The `event.detail.renderMethod` will equal either `"replace"` or `"morph"`.
 
 * `turbo:before-stream-render` fires before rendering a Turbo Stream page update. Access the new `<turbo-stream>` element with `event.detail.newStream`. Customize the element's behavior by overriding the `event.detail.render` function (see [Custom Actions](/handbook/streams#custom-actions)).
