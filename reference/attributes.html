@@ -171,6 +171,7 @@
 <ul>
 <li><code>disabled</code> is added to the form submitter while the form request is in progress, to prevent repeat submissions.</li>
 <li><code>data-turbo-preview</code> is added to the <code>html</code> element when displaying a <a href="/handbook/building#detecting-when-a-preview-is-visible">preview</a> during a Visit.</li>
+<li><code>data-turbo-visit-direction</code> is added to the <code>html</code> element during a visit, with a value of <code>forward</code> or <code>back</code> or <code>none</code>, to indicate its direction.</li>
 <li><code>aria-busy</code> is added to <code>html</code> and <code>turbo-frame</code> elements when a navigation is in progress.</li>
 </ul>
 <h2 id="meta-tags"><a class="anchor" href="#meta-tags">﹟</a> Meta Tags</h2>
@@ -179,6 +180,7 @@
 <li><code>&lt;meta name=&quot;turbo-cache-control&quot;&gt;</code> to <a href="/handbook/building#opting-out-of-caching">opt out of caching</a>.</li>
 <li><code>&lt;meta name=&quot;turbo-visit-control&quot; content=&quot;reload&quot;&gt;</code> will perform a full page reload whenever Turbo navigates to the page, including when the request originates from a <code>&lt;turbo-frame&gt;</code>.</li>
 <li><code>&lt;meta name=&quot;turbo-root&quot;&gt;</code> to <a href="/handbook/drive#setting-a-root-location">scope Turbo Drive to a particular root location</a>.</li>
+<li><code>&lt;meta name=&quot;view-transition&quot; content=&quot;same-origin&quot;&gt;</code> to trigger view transitions on browsers that support the <a href="https://caniuse.com/view-transitions">View Transition API</a>.</li>
 <li><code>&lt;meta name=&quot;turbo-refresh-method&quot; content=&quot;morph&quot;&gt;</code> will configure <a href="/handbook/page_refreshes.html">page refreshes with morphing</a>.</li>
 <li><code>&lt;meta name=&quot;turbo-refresh-scroll&quot; content=&quot;preserve&quot;&gt;</code> will enable <a href="/handbook/page_refreshes.html">scroll preservation during page refreshes</a>.</li>
 </ul>
