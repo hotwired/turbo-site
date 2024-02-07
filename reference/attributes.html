@@ -95,19 +95,22 @@
       <a class="nav__sublist-link" href="/handbook/drive">2: Navigate with Turbo Drive
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      <a class="nav__sublist-link" href="/handbook/page_refreshes">3: Smooth page refreshes with morphing
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/streams">4: Come Alive with Turbo Streams
+      <a class="nav__sublist-link" href="/handbook/frames">4: Decompose with Turbo Frames
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      <a class="nav__sublist-link" href="/handbook/streams">5: Come Alive with Turbo Streams
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/building">6: Building Your Turbo Application
+      <a class="nav__sublist-link" href="/handbook/native">6: Go Native on iOS &amp; Android
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      <a class="nav__sublist-link" href="/handbook/building">7: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">8: Installing Turbo in Your Application
       </a>
     </li></ul>
 
@@ -155,7 +158,7 @@
 <li><code>data-turbo-track=&quot;reload&quot;</code> tracks the element’s HTML and performs a full page reload when it changes. Typically used to <a href="/handbook/drive#reloading-when-assets-change">keep <code>script</code> and CSS <code>link</code> elements up-to-date</a>.</li>
 <li><code>data-turbo-frame</code> identifies the Turbo Frame to navigate. Refer to the <a href="/reference/frames">Frames documentation</a> for further details.</li>
 <li><code>data-turbo-action</code> customizes the <a href="/handbook/drive#page-navigation-basics">Visit</a> action. Valid values are <code>replace</code> or <code>advance</code>. Can also be used with Turbo Frames to <a href="/handbook/frames#promoting-a-frame-navigation-to-a-page-visit">promote frame navigations to page visits</a>.</li>
-<li><code>data-turbo-permanent</code> <a href="/handbook/building#persisting-elements-across-page-loads">persists the element between page loads</a>. The element must have a unique <code>id</code> attribute.</li>
+<li><code>data-turbo-permanent</code> <a href="/handbook/building#persisting-elements-across-page-loads">persists the element between page loads</a>. The element must have a unique <code>id</code> attribute. It also serves to exclude elements from being morphed when using <a href="/handbook/page_refreshes.html">page refreshes with morphing</a></li>
 <li><code>data-turbo-temporary</code> removes the element before the document is cached, preventing it from reappearing when restored.</li>
 <li><code>data-turbo-eval=&quot;false&quot;</code> prevents inline <code>script</code> elements from being re-evaluated on Visits.</li>
 <li><code>data-turbo-method</code> changes the link request type from the default <code>GET</code>. Ideally, non-<code>GET</code> requests should be triggered with forms, but <code>data-turbo-method</code> might be useful where a form is not possible.</li>
@@ -176,6 +179,8 @@
 <li><code>&lt;meta name=&quot;turbo-cache-control&quot;&gt;</code> to <a href="/handbook/building#opting-out-of-caching">opt out of caching</a>.</li>
 <li><code>&lt;meta name=&quot;turbo-visit-control&quot; content=&quot;reload&quot;&gt;</code> will perform a full page reload whenever Turbo navigates to the page, including when the request originates from a <code>&lt;turbo-frame&gt;</code>.</li>
 <li><code>&lt;meta name=&quot;turbo-root&quot;&gt;</code> to <a href="/handbook/drive#setting-a-root-location">scope Turbo Drive to a particular root location</a>.</li>
+<li><code>&lt;meta name=&quot;turbo-refresh-method&quot; content=&quot;morph&quot;&gt;</code> will configure <a href="/handbook/page_refreshes.html">page refreshes with morphing</a>.</li>
+<li><code>&lt;meta name=&quot;turbo-refresh-scroll&quot; content=&quot;preserve&quot;&gt;</code> will enable <a href="/handbook/page_refreshes.html">scroll preservation during page refreshes</a>.</li>
 </ul>
 </section>
 

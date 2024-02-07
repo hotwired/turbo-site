@@ -95,19 +95,22 @@
       <a class="nav__sublist-link" href="/handbook/drive">2: Navigate with Turbo Drive
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/frames">3: Decompose with Turbo Frames
+      <a class="nav__sublist-link" href="/handbook/page_refreshes">3: Smooth page refreshes with morphing
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/streams">4: Come Alive with Turbo Streams
+      <a class="nav__sublist-link" href="/handbook/frames">4: Decompose with Turbo Frames
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/native">5: Go Native on iOS &amp; Android
+      <a class="nav__sublist-link" href="/handbook/streams">5: Come Alive with Turbo Streams
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/building">6: Building Your Turbo Application
+      <a class="nav__sublist-link" href="/handbook/native">6: Go Native on iOS &amp; Android
       </a>
     </li><li>
-      <a class="nav__sublist-link" href="/handbook/installing">7: Installing Turbo in Your Application
+      <a class="nav__sublist-link" href="/handbook/building">7: Building Your Turbo Application
+      </a>
+    </li><li>
+      <a class="nav__sublist-link" href="/handbook/installing">8: Installing Turbo in Your Application
       </a>
     </li></ul>
 
@@ -174,6 +177,9 @@
 </li>
 <li>
 <p><code>turbo:before-cache</code> fires before Turbo saves the current page to cache.</p>
+</li>
+<li>
+<p><code>turbo:before-prefetch</code> fires before Turbo prefetches a link. Cancel this event to prevent prefetching.</p>
 </li>
 <li>
 <p><code>turbo:before-render</code> fires before rendering the page. Access the new <code>&lt;body&gt;</code> element with <code>event.detail.newBody</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/drive#custom-rendering">Custom Rendering</a>). The <code>event.detail.renderMethod</code> will equal either <code>&quot;replace&quot;</code> or <code>&quot;morph&quot;</code>.</p>
