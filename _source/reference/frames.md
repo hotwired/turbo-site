@@ -87,6 +87,14 @@ Like an eager-loaded frame, but the content is not loaded from `src` until the f
 </turbo-frame>
 ```
 
+## Frame that will get reloaded with morphing during page refreshes
+
+```html
+<turbo-stream action="refresh">
+  ...
+</turbo-stream>
+```
+
 # Attributes, properties, and functions
 
 The `<turbo-frame>` element is a [custom element][] with its own set of HTML
