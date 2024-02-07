@@ -29,6 +29,7 @@ The following attributes are automatically added by Turbo and are useful to dete
 
 * `disabled` is added to the form submitter while the form request is in progress, to prevent repeat submissions.
 * `data-turbo-preview` is added to the `html` element when displaying a [preview](/handbook/building#detecting-when-a-preview-is-visible) during a Visit.
+* `data-turbo-visit-direction` is added to the `html` element during a visit, with a value of `forward` or `back` or `none`, to indicate its direction.
 * `aria-busy` is added to `html` and `turbo-frame` elements when a navigation is in progress.
 
 ## Meta Tags
@@ -38,5 +39,6 @@ The following `meta` elements, added to the `head`, can be used to customize cac
 * `<meta name="turbo-cache-control">` to [opt out of caching](/handbook/building#opting-out-of-caching).
 * `<meta name="turbo-visit-control" content="reload">` will perform a full page reload whenever Turbo navigates to the page, including when the request originates from a `<turbo-frame>`.
 * `<meta name="turbo-root">` to [scope Turbo Drive to a particular root location](/handbook/drive#setting-a-root-location).
+* `<meta name="view-transition" content="same-origin">` to trigger view transitions on browsers that support the [View Transition API](https://caniuse.com/view-transitions).
 * `<meta name="turbo-refresh-method" content="morph">` will configure [page refreshes with morphing](/handbook/page_refreshes.html).
 * `<meta name="turbo-refresh-scroll" content="preserve">` will enable [scroll preservation during page refreshes](/handbook/page_refreshes.html).
