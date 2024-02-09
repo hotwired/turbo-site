@@ -361,17 +361,10 @@ You can also disable the behaviour programatically by intercepting the `turbo:be
 
 ```javascript
 document.addEventListener("turbo:before-prefetch", (event) => {
-  if (isUJS(event.target) || isSavingData() || hasSlowInternet()) {
+  if (isSavingData() || hasSlowInternet()) {
     event.preventDefault()
   }
 })
-
-function isUJS(link) {
-  return link.hasAttribute("data-remote")   ||
-         link.hasAttribute("data-behavior") ||
-         link.hasAttribute("data-method")   ||
-         link.hasAttribute("data-confirm")
-}
 
 function isSavingData() {
   return navigator.connection?.saveData
