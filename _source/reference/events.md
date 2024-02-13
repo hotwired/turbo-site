@@ -200,7 +200,7 @@ Fires when the response to a `<turbo-frame>` element request does not contain a 
 | `event.detail` property   | Type                                                                  | Description
 |---------------------------|-----------------------------------------------------------------------|------------
 | `response`                | [Response][]                                                          | the HTTP response for the request initiated by a `<turbo-frame>` element
-| `visit`                   | `async (location: string | URL, visitOptions: VisitOptions) => void`  | a convenience function to initiate a page-wide navigation
+| `visit`                   | `async (location: string \| URL, visitOptions: VisitOptions) => void` | a convenience function to initiate a page-wide navigation
 
 [Response]: https://developer.mozilla.org/en-US/docs/Web/API/Response
 [Turbo.visit]: /reference/drive#turbo.visit
