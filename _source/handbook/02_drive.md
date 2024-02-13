@@ -15,6 +15,8 @@ Turbo Drive models page navigation as a *visit* to a *location* (URL) with an *a
 
 Visits represent the entire navigation lifecycle from click to render. That includes changing browser history, issuing the network request, restoring a copy of the page from cache, rendering the final response, and updating the scroll position.
 
+During rendering, Turbo Drive replaces the contents of the requesting document's `<body>` with the contents of the response document's `<body>`, merges the contents of their `<head>`s too, and updates the `lang` attribute of the `<html>` as needed. The point of merging instead of replacing the `<head>` elements is that if `<title>` or `<meta>` tags change, say, they will be updated as expected, but if links to assets are the same, they won't be touched and therefore the browser won't process them again.
+
 There are two types of visit: an _application visit_, which has an action of _advance_ or _replace_, and a _restoration visit_, which has an action of _restore_.
 
 ## Application Visits
@@ -74,8 +76,6 @@ Listen for the `turbo:before-visit` event to be notified when a visit is about t
 Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turbo Drive issues restoration visits in response to history navigation that has *already taken place*, typically via the browser’s Back or Forward buttons.
 
 ## Custom Rendering
-
-Turbo Drive's default rendering replaces the contents of the requesting document's `<body>` element with the contents of the response document's `<body>` element.
 
 Applications can customize the rendering process by adding a document-wide `turbo:before-render` event listener and overriding the `event.detail.render` property.
 
