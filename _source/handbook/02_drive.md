@@ -378,9 +378,23 @@ function hasSlowInternet() {
 
 ## Preload Links Into the Cache
 
-Preload links into Turbo Drive's cache using `<a href="/" data-turbo-preload>Home</a>`.
+Preload links into Turbo Drive's cache using the [data-turbo-preload][] boolean attribute.
 
 This will make page transitions feel lightning fast by providing a preview of a page even before the first visit. Use it to preload the most important pages in your application. Avoid over usage, as it will lead to loading content that is not needed.
 
+Not every `<a>` element can be preloaded. The `[data-turbo-preload]` attribute
+won't have any effect on links that:
+
+* navigate to another domain
+* have a `[data-turbo-frame]` attribute that drives a `<turbo-frame>` element
+* drive an ancestor `<turbo-frame>` element
+* have the `[data-turbo="false"]` attribute
+* have the `[data-turbo-stream]` attribute
+* have a `[data-turbo-method]` attribute
+* have an ancestor with the `[data-turbo="false"]` attribute
+* have an ancestor with the `[data-turbo-prefetch="false"]` attribute
+
 It also dovetails nicely with pages that leverage [Eager-Loading Frames](/reference/frames#eager-loaded-frame) or [Lazy-Loading Frames](/reference/frames#lazy-loaded-frame). As you can preload the structure of the page and show the user a meaningful loading state while the interesting content loads.
 <br><br>
+
+[data-turbo-preload]: /reference/attributes#data-attributes
