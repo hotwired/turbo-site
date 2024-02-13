@@ -15,7 +15,7 @@ Turbo Drive models page navigation as a *visit* to a *location* (URL) with an *a
 
 Visits represent the entire navigation lifecycle from click to render. That includes changing browser history, issuing the network request, restoring a copy of the page from cache, rendering the final response, and updating the scroll position.
 
-During rendering, Turbo Drive replaces the contents of the requesting document's `<body>` with the contents of the response document's `<body>`, merges the contents of their `<head>`s too, and updates the `lang` attribute of the `<html>` as needed. The point of merging instead of replacing the `<head>` elements is that if `<title>` or `<meta>` tags change, say, they will be updated as expected, but if links to assets are the same, they won't be touched and therefore the browser won't process them again.
+During rendering, Turbo Drive replaces the contents of the requesting document's `<body>` with the contents of the response document's `<body>`, merges the contents of their `<head>`s too, and updates the `lang` attribute of the `<html>` element as needed. The point of merging instead of replacing the `<head>` elements is that if `<title>` or `<meta>` tags change, say, they will be updated as expected, but if links to assets are the same, they won't be touched and therefore the browser won't process them again.
 
 There are two types of visit: an _application visit_, which has an action of _advance_ or _replace_, and a _restoration visit_, which has an action of _restore_.
 
@@ -241,9 +241,9 @@ In tandem with the progress bar, Turbo Drive will also toggle the [`[aria-busy]`
 
 ## Reloading When Assets Change
 
-Turbo Drive can track the URLs of asset elements in `<head>` from one page to the next and automatically issue a full reload if they change. This ensures that users always have the latest versions of your application’s scripts and styles.
+As we saw above, Turbo Drive merges the contents of the `<head>` elements. However, if CSS or JavaScript change, that merge would evaluate them on top of the existing one. Typically, this would lead to undesirable conflicts. In such cases, it's necessary to fetch a completely new document through a standard, non-Ajax request.
 
-Annotate asset elements with `data-turbo-track="reload"` and include a version identifier in your asset URLs. The identifier could be a number, a last-modified timestamp, or better, a digest of the asset’s contents, as in the following example.
+To accomplish this, just annotate those asset elements with `data-turbo-track="reload"` and include a version identifier in your asset URLs. The identifier could be a number, a last-modified timestamp, or better, a digest of the asset’s contents, as in the following example.
 
 ```html
 <head>
