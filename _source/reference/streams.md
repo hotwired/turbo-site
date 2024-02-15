@@ -91,6 +91,19 @@ Inserts the content within the template tag after the element designated by the 
 </turbo-stream>
 ```
 
+### Morph
+
+Replaces the element designated by the target dom id via morph.
+
+```html
+<turbo-stream action="morph" target="dom_id">
+  <template>
+    Content to replace the element.
+  </template>
+</turbo-stream>
+```
+Also accepts a `data-turbo-morph-style="innerHTML"` attribute to morph the inner content of the element designated with the dom_id only.
+
 ### Refresh
 
 Initiates a [Page Refresh](/handbook/page_refreshes) to render new content with
