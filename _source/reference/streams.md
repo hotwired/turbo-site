@@ -102,7 +102,7 @@ Replaces the element designated by the target dom id via morph.
   </template>
 </turbo-stream>
 ```
-Also accepts a `data-turbo-morph-style="innerHTML"` attribute to morph the inner content of the element designated with the dom_id only.
+A `data-turbo-morph-style="innerHTML"` attribute can be added to element designated with the dom_id to morph its inner content only.
 
 ### Refresh
 
