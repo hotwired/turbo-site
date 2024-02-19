@@ -52,8 +52,7 @@ Sometimes, you want to ignore certain elements while morphing. For example, you 
 You can use [turbo frames](/handbook/frames.html) to define regions in your screen that will get reloaded using morphing when a page refresh happens. To do so, you must flag those frames with `refresh="morph"`.
 
 ```html
-<turbo-frame id="my-frame" refresh="morph">
-  ...
+<turbo-frame id="my-frame" refresh="morph" src="/my_frame">
 </turbo-frame>
 ```
 
