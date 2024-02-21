@@ -66,7 +66,7 @@ In addition to turning your segments into independent contexts, Turbo Frames aff
 
 Making partial page changes in response to asynchronous actions is how we make the application feel alive. While Turbo Frames give us such updates in response to direct interactions within a single frame, Turbo Streams let us change any part of the page in response to updates sent over a WebSocket connection, SSE or other transport. (Think an <a href="http://itsnotatypo.com">imbox</a> that automatically updates when a new email arrives.)
 
-Turbo Streams introduces a `<turbo-stream>` element with seven basic actions: `append`, `prepend`, `replace`, `update`, `remove`, `before`, and `after`. With these actions, along with the `target` attribute specifying the ID of the element you want to operate on, you can encode all the mutations needed to refresh the page. You can even combine several stream elements in a single stream message. Simply include the HTML you're interested in inserting or replacing in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template tag</a> and Turbo does the rest:
+Turbo Streams introduces a `<turbo-stream>` element with eight basic actions: `append`, `prepend`, `replace`, `update`, `remove`, `before`, `after`, and `refresh`. With these actions, along with the `target` attribute specifying the ID of the element you want to operate on, you can encode all the mutations needed to refresh the page. You can even combine several stream elements in a single stream message. Simply include the HTML you're interested in inserting or replacing in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template tag</a> and Turbo does the rest:
 
 ```html
 <turbo-stream action="append" target="messages">
@@ -111,4 +111,3 @@ See the <a href="https://github.com/hotwired/turbo-ios">Turbo Native: iOS</a> an
 ## Integrate with backend frameworks
 
 You don't need any backend framework to use Turbo. All the features are built to be used directly, without further abstractions. But if you have the opportunity to use a backend framework that's integrated with Turbo, you'll find life a lot simpler. [We've created a reference implementation for such an integration for Ruby on Rails](https://github.com/hotwired/turbo-rails).
-

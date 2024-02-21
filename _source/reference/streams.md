@@ -6,7 +6,7 @@ description: "A reference of everything you can do with Turbo Streams."
 
 # Streams
 
-## The seven actions
+## The eight actions
 
 ### Append
 
@@ -19,7 +19,7 @@ Appends the content within the template tag to the container designated by the t
   </template>
 </turbo-stream>
 ```
-If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of appended. 
+If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of appended.
 
 ### Prepend
 
@@ -32,7 +32,7 @@ Prepends the content within the template tag to the container designated by the 
   </template>
 </turbo-stream>
 ```
-If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of prepended. 
+If the template's first element has an id that is already used by a direct child inside the container targeted by dom_id, it is replaced instead of prepended.
 
 ### Replace
 
@@ -89,6 +89,19 @@ Inserts the content within the template tag after the element designated by the 
     Content to place after the element designated with the dom_id.
   </template>
 </turbo-stream>
+```
+
+### Refresh
+
+Initiates a [Page Refresh](/handbook/page_refreshes) to render new content with
+morphing.
+
+```html
+<!-- without `[request-id]` -->
+<turbo-stream action="refresh"></turbo-stream>
+
+<!-- debounced with `[request-id]` -->
+<turbo-stream action="refresh" request-id="abcd-1234"></turbo-stream>
 ```
 
 ## Targeting Multiple Elements
