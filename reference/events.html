@@ -570,7 +570,7 @@ initiated the request, the events could fire on:</p>
 <li>the <code>&lt;html&gt;</code> element during a page-wide Turbo Visit</li>
 </ul>
 <h3 id="turbo%3Abefore-fetch-request"><a class="anchor" href="#turbo%3Abefore-fetch-request">﹟</a> <code>turbo:before-fetch-request</code></h3>
-<p>Fires before Turbo issues a network request to fetch the page. Access the requested location with <code>event.detail.url</code> and the fetch options object with <code>event.detail.fetchOptions</code>. This event fires on the respective element (<code>&lt;turbo-frame&gt;</code> or <code>&lt;form&gt;</code> element) which triggers it and can be accessed with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> property. Request can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-requests">Pausing Requests</a>).</p>
+<p>Fires before Turbo issues a network request (to fetch a page, submit a form, preload a link, etc.). Access the requested location with <code>event.detail.url</code> and the fetch options object with <code>event.detail.fetchOptions</code>. This event fires on the respective element (<code>&lt;turbo-frame&gt;</code> or <code>&lt;form&gt;</code> element) which triggers it and can be accessed with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> property. Request can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-requests">Pausing Requests</a>).</p>
 <table>
 <thead>
 <tr>
