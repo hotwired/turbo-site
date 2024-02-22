@@ -397,4 +397,16 @@ won't have any effect on links that:
 It also dovetails nicely with pages that leverage [Eager-Loading Frames](/reference/frames#eager-loaded-frame) or [Lazy-Loading Frames](/reference/frames#lazy-loaded-frame). As you can preload the structure of the page and show the user a meaningful loading state while the interesting content loads.
 <br><br>
 
+Note that preloaded `<a>` elements will dispatch [turbo:before-fetch-request](/reference/events) and [turbo:before-fetch-response](/reference/events) events. To distinguish a preloading `turbo:before-fetch-request` initiated event from an event initiated by another mechanism, check whether the request's `X-Sec-Purpose` header (read from the `event.detail.fetchOptions.headers["X-Sec-Purpose"]` property) is set to `"prefetch"`:
+
+```js
+addEventListener("turbo:before-fetch-request", (event) => {
+  if (event.detail.fetchOptions.headers["X-Sec-Purpose"] === "prefetch") {
+    // do additional preloading setup…
+  } else {
+    // do something else…
+  }
+})
+```
+
 [data-turbo-preload]: /reference/attributes#data-attributes
