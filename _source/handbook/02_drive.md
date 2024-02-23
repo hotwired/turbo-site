@@ -338,7 +338,15 @@ InstantClick is enabled by default since Turbo v8, but you can disable it by add
 <meta name="turbo-prefetch" content="false">
 ```
 
-To avoid prefetching links that the user is briefly hovering, Turbo waits 100ms after the user hovers over the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
+To avoid prefetching links that the user is briefly hovering, Turbo waits 100 milliseconds after the user hovers over the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
+
+By default Turbo will cache requests for 10 seconds. Once that 10 seconds has passed, the value will expire, be cleared from the cache, and a new request will be issued on the next hover.
+
+You can configure this duration by adding this meta tag to your page:
+
+```html
+<meta name="turbo-prefetch-cache-time" content="15000">
+```
 
 You can disable the behavior on a per-element basis by annotating the element or any of its ancestors with `data-turbo-prefetch="false"`.
 
