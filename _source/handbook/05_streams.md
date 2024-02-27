@@ -5,7 +5,9 @@ description: "Turbo Streams deliver page changes over WebSocket, SSE or in respo
 
 # Come Alive with Turbo Streams
 
-Turbo Streams deliver page changes as fragments of HTML wrapped in self-executing `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements are delivered by the server over a WebSocket, SSE or other transport to bring the application alive with updates made by other users or processes. A new email arriving in your <a href="http://itsnotatypo.com">imbox</a> is a great example.
+Turbo Streams deliver page changes as fragments of HTML wrapped in `<turbo-stream>` elements. Each stream element specifies an action together with a target ID to declare what should happen to the HTML inside it. These elements can be delivered to the browser synchronously as a classic HTTP response, or asynchronously over transports such as webSockets, SSE, etc, to bring the application alive with updates made by other users or processes.
+
+They can be used to surgically update the DOM after a user action such as removing an element from a list without reloading the whole page, or to implement real-time capabilities such as appending a new message to a live conversation as it is sent by a remote user.
 
 ## Stream Messages and Actions
 
