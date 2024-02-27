@@ -87,7 +87,7 @@ Like an eager-loaded frame, but the content is not loaded from `src` until the f
 </turbo-frame>
 ```
 
-## Frame that will get reloaded with morphing during page refreshes & when they are reloaded
+## Frame that will get reloaded with morphing during page refreshes & when they are explicitly reloaded with .reload()
 
 ```html
 <turbo-frame id="my-frame" refresh="morph" src="/my_frame">
