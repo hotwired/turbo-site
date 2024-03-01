@@ -7,10 +7,10 @@ description: "A reference of everything you can do with Turbo Drive."
 # Drive
 
 ## Changed link and form behavior
-Turbo Drive intercepts the following events:
+Turbo Drive intercepts the following:
 
-* `"click"` on link elements
-* `"submit"` on form elements
+* `"click"` event on link elements
+* `"submit"` event on form elements
 
 Then does the following:
 1. Prevents the default behavior
