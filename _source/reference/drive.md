@@ -6,6 +6,19 @@ description: "A reference of everything you can do with Turbo Drive."
 
 # Drive
 
+## Changed link and form behavior
+Turbo Drive intercepts the following events:
+
+* `"click"` on link elements
+* `"submit"` on form elements
+
+Then does the following:
+1. Prevents the default behavior
+2. Updates the browser's URL, using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)
+3. Makes an AJAX request to the appropriate URL
+4. Replaces the browser's `<body>` element with the response's `<body>` element, and merges the contents of their `<head>` elements if they changed
+5. If the URL includes `#hash` location, attempts to scroll to the element with that `id`
+
 ## Turbo.visit
 
 ```js
