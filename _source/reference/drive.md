@@ -52,7 +52,9 @@ Note that this method has no effect when used with the iOS or Android adapters.
 Turbo.setConfirmMethod(confirmMethod)
 ```
 
-Sets the method that is called by links decorated with [`data-turbo-confirm`](/handbook/drive#requiring-confirmation-for-a-visit). The default is the browser's built in `confirm`. The method should return `true` if the visit can proceed.
+Sets the method that is called by links decorated with [`data-turbo-confirm`](/handbook/drive#requiring-confirmation-for-a-visit). The default is the browser's built in `confirm`.
+
+The `confirmMethod` can return a synchronous value or a Promise. Set the result to `true` to allow the visit to proceed.
 
 ## Turbo.session.drive
 
