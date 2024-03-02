@@ -308,7 +308,7 @@ addEventListener("turbo:submit-start", ({ target }) => {
 ```
 
 [events]: /reference/events
-[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture
+[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling
 [elements]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
 [disabled]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
 [submitter]: https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter
