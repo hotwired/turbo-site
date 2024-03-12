@@ -102,7 +102,16 @@ Replaces the element designated by the target dom id via morph.
   </template>
 </turbo-stream>
 ```
-A `data-turbo-morph-style="innerHTML"` attribute can be added to element designated with the dom_id to morph its inner content only.
+
+The `children-only` attribute can be added to the `turbo-stream` element to morph only the children of the element designated by the target dom id.
+
+```html
+<turbo-stream action="morph" target="dom_id" children-only>
+  <template>
+    Content to replace the element.
+  </template>
+</turbo-stream>
+```
 
 ### Refresh
 
