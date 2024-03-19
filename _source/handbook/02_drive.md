@@ -158,13 +158,13 @@ Turbo Drive can be disabled on a per-element basis by annotating the element or 
 <a href="/" data-turbo="false">Disabled</a>
 
 <form action="/messages" method="post" data-turbo="false">
-  ...
+  <!-- … -->
 </form>
 
 <div data-turbo="false">
   <a href="/">Disabled</a>
   <form action="/messages" method="post">
-    ...
+    <!-- … -->
   </form>
 </div>
 ```
@@ -247,11 +247,29 @@ To accomplish this, just annotate those asset elements with `data-turbo-track="r
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <link rel="stylesheet" href="/application-258e88d.css" data-turbo-track="reload">
   <script src="/application-cbd3cd4.js" data-turbo-track="reload"></script>
 </head>
 ```
+
+## Removing Assets When They Change
+
+As we saw above, Turbo Drive merges the contents of the `<head>` elements. When a page depends on external assets like CSS stylesheets that other pages do not, it can be useful to remove them when navigating away from the page.
+
+Rendering a `<link>` or `<style>` element with `[data-turbo-track="dynamic"]` instructs Turbo Drive to dynamically remove the element when it is absent from a navigation's response, and can serve a complementary role to the [`[data-turbo-track="reload"]`](#reload-when-assets-change) attribute to avoid triggering a full page reload when deploying changes that only affect styles.
+
+```html
+<head>
+  <!-- … -->
+  <link rel="stylesheet" href="/page-specific-styles-258e88d.css" data-turbo-track="dynamic">
+  <style data-turbo-track="dynamic">
+    .page-specific-styles { /* … */ }
+  </style>
+</head>
+```
+
+Note that rendering `<script>` elements with `[data-turbo-track="dynamic"]` might unintended side-effects. When `<script>` disconnected from the document, the JavaScript context doesn't change, nor is the element's already evaluated JavaScript code unloaded or changed in any way.
 
 ## Ensuring Specific Pages Trigger a Full Reload
 
@@ -259,7 +277,7 @@ You can ensure visits to a certain page will always trigger a full reload by inc
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <meta name="turbo-visit-control" content="reload">
 </head>
 ```
@@ -276,7 +294,7 @@ Include a `<meta name="turbo-root">` element in your pages’ `<head>` to scope 
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <meta name="turbo-root" content="/app">
 </head>
 ```
