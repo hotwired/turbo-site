@@ -43,3 +43,5 @@ The following `meta` elements, added to the `head`, can be used to customize cac
 * `<meta name="view-transition" content="same-origin">` to trigger view transitions on browsers that support the [View Transition API](https://caniuse.com/view-transitions).
 * `<meta name="turbo-refresh-method" content="morph">` will configure [page refreshes with morphing](/handbook/page_refreshes.html).
 * `<meta name="turbo-refresh-scroll" content="preserve">` will enable [scroll preservation during page refreshes](/handbook/page_refreshes.html).
+* `<meta name="turbo-prefetch" content="false">` will [opt-out of InstantClick prefetching](/handbook/drive#instantclick) for the entire page.
+* `<meta name="turbo-prefetch-cache-time" content="15000">` configures the time to live in milliseconds for an entry in the InstantClick prefetch cache. When omitted, the default value is 10 seconds.
