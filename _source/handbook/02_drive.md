@@ -350,7 +350,7 @@ You can disable the behavior on a per-element basis by annotating the element or
   <body>
     <a href="/articles">Articles</a> <!-- This link is prefetched -->
     <a href="/about" data-turbo-prefetch="false">About</a> <!-- Not prefetched -->
-    <div data-turbo-prefetch="false"`>
+    <div data-turbo-prefetch="false">
       <!-- Links inside this div will not be prefetched -->
     </div>
   </body>
