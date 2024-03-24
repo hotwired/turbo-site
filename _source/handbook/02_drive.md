@@ -79,14 +79,14 @@ Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turb
 
 Applications can customize the rendering process by adding a document-wide `turbo:before-render` event listener and overriding the `event.detail.render` property.
 
-For example, you could merge the response document's `<body>` element into the requesting document's `<body>` element with [morphdom](https://github.com/patrick-steele-idem/morphdom):
+For example, you could merge the response document's `<body>` element into the requesting document's `<body>` element with [idiomorph](https://github.com/bigskysoftware/idiomorph) or [morphdom](https://github.com/patrick-steele-idem/morphdom):
 
 ```javascript
-import morphdom from "morphdom"
+import { Idiomorph } from "idiomorph"
 
 addEventListener("turbo:before-render", (event) => {
   event.detail.render = (currentElement, newElement) => {
-    morphdom(currentElement, newElement)
+    Idiomorph.morph(currentElement, newElement)
   }
 })
 ```
