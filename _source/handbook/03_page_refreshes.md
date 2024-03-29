@@ -18,11 +18,11 @@ You can configure how Turbo handles page refresh with a `<meta name="turbo-refre
 ```html
 <head>
   ...
-  <meta name="turbo-refresh-method" content="morph">
+  <meta name="turbo-refresh-method" content="morph" />
 </head>
 ```
 
-The possible values are `morph` or `replace` (the default). When it is `morph,` when a page refresh happens, instead of replacing the page's `<body>,` Turbo will only update the DOM elements that have changed, keeping the rest untouched. This approach delivers better sensations because it keeps the screen state.
+The possible values are `morph` or `replace` (the default). When it is `morph,` when a page refresh happens, instead of replacing the page's `<body>` contents, Turbo will only update the DOM elements that have changed, keeping the rest untouched. This approach delivers better sensations because it keeps the screen state.
 
 Under the hood, Turbo uses the fantastic [idiomorph library](https://github.com/bigskysoftware/idiomorph).
 
@@ -33,7 +33,7 @@ You can configure how Turbo handles scrolling with a `<meta name="turbo-refresh-
 ```html
 <head>
   ...
-  <meta name="turbo-refresh-scroll" content="preserve">
+  <meta name="turbo-refresh-scroll" content="preserve" />
 </head>
 ```
 
@@ -52,9 +52,7 @@ Sometimes, you want to ignore certain elements while morphing. For example, you 
 You can use [turbo frames](/handbook/frames.html) to define regions in your screen that will get reloaded using morphing when a page refresh happens. To do so, you must flag those frames with `refresh="morph"`.
 
 ```html
-<turbo-frame id="my-frame" refresh="morph">
-  ...
-</turbo-frame>
+<turbo-frame id="my-frame" refresh="morph"> ... </turbo-frame>
 ```
 
 With this mechanism, you can load additional content that didn't arrive in the initial page load (e.g., pagination). When a page refresh happens, Turbo won't remove the frame contents; instead, it will reload the turbo frame and render its contents with morphing.
@@ -67,9 +65,9 @@ There is a new [turbo stream action](/handbook/streams.html) called `refresh` th
 <turbo-stream action="refresh"></turbo-stream>
 ```
 
-Server-side frameworks can leverage these streams to offer a simple but powerful broadcasting model: the server broadcasts a single general signal, and pages smoothly refresh with morphing. 
+Server-side frameworks can leverage these streams to offer a simple but powerful broadcasting model: the server broadcasts a single general signal, and pages smoothly refresh with morphing.
 
-You can see how the  [`turbo-rails`](https://github.com/hotwired/turbo-rails) gem does it for Rails:
+You can see how the [`turbo-rails`](https://github.com/hotwired/turbo-rails) gem does it for Rails:
 
 ```ruby
 # In the model
