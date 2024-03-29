@@ -75,7 +75,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 <turbo-stream action="morph" target="current_step">
   <template>
-    <!-- The contents of this template will replace the
+    <!-- The contents of this template will replace the 
     element with ID "current_step" via morph. -->
     <li>New item</li>
   </template>
@@ -83,7 +83,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 <turbo-stream action="morph" target="current_step" children-only>
   <template>
-    <!-- The contents of this template will replace the
+    <!-- The contents of this template will replace the 
     children of the element with ID "current_step" via morph. -->
     <li>New item</li>
   </template>
@@ -96,6 +96,7 @@ Note that every `<turbo-stream>` element must wrap its included HTML inside a `<
 
 A Turbo Stream can integrate with any element in the document that can be
 resolved by an [id](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) attribute or [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) (with the exception of `<template>` element or `<iframe>` element content). It is not necessary to change targeted elements into [`<turbo-frame>` elements](/handbook/frames). If your application utilizes `<turbo-frame>` elements for the sake of a `<turbo-stream>` element, change the `<turbo-frame>` into another [built-in element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
@@ -188,7 +189,9 @@ Content-Type: text/vnd.turbo-stream.html; charset=utf-8
 
 <turbo-stream action="append" target="messages">
   <template>
-    <div id="message_1">The content of the message.</div>
+    <div id="message_1">
+      The content of the message.
+    </div>
   </template>
 </turbo-stream>
 ```
@@ -214,8 +217,8 @@ By default, Turbo Streams support [eight values for its `action` attribute](/ref
 For example, if you'd like to expand upon the eight actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
 
 ```javascript
-addEventListener("turbo:before-stream-render", (event) => {
-  const fallbackToDefaultActions = event.detail.render;
+addEventListener("turbo:before-stream-render", ((event) => {
+  const fallbackToDefaultActions = event.detail.render
 
   event.detail.render = function (streamElement) {
     if (streamElement.action == "alert") {
@@ -223,22 +226,22 @@ addEventListener("turbo:before-stream-render", (event) => {
     } else if (streamElement.action == "log") {
       // ...
     } else {
-      fallbackToDefaultActions(streamElement);
+      fallbackToDefaultActions(streamElement)
     }
   };
-});
+}));
 ```
 
 In addition to listening for `turbo:before-stream-render` events, applications
 can also declare actions as properties directly on `StreamActions`:
 
 ```javascript
-import { StreamActions } from "@hotwired/turbo";
+import { StreamActions } from "@hotwired/turbo"
 
 // <turbo-stream action="log" message="Hello, world"></turbo-stream>
 //
 StreamActions.log = function () {
-  console.log(this.getAttribute("message"));
+  console.log(this.getAttribute("message"))
 };
 ```
 
