@@ -228,8 +228,8 @@ addEventListener("turbo:before-stream-render", ((event) => {
     } else {
       fallbackToDefaultActions(streamElement)
     }
-  };
-}));
+  }
+}))
 ```
 
 In addition to listening for `turbo:before-stream-render` events, applications
@@ -242,7 +242,7 @@ import { StreamActions } from "@hotwired/turbo"
 //
 StreamActions.log = function () {
   console.log(this.getAttribute("message"))
-};
+}
 ```
 
 ## Integration with Server-Side Frameworks
