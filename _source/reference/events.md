@@ -241,7 +241,7 @@ Fires before Turbo issues a network request (to fetch a page, submit a form, pre
 
 [RequestInit]: https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options
 [Request]: https://developer.mozilla.org/en-US/docs/Web/API/Request/Request
-[URL]: https://developer.mozilla.org/en-US/docs/Web/API/URLm
+[URL]: https://developer.mozilla.org/en-US/docs/Web/API/URL
 [Pausing Requests]: /handbook/drive#pausing-requests
 
 ### `turbo:before-fetch-response`
