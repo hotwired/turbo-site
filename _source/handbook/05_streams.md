@@ -265,8 +265,8 @@ Since the document's `<head>` is persistent across Turbo navigations, it's
 important to mount the `<turbo-stream-source>` as a descendant of the document's
 `<body>` element.
 
-Typical full page navigations driven by Turbo will result in the `<body>` being
-discarded and replaced with the resulting document. It's the server's
+Typical full page navigations driven by Turbo will result in the `<body>` contents
+being discarded and replaced with the resulting document. It's the server's
 responsibility to ensure that the element is present on any page that requires
 streaming.
 
