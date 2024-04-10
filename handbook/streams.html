@@ -202,8 +202,8 @@ connected. When the element is disconnected, the stream is disconnected.</p>
 <p>Since the document’s <code>&lt;head&gt;</code> is persistent across Turbo navigations, it’s
 important to mount the <code>&lt;turbo-stream-source&gt;</code> as a descendant of the document’s
 <code>&lt;body&gt;</code> element.</p>
-<p>Typical full page navigations driven by Turbo will result in the <code>&lt;body&gt;</code> being
-discarded and replaced with the resulting document. It’s the server’s
+<p>Typical full page navigations driven by Turbo will result in the <code>&lt;body&gt;</code> contents
+being discarded and replaced with the resulting document. It’s the server’s
 responsibility to ensure that the element is present on any page that requires
 streaming.</p>
 <p>Alternatively, a straightforward way to integrate any backend application with Turbo Streams is to rely on <a href="https://mercure.rocks">the Mercure protocol</a>. Mercure defines a convenient way for server applications to broadcast page changes to every connected clients through <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events (SSE)</a>. <a href="https://mercure.rocks/docs/ecosystem/hotwire">Learn how to use Mercure with Turbo Streams</a>.</p>
