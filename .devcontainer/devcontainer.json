@@ -1,0 +1,8 @@
+{
+  "name": "Npm setup for building the turbo site",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "npm run serve"
+}
