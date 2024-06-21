@@ -72,7 +72,6 @@ Fires before rendering the page. Access the new `<body>` element with `event.det
 |---------------------------|-----------------------------------|------------
 | `renderMethod`            | `"replace" \| "morph"`            | the strategy that will be used to render the new content
 | `newBody`                 | [HTMLBodyElement][]               | the new `<body>` element that will replace the document's current `<body>` element
-| `isPreview`               | `boolean`                         | whether or not the render is a [preview][] of a cached page
 | `resume`                  | `(value?: any) => void`           | called when [Pausing Requests][]
 | `render`                  | `(currentBody, newBody) => void`  | override to [Customize Rendering](/handbook/drive#custom-rendering)
 
@@ -86,7 +85,6 @@ Fires after Turbo renders the page. This event fires twice during an application
 | `event.detail` property   | Type                      | Description
 |---------------------------|---------------------------|------------
 | `renderMethod`            | `"replace" \| "morph"`    | the strategy used to render the new content
-| `isPreview`               | `boolean`                 | whether or not the render is a [preview][] of a cached page
 
 ### `turbo:load`
 
