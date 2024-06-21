@@ -252,7 +252,7 @@
 <h2 id="form-submissions"><a class="anchor" href="#form-submissions">﹟</a> Form Submissions</h2>
 <p>Turbo Drive handles form submissions in a manner similar to link clicks. The key difference is that form submissions can issue stateful requests using the HTTP POST method, while link clicks only ever issue stateless HTTP GET requests.</p>
 <p>Throughout a submission, Turbo Drive will dispatch a series of <a href="/reference/events">events</a> that
-target the <code>&lt;form&gt;</code> element and <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture">bubble up</a> through the document:</p>
+target the <code>&lt;form&gt;</code> element and <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling">bubble up</a> through the document:</p>
 <ol>
 <li><code>turbo:submit-start</code></li>
 <li><code>turbo:before-fetch-request</code></li>
