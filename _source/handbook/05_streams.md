@@ -75,7 +75,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 <turbo-stream action="morph" target="current_step">
   <template>
-    <!-- The contents of this template will replace the 
+    <!-- The contents of this template will replace the
     element with ID "current_step" via morph. -->
     <li>New item</li>
   </template>
@@ -83,7 +83,7 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
 
 <turbo-stream action="morph" target="current_step" children-only>
   <template>
-    <!-- The contents of this template will replace the 
+    <!-- The contents of this template will replace the
     children of the element with ID "current_step" via morph. -->
     <li>New item</li>
   </template>
@@ -99,6 +99,8 @@ resolved by an [id](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_att
 
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
+
+Also, any stream element that's connected to the page dom will be interpreted, i.e. the stream action will execute and the element be removed from the dom. For example, this can be used to execute stream actions when a page or a frame is loaded.
 
 ## Actions With Multiple Targets
 
