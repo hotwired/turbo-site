@@ -11,7 +11,7 @@ They can be used to surgically update the DOM after a user action such as removi
 
 ## Stream Messages and Actions
 
-A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the eight possible stream actions:
+A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the nine possible stream actions:
 
 ```html
 <turbo-stream action="append" target="messages">
@@ -206,15 +206,15 @@ The same is especially true for WebSocket updates. On poor connections, or if th
 
 ## But What About Running JavaScript?
 
-Turbo Streams consciously restricts you to eight actions: append, prepend, (insert) before, (insert) after, replace, update, remove, and refresh. If you want to trigger additional behavior when these actions are carried out, you should attach behavior using <a href="https://stimulus.hotwired.dev">Stimulus</a> controllers. This restriction allows Turbo Streams to focus on the essential task of delivering HTML over the wire, leaving additional logic to live in dedicated JavaScript files.
+Turbo Streams consciously restricts you to nine actions: append, prepend, (insert) before, (insert) after, replace, update, remove, morph, and refresh. If you want to trigger additional behavior when these actions are carried out, you should attach behavior using <a href="https://stimulus.hotwired.dev">Stimulus</a> controllers. This restriction allows Turbo Streams to focus on the essential task of delivering HTML over the wire, leaving additional logic to live in dedicated JavaScript files.
 
 Embracing these constraints will keep you from turning individual responses into a jumble of behaviors that cannot be reused and which make the app hard to follow. The key benefit from Turbo Streams is the ability to reuse templates for initial rendering of a page through all subsequent updates.
 
 ## Custom Actions
 
-By default, Turbo Streams support [eight values for its `action` attribute](/reference/streams#the-seven-actions). If your application needs to support other behaviors, you can override the `event.detail.render` function.
+By default, Turbo Streams support [nine values for its `action` attribute](/reference/streams#the-seven-actions). If your application needs to support other behaviors, you can override the `event.detail.render` function.
 
-For example, if you'd like to expand upon the eight actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
+For example, if you'd like to expand upon the nine actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
 
 ```javascript
 addEventListener("turbo:before-stream-render", ((event) => {
