@@ -91,28 +91,6 @@ Inserts the content within the template tag after the element designated by the 
 </turbo-stream>
 ```
 
-### Morph
-
-Replaces the element designated by the target dom id via morph.
-
-```html
-<turbo-stream action="morph" target="dom_id">
-  <template>
-    Content to replace the element.
-  </template>
-</turbo-stream>
-```
-
-The `children-only` attribute can be added to the `turbo-stream` element to morph only the children of the element designated by the target dom id.
-
-```html
-<turbo-stream action="morph" target="dom_id" children-only>
-  <template>
-    Content to replace the element.
-  </template>
-</turbo-stream>
-```
-
 ### Refresh
 
 Initiates a [Page Refresh](/handbook/page_refreshes) to render new content with
