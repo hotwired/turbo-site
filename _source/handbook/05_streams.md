@@ -38,13 +38,6 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
   </template>
 </turbo-stream>
 
-<turbo-stream action="replace" method="morph" target="current_step">
-  <template>
-    <!-- The contents of this template will replace the element with ID "current_step" via morph. -->
-    <li>New item</li>
-  </template>
-</turbo-stream>
-
 <turbo-stream action="update" target="unread_count">
   <template>
     <!-- The contents of this template will replace the
@@ -56,13 +49,6 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
     that action would necessitate the rebuilding of
     handlers. -->
     1
-  </template>
-</turbo-stream>
-
-<turbo-stream action="update" method="morph" target="current_step">
-  <template>
-    <!-- The contents of this template will replace the children of the element with ID "current_step" via morph. -->
-    <li>New item</li>
   </template>
 </turbo-stream>
 
@@ -83,6 +69,22 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
   <template>
     <!-- The contents of this template will be added after the
     the element with ID "current_step". -->
+    <li>New item</li>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="morph" target="current_step">
+  <template>
+    <!-- The contents of this template will replace the 
+    element with ID "current_step" via morph. -->
+    <li>New item</li>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="morph" target="current_step" children-only>
+  <template>
+    <!-- The contents of this template will replace the 
+    children of the element with ID "current_step" via morph. -->
     <li>New item</li>
   </template>
 </turbo-stream>

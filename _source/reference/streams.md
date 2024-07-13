@@ -46,16 +46,6 @@ Replaces the element designated by the target dom id.
 </turbo-stream>
 ```
 
-The `[method="morph"]` attribute can be added to the `turbo-stream` element to replace the element designated by the target dom id via morph.
-
-```html
-<turbo-stream action="replace" method="morph" target="dom_id">
-  <template>
-    Content to replace the element.
-  </template>
-</turbo-stream>
-```
-
 ### Update
 
 Updates the content within the template tag to the container designated by the target dom id.
@@ -64,16 +54,6 @@ Updates the content within the template tag to the container designated by the t
 <turbo-stream action="update" target="dom_id">
   <template>
     Content to update to container designated with the dom_id.
-  </template>
-</turbo-stream>
-```
-
-The `[method="morph"]` attribute can be added to the `turbo-stream` element to morph only the children of the element designated by the target dom id.
-
-```html
-<turbo-stream action="update" method="morph" target="dom_id">
-  <template>
-    Content to replace the element.
   </template>
 </turbo-stream>
 ```
@@ -107,6 +87,28 @@ Inserts the content within the template tag after the element designated by the 
 <turbo-stream action="after" target="dom_id">
   <template>
     Content to place after the element designated with the dom_id.
+  </template>
+</turbo-stream>
+```
+
+### Morph
+
+Replaces the element designated by the target dom id via morph.
+
+```html
+<turbo-stream action="morph" target="dom_id">
+  <template>
+    Content to replace the element.
+  </template>
+</turbo-stream>
+```
+
+The `children-only` attribute can be added to the `turbo-stream` element to morph only the children of the element designated by the target dom id.
+
+```html
+<turbo-stream action="morph" target="dom_id" children-only>
+  <template>
+    Content to replace the element.
   </template>
 </turbo-stream>
 ```
