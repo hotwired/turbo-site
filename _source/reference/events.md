@@ -127,7 +127,7 @@ Fires before Turbo morphs an element's attributes. The [event.target][] referenc
 | `event.detail` property   | Type                      | Description
 |---------------------------|---------------------------|------------
 | `attributeName`           | `string`                  | the name of the attribute to be mutated
-| `mutationType`            | `"updated" \| "removed"`  | how the attribute will be mutated
+| `mutationType`            | `"update" \| "remove"`    | how the attribute will be mutated
 
 ### `turbo:morph-element`
 
