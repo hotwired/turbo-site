@@ -407,7 +407,7 @@ sources:</p>
 <h2 id="forms"><a class="anchor" href="#forms">﹟</a> Forms</h2>
 <p>Turbo Drive emits events during submission, redirection, and submission failure. The following events fire on the <code>&lt;form&gt;</code> element during submission.</p>
 <h3 id="turbo%3Asubmit-start"><a class="anchor" href="#turbo%3Asubmit-start">﹟</a> <code>turbo:submit-start</code></h3>
-<p>Fires during a form submission. Access the <code>FormSubmission</code> object with <code>event.detail.formSubmission</code>. Abort form submission (e.g. after validation failure) with <code>event.detail.formSubmission.stop()</code>. Use <code>event.originalEvent.detail.formSubmission.stop()</code> if you’re using jQuery.</p>
+<p>Fires during a form submission. Access the <a href="/reference/drive#formsubmission">FormSubmission</a> object with <code>event.detail.formSubmission</code>. Abort form submission (e.g. after validation failure) with <code>event.detail.formSubmission.stop()</code>. Use <code>event.originalEvent.detail.formSubmission.stop()</code> if you’re using jQuery.</p>
 <table>
 <thead>
 <tr>
@@ -419,13 +419,13 @@ sources:</p>
 <tbody>
 <tr>
 <td><code>formSubmission</code></td>
-<td><code>FormSubmission</code></td>
+<td><a href="/reference/drive#formsubmission">FormSubmission</a></td>
 <td>the <code>&lt;form&gt;</code> element submission</td>
 </tr>
 </tbody>
 </table>
 <h3 id="turbo%3Asubmit-end"><a class="anchor" href="#turbo%3Asubmit-end">﹟</a> <code>turbo:submit-end</code></h3>
-<p>Fires after the form submission-initiated network request completes. Access the <code>FormSubmission</code> object with <code>event.detail.formSubmission</code> along with <code>FormSubmissionResult</code> properties included within <code>event.detail</code>.</p>
+<p>Fires after the form submission-initiated network request completes. Access the <a href="/reference/drive#formsubmission">FormSubmission</a> object with <code>event.detail.formSubmission</code> along with the properties included within <code>event.detail</code>.</p>
 <table>
 <thead>
 <tr>
@@ -436,13 +436,18 @@ sources:</p>
 </thead>
 <tbody>
 <tr>
+<td><code>formSubmission</code></td>
+<td><a href="/reference/drive#formsubmission">FormSubmission</a></td>
+<td>the <code>&lt;form&gt;</code> element submission</td>
+</tr>
+<tr>
 <td><code>success</code></td>
 <td><code>boolean</code></td>
 <td>a <code>boolean</code> representing the request’s success</td>
 </tr>
 <tr>
 <td><code>fetchResponse</code></td>
-<td><code>FetchResponse | null</code></td>
+<td><a href="/reference/drive#fetchresponse">FetchResponse</a> | <code>null</code></td>
 <td>present when <code>success: true</code>, <code>null</code> when <code>success: false</code></td>
 </tr>
 <tr>
@@ -483,7 +488,7 @@ sources:</p>
 </tbody>
 </table>
 <h3 id="turbo%3Aframe-render"><a class="anchor" href="#turbo%3Aframe-render">﹟</a> <code>turbo:frame-render</code></h3>
-<p>Fires right after a <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a>. Access the <code>FetchResponse</code> object with <code>event.detail.fetchResponse</code> property.</p>
+<p>Fires right after a <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a>. Access the <a href="/reference/drive#fetchresponse">FetchResponse</a> object with <code>event.detail.fetchResponse</code> property.</p>
 <table>
 <thead>
 <tr>
@@ -495,7 +500,7 @@ sources:</p>
 <tbody>
 <tr>
 <td><code>fetchResponse</code></td>
-<td><code>FetchResponse</code></td>
+<td><a href="/reference/drive#fetchresponse">FetchResponse</a></td>
 <td>the HTTP request’s response</td>
 </tr>
 </tbody>
@@ -542,7 +547,7 @@ sources:</p>
 <tr>
 <td><code>newStream</code></td>
 <td><code>StreamElement</code></td>
-<td>the new <code>&lt;body&gt;</code> element that will replace the document’s current <code>&lt;body&gt;</code> element</td>
+<td>the new <code>&lt;turbo-stream&gt;</code> element whose action will be executed</td>
 </tr>
 <tr>
 <td><code>render</code></td>
@@ -600,7 +605,7 @@ initiated the request, the events could fire on:</p>
 <tbody>
 <tr>
 <td><code>fetchResponse</code></td>
-<td><code>FetchResponse</code></td>
+<td><a href="/reference/drive#fetchresponse">FetchResponse</a></td>
 <td>the HTTP request’s response</td>
 </tr>
 </tbody>
@@ -620,7 +625,7 @@ initiated the request, the events could fire on:</p>
 <tbody>
 <tr>
 <td><code>request</code></td>
-<td><code>FetchRequest</code></td>
+<td><a href="/reference/drive#fetchrequest">FetchRequest</a></td>
 <td>The HTTP request that failed</td>
 </tr>
 <tr>
