@@ -447,13 +447,13 @@ sources:</p>
 </tr>
 <tr>
 <td><code>fetchResponse</code></td>
-<td><a href="/reference/drive#fetchresponse">FetchResponse</a> | <code>null</code></td>
-<td>present when <code>success: true</code>, <code>null</code> when <code>success: false</code></td>
+<td><a href="/reference/drive#fetchresponse">FetchResponse</a> | <code>undefined</code></td>
+<td>present when a response is received, even if <code>success: false</code>. <code>undefined</code> if the request errored before a response was received</td>
 </tr>
 <tr>
 <td><code>error</code></td>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors">Error</a> or <code>null</code></td>
-<td><code>null</code> when <code>success: true</code>, present when <code>success: false</code></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors">Error</a> | <code>undefined</code></td>
+<td><code>undefined</code> unless an actual fetch error occurs (e.g., network issues)</td>
 </tr>
 </tbody>
 </table>
