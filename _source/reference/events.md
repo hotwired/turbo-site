@@ -157,10 +157,10 @@ Fires after the form submission-initiated network request completes. Access the 
 
 | `event.detail` property   | Type                             | Description
 |---------------------------|----------------------------------|------------
-| `formSubmission`          | [FormSubmission][]               | The `<form>` element submission.
-| `success`                 | `boolean`                        | A `boolean` representing the request's success.
-| `fetchResponse`           | [FetchResponse][] \| `undefined` | Present when a response is received, even if `success: false`. Undefined if the request errored before a response was received.
-| `error`                   | [Error][] \| `undefined`         | Undefined unless an actual fetch error occurs (e.g., network issues).
+| `formSubmission`          | [FormSubmission][]               | the `<form>` element submission
+| `success`                 | `boolean`                        | a `boolean` representing the request's success
+| `fetchResponse`           | [FetchResponse][] \| `undefined` | present when a response is received, even if `success: false`. `undefined` if the request errored before a response was received
+| `error`                   | [Error][] \| `undefined`         | `undefined` unless an actual fetch error occurs (e.g., network issues)
 
 [Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors
 [FormSubmission]: /reference/drive#formsubmission
