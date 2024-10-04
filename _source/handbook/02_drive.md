@@ -140,10 +140,10 @@ You should also consider that for accessibility reasons, it's better to use actu
 
 ## Requiring Confirmation for a Visit
 
-Decorate links with `data-turbo-confirm`, and confirmation will be required for a visit to proceed.
+Decorate links with both `data-turbo-confirm` and `data-turbo-method`, and confirmation will be required for a visit to proceed.
 
 ```html
-<a href="/articles" data-turbo-confirm="Do you want to leave this page?">Back to articles</a>
+<a href="/articles" data-turbo-method="get" data-turbo-confirm="Do you want to leave this page?">Back to articles</a>
 <a href="/articles/54" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete the article?">Delete the article</a>
 ```
 
