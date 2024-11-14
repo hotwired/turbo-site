@@ -36,23 +36,27 @@ Removes all entries from the Turbo Drive page cache. Call this when state has ch
 
 **Note:** This function was previously exposed as `Turbo.clearCache()`. The top-level function was deprecated in favor of the new `Turbo.cache.clear()` function.
 
-## Turbo.setProgressBarDelay
+## Turbo.config.drive.progressBarDelay
 
 ```js
-Turbo.setProgressBarDelay(delayInMilliseconds)
+Turbo.config.drive.progressBarDelay = delayInMilliseconds
 ```
 
 Sets the delay after which the [progress bar](/handbook/drive#displaying-progress) will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.
 
 Note that this method has no effect when used with the iOS or Android adapters.
 
-## Turbo.setConfirmMethod
+**Note:** This function was previously exposed as `Turbo.setProgressBarDelay` function. The top-level function was deprecated in favor of the new `Turbo.config.drive.progressBarDelay = delayInMilliseconds` syntax.
+
+## Turbo.config.forms.confirm
 
 ```js
-Turbo.setConfirmMethod(confirmMethod)
+Turbo.config.forms.confirm = confirmMethod
 ```
 
-Sets the method that is called by links decorated with [`data-turbo-confirm`](/handbook/drive#requiring-confirmation-for-a-visit). The default is the browser's built in `confirm`. The method should return `true` if the visit can proceed.
+Sets the method that is called by links decorated with [`data-turbo-confirm`](/handbook/drive#requiring-confirmation-for-a-visit). The default is the browser's built in `confirm`. The method should return a `Promise` object that resolves to true or false, depending on whether the visit should proceed.
+
+**Note:** This function was previously exposed as `Turbo.setConfirmMethod` function. The top-level function was deprecated in favor of the new `Turbo.config.forms.confirm = confirmMethod` syntax.
 
 ## Turbo.session.drive
 
