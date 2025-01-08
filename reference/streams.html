@@ -189,6 +189,14 @@ morphing.</p>
 <h2 id="processing-stream-elements"><a class="anchor" href="#processing-stream-elements">﹟</a> Processing Stream Elements</h2>
 <p>Turbo can connect to any form of stream to receive and process stream actions. A stream source must dispatch <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent">MessageEvent</a> messages that contain the stream action HTML in the <code>data</code> attribute of that event. It’s then connected by <code>Turbo.session.connectStreamSource(source)</code> and disconnected via <code>Turbo.session.disconnectStreamSource(source)</code>. If you need to process stream actions from different source than something producing <code>MessageEvent</code>s, you can use <code>Turbo.renderStreamMessage(streamActionHTML)</code> to do so.</p>
 <p>A good way to wrap all this together is by using a custom element, like turbo-rails does with <a href="https://github.com/hotwired/turbo-rails/blob/main/app/javascript/turbo/cable_stream_source_element.js">TurboCableStreamSourceElement</a>.</p>
+<h2 id="stream-elements-inside-html"><a class="anchor" href="#stream-elements-inside-html">﹟</a> Stream Elements inside HTML</h2>
+<p>Turbo streams are implemented as <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements">a custom HTML element</a>.
+The element is interpreted as part of the <code>connectedCallback</code> function that the browser calls when the element is
+connected to the page dom.</p>
+<p>This means that any stream elements that are rendered into the dom will be interpreted. After being interpreted, Turbo
+will remove the element from the dom. More specifically, it means that rendering stream actions inside the page or
+frame content HTML will cause them to be executed. This can be used to execute additional sideffects beside the main content
+loading.</p>
 <p><a class="button" href="/reference/events">Next: Events</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
@@ -200,7 +208,7 @@ morphing.</p>
     <li><span>and</span></li>
     <li><a href="https://hey.com" target="_blank" rel="noopener"><img width="122" height="56" src="/assets/logo-hey.svg" alt="HEY"></a></li>
   </ul>
-  <p class="footer__copyright">&copy; 2024 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
+  <p class="footer__copyright">&copy; 2025 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
 </footer>
 
 
