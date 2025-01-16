@@ -375,6 +375,26 @@ You can disable the behavior on a per-element basis by annotating the element or
 </html>
 ```
 
+You can also disable completely the behavior on a parent and allowing on its childs one by one with `data-turbo-prefetch="true"`.
+
+```html
+<html>
+  <body data-turbo-prefetch="false">
+    <nav id="header" data-turbo-prefetch="true">
+      <a href="/articles">Articles</a> <!-- This link is prefetched -->
+      <a href="/about">About</a> <!-- This one as well -->
+    </nav>
+    <div id="body">
+      <!-- Links inside this div will not be prefetched -->
+    </div>
+    <footer id="footer" data-turbo-prefetch="true">
+      <!-- Links inside this footer will be prefetched -->
+    </footer>
+  </body>
+</html>
+```
+
+
 You can also disable the behaviour programatically by intercepting the `turbo:before-prefetch` event and calling `event.preventDefault()`.
 
 ```javascript
