@@ -269,7 +269,7 @@ Rendering a `<link>` or `<style>` element with `[data-turbo-track="dynamic"]` in
 </head>
 ```
 
-Note that rendering `<script>` elements with `[data-turbo-track="dynamic"]` might unintended side-effects. When `<script>` disconnected from the document, the JavaScript context doesn't change, nor is the element's already evaluated JavaScript code unloaded or changed in any way.
+Note that rendering `<script>` elements with `[data-turbo-track="dynamic"]` might have unintended side-effects. When `<script>` disconnected from the document, the JavaScript context doesn't change, nor is the element's already evaluated JavaScript code unloaded or changed in any way.
 
 ## Ensuring Specific Pages Trigger a Full Reload
 
