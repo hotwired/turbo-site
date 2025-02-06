@@ -13,10 +13,18 @@ You can float on the latest release of Turbo using a CDN bundler like Skypack. S
 
 ## As An npm Package
 
-You can install Turbo from npm via the `npm` or `yarn` packaging tools. Then require or import that in your code:
+You can install Turbo from npm via the `npm` or `yarn` packaging tools. 
+
+If you using any Turbo functions such as `Turbo.visit()` import the `Turbo` functions into your code:
 
 ```javascript
 import * as Turbo from "@hotwired/turbo"
+```
+
+If you're *not* using any Turbo functions such as `Turbo.visit()` import the library. This avoids issues with tree-shaking and unused variables in some bundlers. See [Import a module for its side effects only](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import#import_a_module_for_its_side_effects_only) on MDN.
+
+```javascript
+import "@hotwired/turbo";
 ```
 
 ## In a Ruby on Rails application
