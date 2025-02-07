@@ -98,7 +98,7 @@ resolved by an [id](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_att
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
 
-Also, any stream element that's connected to the page dom will be interpreted, i.e. the stream action will execute and the element be removed from the dom. For example, this can be used to execute stream actions when a page or a frame is loaded.
+Also, any `<turbo-stream>` element that's present on the page or inside a frame will be processed by Turbo and then removed from the dom. This allows stream actions to be executed automatically when a page or frame is loaded.
 
 ## Actions With Multiple Targets
 
