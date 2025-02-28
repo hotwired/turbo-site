@@ -147,7 +147,7 @@ Decorate links with both `data-turbo-confirm` and `data-turbo-method`, and confi
 <a href="/articles/54" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete the article?">Delete the article</a>
 ```
 
-Use `Turbo.setConfirmMethod` to change the method that gets called for confirmation. The default is the browser's built in `confirm`.
+Use `Turbo.config.forms.confirm = confirmMethod` to change the method that gets called for confirmation. The default is the browser's built in `confirm`.
 
 
 ## Disabling Turbo Drive on Specific Links or Forms
