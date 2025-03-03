@@ -162,13 +162,15 @@
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Removes all entries from the Turbo Drive page cache. Call this when state has changed on the server that may affect cached pages.</p>
 <p><strong>Note:</strong> This function was previously exposed as <code>Turbo.clearCache()</code>. The top-level function was deprecated in favor of the new <code>Turbo.cache.clear()</code> function.</p>
-<h2 id="turbo.setprogressbardelay"><a class="anchor" href="#turbo.setprogressbardelay">﹟</a> Turbo.setProgressBarDelay</h2>
-<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">setProgressBarDelay</span><span class="token punctuation">(</span>delayInMilliseconds<span class="token punctuation">)</span></code></pre>
+<h2 id="turbo.config.drive.progressbardelay"><a class="anchor" href="#turbo.config.drive.progressbardelay">﹟</a> Turbo.config.drive.progressBarDelay</h2>
+<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>drive<span class="token punctuation">.</span>progressBarDelay <span class="token operator">=</span> delayInMilliseconds</code></pre>
 <p>Sets the delay after which the <a href="/handbook/drive#displaying-progress">progress bar</a> will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.</p>
 <p>Note that this method has no effect when used with the iOS or Android adapters.</p>
-<h2 id="turbo.setconfirmmethod"><a class="anchor" href="#turbo.setconfirmmethod">﹟</a> Turbo.setConfirmMethod</h2>
-<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">setConfirmMethod</span><span class="token punctuation">(</span>confirmMethod<span class="token punctuation">)</span></code></pre>
-<p>Sets the method that is called by links decorated with <a href="/handbook/drive#requiring-confirmation-for-a-visit"><code>data-turbo-confirm</code></a>. The default is the browser’s built in <code>confirm</code>. The method should return <code>true</code> if the visit can proceed.</p>
+<p><strong>Note:</strong> This function was previously exposed as <code>Turbo.setProgressBarDelay</code> function. The top-level function was deprecated in favor of the new <code>Turbo.config.drive.progressBarDelay = delayInMilliseconds</code> syntax.</p>
+<h2 id="turbo.config.forms.confirm"><a class="anchor" href="#turbo.config.forms.confirm">﹟</a> Turbo.config.forms.confirm</h2>
+<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>forms<span class="token punctuation">.</span>confirm <span class="token operator">=</span> confirmMethod</code></pre>
+<p>Sets the method that is called by links decorated with <a href="/handbook/drive#requiring-confirmation-for-a-visit"><code>data-turbo-confirm</code></a>. The default is the browser’s built in <code>confirm</code>. The method should return a <code>Promise</code> object that resolves to true or false, depending on whether the visit should proceed.</p>
+<p><strong>Note:</strong> This function was previously exposed as <code>Turbo.setConfirmMethod</code> function. The top-level function was deprecated in favor of the new <code>Turbo.config.forms.confirm = confirmMethod</code> syntax.</p>
 <h2 id="turbo.session.drive"><a class="anchor" href="#turbo.session.drive">﹟</a> Turbo.session.drive</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>session<span class="token punctuation">.</span>drive <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
 <p>Turns Turbo Drive off by default. You must now opt-in to Turbo Drive on a per-link and per-form basis using <code>data-turbo=&quot;true&quot;</code>.</p>
