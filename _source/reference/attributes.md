@@ -34,7 +34,11 @@ The following attributes are automatically added by Turbo and are useful to dete
 * `disabled` is added to the form submitter while the form request is in progress, to prevent repeat submissions.
 * `data-turbo-preview` is added to the `html` element when displaying a [preview](/handbook/building#detecting-when-a-preview-is-visible) during a Visit.
 * `data-turbo-visit-direction` is added to the `html` element during a visit, with a value of `forward` or `back` or `none`, to indicate its direction.
-* `aria-busy` is added to `html` and `turbo-frame` elements when a navigation is in progress.
+* `aria-busy` is added to:
+  * the `html` element when a visit is in progress
+  * the `form` element when a submission is in progress.
+  * the `turbo-frame` element when a visit or form submission is in progress within the frame.
+* `busy` is added to the `turbo-frame` element when a navigation or form submission is in progress within the frame.
 
 ## Meta Tags
 
