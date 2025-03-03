@@ -86,20 +86,20 @@ Turbo dispatches a variety of [events while making HTTP requests](/reference/eve
 
 Turbo dispatches a variety of [events while making HTTP requests](/reference/events#http-requests) that reference `FetchResponse` objects with the following properties:
 
-| Property          | Type              | Description
-|-------------------|-------------------|------------
-| `clientError`     | `boolean`         | `true` if the status is between 400 and 499, `false` otherwise
-| `contentType`     | `string`          | the value of the [Content-Type][] header
-| `failed`          | `boolean`         | `true` if the response did not succeed, `false` otherwise
-| `isHTML`          | `boolean`         | `true` if the content type is HTML, `false` otherwise
-| `location`        | [URL][]           | the value of [Response.url][]
-| `redirected`      | `boolean`         | the value of [Response.redirected][]
-| `responseHTML`    | `Promise<string>` | clones the `Response` if its HTML, then calls [Response.text()][]
-| `responseText`    | `Promise<string>` | clones the `Response`, then calls [Response.text()][]
-| `response`        | [Response]        | the `Response` instance
-| `serverError`     | `boolean`         | `true` if the status is between 500 and 599, `false` otherwise
-| `statusCode`      | `number`          | the value of [Response.status][]
-| `succeeded`       | `boolean`         | `true` if the [Response.ok][], `false` otherwise
+| Property          | Type               | Description
+|-------------------|--------------------|------------
+| `clientError`     | `boolean`          | `true` if the status is between 400 and 499, `false` otherwise
+| `contentType`     | `string` \| `null` | the value of the [Content-Type][] header
+| `failed`          | `boolean`          | `true` if the response did not succeed, `false` otherwise
+| `isHTML`          | `boolean`          | `true` if the content type is HTML, `false` otherwise
+| `location`        | [URL][]            | the value of [Response.url][]
+| `redirected`      | `boolean`          | the value of [Response.redirected][]
+| `responseHTML`    | `Promise<string>`  | clones the `Response` if its HTML, then calls [Response.text()][]
+| `responseText`    | `Promise<string>`  | clones the `Response`, then calls [Response.text()][]
+| `response`        | [Response]         | the `Response` instance
+| `serverError`     | `boolean`          | `true` if the status is between 500 and 599, `false` otherwise
+| `statusCode`      | `number`           | the value of [Response.status][]
+| `succeeded`       | `boolean`          | `true` if the [Response.ok][], `false` otherwise
 
 [Response]: https://developer.mozilla.org/en-US/docs/Web/API/Response
 [Response.url]: https://developer.mozilla.org/en-US/docs/Web/API/Response/url
