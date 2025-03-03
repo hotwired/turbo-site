@@ -433,6 +433,56 @@ won't have any effect on links that:
 * have an ancestor with the `[data-turbo-prefetch="false"]` attribute
 
 It also dovetails nicely with pages that leverage [Eager-Loading Frames](/reference/frames#eager-loaded-frame) or [Lazy-Loading Frames](/reference/frames#lazy-loaded-frame). As you can preload the structure of the page and show the user a meaningful loading state while the interesting content loads.
+
+## Ignored Paths
+
+Paths with a `.` in the last level of a path/URL will not be handled by Turbo unless they end in a file extension `.htm`, `.html`, `.xhtml`, or `.php`. Turbo will ignore forms and links that target these paths. For example, the following forms would be ignored:
+
+```html
+<form action="/messages.67" method="post">
+  <!-- ignored -->
+</form>
+
+<form action="/somepath/messages.67" method="post">
+  <!-- also ignored -->
+</form>
+
+<form action="/messages.php.1" method="post" data-turbo="true">
+  <!-- also ignored -->
+</form>
+
+<form action="/messages.json" method="post" data-turbo="true">
+  <!-- also ignored -->
+</form>
+```
+
+The following forms would be handled:
+
+```html
+<form action="/messages/67" method="post">
+  <!-- handled -->
+</form>
+
+<form action="/messages.67/action" method="post">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.php" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.json/" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+
+<form action="/messages.json/123" method="post" data-turbo="true">
+  <!-- also handled -->
+</form>
+```
+
+
+Setting any `data-turbo` methods (including `data-turbo="true"`) will not override or force Turbo to handle a path if it has a `.` that causes it to be ignored. Paths with a `.` in the top level that do not end in `.htm`, `.html`, `.xhtml`, or `.php` should be reworked on the backend to not include one. Note that some backend frameworks (i.e. Rails) may automatically append parameters/IDs with a `.` such as `/my_path.67`.
+
 <br><br>
 
 Note that preloaded `<a>` elements will dispatch [turbo:before-fetch-request](/reference/events) and [turbo:before-fetch-response](/reference/events) events. To distinguish a preloading `turbo:before-fetch-request` initiated event from an event initiated by another mechanism, check whether the request's `X-Sec-Purpose` header (read from the `event.detail.fetchOptions.headers["X-Sec-Purpose"]` property) is set to `"prefetch"`:
