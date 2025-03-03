@@ -79,14 +79,14 @@ Restoration visits cannot be canceled and do not fire `turbo:before-visit`. Turb
 
 Applications can customize the rendering process by adding a document-wide `turbo:before-render` event listener and overriding the `event.detail.render` property.
 
-For example, you could merge the response document's `<body>` element into the requesting document's `<body>` element with [morphdom](https://github.com/patrick-steele-idem/morphdom):
+For example, you could merge the response document's `<body>` element into the requesting document's `<body>` element with [idiomorph](https://github.com/bigskysoftware/idiomorph) or [morphdom](https://github.com/patrick-steele-idem/morphdom):
 
 ```javascript
-import morphdom from "morphdom"
+import { Idiomorph } from "idiomorph"
 
 addEventListener("turbo:before-render", (event) => {
   event.detail.render = (currentElement, newElement) => {
-    morphdom(currentElement, newElement)
+    Idiomorph.morph(currentElement, newElement)
   }
 })
 ```
@@ -140,14 +140,14 @@ You should also consider that for accessibility reasons, it's better to use actu
 
 ## Requiring Confirmation for a Visit
 
-Decorate links with `data-turbo-confirm`, and confirmation will be required for a visit to proceed.
+Decorate links with both `data-turbo-confirm` and `data-turbo-method`, and confirmation will be required for a visit to proceed.
 
 ```html
-<a href="/articles" data-turbo-confirm="Do you want to leave this page?">Back to articles</a>
+<a href="/articles" data-turbo-method="get" data-turbo-confirm="Do you want to leave this page?">Back to articles</a>
 <a href="/articles/54" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete the article?">Delete the article</a>
 ```
 
-Use `Turbo.setConfirmMethod` to change the method that gets called for confirmation. The default is the browser's built in `confirm`.
+Use `Turbo.config.forms.confirm = confirmMethod` to change the method that gets called for confirmation. The default is the browser's built in `confirm`.
 
 
 ## Disabling Turbo Drive on Specific Links or Forms
@@ -158,13 +158,13 @@ Turbo Drive can be disabled on a per-element basis by annotating the element or 
 <a href="/" data-turbo="false">Disabled</a>
 
 <form action="/messages" method="post" data-turbo="false">
-  ...
+  <!-- … -->
 </form>
 
 <div data-turbo="false">
   <a href="/">Disabled</a>
   <form action="/messages" method="post">
-    ...
+    <!-- … -->
   </form>
 </div>
 ```
@@ -247,11 +247,29 @@ To accomplish this, just annotate those asset elements with `data-turbo-track="r
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <link rel="stylesheet" href="/application-258e88d.css" data-turbo-track="reload">
   <script src="/application-cbd3cd4.js" data-turbo-track="reload"></script>
 </head>
 ```
+
+## Removing Assets When They Change
+
+As we saw above, Turbo Drive merges the contents of the `<head>` elements. When a page depends on external assets like CSS stylesheets that other pages do not, it can be useful to remove them when navigating away from the page.
+
+Rendering a `<link>` or `<style>` element with `[data-turbo-track="dynamic"]` instructs Turbo Drive to dynamically remove the element when it is absent from a navigation's response, and can serve a complementary role to the [`[data-turbo-track="reload"]`](#reload-when-assets-change) attribute to avoid triggering a full page reload when deploying changes that only affect styles.
+
+```html
+<head>
+  <!-- … -->
+  <link rel="stylesheet" href="/page-specific-styles-258e88d.css" data-turbo-track="dynamic">
+  <style data-turbo-track="dynamic">
+    .page-specific-styles { /* … */ }
+  </style>
+</head>
+```
+
+Note that rendering `<script>` elements with `[data-turbo-track="dynamic"]` might have unintended side-effects. When `<script>` disconnected from the document, the JavaScript context doesn't change, nor is the element's already evaluated JavaScript code unloaded or changed in any way.
 
 ## Ensuring Specific Pages Trigger a Full Reload
 
@@ -259,7 +277,7 @@ You can ensure visits to a certain page will always trigger a full reload by inc
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <meta name="turbo-visit-control" content="reload">
 </head>
 ```
@@ -268,7 +286,7 @@ This setting may be useful as a workaround for third-party JavaScript libraries 
 
 ## Setting a Root Location
 
-By default, Turbo Drive only loads URLs with the same origin—i.e. the same protocol, domain name, and port—as the current document. A visit to any other URL falls back to a full page load.
+Turbo Drive only loads URLs with the same origin—i.e. the same protocol, domain name, and port—as the current document. A visit to any other URL falls back to a full page load.
 
 In some cases, you may want to further scope Turbo Drive to a path on the same origin. For example, if your Turbo Drive application lives at `/app`, and the non-Turbo Drive help site lives at `/help`, links from the app to the help site shouldn’t use Turbo Drive.
 
@@ -276,7 +294,7 @@ Include a `<meta name="turbo-root">` element in your pages’ `<head>` to scope 
 
 ```html
 <head>
-  ...
+  <!-- … -->
   <meta name="turbo-root" content="/app">
 </head>
 ```
@@ -308,7 +326,7 @@ addEventListener("turbo:submit-start", ({ target }) => {
 ```
 
 [events]: /reference/events
-[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture
+[bubble up]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling
 [elements]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
 [disabled]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
 [submitter]: https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter
@@ -318,7 +336,7 @@ addEventListener("turbo:submit-start", ({ target }) => {
 
 After a stateful request from a form submission, Turbo Drive expects the server to return an [HTTP 303 redirect response](https://en.wikipedia.org/wiki/HTTP_303), which it will then follow and use to navigate and update the page without reloading.
 
-The exception to this rule is when the response is rendered with either a 4xx or 5xx status code. This allows form validation errors to be rendered by having the server respond with `422 Unprocessable Entity` and a broken server to display a "Something Went Wrong" screen on a `500 Internal Server Error`.
+The exception to this rule is when the response is rendered with either a 4xx or 5xx status code. This allows form validation errors to be rendered by having the server respond with `422 Unprocessable Content` and a broken server to display a "Something Went Wrong" screen on a `500 Internal Server Error`.
 
 The reason Turbo doesn't allow regular rendering on 200's from POST requests is that browsers have built-in behavior for dealing with reloads on POST visits where they present a "Are you sure you want to submit this form again?" dialogue that Turbo can't replicate. Instead, Turbo will stay on the current URL upon a form submission that tries to render, rather than change it to the form action, since a reload would then issue a GET against that action URL, which may not even exist.
 
@@ -350,12 +368,32 @@ You can disable the behavior on a per-element basis by annotating the element or
   <body>
     <a href="/articles">Articles</a> <!-- This link is prefetched -->
     <a href="/about" data-turbo-prefetch="false">About</a> <!-- Not prefetched -->
-    <div data-turbo-prefetch="false"`>
+    <div data-turbo-prefetch="false">
       <!-- Links inside this div will not be prefetched -->
     </div>
   </body>
 </html>
 ```
+
+You can also disable completely the behavior on a parent and allowing on its childs one by one with `data-turbo-prefetch="true"`.
+
+```html
+<html>
+  <body data-turbo-prefetch="false">
+    <nav id="header" data-turbo-prefetch="true">
+      <a href="/articles">Articles</a> <!-- This link is prefetched -->
+      <a href="/about">About</a> <!-- This one as well -->
+    </nav>
+    <div id="body">
+      <!-- Links inside this div will not be prefetched -->
+    </div>
+    <footer id="footer" data-turbo-prefetch="true">
+      <!-- Links inside this footer will be prefetched -->
+    </footer>
+  </body>
+</html>
+```
+
 
 You can also disable the behaviour programatically by intercepting the `turbo:before-prefetch` event and calling `event.preventDefault()`.
 

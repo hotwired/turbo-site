@@ -72,7 +72,6 @@ Fires before rendering the page. Access the new `<body>` element with `event.det
 |---------------------------|-----------------------------------|------------
 | `renderMethod`            | `"replace" \| "morph"`            | the strategy that will be used to render the new content
 | `newBody`                 | [HTMLBodyElement][]               | the new `<body>` element that will replace the document's current `<body>` element
-| `isPreview`               | `boolean`                         | whether or not the render is a [preview][] of a cached page
 | `resume`                  | `(value?: any) => void`           | called when [Pausing Requests][]
 | `render`                  | `(currentBody, newBody) => void`  | override to [Customize Rendering](/handbook/drive#custom-rendering)
 
@@ -86,7 +85,6 @@ Fires after Turbo renders the page. This event fires twice during an application
 | `event.detail` property   | Type                      | Description
 |---------------------------|---------------------------|------------
 | `renderMethod`            | `"replace" \| "morph"`    | the strategy used to render the new content
-| `isPreview`               | `boolean`                 | whether or not the render is a [preview][] of a cached page
 
 ### `turbo:load`
 
@@ -129,7 +127,7 @@ Fires before Turbo morphs an element's attributes. The [event.target][] referenc
 | `event.detail` property   | Type                      | Description
 |---------------------------|---------------------------|------------
 | `attributeName`           | `string`                  | the name of the attribute to be mutated
-| `mutationType`            | `"updated" \| "removed"`  | how the attribute will be mutated
+| `mutationType`            | `"update" \| "remove"`    | how the attribute will be mutated
 
 ### `turbo:morph-element`
 
@@ -147,23 +145,25 @@ Turbo Drive emits events during submission, redirection, and submission failure.
 
 ### `turbo:submit-start`
 
-Fires during a form submission. Access the `FormSubmission` object with `event.detail.formSubmission`. Abort form submission (e.g. after validation failure) with `event.detail.formSubmission.stop()`. Use `event.originalEvent.detail.formSubmission.stop()` if you're using jQuery.
+Fires during a form submission. Access the [FormSubmission][] object with `event.detail.formSubmission`. Abort form submission (e.g. after validation failure) with `event.detail.formSubmission.stop()`. Use `event.originalEvent.detail.formSubmission.stop()` if you're using jQuery.
 
 | `event.detail` property   | Type                                      | Description
 |---------------------------|-------------------------------------------|------------
-| `formSubmission`          | `FormSubmission`                          | the `<form>` element submission
+| `formSubmission`          | [FormSubmission][]                        | the `<form>` element submission
 
 ### `turbo:submit-end`
 
-Fires after the form submission-initiated network request completes. Access the `FormSubmission` object with `event.detail.formSubmission` along with `FormSubmissionResult` properties included within `event.detail`.
+Fires after the form submission-initiated network request completes. Access the [FormSubmission][] object with `event.detail.formSubmission` along with the properties included within `event.detail`.
 
-| `event.detail` property   | Type                      | Description
-|---------------------------|---------------------------|------------
-| `success`                 | `boolean`                 | a `boolean` representing the request's success
-| `fetchResponse`           | `FetchResponse \| null`   | present when `success: true`, `null` when `success: false`
-| `error`                   | [Error][] or `null`       | `null` when `success: true`, present when `success: false`
+| `event.detail` property   | Type                             | Description
+|---------------------------|----------------------------------|------------
+| `formSubmission`          | [FormSubmission][]               | the `<form>` element submission
+| `success`                 | `boolean`                        | a `boolean` representing the request's success
+| `fetchResponse`           | [FetchResponse][] \| `undefined` | present when a response is received, even if `success: false`. `undefined` if the request errored before a response was received
+| `error`                   | [Error][] \| `undefined`         | `undefined` unless an actual fetch error occurs (e.g., network issues)
 
 [Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors
+[FormSubmission]: /reference/drive#formsubmission
 
 ## Frames
 
@@ -181,11 +181,11 @@ Fires before rendering the `<turbo-frame>` element. Access the new `<turbo-frame
 
 ### `turbo:frame-render`
 
-Fires right after a `<turbo-frame>` element renders its view. The specific `<turbo-frame>` element is the [event.target][]. Access the `FetchResponse` object with `event.detail.fetchResponse` property.
+Fires right after a `<turbo-frame>` element renders its view. The specific `<turbo-frame>` element is the [event.target][]. Access the [FetchResponse][] object with `event.detail.fetchResponse` property.
 
 | `event.detail` property   | Type                              | Description
 |---------------------------|-----------------------------------|------------
-| `fetchResponse`           | `FetchResponse`                   | the HTTP request's response
+| `fetchResponse`           | [FetchResponse][]                 | the HTTP request's response
 
 ### `turbo:frame-load`
 
@@ -215,7 +215,7 @@ Fires before rendering a Turbo Stream page update. Access the new `<turbo-stream
 
 | `event.detail` property   | Type                              | Description
 |---------------------------|-----------------------------------|------------
-| `newStream`               | `StreamElement`                   | the new `<body>` element that will replace the document's current `<body>` element
+| `newStream`               | `StreamElement`                   | the new `<turbo-stream>` element whose action will be executed
 | `render`                  | `async (currentElement) => void`  | override to define [Custom Actions][]
 
 [Custom Actions]: /handbook/streams#custom-actions
@@ -241,7 +241,7 @@ Fires before Turbo issues a network request (to fetch a page, submit a form, pre
 
 [RequestInit]: https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options
 [Request]: https://developer.mozilla.org/en-US/docs/Web/API/Request/Request
-[URL]: https://developer.mozilla.org/en-US/docs/Web/API/URLm
+[URL]: https://developer.mozilla.org/en-US/docs/Web/API/URL
 [Pausing Requests]: /handbook/drive#pausing-requests
 
 ### `turbo:before-fetch-response`
@@ -250,7 +250,9 @@ Fires after the network request completes. Access the fetch options object with 
 
 | `event.detail` property   | Type                      | Description
 |---------------------------|---------------------------|------------
-| `fetchResponse`           | `FetchResponse`           | the HTTP request's response
+| `fetchResponse`           | [FetchResponse][]         | the HTTP request's response
+
+[FetchResponse]: /reference/drive#fetchresponse
 
 ### `turbo:before-prefetch`
 
@@ -262,7 +264,8 @@ Fires when a form or frame fetch request fails due to network errors. This event
 
 | `event.detail` property   | Type              | Description
 |---------------------------|-------------------|------------
-| `request`                 | `FetchRequest`    | The HTTP request that failed
+| `request`                 | [FetchRequest][]  | The HTTP request that failed
 | `error`                   | [Error][]         | provides the cause of the failure
 
 [Error]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors
+[FetchRequest]: /reference/drive#fetchrequest

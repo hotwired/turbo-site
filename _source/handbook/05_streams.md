@@ -38,6 +38,13 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
   </template>
 </turbo-stream>
 
+<turbo-stream action="replace" method="morph" target="current_step">
+  <template>
+    <!-- The contents of this template will replace the element with ID "current_step" via morph. -->
+    <li>New item</li>
+  </template>
+</turbo-stream>
+
 <turbo-stream action="update" target="unread_count">
   <template>
     <!-- The contents of this template will replace the
@@ -49,6 +56,13 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
     that action would necessitate the rebuilding of
     handlers. -->
     1
+  </template>
+</turbo-stream>
+
+<turbo-stream action="update" method="morph" target="current_step">
+  <template>
+    <!-- The contents of this template will replace the children of the element with ID "current_step" via morph. -->
+    <li>New item</li>
   </template>
 </turbo-stream>
 
@@ -73,22 +87,6 @@ A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` ele
   </template>
 </turbo-stream>
 
-<turbo-stream action="morph" target="current_step">
-  <template>
-    <!-- The contents of this template will replace the 
-    element with ID "current_step" via morph. -->
-    <li>New item</li>
-  </template>
-</turbo-stream>
-
-<turbo-stream action="morph" target="current_step" children-only>
-  <template>
-    <!-- The contents of this template will replace the 
-    children of the element with ID "current_step" via morph. -->
-    <li>New item</li>
-  </template>
-</turbo-stream>
-
 <turbo-stream action="refresh" request-id="abcd-1234"></turbo-stream>
 ```
 
@@ -99,6 +97,8 @@ resolved by an [id](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_att
 
 
 You can render any number of stream elements in a single stream message from a WebSocket, SSE or in response to a form submission.
+
+Also, any `<turbo-stream>` element that's inserted into the page (e.g. through full page or frame load), will be processed by Turbo and then removed from the dom. This allows stream actions to be executed automatically when a page or frame is loaded.
 
 ## Actions With Multiple Targets
 
@@ -249,7 +249,7 @@ StreamActions.log = function () {
 
 Of all the techniques that are included with Turbo, it's with Turbo Streams you'll see the biggest advantage from close integration with your backend framework. As part of the official Hotwire suite, we've created a reference implementation for what such an integration can look like in the <a href="https://github.com/hotwired/turbo-rails">turbo-rails gem</a>. This gem relies on the built-in support for both WebSockets and asynchronous rendering present in Rails through the Action Cable and Active Job frameworks, respectively.
 
-Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb">Broadcastable</a> concern mixed into Active Record, you can trigger WebSocket updates directly from your domain model. And using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/turbo/streams/tag_builder.rb">Turbo::Streams::TagBuilder</a>, you can render `<turbo-stream>` elements in inline controller responses or dedicated templates, invoking the five actions with associated rendering through a simple DSL.
+Using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb">Broadcastable</a> concern mixed into Active Record, you can trigger WebSocket updates directly from your domain model. And using the <a href="https://github.com/hotwired/turbo-rails/blob/main/app/models/turbo/streams/tag_builder.rb">Turbo::Streams::TagBuilder</a>, you can render `<turbo-stream>` elements in inline controller responses or dedicated templates, invoking the eight actions with associated rendering through a simple DSL.
 
 Turbo itself is completely backend-agnostic, though. So we encourage other frameworks in other ecosystems to look at the reference implementation provided for Rails to create their own tight integration.
 
@@ -265,8 +265,8 @@ Since the document's `<head>` is persistent across Turbo navigations, it's
 important to mount the `<turbo-stream-source>` as a descendant of the document's
 `<body>` element.
 
-Typical full page navigations driven by Turbo will result in the `<body>` being
-discarded and replaced with the resulting document. It's the server's
+Typical full page navigations driven by Turbo will result in the `<body>` contents
+being discarded and replaced with the resulting document. It's the server's
 responsibility to ensure that the element is present on any page that requires
 streaming.
 

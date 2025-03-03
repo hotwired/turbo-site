@@ -22,7 +22,7 @@ You can configure how Turbo handles page refresh with a `<meta name="turbo-refre
 </head>
 ```
 
-The possible values are `morph` or `replace` (the default). When it is `morph,` when a page refresh happens, instead of replacing the page's `<body>,` Turbo will only update the DOM elements that have changed, keeping the rest untouched. This approach delivers better sensations because it keeps the screen state.
+The possible values are `morph` or `replace` (the default). When it is `morph,` when a page refresh happens, instead of replacing the page's `<body>` contents, Turbo will only update the DOM elements that have changed, keeping the rest untouched. This approach delivers better sensations because it keeps the screen state.
 
 Under the hood, Turbo uses the fantastic [idiomorph library](https://github.com/bigskysoftware/idiomorph).
 
