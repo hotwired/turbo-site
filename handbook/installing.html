@@ -155,8 +155,11 @@
 <h2 id="in-compiled-form"><a class="anchor" href="#in-compiled-form">﹟</a> In Compiled Form</h2>
 <p>You can float on the latest release of Turbo using a CDN bundler like Skypack. See <a href="https://www.skypack.dev/view/@hotwired/turbo">https://www.skypack.dev/view/@hotwired/turbo</a> for more details. Or <a href="https://unpkg.com/browse/@hotwired/turbo@latest/dist/">download the compiled packages from unpkg</a>.</p>
 <h2 id="as-an-npm-package"><a class="anchor" href="#as-an-npm-package">﹟</a> As An npm Package</h2>
-<p>You can install Turbo from npm via the <code>npm</code> or <code>yarn</code> packaging tools. Then require or import that in your code:</p>
+<p>You can install Turbo from npm via the <code>npm</code> or <code>yarn</code> packaging tools.</p>
+<p>If you using any Turbo functions such as <code>Turbo.visit()</code> import the <code>Turbo</code> functions into your code:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> Turbo <span class="token keyword">from</span> <span class="token string">"@hotwired/turbo"</span></code></pre>
+<p>If you’re <em>not</em> using any Turbo functions such as <code>Turbo.visit()</code> import the library. This avoids issues with tree-shaking and unused variables in some bundlers. See <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import#import_a_module_for_its_side_effects_only">Import a module for its side effects only</a> on MDN.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">"@hotwired/turbo"</span><span class="token punctuation">;</span></code></pre>
 <h2 id="in-a-ruby-on-rails-application"><a class="anchor" href="#in-a-ruby-on-rails-application">﹟</a> In a Ruby on Rails application</h2>
 <p>The Turbo JavaScript framework is included with <a href="https://github.com/hotwired/turbo-rails">the turbo-rails gem</a> for direct use with the asset pipeline.</p>
 </section>
