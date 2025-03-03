@@ -134,9 +134,7 @@ By default, link clicks send a `GET` request to your server. But you can change 
 <a href="/articles/54" data-turbo-method="delete">Delete the article</a>
 ```
 
-The link will get converted into a hidden form next to the `a` element in the DOM. This means that the link can't appear inside another form, as you can't have nested forms.
-
-You should also consider that for accessibility reasons, it's better to use actual forms and buttons for anything that's not a GET.
+You should consider that for accessibility reasons, it's better to use actual forms and buttons for anything that's not a GET.
 
 ## Requiring Confirmation for a Visit
 
