@@ -16,6 +16,7 @@ The following data attributes can be applied to elements to customize Turbo's be
 * `data-turbo-track="dynamic"` tracks the element's HTML and removes the element when it is absent from an HTML response. Typically used to [remove `style` and `link` elements](/handbook/drive#removing-assets-when-they-change) during navigation.
 * `data-turbo-frame` identifies the Turbo Frame to navigate. Refer to the [Frames documentation](/reference/frames) for further details.
 * `data-turbo-preload` signals to [Drive](/handbook/drive#preload-links-into-the-cache) to pre-fetch the next page's content
+* `data-turbo-prefetch="false"` [disables prefetching links](/handbook/drive#prefetching-links-on-hover) when the element is hovered.
 * `data-turbo-action` customizes the [Visit](/handbook/drive#page-navigation-basics) action. Valid values are `replace` or `advance`. Can also be used with Turbo Frames to [promote frame navigations to page visits](/handbook/frames#promoting-a-frame-navigation-to-a-page-visit).
 * `data-turbo-permanent` [persists the element between page loads](/handbook/building#persisting-elements-across-page-loads). The element must have a unique `id` attribute. It also serves to exclude elements from being morphed when using [page refreshes with morphing](/handbook/page_refreshes.html)
 * `data-turbo-temporary` removes the element before the document is cached, preventing it from reappearing when restored.
@@ -50,4 +51,4 @@ The following `meta` elements, added to the `head`, can be used to customize cac
 * `<meta name="view-transition" content="same-origin">` to trigger view transitions on browsers that support the [View Transition API](https://caniuse.com/view-transitions).
 * `<meta name="turbo-refresh-method" content="morph">` will configure [page refreshes with morphing](/handbook/page_refreshes.html).
 * `<meta name="turbo-refresh-scroll" content="preserve">` will enable [scroll preservation during page refreshes](/handbook/page_refreshes.html).
-* `<meta name="turbo-prefetch" content="false">` will disable [instant click behaviour](/handbook/drive#instantclick).
+* `<meta name="turbo-prefetch" content="false">` will disable [prefetching links on hover](/handbook/drive#prefetching-links-on-hover).
