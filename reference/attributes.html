@@ -176,7 +176,14 @@
 <li><code>disabled</code> is added to the form submitter while the form request is in progress, to prevent repeat submissions.</li>
 <li><code>data-turbo-preview</code> is added to the <code>html</code> element when displaying a <a href="/handbook/building#detecting-when-a-preview-is-visible">preview</a> during a Visit.</li>
 <li><code>data-turbo-visit-direction</code> is added to the <code>html</code> element during a visit, with a value of <code>forward</code> or <code>back</code> or <code>none</code>, to indicate its direction.</li>
-<li><code>aria-busy</code> is added to <code>html</code> and <code>turbo-frame</code> elements when a navigation is in progress.</li>
+<li><code>aria-busy</code> is added to:
+<ul>
+<li>the <code>html</code> element when a visit is in progress</li>
+<li>the <code>form</code> element when a submission is in progress.</li>
+<li>the <code>turbo-frame</code> element when a visit or form submission is in progress within the frame.</li>
+</ul>
+</li>
+<li><code>busy</code> is added to the <code>turbo-frame</code> element when a navigation or form submission is in progress within the frame.</li>
 </ul>
 <h2 id="meta-tags"><a class="anchor" href="#meta-tags">﹟</a> Meta Tags</h2>
 <p>The following <code>meta</code> elements, added to the <code>head</code>, can be used to customize caching and Visit behavior.</p>
