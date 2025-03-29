@@ -41,20 +41,20 @@ a {
   text-decoration-thickness: 0.1em;
   text-decoration-width: 0.1rem;
 
-  &:visited { 
-    color: $color-text; 
+  &:visited {
+    color: $color-text;
   }
 
   @media (hover: hover) {
 
-    &:hover { 
+    &:hover {
       text-decoration-color: $color-accent;
       text-decoration-thickness: 0.2em;
       text-decoration-width: 0.2em;
     }
   }
 
-  &:active { 
+  &:active {
     color: $color-text;
   }
 }

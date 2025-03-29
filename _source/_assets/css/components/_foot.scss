@@ -7,15 +7,14 @@
   &__headline {
     font-size: 85%;
     font-style: italic;
-    margin: 0 0 0.6em 0;
+    margin: 0 0 0.7em 0;
   }
 
   &__links {
 
     align-items: center;
     display: flex;
-    gap: 0.4em;
-    justify-content: center;
+    gap: 1.1em;
     margin: 0;
 
     li {
@@ -28,17 +27,11 @@
         display: flex;
 
         img {
+          display: block;
           height: 1.7em;
           width: auto;
         }
 
-      }
-
-      span {
-        display: flex;
-        font-size: 65%;
-        font-style: italic;
-        margin-top: 0.5em;
       }
 
     }
