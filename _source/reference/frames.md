@@ -126,7 +126,7 @@ attributes and JavaScript properties.
 
 * `autoscroll` is a [boolean attribute][] that controls whether or not to scroll
   a `<turbo-frame>` element (and its descendant `<turbo-frame>` elements) into
-  view when after loading. Control the scroll's vertical alignment by setting the
+  view after loading. Control the scroll's vertical alignment by setting the
   `data-autoscroll-block` attribute to a valid [Element.scrollIntoView({ block:
   "..." })][Element.scrollIntoView] value: one of `"end"`, `"start"`, `"center"`,
   or `"nearest"`. When `data-autoscroll-block` is absent, the default value is
