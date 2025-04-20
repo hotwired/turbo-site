@@ -110,7 +110,7 @@ Turbo dispatches a variety of [events while making HTTP requests](/reference/eve
 [Response.ok]: https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
 [Response.redirected]: https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
 [Response.status]: https://developer.mozilla.org/en-US/docs/Web/API/Response/status
-[Response.text]: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
+[Response.text()]: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
 [Content-Type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 
 ## `FormSubmission`
@@ -134,3 +134,6 @@ Turbo dispatches a variety of [events while submitting forms](/reference/events#
 [HTMLFormElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement
 [URLSearchParams]: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
 [URL]: https://developer.mozilla.org/en-US/docs/Web/API/URL
+[HTMLButtonElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement
+[HTMLInputElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement
+[Request]: https://developer.mozilla.org/en-US/docs/Web/API/Request
