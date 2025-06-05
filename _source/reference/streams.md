@@ -58,7 +58,7 @@ The `[method="morph"]` attribute can be added to the `turbo-stream` element to r
 
 ### Update
 
-Updates the content within the template tag to the container designated by the target dom id.
+Updates the content within the container designated by the target dom id with the contents of the template tag.
 
 ```html
 <turbo-stream action="update" target="dom_id">
