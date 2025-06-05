@@ -63,7 +63,7 @@ Updates the content within the container designated by the target dom id with th
 ```html
 <turbo-stream action="update" target="dom_id">
   <template>
-    Content to update to container designated with the dom_id.
+    Content that will replace the existing content of the container designated with the dom_id.
   </template>
 </turbo-stream>
 ```
