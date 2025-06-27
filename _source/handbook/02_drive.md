@@ -255,7 +255,7 @@ To accomplish this, just annotate those asset elements with `data-turbo-track="r
 
 As we saw above, Turbo Drive merges the contents of the `<head>` elements. When a page depends on external assets like CSS stylesheets that other pages do not, it can be useful to remove them when navigating away from the page.
 
-Rendering a `<link>` or `<style>` element with `[data-turbo-track="dynamic"]` instructs Turbo Drive to dynamically remove the element when it is absent from a navigation's response, and can serve a complementary role to the [`[data-turbo-track="reload"]`](#reload-when-assets-change) attribute to avoid triggering a full page reload when deploying changes that only affect styles.
+Rendering a `<link>` or `<style>` element with `[data-turbo-track="dynamic"]` instructs Turbo Drive to dynamically remove the element when it is absent from a navigation's response, and can serve a complementary role to the [`[data-turbo-track="reload"]`](#reloading-when-assets-change) attribute to avoid triggering a full page reload when deploying changes that only affect styles.
 
 ```html
 <head>
