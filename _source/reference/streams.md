@@ -6,7 +6,7 @@ description: "A reference of everything you can do with Turbo Streams."
 
 # Streams
 
-## The nine actions
+## The eight actions
 
 ### Append
 
