@@ -11,7 +11,7 @@ They can be used to surgically update the DOM after a user action such as removi
 
 ## Stream Messages and Actions
 
-A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the nine possible stream actions:
+A Turbo Streams message is a fragment of HTML consisting of `<turbo-stream>` elements. The stream message below demonstrates the eight possible stream actions:
 
 ```html
 <turbo-stream action="append" target="messages">
@@ -212,9 +212,9 @@ Embracing these constraints will keep you from turning individual responses into
 
 ## Custom Actions
 
-By default, Turbo Streams support [nine values for its `action` attribute](/reference/streams#the-seven-actions). If your application needs to support other behaviors, you can override the `event.detail.render` function.
+By default, Turbo Streams supports [eight values for its `action` attribute](/reference/streams#the-eight-actions). If your application needs to support other behaviors, you can override the `event.detail.render` function.
 
-For example, if you'd like to expand upon the nine actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
+For example, if you'd like to expand upon the default actions to support `<turbo-stream>` elements with `[action="alert"]` or `[action="log"]`, you could declare a `turbo:before-stream-render` listener to provide custom behavior:
 
 ```javascript
 addEventListener("turbo:before-stream-render", ((event) => {
