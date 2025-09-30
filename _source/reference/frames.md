@@ -124,6 +124,34 @@ attributes and JavaScript properties.
 * `complete` is a boolean attribute whose presence or absence indicates whether
   or not the `<turbo-frame>` element has finished navigating.
 
+* `recurse` allows the `<turbo-frame>` to load content that contains another nested
+  frame. `recurse` refers to another `<turbo-frame>` element by ID, present in the
+  frame's loaded contents. This can be used when Turbo needs to extract frame content
+  from a response that doesn't contain the target frame directly, but contains another
+  frame that can load the target frame.
+
+  For example, imagine `/frames.html` contains:
+
+```html
+<turbo-frame id="recursive" recurse="composer" src="recursive.html">
+</turbo-frame>
+```
+
+And `recursive.html` contains:
+```html
+<turbo-frame id="recursive">
+  <turbo-frame id="composer">
+    <a href="frames.html">Link</a>
+  </turbo-frame>
+</turbo-frame>
+```
+
+When `Link` navigates back to `frames.html`, Turbo needs to find the frame with ID `composer`
+in the response to update the current `composer` frame. Since there's no such frame in
+`frames.html` directly, Turbo finds the frame with `recurse="composer"`, activates it to load
+its `src` (`recursive.html`), then searches for and extracts the `composer` frame from that
+loaded content to update the original frame.
+
 * `autoscroll` is a [boolean attribute][] that controls whether or not to scroll
   a `<turbo-frame>` element (and its descendant `<turbo-frame>` elements) into
   view after loading. Control the scroll's vertical alignment by setting the
