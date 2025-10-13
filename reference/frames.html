@@ -201,7 +201,24 @@ a descendant <code>&lt;a&gt;</code> is clicked. When <code>target=&quot;_top&quo
 or not the <code>&lt;turbo-frame&gt;</code> element has finished navigating.</p>
 </li>
 <li>
-<p><code>autoscroll</code> is a <a href="https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes">boolean attribute</a> that controls whether or not to scroll
+<p><code>recurse</code> allows the <code>&lt;turbo-frame&gt;</code> to load content that contains another nested
+frame. <code>recurse</code> refers to another <code>&lt;turbo-frame&gt;</code> element by ID, present in the
+frame’s loaded contents. This can be used when Turbo needs to extract frame content
+from a response that doesn’t contain the target frame directly, but contains another
+frame that can load the target frame.</p>
+<p>For example, imagine <code>/frames.html</code> contains:</p>
+</li>
+</ul>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-frame</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>recursive<span class="token punctuation">"</span></span> <span class="token attr-name">recurse</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>composer<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>recursive.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-frame</span><span class="token punctuation">></span></span></code></pre>
+<p>And <code>recursive.html</code> contains:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-frame</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>recursive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>turbo-frame</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>composer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>frames.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-frame</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>turbo-frame</span><span class="token punctuation">></span></span></code></pre>
+<p>When <code>Link</code> navigates back to <code>frames.html</code>, Turbo needs to find the frame with ID <code>composer</code>
+in the response to update the current <code>composer</code> frame. Since there’s no such frame in
+<code>frames.html</code> directly, Turbo finds the frame with <code>recurse=&quot;composer&quot;</code>, activates it to load
+its <code>src</code> (<code>recursive.html</code>), then searches for and extracts the <code>composer</code> frame from that
+loaded content to update the original frame.</p>
+<ul>
+<li><code>autoscroll</code> is a <a href="https://www.w3.org/TR/html52/infrastructure.html#sec-boolean-attributes">boolean attribute</a> that controls whether or not to scroll
 a <code>&lt;turbo-frame&gt;</code> element (and its descendant <code>&lt;turbo-frame&gt;</code> elements) into
 view after loading. Control the scroll’s vertical alignment by setting the
 <code>data-autoscroll-block</code> attribute to a valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters">Element.scrollIntoView({ block:
@@ -211,8 +228,7 @@ or <code>&quot;nearest&quot;</code>. When <code>data-autoscroll-block</code> is 
 <code>data-autoscroll-behavior</code> attribute to a valid <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#parameters">Element.scrollIntoView({
 behavior:
 “…” })</a> value: one of <code>&quot;auto&quot;</code>, or <code>&quot;smooth&quot;</code>.
-When <code>data-autoscroll-behavior</code> is absent, the default value is <code>&quot;auto&quot;</code>.</p>
-</li>
+When <code>data-autoscroll-behavior</code> is absent, the default value is <code>&quot;auto&quot;</code>.</li>
 </ul>
 <h2 id="properties"><a class="anchor" href="#properties">﹟</a> Properties</h2>
 <p>All <code>&lt;turbo-frame&gt;</code> elements can be controlled in JavaScript environments
