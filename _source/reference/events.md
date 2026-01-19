@@ -98,6 +98,14 @@ Fires once after the initial page load, and again after every Turbo visit.
 | `timing.requestEnd`       | `number`  | timestamp at the end of the HTTP request for the next page
 | `timing.visitEnd`         | `number`  | timestamp at the end of the Visit
 
+### `turbo:reload`
+
+Fires just before Turbo performs a full page reload.
+
+| `event.detail` property   | Type      | Description
+|---------------------------|-----------|------------
+| `reason`                  | `string`  | the reason for the reload (e.g. "turbo_disabled", "turbo_visit_control_is_reload", "tracked_element_mismatch", "request_failed")
+
 
 ## Page Refreshes
 
