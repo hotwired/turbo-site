@@ -1,19 +1,20 @@
 {
   "private": true,
   "dependencies": {
-    "@hotwired/turbo": "^8.0.0"
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo": "^8.0.21"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-cache-assets": "^2.1.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
-    "del-cli": "^3.0.1",
-    "esbuild": "^0.11.2",
-    "markdown-it": "^12.0.6",
-    "markdown-it-anchor": "^7.0.1",
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "del-cli": "^7.0.0",
+    "esbuild": "^0.27.2",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
     "markdown-it-toc-done-right": "^4.2.0",
-    "sass": "^1.68.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.97.2"
   },
   "scripts": {
     "serve": "npm-run-all -s clean build:11ty build:js build:css -p watch:** --silent",
