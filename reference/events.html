@@ -320,6 +320,24 @@ sources:</p>
 </tr>
 </tbody>
 </table>
+<h3 id="turbo%3Areload"><a class="anchor" href="#turbo%3Areload">﹟</a> <code>turbo:reload</code></h3>
+<p>Fires just before Turbo performs a full page reload.</p>
+<table>
+<thead>
+<tr>
+<th><code>event.detail</code> property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reason</code></td>
+<td><code>string</code></td>
+<td>the reason for the reload (e.g. “turbo_disabled”, “turbo_visit_control_is_reload”, “tracked_element_mismatch”, “request_failed”)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="page-refreshes"><a class="anchor" href="#page-refreshes">﹟</a> Page Refreshes</h2>
 <p>Turbo Drive emits events while morphing the page’s content.</p>
 <h3 id="turbo%3Amorph"><a class="anchor" href="#turbo%3Amorph">﹟</a> <code>turbo:morph</code></h3>
@@ -646,7 +664,7 @@ initiated the request, the events could fire on:</p>
     <li><a href="https://hey.com" target="_blank" rel="noopener"><img width="123" height="57" src="/assets/logo-hey.svg" alt="HEY"></a></li>
     <li><a href="https://once.com" target="_blank" rel="noopener"><img width="72" height="72" src="/assets/logo-once.svg" alt="ONCE"></a></li>
   </ul>
-  <p class="footer__copyright">&copy; 2025 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
+  <p class="footer__copyright">&copy; 2026 <a href="https://37signals.com" target="_blank" rel="noopener">37signals</a></p>
 </footer>
 
 
