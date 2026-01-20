@@ -162,9 +162,9 @@ sources:</p>
 <li><a href="#http-requests">HTTP Requests</a></li>
 </ul>
 <p>When using jQuery, the data on the event must be accessed as <code>$event.originalEvent.detail</code>.</p>
-<h2 id="document"><a class="anchor" href="#document">﹟</a> Document</h2>
+<h2 id="document" tabindex="-1"><a class="anchor" href="#document">﹟</a> Document</h2>
 <p>Turbo Drive emits events that allow you to track the navigation life cycle and respond to page loading. Except where noted, the following events fire on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement">document.documentElement</a> object (i.e., the <code>&lt;html&gt;</code> element).</p>
-<h3 id="turbo%3Aclick"><a class="anchor" href="#turbo%3Aclick">﹟</a> <code>turbo:click</code></h3>
+<h3 id="turbo%3Aclick" tabindex="-1"><a class="anchor" href="#turbo%3Aclick">﹟</a> <code>turbo:click</code></h3>
 <p>Fires when you click a Turbo-enabled link. The clicked element is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a>. Access the requested location with <code>event.detail.url</code>. Cancel this event to let the click fall through to the browser as normal navigation.</p>
 <table>
 <thead>
@@ -187,7 +187,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-visit"><a class="anchor" href="#turbo%3Abefore-visit">﹟</a> <code>turbo:before-visit</code></h3>
+<h3 id="turbo%3Abefore-visit" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-visit">﹟</a> <code>turbo:before-visit</code></h3>
 <p>Fires before visiting a location, except when navigating by history. Access the requested location with <code>event.detail.url</code>. Cancel this event to prevent navigation.</p>
 <table>
 <thead>
@@ -205,7 +205,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Avisit"><a class="anchor" href="#turbo%3Avisit">﹟</a> <code>turbo:visit</code></h3>
+<h3 id="turbo%3Avisit" tabindex="-1"><a class="anchor" href="#turbo%3Avisit">﹟</a> <code>turbo:visit</code></h3>
 <p>Fires immediately after a visit starts. Access the requested location with <code>event.detail.url</code> and action with <code>event.detail.action</code>.</p>
 <table>
 <thead>
@@ -228,10 +228,10 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-cache"><a class="anchor" href="#turbo%3Abefore-cache">﹟</a> <code>turbo:before-cache</code></h3>
+<h3 id="turbo%3Abefore-cache" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-cache">﹟</a> <code>turbo:before-cache</code></h3>
 <p>Fires before Turbo saves the current page to cache.</p>
 <p>Instances of <code>turbo:before-cache</code> events do not have an <code>event.detail</code> property.</p>
-<h3 id="turbo%3Abefore-render"><a class="anchor" href="#turbo%3Abefore-render">﹟</a> <code>turbo:before-render</code></h3>
+<h3 id="turbo%3Abefore-render" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-render">﹟</a> <code>turbo:before-render</code></h3>
 <p>Fires before rendering the page. Access the new <code>&lt;body&gt;</code> element with <code>event.detail.newBody</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/drive#custom-rendering">Custom Rendering</a>).</p>
 <table>
 <thead>
@@ -264,7 +264,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Arender"><a class="anchor" href="#turbo%3Arender">﹟</a> <code>turbo:render</code></h3>
+<h3 id="turbo%3Arender" tabindex="-1"><a class="anchor" href="#turbo%3Arender">﹟</a> <code>turbo:render</code></h3>
 <p>Fires after Turbo renders the page. This event fires twice during an application visit to a cached location: once after rendering the cached version, and again after rendering the fresh version.</p>
 <table>
 <thead>
@@ -282,7 +282,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Aload"><a class="anchor" href="#turbo%3Aload">﹟</a> <code>turbo:load</code></h3>
+<h3 id="turbo%3Aload" tabindex="-1"><a class="anchor" href="#turbo%3Aload">﹟</a> <code>turbo:load</code></h3>
 <p>Fires once after the initial page load, and again after every Turbo visit.</p>
 <table>
 <thead>
@@ -320,7 +320,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Areload"><a class="anchor" href="#turbo%3Areload">﹟</a> <code>turbo:reload</code></h3>
+<h3 id="turbo%3Areload" tabindex="-1"><a class="anchor" href="#turbo%3Areload">﹟</a> <code>turbo:reload</code></h3>
 <p>Fires just before Turbo performs a full page reload.</p>
 <table>
 <thead>
@@ -338,9 +338,9 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="page-refreshes"><a class="anchor" href="#page-refreshes">﹟</a> Page Refreshes</h2>
+<h2 id="page-refreshes" tabindex="-1"><a class="anchor" href="#page-refreshes">﹟</a> Page Refreshes</h2>
 <p>Turbo Drive emits events while morphing the page’s content.</p>
-<h3 id="turbo%3Amorph"><a class="anchor" href="#turbo%3Amorph">﹟</a> <code>turbo:morph</code></h3>
+<h3 id="turbo%3Amorph" tabindex="-1"><a class="anchor" href="#turbo%3Amorph">﹟</a> <code>turbo:morph</code></h3>
 <p>Fires after Turbo morphs the page.</p>
 <table>
 <thead>
@@ -363,7 +363,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-morph-element"><a class="anchor" href="#turbo%3Abefore-morph-element">﹟</a> <code>turbo:before-morph-element</code></h3>
+<h3 id="turbo%3Abefore-morph-element" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-morph-element">﹟</a> <code>turbo:before-morph-element</code></h3>
 <p>Fires before Turbo morphs an element. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> references the original element that will remain connected to the document. Cancel this event by calling <code>event.preventDefault()</code> to skip morphing and preserve the original element, its attributes, and its children.</p>
 <table>
 <thead>
@@ -381,7 +381,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-morph-attribute"><a class="anchor" href="#turbo%3Abefore-morph-attribute">﹟</a> <code>turbo:before-morph-attribute</code></h3>
+<h3 id="turbo%3Abefore-morph-attribute" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-morph-attribute">﹟</a> <code>turbo:before-morph-attribute</code></h3>
 <p>Fires before Turbo morphs an element’s attributes. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> references the original element that will remain connected to the document. Cancel this event by calling <code>event.preventDefault()</code> to skip morphing and preserve the original attribute value.</p>
 <table>
 <thead>
@@ -404,7 +404,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Amorph-element"><a class="anchor" href="#turbo%3Amorph-element">﹟</a> <code>turbo:morph-element</code></h3>
+<h3 id="turbo%3Amorph-element" tabindex="-1"><a class="anchor" href="#turbo%3Amorph-element">﹟</a> <code>turbo:morph-element</code></h3>
 <p>Fires after Turbo morphs an element. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> references the morphed element that remains connected after the morph.</p>
 <table>
 <thead>
@@ -422,9 +422,9 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="forms"><a class="anchor" href="#forms">﹟</a> Forms</h2>
+<h2 id="forms" tabindex="-1"><a class="anchor" href="#forms">﹟</a> Forms</h2>
 <p>Turbo Drive emits events during submission, redirection, and submission failure. The following events fire on the <code>&lt;form&gt;</code> element during submission.</p>
-<h3 id="turbo%3Asubmit-start"><a class="anchor" href="#turbo%3Asubmit-start">﹟</a> <code>turbo:submit-start</code></h3>
+<h3 id="turbo%3Asubmit-start" tabindex="-1"><a class="anchor" href="#turbo%3Asubmit-start">﹟</a> <code>turbo:submit-start</code></h3>
 <p>Fires during a form submission. Access the <a href="/reference/drive#formsubmission">FormSubmission</a> object with <code>event.detail.formSubmission</code>. Abort form submission (e.g. after validation failure) with <code>event.detail.formSubmission.stop()</code>. Use <code>event.originalEvent.detail.formSubmission.stop()</code> if you’re using jQuery.</p>
 <table>
 <thead>
@@ -442,7 +442,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Asubmit-end"><a class="anchor" href="#turbo%3Asubmit-end">﹟</a> <code>turbo:submit-end</code></h3>
+<h3 id="turbo%3Asubmit-end" tabindex="-1"><a class="anchor" href="#turbo%3Asubmit-end">﹟</a> <code>turbo:submit-end</code></h3>
 <p>Fires after the form submission-initiated network request completes. Access the <a href="/reference/drive#formsubmission">FormSubmission</a> object with <code>event.detail.formSubmission</code> along with the properties included within <code>event.detail</code>.</p>
 <table>
 <thead>
@@ -475,9 +475,9 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="frames"><a class="anchor" href="#frames">﹟</a> Frames</h2>
+<h2 id="frames" tabindex="-1"><a class="anchor" href="#frames">﹟</a> Frames</h2>
 <p>Turbo Frames emit events during their navigation life cycle. The following events fire on the <code>&lt;turbo-frame&gt;</code> element.</p>
-<h3 id="turbo%3Abefore-frame-render"><a class="anchor" href="#turbo%3Abefore-frame-render">﹟</a> <code>turbo:before-frame-render</code></h3>
+<h3 id="turbo%3Abefore-frame-render" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-frame-render">﹟</a> <code>turbo:before-frame-render</code></h3>
 <p>Fires before rendering the <code>&lt;turbo-frame&gt;</code> element. Access the new <code>&lt;turbo-frame&gt;</code> element with <code>event.detail.newFrame</code>. Rendering can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/frames#pausing-rendering">Pausing Rendering</a>). Customize how Turbo Drive renders the response by overriding the <code>event.detail.render</code> function (see <a href="/handbook/frames#custom-rendering">Custom Rendering</a>).</p>
 <table>
 <thead>
@@ -505,7 +505,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Aframe-render"><a class="anchor" href="#turbo%3Aframe-render">﹟</a> <code>turbo:frame-render</code></h3>
+<h3 id="turbo%3Aframe-render" tabindex="-1"><a class="anchor" href="#turbo%3Aframe-render">﹟</a> <code>turbo:frame-render</code></h3>
 <p>Fires right after a <code>&lt;turbo-frame&gt;</code> element renders its view. The specific <code>&lt;turbo-frame&gt;</code> element is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a>. Access the <a href="/reference/drive#fetchresponse">FetchResponse</a> object with <code>event.detail.fetchResponse</code> property.</p>
 <table>
 <thead>
@@ -523,10 +523,10 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Aframe-load"><a class="anchor" href="#turbo%3Aframe-load">﹟</a> <code>turbo:frame-load</code></h3>
+<h3 id="turbo%3Aframe-load" tabindex="-1"><a class="anchor" href="#turbo%3Aframe-load">﹟</a> <code>turbo:frame-load</code></h3>
 <p>Fires when a <code>&lt;turbo-frame&gt;</code> element is navigated and finishes loading (fires after <code>turbo:frame-render</code>). The specific <code>&lt;turbo-frame&gt;</code> element is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a>.</p>
 <p>Instances of <code>turbo:frame-load</code> events do not have an <code>event.detail</code> property.</p>
-<h3 id="turbo%3Aframe-missing"><a class="anchor" href="#turbo%3Aframe-missing">﹟</a> <code>turbo:frame-missing</code></h3>
+<h3 id="turbo%3Aframe-missing" tabindex="-1"><a class="anchor" href="#turbo%3Aframe-missing">﹟</a> <code>turbo:frame-missing</code></h3>
 <p>Fires when the response to a <code>&lt;turbo-frame&gt;</code> element request does not contain a matching <code>&lt;turbo-frame&gt;</code> element. By default, Turbo writes an informational message into the frame and throws an exception. Cancel this event to override this handling. You can access the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> instance with <code>event.detail.response</code>, and perform a visit by calling <code>event.detail.visit(location, visitOptions)</code> (see <a href="/reference/drive#turbo.visit">Turbo.visit</a> to learn more about <code>VisitOptions</code>).</p>
 <table>
 <thead>
@@ -549,9 +549,9 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="streams"><a class="anchor" href="#streams">﹟</a> Streams</h2>
+<h2 id="streams" tabindex="-1"><a class="anchor" href="#streams">﹟</a> Streams</h2>
 <p>Turbo Streams emit events during their life cycle. The following events fire on the <code>&lt;turbo-stream&gt;</code> element.</p>
-<h3 id="turbo%3Abefore-stream-render"><a class="anchor" href="#turbo%3Abefore-stream-render">﹟</a> <code>turbo:before-stream-render</code></h3>
+<h3 id="turbo%3Abefore-stream-render" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-stream-render">﹟</a> <code>turbo:before-stream-render</code></h3>
 <p>Fires before rendering a Turbo Stream page update. Access the new <code>&lt;turbo-stream&gt;</code> element with <code>event.detail.newStream</code>. Customize the element’s behavior by overriding the <code>event.detail.render</code> function (see <a href="/handbook/streams#custom-actions">Custom Actions</a>).</p>
 <table>
 <thead>
@@ -574,7 +574,7 @@ sources:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="http-requests"><a class="anchor" href="#http-requests">﹟</a> HTTP Requests</h2>
+<h2 id="http-requests" tabindex="-1"><a class="anchor" href="#http-requests">﹟</a> HTTP Requests</h2>
 <p>Turbo emits events when fetching content over HTTP. Depending on the what
 initiated the request, the events could fire on:</p>
 <ul>
@@ -582,7 +582,7 @@ initiated the request, the events could fire on:</p>
 <li>a <code>&lt;form&gt;</code> during its submission</li>
 <li>the <code>&lt;html&gt;</code> element during a page-wide Turbo Visit</li>
 </ul>
-<h3 id="turbo%3Abefore-fetch-request"><a class="anchor" href="#turbo%3Abefore-fetch-request">﹟</a> <code>turbo:before-fetch-request</code></h3>
+<h3 id="turbo%3Abefore-fetch-request" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-fetch-request">﹟</a> <code>turbo:before-fetch-request</code></h3>
 <p>Fires before Turbo issues a network request (to fetch a page, submit a form, preload a link, etc.). Access the requested location with <code>event.detail.url</code> and the fetch options object with <code>event.detail.fetchOptions</code>. This event fires on the respective element (<code>&lt;turbo-frame&gt;</code> or <code>&lt;form&gt;</code> element) which triggers it and can be accessed with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> property. Request can be canceled and continued with <code>event.detail.resume</code> (see <a href="/handbook/drive#pausing-requests">Pausing Requests</a>).</p>
 <table>
 <thead>
@@ -610,7 +610,7 @@ initiated the request, the events could fire on:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-fetch-response"><a class="anchor" href="#turbo%3Abefore-fetch-response">﹟</a> <code>turbo:before-fetch-response</code></h3>
+<h3 id="turbo%3Abefore-fetch-response" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-fetch-response">﹟</a> <code>turbo:before-fetch-response</code></h3>
 <p>Fires after the network request completes. Access the fetch options object with <code>event.detail</code>. This event fires on the respective element (<code>&lt;turbo-frame&gt;</code> or <code>&lt;form&gt;</code> element) which triggers it and can be accessed with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> property.</p>
 <table>
 <thead>
@@ -628,9 +628,9 @@ initiated the request, the events could fire on:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="turbo%3Abefore-prefetch"><a class="anchor" href="#turbo%3Abefore-prefetch">﹟</a> <code>turbo:before-prefetch</code></h3>
+<h3 id="turbo%3Abefore-prefetch" tabindex="-1"><a class="anchor" href="#turbo%3Abefore-prefetch">﹟</a> <code>turbo:before-prefetch</code></h3>
 <p>Fires before Turbo prefetches a link. The link is the <code>event.target</code>. Cancel this event to prevent prefetching.</p>
-<h3 id="turbo%3Afetch-request-error"><a class="anchor" href="#turbo%3Afetch-request-error">﹟</a> <code>turbo:fetch-request-error</code></h3>
+<h3 id="turbo%3Afetch-request-error" tabindex="-1"><a class="anchor" href="#turbo%3Afetch-request-error">﹟</a> <code>turbo:fetch-request-error</code></h3>
 <p>Fires when a form or frame fetch request fails due to network errors. This event fires on the respective element (<code>&lt;turbo-frame&gt;</code> or <code>&lt;form&gt;</code> element) which triggers it and can be accessed with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">event.target</a> property. This event can be canceled.</p>
 <table>
 <thead>
@@ -653,7 +653,7 @@ initiated the request, the events could fire on:</p>
 </tr>
 </tbody>
 </table>
-<p><a class="button" href="/reference/attributes">Next: Attributes</a></p></section>
+<p><a class="button" href="/reference/attributes">Next: Attributes and Meta Tags</a></p></section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
 

@@ -151,30 +151,32 @@
   <section id="content" class="docs__content grid__custom-item">
 
     <h1>Drive</h1>
-<h2 id="turbo.visit"><a class="anchor" href="#turbo.visit">﹟</a> Turbo.visit</h2>
-<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><br>Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">action</span><span class="token operator">:</span> action <span class="token punctuation">}</span><span class="token punctuation">)</span><br>Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">frame</span><span class="token operator">:</span> frame <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2 id="turbo.visit" tabindex="-1"><a class="anchor" href="#turbo.visit">﹟</a> Turbo.visit</h2>
+<pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span>
+Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">action</span><span class="token operator">:</span> action <span class="token punctuation">}</span><span class="token punctuation">)</span>
+Turbo<span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span>location<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">frame</span><span class="token operator">:</span> frame <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Performs an <a href="/handbook/drive#application-visits">Application Visit</a> to the given <em>location</em> (a string containing a URL or path) with the specified <em>action</em> (a string, either <code>&quot;advance&quot;</code> or <code>&quot;replace&quot;</code>).</p>
 <p>If <em>location</em> is a cross-origin URL, or falls outside of the specified root (see <a href="/handbook/drive#setting-a-root-location">Setting a Root Location</a>), Turbo performs a full page load by setting <code>window.location</code>.</p>
 <p>If <em>action</em> is unspecified, Turbo Drive assumes a value of <code>&quot;advance&quot;</code>.</p>
 <p>Before performing the visit, Turbo Drive fires a <code>turbo:before-visit</code> event on <code>document</code>. Your application can listen for this event and cancel the visit with <code>event.preventDefault()</code> (see <a href="/handbook/drive#canceling-visits-before-they-start">Canceling Visits Before They Start</a>).</p>
 <p>If <em>frame</em> is specified, find a <code>&lt;turbo-frame&gt;</code> element with an <code>[id]</code> attribute that matches the provided value, and navigate it to the provided <em>location</em>. If the <code>&lt;turbo-frame&gt;</code> cannot be found, perform a page-level <a href="/handbook/drive#application-visits">Application Visit</a>.</p>
-<h2 id="turbo.cache.clear"><a class="anchor" href="#turbo.cache.clear">﹟</a> Turbo.cache.clear</h2>
+<h2 id="turbo.cache.clear" tabindex="-1"><a class="anchor" href="#turbo.cache.clear">﹟</a> Turbo.cache.clear</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>cache<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Removes all entries from the Turbo Drive page cache. Call this when state has changed on the server that may affect cached pages.</p>
 <p><strong>Note:</strong> This function was previously exposed as <code>Turbo.clearCache()</code>. The top-level function was deprecated in favor of the new <code>Turbo.cache.clear()</code> function.</p>
-<h2 id="turbo.config.drive.progressbardelay"><a class="anchor" href="#turbo.config.drive.progressbardelay">﹟</a> Turbo.config.drive.progressBarDelay</h2>
+<h2 id="turbo.config.drive.progressbardelay" tabindex="-1"><a class="anchor" href="#turbo.config.drive.progressbardelay">﹟</a> Turbo.config.drive.progressBarDelay</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>drive<span class="token punctuation">.</span>progressBarDelay <span class="token operator">=</span> delayInMilliseconds</code></pre>
 <p>Sets the delay after which the <a href="/handbook/drive#displaying-progress">progress bar</a> will appear during navigation, in milliseconds. The progress bar appears after 500ms by default.</p>
 <p>Note that this method has no effect when used with the iOS or Android adapters.</p>
 <p><strong>Note:</strong> This function was previously exposed as <code>Turbo.setProgressBarDelay</code> function. The top-level function was deprecated in favor of the new <code>Turbo.config.drive.progressBarDelay = delayInMilliseconds</code> syntax.</p>
-<h2 id="turbo.config.forms.confirm"><a class="anchor" href="#turbo.config.forms.confirm">﹟</a> Turbo.config.forms.confirm</h2>
+<h2 id="turbo.config.forms.confirm" tabindex="-1"><a class="anchor" href="#turbo.config.forms.confirm">﹟</a> Turbo.config.forms.confirm</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>forms<span class="token punctuation">.</span>confirm <span class="token operator">=</span> confirmMethod</code></pre>
 <p>Sets the method that is called by links decorated with <a href="/handbook/drive#requiring-confirmation-for-a-visit"><code>data-turbo-confirm</code></a>. The default is the browser’s built in <code>confirm</code>. The method should return a <code>Promise</code> object that resolves to true or false, depending on whether the visit should proceed.</p>
 <p><strong>Note:</strong> This function was previously exposed as <code>Turbo.setConfirmMethod</code> function. The top-level function was deprecated in favor of the new <code>Turbo.config.forms.confirm = confirmMethod</code> syntax.</p>
-<h2 id="turbo.session.drive"><a class="anchor" href="#turbo.session.drive">﹟</a> Turbo.session.drive</h2>
+<h2 id="turbo.session.drive" tabindex="-1"><a class="anchor" href="#turbo.session.drive">﹟</a> Turbo.session.drive</h2>
 <pre class="language-js"><code class="language-js">Turbo<span class="token punctuation">.</span>session<span class="token punctuation">.</span>drive <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
 <p>Turns Turbo Drive off by default. You must now opt-in to Turbo Drive on a per-link and per-form basis using <code>data-turbo=&quot;true&quot;</code>.</p>
-<h2 id="fetchrequest"><a class="anchor" href="#fetchrequest">﹟</a> <code>FetchRequest</code></h2>
+<h2 id="fetchrequest" tabindex="-1"><a class="anchor" href="#fetchrequest">﹟</a> <code>FetchRequest</code></h2>
 <p>Turbo dispatches a variety of <a href="/reference/events#http-requests">events while making HTTP requests</a> that reference <code>FetchRequest</code> objects with the following properties:</p>
 <table>
 <thead>
@@ -227,7 +229,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="fetchresponse"><a class="anchor" href="#fetchresponse">﹟</a> <code>FetchResponse</code></h2>
+<h2 id="fetchresponse" tabindex="-1"><a class="anchor" href="#fetchresponse">﹟</a> <code>FetchResponse</code></h2>
 <p>Turbo dispatches a variety of <a href="/reference/events#http-requests">events while making HTTP requests</a> that reference <code>FetchResponse</code> objects with the following properties:</p>
 <table>
 <thead>
@@ -300,7 +302,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="formsubmission"><a class="anchor" href="#formsubmission">﹟</a> <code>FormSubmission</code></h2>
+<h2 id="formsubmission" tabindex="-1"><a class="anchor" href="#formsubmission">﹟</a> <code>FormSubmission</code></h2>
 <p>Turbo dispatches a variety of <a href="/reference/events#forms">events while submitting forms</a> that reference <code>FormSubmission</code> objects with the following properties:</p>
 <table>
 <thead>

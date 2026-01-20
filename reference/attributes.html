@@ -151,7 +151,7 @@
   <section id="content" class="docs__content grid__custom-item">
 
     <h1>Attributes and Meta Tags</h1>
-<h2 id="data-attributes"><a class="anchor" href="#data-attributes">﹟</a> Data Attributes</h2>
+<h2 id="data-attributes" tabindex="-1"><a class="anchor" href="#data-attributes">﹟</a> Data Attributes</h2>
 <p>The following data attributes can be applied to elements to customize Turbo’s behaviour.</p>
 <ul>
 <li><code>data-turbo=&quot;false&quot;</code> disables Turbo Drive on links and forms including descendants. To reenable when an ancestor has opted out, use <code>data-turbo=&quot;true&quot;</code>. Be careful: when Turbo Drive is disabled, browsers treat link clicks as normal, but <a href="/handbook/native">native adapters</a> may exit the app. Note that if Turbo <a href="/handbook/drive#ignored-paths">ignores a path</a>, then setting <code>data-turbo=&quot;true&quot;</code> will not force/override it to enable.</li>
@@ -170,7 +170,7 @@
 <li><code>data-turbo-submits-with</code> specifies text to display when submitting a form. Can be used on <code>input</code> or <code>button</code> elements. While the form is submitting the text of the element will show the value of <code>data-turbo-submits-with</code>. After the submission, the original text will be restored. Useful for giving user feedback by showing a message like “Saving…” while an operation is in progress.</li>
 <li><code>download</code> opts out of Turbo since the link is for downloading files and not navigation.</li>
 </ul>
-<h2 id="automatically-added-attributes"><a class="anchor" href="#automatically-added-attributes">﹟</a> Automatically Added Attributes</h2>
+<h2 id="automatically-added-attributes" tabindex="-1"><a class="anchor" href="#automatically-added-attributes">﹟</a> Automatically Added Attributes</h2>
 <p>The following attributes are automatically added by Turbo and are useful to determine the Visit state at a given moment.</p>
 <ul>
 <li><code>disabled</code> is added to the form submitter while the form request is in progress, to prevent repeat submissions.</li>
@@ -185,7 +185,7 @@
 </li>
 <li><code>busy</code> is added to the <code>turbo-frame</code> element when a navigation or form submission is in progress within the frame.</li>
 </ul>
-<h2 id="meta-tags"><a class="anchor" href="#meta-tags">﹟</a> Meta Tags</h2>
+<h2 id="meta-tags" tabindex="-1"><a class="anchor" href="#meta-tags">﹟</a> Meta Tags</h2>
 <p>The following <code>meta</code> elements, added to the <code>head</code>, can be used to customize caching and Visit behavior.</p>
 <ul>
 <li><code>&lt;meta name=&quot;turbo-cache-control&quot;&gt;</code> to <a href="/handbook/building#opting-out-of-caching">opt out of caching</a>.</li>
