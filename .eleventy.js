@@ -56,11 +56,12 @@ module.exports = function(eleventyConfig) {
   };
   const markdownLib = markdownIt(markdownItOptions);
   markdownLib.use(markdownItAnchor, { // add anchors to headings
-    level: '2',
-    permalink: 'true',
-    permalinkClass: 'anchor',
-    permalinkSymbol: '﹟',
-    permalinkBefore: 'true'
+    level: 2,
+    permalink: markdownItAnchor.permalink.linkInsideHeader({
+      class: 'anchor',
+      symbol: '﹟',
+      placement: 'before'
+    })
   });
   markdownLib.use(markdownItToc, { // make a TOC with ${toc}
     level: '2',

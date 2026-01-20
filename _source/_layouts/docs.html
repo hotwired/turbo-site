@@ -3,30 +3,30 @@ layout: base
 ---
 
 <div class="nav__github-corner">
-  {% include github-corner.html %}
+  {% include "github-corner.html" %}
 </div>
 
 <main class="grid docs">
 
   <header class="docs__index grid__custom-item">
-    {% include navigation.html %}
+    {% include "navigation.html" %}
   </header>
 
   <section id="content" class="docs__content grid__custom-item">
 
     {{ content }}
 
-    {%- assign current_collection = {{tags[0]}} -%}
+    {%- assign current_collection = tags[0] -%}
     {%- assign next_page = collections[current_collection] | getNextCollectionItem: page -%}
     {%- if next_page -%}
-      <p><a class="button" href="{{ next_page.url | remove: ".html" }}">Next: {% if next_page.data.title %}{{ next_page.data.title }}{% else %}{{ next_page.data.content | titleFromHeading }}{% endif %}</a></p>
+      <p><a class="button" href="{{ next_page.url | remove: ".html" }}">Next: {% if next_page.title %}{{ next_page.title }}{% else %}{{ next_page.content | titleFromHeading }}{% endif %}</a></p>
     {%- endif -%}
 
   </section>
 
   <footer class="docs__footer grid__item grid__item--start-4 grid__item--span-8">
 
-    {% include footer.html %}
+    {% include "footer.html" %}
 
   </footer>
 

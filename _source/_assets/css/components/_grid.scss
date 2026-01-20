@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr minmax(80vw, 100%) 1fr;
   align-items: start;
-  column-gap: unquote("min(5vw, 4rem)");
+  column-gap: min(5vw, 4rem);
 
   > .grid {
     grid-column: 1 / -1;
@@ -15,7 +15,7 @@
 
   @include media(medium) {
     grid-template-columns: 1fr repeat(12, minmax(2rem, 100%)) 1fr;
-    column-gap: unquote("min(3vw, 5rem)");
+    column-gap: min(3vw, 5rem);
 
     > *:not([class*="grid"]) {
       grid-column: 4 / span 8;

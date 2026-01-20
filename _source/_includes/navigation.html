@@ -1,5 +1,5 @@
 <a class="nav-logo" href="/" aria-label="Turbo">
-  {% include svg/turbo-logo.svg %}
+  {% include "svg/turbo-logo.svg" %}
 </a>
 
 <input type="checkbox" id="hamburger" class="nav-checkbox"/>
@@ -13,12 +13,12 @@
     <li>
       <a class="nav__list-link{% if section_title == "Handbook" %} active{% endif %}" href="/handbook/introduction">Handbook</a>
 
-      {% include section-nav.html, section: "handbook" %}
+      {% include "section-nav.html", section: "handbook" %}
     </li>
     <li>
       <a class="nav__list-link{% if section_title == "Reference" %} active{% endif %}" href="/reference/drive">Reference</a>
 
-      {% include section-nav.html, section: "reference" %}
+      {% include "section-nav.html", section: "reference" %}
     </li>
     <li>
       <a class="nav__list-link" href="{{ site.discourse_url }}" title="Have a question? Connect with other developers on the Hotwire Discourse community forum.">Community</a>
