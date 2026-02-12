@@ -66,6 +66,14 @@ There is a new [turbo stream action](/handbook/streams.html) called `refresh` th
 <turbo-stream action="refresh"></turbo-stream>
 ```
 
+Refresh behavior can be specified using the `method` and `scroll` attributes:
+
+```html
+<turbo-stream action="refresh" method="morph" scroll="preserve"></turbo-stream>
+```
+
+The `method` attribute can be `morph` or `replace`, and the `scroll` attribute can be `preserve` or `reset`.
+
 Server-side frameworks can leverage these streams to offer a simple but powerful broadcasting model: the server broadcasts a single general signal, and pages smoothly refresh with morphing. 
 
 You can see how the  [`turbo-rails`](https://github.com/hotwired/turbo-rails) gem does it for Rails:
