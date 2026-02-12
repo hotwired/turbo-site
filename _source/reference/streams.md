@@ -113,8 +113,7 @@ Inserts the content within the template tag after the element designated by the 
 
 ### Refresh
 
-Initiates a [Page Refresh](/handbook/page_refreshes) to render new content with
-morphing.
+Initiates a [Page Refresh](/handbook/page_refreshes) to render new content.
 
 ```html
 <!-- without `[request-id]` -->
@@ -122,6 +121,9 @@ morphing.
 
 <!-- debounced with `[request-id]` -->
 <turbo-stream action="refresh" request-id="abcd-1234"></turbo-stream>
+
+<!-- refresh behavior with `[method]` and `[scroll]` -->
+<turbo-stream action="refresh" method="morph" scroll="preserve"></turbo-stream>
 ```
 
 ## Targeting Multiple Elements
