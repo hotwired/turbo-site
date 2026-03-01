@@ -72,6 +72,10 @@ Like an eager-loaded frame, but the content is not loaded from `src` until the f
     Following link will replace the whole page, not this frame.
   </a>
 
+  <a href="/messages/1" data-turbo-frame="_parent">
+    Following link will navigate the parent frame.
+  </a>
+
   <form action="/messages" data-turbo-frame="navigation">
     Submitting form will replace the navigation frame.
   </form>
@@ -119,7 +123,9 @@ attributes and JavaScript properties.
   present
 
 * `target` refers to another `<turbo-frame>` element by ID to be navigated when
-  a descendant `<a>` is clicked. When `target="_top"`, navigate the window.
+  a descendant `<a>` is clicked. When `target="_top"`, navigate the window. When
+  `target="_parent"`, navigate the closest ancestor `<turbo-frame>` element. If
+  the element has no ancestor frame, it falls back to `_top` behavior.
 
 * `complete` is a boolean attribute whose presence or absence indicates whether
   or not the `<turbo-frame>` element has finished navigating.

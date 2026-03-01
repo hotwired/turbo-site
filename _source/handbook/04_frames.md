@@ -127,7 +127,7 @@ While the overhead of fetching loading frames is generally very low, you should 
 
 ## Targeting Navigation Into or Out of a Frame
 
-By default, navigation within a frame will target just that frame. This is true for both following links and submitting forms. But navigation can drive the entire page instead of the enclosing frame by setting the target to `_top`. Or it can drive another named frame by setting the target to the ID of that frame.
+By default, navigation within a frame will target just that frame. This is true for both following links and submitting forms. But navigation can drive the entire page instead of the enclosing frame by setting the target to `_top`, or target the closest ancestor frame by setting the target to `_parent`. It can also drive another named frame by setting the target to the ID of that frame.
 
 In the example with the set-aside tray, the links within the tray point to individual emails. You don't want those links to look for frame tags that match the `set_aside_tray` ID. You want to navigate directly to that email. This is done by marking the tray frames with the `target` attribute:
 
@@ -160,6 +160,10 @@ Sometimes you want most links to operate within the frame context, but not other
 
     <a href="/messages/1/permission" data-turbo-frame="_top">
       Change permissions (replace the whole page)
+    </a>
+
+    <a href="/messages/1/stats" data-turbo-frame="_parent">
+      Show stats (navigate the parent frame)
     </a>
   </turbo-frame>
 
