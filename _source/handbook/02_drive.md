@@ -191,7 +191,7 @@ In [browsers that support](https://caniuse.com/?search=View%20Transition%20API) 
 Turbo triggers a view transition when both the current and the next page have this meta tag:
 
 ```
-<meta name="view-transition" content="same-origin" />
+<meta name="turbo-view-transition" content="true" />
 ```
 
 Turbo also adds a `data-turbo-visit-direction` attribute to the `<html>` element to indicate the direction of the transition. The attribute can have one of the following values:

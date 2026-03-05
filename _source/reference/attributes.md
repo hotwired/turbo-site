@@ -47,7 +47,7 @@ The following `meta` elements, added to the `head`, can be used to customize cac
 * `<meta name="turbo-cache-control">` to [opt out of caching](/handbook/building#opting-out-of-caching).
 * `<meta name="turbo-visit-control" content="reload">` will perform a full page reload whenever Turbo navigates to the page, including when the request originates from a `<turbo-frame>`.
 * `<meta name="turbo-root">` to [scope Turbo Drive to a particular root location](/handbook/drive#setting-a-root-location).
-* `<meta name="view-transition" content="same-origin">` to trigger view transitions on browsers that support the [View Transition API](https://caniuse.com/view-transitions).
+* `<meta name="turbo-view-transition" content="true">` to trigger view transitions on browsers that support the [View Transition API](https://caniuse.com/view-transitions).
 * `<meta name="turbo-refresh-method" content="morph">` will configure [page refreshes with morphing](/handbook/page_refreshes.html).
 * `<meta name="turbo-refresh-scroll" content="preserve">` will enable [scroll preservation during page refreshes](/handbook/page_refreshes.html).
 * `<meta name="turbo-prefetch" content="false">` will disable [prefetching links on hover](/handbook/drive#prefetching-links-on-hover).
