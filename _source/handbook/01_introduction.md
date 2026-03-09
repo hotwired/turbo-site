@@ -35,6 +35,8 @@ With Turbo Frames, you can place those independent segments inside frame element
 
 To wrap an independent segment in its own navigation context, enclose it in a `<turbo-frame>` tag. For example:
 
+<h6>HTML</h6>
+
 ```html
 <turbo-frame id="new_message">
   <form action="/messages" method="post">
@@ -43,15 +45,33 @@ To wrap an independent segment in its own navigation context, enclose it in a `<
 </turbo-frame>
 ```
 
+<h6>DEMO</h6>
+<div class="demo">
+  <turbo-frame id="new_message">
+    <form action="/handbook/demos/introduction/new_message" method="get">
+      <input type="submit" value="Submit" />
+    </form>
+  </turbo-frame>
+</div>
+
 When you submit the form above, Turbo extracts the matching `<turbo-frame id="new_message">` element from the redirected HTML response and swaps its content into the existing `new_message` frame element. The rest of the page stays just as it was.
 
 Frames can also defer loading their contents in addition to scoping navigation. To defer loading a frame, add a `src` attribute whose value is the URL to be automatically loaded. As with scoped navigation, Turbo finds and extracts the matching frame from the resulting response and swaps its content into place:
+
+<h6>HTML</h6>
 
 ```html
 <turbo-frame id="messages" src="/messages">
   <p>This message will be replaced by the response from /messages.</p>
 </turbo-frame>
 ```
+
+<h6>DEMO</h6>
+<div class="demo">
+  <turbo-frame id="messages" src="/handbook/demos/introduction/messages">
+    <p>This message will be replaced by the response from /messages.</p>
+  </turbo-frame>
+</div>
 
 This may sound a lot like old-school frames, or even `<iframe>`s, but Turbo Frames are part of the same DOM, so there's none of the weirdness or compromises associated with "real" frames. Turbo Frames are styled by the same CSS, part of the same JavaScript context, and are not placed under any additional content security restrictions.
 
