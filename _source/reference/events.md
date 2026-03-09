@@ -76,7 +76,6 @@ Fires before rendering the page. Access the new `<body>` element with `event.det
 | `render`                  | `(currentBody, newBody) => void`  | override to [Customize Rendering](/handbook/drive#custom-rendering)
 
 [HTMLBodyElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement
-[preview]: /handbook/building#understanding-caching
 
 ### `turbo:render`
 
