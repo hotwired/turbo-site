@@ -33,7 +33,7 @@ Application visits result in a change to the browser’s history; the visit’s 
 
 ![Advance visit action](https://s3.amazonaws.com/turbolinks-docs/images/advance.svg)
 
-The default visit action is _advance_. During an advance visit, Turbo Drives pushes a new entry onto the browser’s history stack using [`history.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
+The default visit action is _advance_. During an advance visit, Turbo Drive pushes a new entry onto the browser’s history stack using [`history.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
 
 Applications using the Turbo Drive [iOS adapter](https://github.com/hotwired/turbo-ios) typically handle advance visits by pushing a new view controller onto the navigation stack. Similarly, applications using the [Android adapter](https://github.com/hotwired/turbo-android) typically push a new activity onto the back stack.
 
