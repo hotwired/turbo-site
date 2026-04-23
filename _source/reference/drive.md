@@ -58,6 +58,19 @@ Sets the method that is called by links decorated with [`data-turbo-confirm`](/h
 
 **Note:** This function was previously exposed as `Turbo.setConfirmMethod` function. The top-level function was deprecated in favor of the new `Turbo.config.forms.confirm = confirmMethod` syntax.
 
+## Turbo.config.forms.mode
+
+```js
+Turbo.config.forms.mode = "on" | "off" | "optin"
+```
+
+Controls whether Turbo handles form submissions. The default is `"on"`.
+
+- `"on"` — Turbo handles all form submissions by default. Individual forms can opt out with `data-turbo="false"`.
+- `"off"` — Turbo does not handle any form submissions; the browser performs a full page load on submit.
+- `"optin"` — Turbo only handles form submissions for forms that explicitly opt in with `data-turbo="true"` (set on the form or an ancestor element).
+
+
 ## Turbo.session.drive
 
 ```js
