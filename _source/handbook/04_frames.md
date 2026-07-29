@@ -245,6 +245,17 @@ If your application needs to handle missing frames in some other way, you can in
 [meta]: /reference/attributes#meta-tags
 [events]: /reference/events
 
+## Frames and HTML Tables
+
+The HTML parser restricts which elements may appear inside a `<table>`. A `<turbo-frame>` wrapping a `<tr>` or `<tbody>` is moved out of the table during parsing — before Turbo or any script runs — which breaks both the table's layout and the frame's behavior. This is a constraint of HTML itself, not of Turbo, and the customized built-in syntax (`<tr is="turbo-frame">`) is not a way out: WebKit does not implement the `is` attribute, so it would not work in Safari or in Turbo Native iOS apps.
+
+To update table content with Turbo, use one of these approaches instead:
+
+* **Place frames inside a cell.** `<td><turbo-frame id="…">` is valid HTML, so cell-level lazy loading and scoped navigation work as usual.
+* **Target rows with Turbo Streams.** A `<turbo-stream>` action can target a `<tr id="…">` or `<tbody id="…">` directly to append, replace, or remove rows in response to a form submission.
+* **Use page refreshes with morphing.** Rows are updated in place without any structural changes to the markup.
+* **Render the table with CSS.** If a row really must behave as a frame, build the table from `<div>` elements using CSS grid or `display: table-row`, together with the ARIA `table`, `row`, and `cell` roles, and wrap those elements in frames.
+
 ## Anti-Forgery Support (CSRF)
 
 Turbo provides [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) protection by checking the DOM for the existence of a `<meta>` tag with a `name` value of either `csrf-param` or `csrf-token`. For example:
