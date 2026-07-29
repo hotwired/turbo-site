@@ -252,7 +252,7 @@ The HTML parser restricts which elements may appear inside a `<table>`. A `<turb
 To update table content with Turbo, use one of these approaches instead:
 
 * **Place frames inside a cell.** `<td><turbo-frame id="…">` is valid HTML, so cell-level lazy loading and scoped navigation work as usual.
-* **Target rows with Turbo Streams.** A `<turbo-stream>` action can target a `<tr id="…">` or `<tbody id="…">` directly to append, replace, or remove rows in response to a form submission.
+* **Target rows with Turbo Streams.** A `<turbo-stream>` action can target a `<tr id="…">` or `<tbody id="…">` directly to append, replace, or remove rows in response to a form submission. If you're using Turbo Rails, give the row its id with the [`dom_id`](https://api.rubyonrails.org/classes/ActionView/RecordIdentifier.html) helper — `<tr id="<%= dom_id(message) %>">` — which produces the same id `turbo_frame_tag(message)` would, so stream helpers like `turbo_stream.replace(message)` find the row automatically.
 * **Use page refreshes with morphing.** Rows are updated in place without any structural changes to the markup.
 * **Render the table with CSS.** If a row really must behave as a frame, build the table from `<div>` elements using CSS grid or `display: table-row`, together with the ARIA `table`, `row`, and `cell` roles, and wrap those elements in frames.
 
