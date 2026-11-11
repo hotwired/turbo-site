@@ -47,6 +47,26 @@ Sometimes, you want to ignore certain elements while morphing. For example, you 
 <div data-turbo-permanent>...</div>
 ```
 
+## Dialogs
+
+When a morph turns an open `<dialog>` into one without the `open` attribute, Turbo closes it with [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close): a modal dialog leaves the top layer, and the dialog fires its `close` event. Give each dialog a unique, stable `id` so that morphing pairs it with the same dialog in the new page.
+
+To keep a dialog as it is across morphs, contents included, flag it with `data-turbo-permanent`, as above:
+
+```html
+<dialog id="settings" data-turbo-permanent>...</dialog>
+```
+
+To keep a dialog open or closed as it is while still updating its contents, cancel the morph of its `open` attribute in a [`turbo:before-morph-attribute`](/reference/events.html#turbo%3Abefore-morph-attribute) listener:
+
+```js
+addEventListener("turbo:before-morph-attribute", (event) => {
+  if (event.target.id === "settings" && event.detail.attributeName === "open") {
+    event.preventDefault()
+  }
+})
+```
+
 ## Turbo frames
 
 You can use [turbo frames](/handbook/frames.html) to define regions in your screen that will get reloaded using morphing when a page refresh happens. To do so, you must flag those frames with `refresh="morph"`.
