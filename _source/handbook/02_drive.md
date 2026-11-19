@@ -21,7 +21,7 @@ There are two types of visit: an _application visit_, which has an action of _ad
 
 ## Application Visits
 
-Application visits are initiated by clicking a Turbo Drive-enabled link, or programmatically by calling [`Turbo.visit(location)`](/reference/drive#turbodrivevisit).
+Application visits are initiated by clicking a Turbo Drive-enabled link, or programmatically by calling [`Turbo.visit(location)`](/reference/drive#turbo.visit).
 
 An application visit always issues a network request. When the response arrives, Turbo Drive renders its HTML and completes the visit.
 
@@ -69,7 +69,7 @@ Restoration visits have an action of _restore_ and Turbo Drive reserves them for
 
 ## Canceling Visits Before They Start
 
-Application visits can be canceled before they start, regardless of whether they were initiated by a link click or a call to [`Turbo.visit`](/reference/drive#turbovisit).
+Application visits can be canceled before they start, regardless of whether they were initiated by a link click or a call to [`Turbo.visit`](/reference/drive#turbo.visit).
 
 Listen for the `turbo:before-visit` event to be notified when a visit is about to start, and use `event.detail.url` (or `$event.originalEvent.detail.url`, when using jQuery) to check the visit’s location. Then cancel the visit by calling `event.preventDefault()`.
 
@@ -212,7 +212,7 @@ html[data-turbo-visit-direction="forward"]::view-transition-old(sidebar):only-ch
 
 During Turbo Drive navigation, the browser will not display its native progress indicator. Turbo Drive installs a CSS-based progress bar to provide feedback while issuing a request.
 
-The progress bar is enabled by default. It appears automatically for any page that takes longer than 500ms to load. (You can change this delay with the [`Turbo.setProgressBarDelay`](/reference/drive#turbodrivesetprogressbardelay) method.)
+The progress bar is enabled by default. It appears automatically for any page that takes longer than 500ms to load. (You can change this delay with [`Turbo.config.drive.progressBarDelay`](/reference/drive#turbo.config.drive.progressbardelay).)
 
 The progress bar is a `<div>` element with the class name `turbo-progress-bar`. Its default styles appear first in the document and can be overridden by rules that come later.
 
