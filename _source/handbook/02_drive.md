@@ -354,7 +354,7 @@ Prefetching links is enabled by default since Turbo v8, but you can disable it b
 <meta name="turbo-prefetch" content="false">
 ```
 
-To avoid prefetching links that the user is briefly hovering, Turbo waits 100ms after the user hovers over the link before prefetching it. But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
+To avoid prefetching links that the user is briefly hovering, Turbo waits 100ms after the user hovers over the link before prefetching it. (You can change this delay with [`Turbo.config.drive.prefetchDelay`](/reference/drive#turbo.config.drive.prefetchdelay).) But you may want to disable the prefetching behavior on certain links leading to pages with expensive rendering.
 
 You can disable prefetching on a per-element basis by annotating the element or any of its ancestors with `data-turbo-prefetch="false"`.
 

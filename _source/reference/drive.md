@@ -48,6 +48,16 @@ Note that this method has no effect when used with the iOS or Android adapters.
 
 **Note:** This function was previously exposed as `Turbo.setProgressBarDelay` function. The top-level function was deprecated in favor of the new `Turbo.config.drive.progressBarDelay = delayInMilliseconds` syntax.
 
+## Turbo.config.drive.prefetchDelay
+
+```js
+Turbo.config.drive.prefetchDelay = delayInMilliseconds
+```
+
+Sets how long Turbo waits after the user hovers over a link before [prefetching it](/handbook/drive#prefetching-links-on-hover), in milliseconds. If the user moves off the link before then, Turbo doesn't prefetch it. Turbo waits 100ms by default.
+
+A longer delay means fewer prefetches of links that the user only passes over, which helps on pages with many links close together.
+
 ## Turbo.config.forms.confirm
 
 ```js
